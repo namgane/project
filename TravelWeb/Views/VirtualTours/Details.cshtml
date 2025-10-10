@@ -1,0 +1,65 @@
+﻿@model TravelWeb.Models.VirtualTour
+
+@{
+    ViewData["Title"] = "Chi tiết Virtual Tour";
+}
+
+<h2>Chi tiết Virtual Tour</h2>
+
+<hr />
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.LocationName</h4>
+        <p class="card-text">
+            <strong><i class="bi bi-map"></i> Thuộc tour:</strong>
+            @(Model.Tour?.DiaDiem ?? "Không xác định")
+        </p>
+
+        @if (!string.IsNullOrEmpty(Model.StreetViewLink))
+        {
+            <div class="mt-3">
+                <h5>Xem Virtual Tour:</h5>
+                <div class="ratio ratio-16x9" style="max-height: 500px;">
+                    <iframe src="@Model.StreetViewLink"
+                            style="border:0;"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning mt-3">
+                <i class="bi bi-exclamation-triangle"></i> Chưa có link Street View
+            </div>
+        }
+    </div>
+</div>
+
+<div class="mt-3" style="position: relative; z-index: 1000;">
+    <a href="@Url.Action("Edit", "VirtualTours", new { id = Model.Id })" class="btn btn-warning">
+        <i class="bi bi-pencil"></i> Sửa
+    </a>
+    <a href="@Url.Action("Delete", "VirtualTours", new { id = Model.Id })" class="btn btn-danger">
+        <i class="bi bi-trash"></i> Xóa
+    </a>
+    <a href="@Url.Action("Index", "VirtualTours")" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Trở lại danh sách
+    </a>
+</div>
+
+@section Scripts {
+    <script>
+        // Đảm bảo các nút luôn clickable
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.mt-3 a.btn');
+            buttons.forEach(btn => {
+                btn.style.pointerEvents = 'auto';
+                btn.style.cursor = 'pointer';
+            });
+        });
+    </script>
+}

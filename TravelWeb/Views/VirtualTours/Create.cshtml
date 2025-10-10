@@ -1,0 +1,106 @@
+﻿@model TravelWeb.Models.VirtualTour
+
+@{
+    ViewData["Title"] = "Thêm Virtual Tour";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="LocationName" class="control-label"></label>
+                <input asp-for="LocationName" class="form-control" />
+                <span asp-validation-for="LocationName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="TourId" class="control-label"></label>
+                <select asp-for="TourId" class="form-control" asp-items="ViewBag.TourId">
+                    <option value="">-- Chọn Tour --</option>
+                </select>
+                <span asp-validation-for="TourId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StreetViewLink" class="control-label"></label>
+                <input asp-for="StreetViewLink" class="form-control" placeholder="Dán link nhúng từ Google Maps (phải có /embed)" id="linkInput" />
+                <span asp-validation-for="StreetViewLink" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    Hướng dẫn: Truy cập Google Maps > Tìm địa điểm > Nhấp chuột phải > "Share or embed map" > Tab "Embed a map" > Copy HTML
+                </small>
+            </div>
+
+            <div id="preview" style="display:none; margin-top:15px;">
+                <h5>Xem trước:</h5>
+                <iframe id="previewFrame" width="100%" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Lưu
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Trở lại
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const input = document.getElementById("linkInput");
+        const previewDiv = document.getElementById("preview");
+        const previewFrame = document.getElementById("previewFrame");
+
+        // Hàm extract URL từ iframe hoặc text
+        function extractUrl(text) {
+            text = text.trim();
+
+            // Nếu là thẻ iframe, lấy src
+            const srcMatch = text.match(/src=["']([^"']+)["']/i);
+            if (srcMatch && srcMatch[1]) {
+                return srcMatch[1];
+            }
+
+            // Nếu đã là URL, trả về luôn
+            if (text.startsWith('http')) {
+                return text;
+            }
+
+            return text;
+        }
+
+        // Xử lý khi nhập/paste
+        function handleInput() {
+            let link = extractUrl(input.value);
+
+            // Cập nhật lại input với URL đã extract
+            if (link !== input.value) {
+                input.value = link;
+            }
+
+            if (link.includes("embed")) {
+                previewFrame.src = link;
+                previewDiv.style.display = "block";
+            } else {
+                previewDiv.style.display = "none";
+            }
+        }
+
+        input.addEventListener("input", handleInput);
+        input.addEventListener("paste", function(e) {
+            setTimeout(handleInput, 100);
+        });
+    </script>
+}

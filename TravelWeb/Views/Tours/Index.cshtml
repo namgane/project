@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TravelWeb.Models.Tour>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TenTour)</th>
+            <th>@Html.DisplayNameFor(model => model.DiaDiem)</th>
+            <th>@Html.DisplayNameFor(model => model.MoTa)</th>
+            <th>@Html.DisplayNameFor(model => model.SoNgay)</th>
+            <th>@Html.DisplayNameFor(model => model.Gia)</th>
+            <th>@Html.DisplayName("Hình Ảnh")</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TenTour)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaDiem)</td>
+                <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoNgay)</td>
+                <td>@Html.DisplayFor(modelItem => item.Gia)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.HinhAnh))
+                    {
+                        <img src="@item.HinhAnh" alt="@item.TenTour" style="max-width:100px; max-height:100px;" class="img-thumbnail" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

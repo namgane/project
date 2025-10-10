@@ -1,0 +1,112 @@
+﻿@model TravelWeb.Models.Tour
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<h4>Tour</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="HinhAnh" />
+
+            <div class="form-group">
+                <label asp-for="TenTour" class="control-label"></label>
+                <input asp-for="TenTour" class="form-control" />
+                <span asp-validation-for="TenTour" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DiaDiem" class="control-label"></label>
+                <input asp-for="DiaDiem" class="form-control" />
+                <span asp-validation-for="DiaDiem" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <textarea asp-for="MoTa" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SoNgay" class="control-label"></label>
+                <input asp-for="SoNgay" class="form-control" type="number" />
+                <span asp-validation-for="SoNgay" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gia" class="control-label"></label>
+                <input asp-for="Gia" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Gia" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Hình Ảnh Hiện Tại</label>
+                <div>
+                    @if (!string.IsNullOrEmpty(Model.HinhAnh))
+                    {
+                        <img src="@Model.HinhAnh" alt="@Model.TenTour" style="max-width:300px; max-height:300px;" class="img-thumbnail mb-2" />
+                        <p class="text-muted small">@Model.HinhAnh</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Chưa có ảnh</p>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HinhAnhFile" class="control-label">Thay Đổi Hình Ảnh (Tùy chọn)</label>
+                <input asp-for="HinhAnhFile" class="form-control" type="file" accept="image/*" onchange="previewImage(this);" />
+                <span asp-validation-for="HinhAnhFile" class="text-danger"></span>
+                <small class="form-text text-muted">Chỉ chọn file nếu bạn muốn thay đổi ảnh</small>
+                <div id="imagePreview" class="mt-2"></div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function previewImage(input) {
+            var preview = document.getElementById('imagePreview');
+            preview.innerHTML = ''; // xóa preview cũ
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '300px';
+                    img.style.maxHeight = '300px';
+                    img.className = 'img-thumbnail mb-2';
+                    preview.appendChild(img);
+
+                    var text = document.createElement('p');
+                    text.className = 'text-success small';
+                    text.textContent = 'Ảnh mới (chưa lưu)';
+                    preview.appendChild(text);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}
