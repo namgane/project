@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TravelWeb.Models.Hotel>
+@{
+    ViewData["Title"] = "Danh Sách Khách Sạn";
+    var role = Context.Session.GetString("Role");
+    var username = Context.Session.GetString("Username");
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-building"></i> @ViewData["Title"]</h2>
+        @if (username == "admin")
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Thêm Khách Sạn
+            </a>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> Chưa có khách sạn nào.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var h in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(h.HinhAnh))
+                        {
+                            <img src="@Url.Content("~/images/hotels/" + h.HinhAnh)"
+                                 class="card-img-top"
+                                 style="height: 200px; object-fit: cover;"
+                                 alt="@h.TenKhachSan" />
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center"
+                                 style="height: 200px;">
+                                <i class="bi bi-image text-white" style="font-size: 3rem;"></i>
+                            </div>
+                        }
+
+                        <div class="card-body">
+                            <h5 class="card-title">@h.TenKhachSan</h5>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt"></i> @h.DiaChi<br />
+                                <i class="bi bi-door-open"></i> @h.SoPhong phòng<br />
+                                <strong class="text-primary">
+                                    <i class="bi bi-cash"></i> @h.GiaMoiDem.ToString("C")/đêm
+                                </strong>
+                            </p>
+                        </div>
+
+                        <div class="card-footer bg-white">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a asp-action="Details" asp-route-id="@h.Id"
+                                   class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i> Chi Tiết
+                                </a>
+
+                                @if (role == "Customer")
+                                {
+                                    <a asp-controller="Bookings" asp-action="Create" asp-route-hotelId="@h.Id"
+                                       class="btn btn-success btn-sm">
+                                        <i class="bi bi-calendar-plus"></i> Đặt Phòng
+                                    </a>
+                                }
+
+                                @if (username == "admin")
+                                {
+                                    <a asp-action="Edit" asp-route-id="@h.Id"
+                                       class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil"></i> Sửa
+                                    </a>
+                                    <form asp-action="Delete" asp-route-id="@h.Id" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Bạn có chắc muốn xóa khách sạn này?');">
+                                            <i class="bi bi-trash"></i> Xóa
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

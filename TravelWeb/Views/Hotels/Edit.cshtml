@@ -1,0 +1,46 @@
+﻿@model TravelWeb.Models.Hotel
+@{
+    ViewData["Title"] = "Sửa Khách Sạn";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="TenKhachSan" class="form-label"></label>
+        <input asp-for="TenKhachSan" class="form-control" />
+        <span asp-validation-for="TenKhachSan" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DiaChi" class="form-label"></label>
+        <input asp-for="DiaChi" class="form-control" />
+        <span asp-validation-for="DiaChi" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="MoTa" class="form-label"></label>
+        <textarea asp-for="MoTa" class="form-control"></textarea>
+        <span asp-validation-for="MoTa" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SoPhong" class="form-label"></label>
+        <input asp-for="SoPhong" type="number" class="form-control" />
+        <span asp-validation-for="SoPhong" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="GiaMoiDem" class="form-label"></label>
+        <input asp-for="GiaMoiDem" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="GiaMoiDem" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Hình Ảnh</label>
+        <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+        @if (!string.IsNullOrEmpty(Model.HinhAnh))
+        {
+            <img src="@Url.Content("~/images/hotels/" + Model.HinhAnh)" class="img-thumbnail mt-2" style="max-width:150px;" />
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập Nhật</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

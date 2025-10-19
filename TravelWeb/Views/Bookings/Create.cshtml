@@ -1,0 +1,190 @@
+﻿@model TravelWeb.Models.Booking
+@{
+    ViewBag.Title = "Đặt Phòng";
+    var hotel = ViewBag.Hotel as TravelWeb.Models.Hotel;
+}
+<div class="container mt-4">
+    <h2><i class="bi bi-calendar-check"></i> Đặt Phòng - @hotel.TenKhachSan</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-info-circle"></i> Thông tin khách sạn</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong><i class="bi bi-geo-alt"></i> Địa chỉ:</strong> @hotel.DiaChi</p>
+                    <p>
+                        <strong><i class="bi bi-cash"></i> Giá mỗi đêm:</strong>
+                        <span class="text-primary">@hotel.GiaMoiDem.ToString("N0") VNĐ</span>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <strong><i class="bi bi-door-open"></i> Số phòng còn:</strong>
+                        @if (hotel.SoPhong > 0)
+                        {
+                            <span class="badge bg-success fs-6">@hotel.SoPhong phòng</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger fs-6">Hết phòng</span>
+                        }
+                    </p>
+                    @if (hotel.SoPhong > 0 && hotel.SoPhong <= 5)
+                    {
+                        <div class="alert alert-warning py-2">
+                            <i class="bi bi-exclamation-triangle"></i> Chỉ còn @hotel.SoPhong phòng! Đặt ngay!
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-x-circle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (hotel.SoPhong > 0)
+    {
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-pencil-square"></i> Thông tin đặt phòng</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="HotelId" />
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CheckInDate" class="form-label">
+                                <i class="bi bi-calendar-check"></i> Ngày Nhận Phòng
+                            </label>
+                            <input asp-for="CheckInDate" class="form-control" type="date" />
+                            <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CheckOutDate" class="form-label">
+                                <i class="bi bi-calendar-x"></i> Ngày Trả Phòng
+                            </label>
+                            <input asp-for="CheckOutDate" class="form-control" type="date" />
+                            <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="SoLuongPhong" class="form-label">
+                            <i class="bi bi-123"></i> Số Lượng Phòng
+                        </label>
+                        <input asp-for="SoLuongPhong" class="form-control" type="number"
+                               min="1" max="@hotel.SoPhong" id="soLuongPhong" />
+                        <span asp-validation-for="SoLuongPhong" class="text-danger"></span>
+                        <small class="text-muted">Tối đa: @hotel.SoPhong phòng</small>
+                    </div>
+
+                    <!-- Hiển thị tổng tiền tự động -->
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-calculator"></i> Tổng Chi Phí</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-1"><strong>Số đêm:</strong> <span id="soNgay">0</span> đêm</p>
+                                    <p class="mb-1"><strong>Số phòng:</strong> <span id="displaySoPhong">1</span> phòng</p>
+                                    <p class="mb-1"><strong>Giá/đêm:</strong> @hotel.GiaMoiDem.ToString("N0") VNĐ</p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <h3 class="text-primary mb-0">
+                                        <i class="bi bi-cash-stack"></i>
+                                        <span id="tongTien">0</span> VNĐ
+                                    </h3>
+                                    <small class="text-muted">Tổng thanh toán</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-check-circle"></i> Đặt Phòng
+                        </button>
+                        <a asp-controller="Hotels" asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Quay Lại
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <i class="bi bi-x-octagon"></i> Khách sạn hiện đã hết phòng. Vui lòng quay lại sau hoặc chọn khách sạn khác.
+        </div>
+        <a asp-controller="Hotels" asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Quay Lại Danh Sách
+        </a>
+    }
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        // ✅ Lấy giá phòng từ Razor (chuẩn số, không bị lỗi format)
+        const giaMoiDem = parseFloat('@hotel.GiaMoiDem'.replace(/[^\d.-]/g, ''));
+
+        function tinhTongTien() {
+            const checkIn = document.querySelector('input[name="CheckInDate"]').value;
+            const checkOut = document.querySelector('input[name="CheckOutDate"]').value;
+            const soLuongPhong = parseInt(document.getElementById('soLuongPhong').value) || 1;
+
+            if (!checkIn || !checkOut) {
+                document.getElementById('soNgay').textContent = '0';
+                document.getElementById('tongTien').textContent = '0';
+                return;
+            }
+
+            const ngayNhan = new Date(checkIn);
+            const ngayTra = new Date(checkOut);
+            const soNgay = Math.ceil((ngayTra - ngayNhan) / (1000 * 60 * 60 * 24));
+
+            if (soNgay > 0) {
+                const tongTien = soNgay * soLuongPhong * giaMoiDem;
+                document.getElementById('soNgay').textContent = soNgay;
+                document.getElementById('displaySoPhong').textContent = soLuongPhong;
+                document.getElementById('tongTien').textContent = tongTien.toLocaleString('vi-VN');
+            } else {
+                document.getElementById('soNgay').textContent = '0';
+                document.getElementById('tongTien').textContent = '0';
+            }
+        }
+
+        // ✅ Giới hạn ngày nhận phòng phải sau hôm nay
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        document.querySelector('input[name="CheckInDate"]').setAttribute('min', minDate);
+
+        // ✅ Khi chọn ngày nhận → tự set min ngày trả
+        document.querySelector('input[name="CheckInDate"]').addEventListener('change', function () {
+            const checkinDate = new Date(this.value);
+            const nextDay = new Date(checkinDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            const minCheckout = nextDay.toISOString().split('T')[0];
+            document.querySelector('input[name="CheckOutDate"]').setAttribute('min', minCheckout);
+            tinhTongTien();
+        });
+
+        document.querySelector('input[name="CheckOutDate"]').addEventListener('change', tinhTongTien);
+        document.getElementById('soLuongPhong').addEventListener('input', tinhTongTien);
+
+        // ✅ Tự động tính ngay khi load trang
+        tinhTongTien();
+    </script>
+}

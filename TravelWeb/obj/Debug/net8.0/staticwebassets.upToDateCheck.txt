@@ -3,6 +3,8 @@ wwwroot\favicon.ico
 wwwroot\images\0c1d3689-aacb-4113-b3d2-caf31cc6b453.png
 wwwroot\images\7a0d73e0-d5e2-4b1c-bbb1-efcd1ff9efe7.png
 wwwroot\images\8f110666-07ea-4642-84fa-7ad555d77f50.jpg
+wwwroot\images\hotels\b61a07eb-fb7c-481d-9173-8d40feded65a_8e3c03aa-601e-4233-851e-6904b65775b5.jpg
+wwwroot\images\hotels\ba350c9e-d463-4736-a6e8-f60061cd8025_rest.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

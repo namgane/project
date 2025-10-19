@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TravelWeb.Models.User>
+
+@{
+    ViewData["Title"] = "Danh sách người dùng";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Danh sách người dùng</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tên đăng nhập</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Điện thoại</th>
+                <th>Quyền</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Username</td>
+                    <td>@user.FullName</td>
+                    <td>@user.Email</td>
+                    <td>@user.Phone</td>
+                    <td>@user.Role</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Xem</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

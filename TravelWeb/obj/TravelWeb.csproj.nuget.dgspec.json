@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\virtual\\TravelWeb\\TravelWeb\\TravelWeb.csproj": {}
+    "C:\\virtual\\project\\TravelWeb\\TravelWeb.csproj": {}
   },
   "projects": {
-    "C:\\virtual\\TravelWeb\\TravelWeb\\TravelWeb.csproj": {
+    "C:\\virtual\\project\\TravelWeb\\TravelWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\virtual\\TravelWeb\\TravelWeb\\TravelWeb.csproj",
+        "projectUniqueName": "C:\\virtual\\project\\TravelWeb\\TravelWeb.csproj",
         "projectName": "TravelWeb",
-        "projectPath": "C:\\virtual\\TravelWeb\\TravelWeb\\TravelWeb.csproj",
+        "projectPath": "C:\\virtual\\project\\TravelWeb\\TravelWeb.csproj",
         "packagesPath": "C:\\Users\\Thành Nam\\.nuget\\packages\\",
-        "outputPath": "C:\\virtual\\TravelWeb\\TravelWeb\\obj\\",
+        "outputPath": "C:\\virtual\\project\\TravelWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

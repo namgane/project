@@ -1,0 +1,119 @@
+﻿@model IEnumerable<TravelWeb.Models.Booking>
+@{
+    ViewData["Title"] = "Lịch Sử Đặt Phòng";
+}
+<div class="container mt-4">
+    <h2><i class="bi bi-clock-history"></i> Lịch Sử Đặt Phòng</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-x-circle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> Bạn chưa có booking nào.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Khách Sạn</th>
+                        <th>Ngày Nhận Phòng</th>
+                        <th>Ngày Trả Phòng</th>
+                        <th>Số Phòng</th>
+                        <th>Tổng Tiền</th>
+                        <th>Trạng Thái</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var b in Model)
+                    {
+                        var soNgay = (b.CheckOutDate - b.CheckInDate).Days;
+                        var tongTien = soNgay * b.SoLuongPhong * b.Hotel.GiaMoiDem;
+
+                        <tr>
+                            <td>@b.Hotel.TenKhachSan</td>
+                            <td>@b.CheckInDate.ToString("dd/MM/yyyy")</td>
+                            <td>@b.CheckOutDate.ToString("dd/MM/yyyy")</td>
+                            <td>@b.SoLuongPhong</td>
+                            <td>
+                                <strong class="text-primary">@tongTien.ToString("C")</strong>
+                                <br />
+                                <small class="text-muted">(@soNgay đêm)</small>
+                            </td>
+                            <td>
+                                @if (b.TrangThai == "Chờ Xác Nhận")
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="bi bi-hourglass-split"></i> @b.TrangThai
+                                    </span>
+                                }
+                                else if (b.TrangThai == "Đã Xác Nhận")
+                                {
+                                    <span class="badge bg-success">
+                                        <i class="bi bi-check-circle"></i> @b.TrangThai
+                                    </span>
+                                }
+                                else if (b.TrangThai == "Đã Hoàn Thành")
+                                {
+                                    <span class="badge bg-info">
+                                        <i class="bi bi-check-all"></i> @b.TrangThai
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        <i class="bi bi-x-circle"></i> @b.TrangThai
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if ((b.TrangThai == "Chờ Xác Nhận" || b.TrangThai == "Đã Xác Nhận") && b.CheckInDate.Date > DateTime.Now.Date)
+                                {
+                                    <form asp-action="Cancel" asp-route-id="@b.Id" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Bạn có chắc muốn hủy đặt phòng này?');">
+                                            <i class="bi bi-x-lg"></i> Hủy Đặt Phòng
+                                        </button>
+                                    </form>
+                                }
+                                else if ((b.TrangThai == "Chờ Xác Nhận" || b.TrangThai == "Đã Xác Nhận") && b.CheckInDate.Date <= DateTime.Now.Date)
+                                {
+                                    <span class="text-muted">
+                                        <i class="bi bi-lock"></i> Không thể hủy
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <a asp-controller="Hotels" asp-action="Index" class="btn btn-secondary mt-3">
+        <i class="bi bi-arrow-left"></i> Quay lại danh sách khách sạn
+    </a>
+</div>

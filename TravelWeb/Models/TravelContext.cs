@@ -9,6 +9,9 @@ namespace TravelWeb.Data
 
         public DbSet<Tour> Tours { get; set; }
         public DbSet<VirtualTour> VirtualTours { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
 
     }
 }

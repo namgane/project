@@ -1,0 +1,57 @@
+﻿@model TravelWeb.Models.User
+
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger text-center">@ViewBag.Error</div>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <div class="alert alert-success text-center">@ViewBag.Success</div>
+    }
+
+    <form asp-action="Register" method="post">
+        <div class="form-group mb-3">
+            <label for="Username">Tên đăng nhập</label>
+            <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Password">Mật khẩu</label>
+            <input asp-for="Password" class="form-control" type="password" placeholder="Nhập mật khẩu" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="FullName">Họ và tên</label>
+            <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên (tuỳ chọn)" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Email">Email</label>
+            <input asp-for="Email" class="form-control" placeholder="Nhập email (tuỳ chọn)" />
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="Phone">Số điện thoại</label>
+            <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại (tuỳ chọn)" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+    </form>
+
+    <p class="text-center mt-3">
+        Đã có tài khoản? <a asp-action="Login" asp-controller="Users">Đăng nhập ngay</a>
+    </p>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

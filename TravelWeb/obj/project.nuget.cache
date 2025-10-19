@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tN80tvA/6ow=",
+  "dgSpecHash": "n+9JedwwNms=",
   "success": true,
-  "projectFilePath": "C:\\virtual\\TravelWeb\\TravelWeb\\TravelWeb.csproj",
+  "projectFilePath": "C:\\virtual\\project\\TravelWeb\\TravelWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thành Nam\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Thành Nam\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

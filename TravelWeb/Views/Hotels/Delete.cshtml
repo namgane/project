@@ -1,0 +1,39 @@
+﻿@model TravelWeb.Models.Hotel
+@{
+    ViewData["Title"] = "Xóa Khách Sạn";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.HinhAnh))
+        {
+            <img src="@Url.Content("~/images/hotels/" + Model.HinhAnh)" class="img-thumbnail" style="width:100%;" />
+        }
+    </div>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-3">Tên Khách Sạn</dt>
+            <dd class="col-sm-9">@Model.TenKhachSan</dd>
+
+            <dt class="col-sm-3">Địa Chỉ</dt>
+            <dd class="col-sm-9">@Model.DiaChi</dd>
+
+            <dt class="col-sm-3">Mô Tả</dt>
+            <dd class="col-sm-9">@Model.MoTa</dd>
+
+            <dt class="col-sm-3">Số Phòng</dt>
+            <dd class="col-sm-9">@Model.SoPhong</dd>
+
+            <dt class="col-sm-3">Giá Mỗi Đêm</dt>
+            <dd class="col-sm-9">@Model.GiaMoiDem.ToString("C")</dd>
+        </dl>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">Xóa</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>
