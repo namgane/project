@@ -1,0 +1,30 @@
+﻿@model List<TravelWeb.Models.Festival>
+@{
+    ViewData["Title"] = "Lễ hội sắp diễn ra";
+}
+
+<h2 class="text-center mb-4 text-success">📅 Lễ hội sắp diễn ra trong năm</h2>
+
+@if (!Model.Any())
+{
+    <div class="card border-0 shadow-sm mx-auto" style="max-width:720px;">
+        <div class="card-body text-center">
+            <div class="display-6 mb-2">🌤️</div>
+            <p class="text-muted mb-0">Hiện chưa có lễ hội sắp tới trong thời gian gần đây.</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info small">
+        Có @Model.Count lễ hội sắp diễn ra. Sắp xếp theo ngày bắt đầu gần nhất.
+    </div>
+    <div class="row">
+        @foreach (var fest in Model)
+        {
+            <div class="col-md-4 mb-4">
+                @await Html.PartialAsync("_FestivalCard", fest)
+            </div>
+        }
+    </div>
+}

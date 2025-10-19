@@ -1,0 +1,77 @@
+﻿@model TravelWeb.Models.TravelPassport
+@{
+    ViewData["Title"] = "Hộ chiếu du lịch ảo";
+}
+
+<div class="container py-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h2 class="mb-1">🌍 Hộ chiếu du lịch ảo của @Model.UserName</h2>
+                    <p class="mb-0">
+                        <span class="badge bg-primary me-2">Điểm: @Model.TotalPoints</span>
+                        <span class="badge bg-success">Cấp độ: @Model.TravelLevel</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="mb-3">✍️ Thêm dấu mộc mới</h5>
+                    <form asp-action="AddStamp" method="post" class="row g-2">
+                        <div class="col-12 col-md-4">
+                            <input type="text" name="province" placeholder="Nhập tên tỉnh..." required class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="eventName" placeholder="Tên sự kiện / lễ hội..." required class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-2 d-grid">
+                            <button type="submit" class="btn btn-primary">Thêm dấu mộc ✈️</button>
+                        </div>
+                    </form>
+                    @if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-success mt-3 mb-0">@TempData["Message"]</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <h4 class="mb-3">🧳 Dấu mộc bạn đã sưu tầm</h4>
+            @if (Model.Stamps.Any())
+            {
+                <div class="row">
+                    @foreach (var s in Model.Stamps)
+                    {
+                        <div class="col-6 col-md-3 mb-3">
+                            <div class="card h-100 festival-card">
+                                <img src="@s.BadgeIcon" class="card-img-top" alt="stamp" style="height:120px;object-fit:contain;background:#f8f9fa;" />
+                                <div class="card-body">
+                                    <h6 class="card-title mb-1">@s.Province</h6>
+                                    <p class="card-text small text-truncate-2 mb-2">@s.EventName</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">@s.DateEarned.ToShortDateString()</small>
+                                        <span class="badge bg-success">+@s.Points</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="card shadow-sm border-0 mx-auto" style="max-width:720px;">
+                    <div class="card-body text-center">
+                        <div class="display-6 mb-2">🗺️</div>
+                        <p class="text-muted mb-0">Bạn chưa có dấu mộc nào. Hãy bắt đầu hành trình khám phá!</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

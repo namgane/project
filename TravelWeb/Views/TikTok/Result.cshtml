@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Kết quả TikTok Review";
+    var searchUrl = ViewBag.SearchUrl as string;
+    var keyword = ViewBag.Keyword as string;
+}
+
+<div class="container mt-4">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary mb-3">📱 Kết Quả TikTok</h1>
+        <h3 class="text-muted">Từ khóa: <span class="badge bg-primary fs-6">@keyword</span></h3>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <h5 class="mb-3">🎯 Chọn cách xem kết quả</h5>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="@searchUrl" 
+                               target="_blank" 
+                               class="btn btn-success btn-lg">
+                                <i class="fab fa-tiktok me-2"></i>Mở trên TikTok
+                            </a>
+                            <button type="button" 
+                                    class="btn btn-primary btn-lg" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#tiktokModal">
+                                <i class="fas fa-play me-2"></i>Xem nhúng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TikTok Preview Card -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card shadow border-0">
+                <div class="card-header bg-gradient bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fab fa-tiktok me-2"></i>Xem trước TikTok
+                    </h4>
+                </div>
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="@searchUrl"
+                                allowfullscreen
+                                frameborder="0"
+                                loading="lazy"
+                                title="TikTok Search Results for @keyword">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Kết quả tìm kiếm cho: <strong>@keyword</strong>
+                        </small>
+                        <a href="@searchUrl" target="_blank" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-external-link-alt me-1"></i>Mở trong tab mới
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a asp-action="Index" class="btn btn-secondary btn-lg me-md-2">
+                    <i class="fas fa-search me-2"></i>Tìm kiếm khác
+                </a>
+                <button type="button" class="btn btn-outline-primary btn-lg" onclick="history.back()">
+                    <i class="fas fa-arrow-left me-2"></i>Quay lại
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TikTok Modal -->
+<div class="modal fade" id="tiktokModal" tabindex="-1" aria-labelledby="tiktokModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tiktokModalLabel">
+                    <i class="fab fa-tiktok me-2"></i>TikTok Search: @keyword
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                    <iframe src="@searchUrl"
+                            allowfullscreen
+                            frameborder="0"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="@searchUrl" target="_blank" class="btn btn-success">
+                    <i class="fab fa-tiktok me-2"></i>Mở trên TikTok
+                </a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+    }
+    
+    .btn {
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .bg-gradient {
+        background: linear-gradient(45deg, #ff0050, #00f2ea) !important;
+    }
+    
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        border-bottom: 1px solid #dee2e6;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    .modal-footer {
+        border-top: 1px solid #dee2e6;
+        border-radius: 0 0 15px 15px;
+    }
+</style>

@@ -1,0 +1,352 @@
+﻿@model TravelWeb.Models.TripRequest
+@{
+    ViewData["Title"] = "Trip Planner - Lập kế hoạch du lịch thông minh";
+}
+
+<div class="container-fluid px-0">
+    <!-- Hero Section -->
+    <div class="hero-section bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">🗺️ Trip Planner AI</h1>
+                    <p class="lead mb-4">Lập kế hoạch du lịch thông minh với AI. Chỉ cần nhập địa điểm và ngân sách, chúng tôi sẽ tạo cho bạn một lịch trình hoàn hảo!</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>Lịch trình chi tiết</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>Tính toán chi phí</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>Gợi ý phương tiện</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-route fa-10x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Alert Messages -->
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        }
+        
+        @if (TempData["InfoMessage"] != null)
+        {
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <i class="fas fa-info-circle me-2"></i>
+                        @TempData["InfoMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <!-- Validation Summary -->
+        <div asp-validation-summary="All" class="alert alert-danger" role="alert" style="display: none;"></div>
+
+        <!-- Trip Planning Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-white border-0 py-4">
+                        <h3 class="text-center mb-0">
+                            <i class="fas fa-map-marked-alt text-primary me-2"></i>
+                            Tạo kế hoạch du lịch
+                        </h3>
+                        <p class="text-muted text-center mt-2">Điền thông tin để nhận lịch trình du lịch tối ưu</p>
+                    </div>
+                    <div class="card-body p-5">
+                        <form method="post" asp-action="Index" id="tripForm" novalidate>
+                            <div class="row">
+                                <!-- Destination Input -->
+                                <div class="col-md-6 mb-4">
+                                    <label for="Destination" class="form-label fw-bold">
+                                        <i class="fas fa-map-marker-alt text-primary me-2"></i>Địa điểm du lịch
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="Destination" 
+                                           name="Destination" 
+                                           placeholder="Ví dụ: Đà Lạt, Hội An, Phú Quốc..." 
+                                           value="@Model?.Destination"
+                                           required>
+                                    <div class="form-text">Nhập tên thành phố hoặc địa điểm bạn muốn đến</div>
+                                </div>
+
+                                <!-- Budget Input -->
+                                <div class="col-md-6 mb-4">
+                                    <label for="Budget" class="form-label fw-bold">
+                                        <i class="fas fa-wallet text-success me-2"></i>Ngân sách (VNĐ)
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" 
+                                               class="form-control form-control-lg" 
+                                               id="Budget" 
+                                               name="Budget" 
+                                               placeholder="5,000,000" 
+                                               value="@Model?.Budget"
+                                               min="1000000"
+                                               step="100000"
+                                               required>
+                                        <span class="input-group-text">VNĐ</span>
+                                    </div>
+                                    <div class="form-text">Ngân sách tối thiểu: 1,000,000 VNĐ</div>
+                                </div>
+                            </div>
+
+                            <!-- Days Input -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="Days" class="form-label fw-bold">
+                                        <i class="fas fa-calendar-alt text-info me-2"></i>Số ngày du lịch
+                                    </label>
+                                    <input type="number" 
+                                           class="form-control form-control-lg" 
+                                           id="Days" 
+                                           name="Days" 
+                                           placeholder="Để trống để AI gợi ý" 
+                                           value="@Model?.Days"
+                                           min="1"
+                                           max="30">
+                                    <div class="form-text">Để trống nếu muốn AI gợi ý dựa trên ngân sách</div>
+                                </div>
+
+                                <!-- Travel Type -->
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label fw-bold">
+                                        <i class="fas fa-users text-warning me-2"></i>Loại hình du lịch
+                                    </label>
+                                    <select class="form-select form-select-lg" id="travelType">
+                                        <option value="">Chọn loại hình du lịch</option>
+                                        <option value="solo">Du lịch một mình</option>
+                                        <option value="couple">Du lịch cặp đôi</option>
+                                        <option value="family">Du lịch gia đình</option>
+                                        <option value="friends">Du lịch nhóm bạn</option>
+                                        <option value="business">Du lịch công tác</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Budget Breakdown Preview -->
+                            <div class="row mb-4" id="budgetPreview" style="display: none;">
+                                <div class="col-12">
+                                    <div class="card bg-light">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="fas fa-calculator me-2"></i>Phân bổ ngân sách dự kiến
+                                            </h6>
+                                            <div class="row text-center">
+                                                <div class="col-3">
+                                                    <div class="border-end">
+                                                        <div class="text-primary fw-bold" id="accommodationBudget">0 VNĐ</div>
+                                                        <small class="text-muted">Lưu trú (40%)</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="border-end">
+                                                        <div class="text-success fw-bold" id="transportBudget">0 VNĐ</div>
+                                                        <small class="text-muted">Di chuyển (30%)</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="border-end">
+                                                        <div class="text-warning fw-bold" id="foodBudget">0 VNĐ</div>
+                                                        <small class="text-muted">Ẩm thực (20%)</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="text-info fw-bold" id="activityBudget">0 VNĐ</div>
+                                                    <small class="text-muted">Hoạt động (10%)</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3" id="submitBtn">
+                                    <i class="fas fa-magic me-2"></i>Tạo kế hoạch du lịch
+                                </button>
+                            </div>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center mb-5">Tại sao chọn Trip Planner AI?</h3>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary bg-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-brain text-white fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">AI Thông Minh</h5>
+                        <p class="card-text text-muted">Sử dụng trí tuệ nhân tạo để tạo lịch trình tối ưu dựa trên ngân sách và sở thích của bạn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-success bg-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-clock text-white fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Tiết Kiệm Thời Gian</h5>
+                        <p class="card-text text-muted">Chỉ trong vài giây, bạn sẽ có một kế hoạch du lịch hoàn chỉnh và chi tiết.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-warning bg-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-dollar-sign text-white fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Tính Toán Chi Phí</h5>
+                        <p class="card-text text-muted">Phân bổ ngân sách hợp lý cho từng hạng mục: lưu trú, di chuyển, ẩm thực, hoạt động.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
+        background-size: cover;
+    }
+    
+    .card {
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+    }
+    
+    .form-control, .form-select {
+        border-radius: 12px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    .btn {
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .bg-gradient {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const budgetInput = document.getElementById('Budget');
+        const budgetPreview = document.getElementById('budgetPreview');
+        const accommodationBudget = document.getElementById('accommodationBudget');
+        const transportBudget = document.getElementById('transportBudget');
+        const foodBudget = document.getElementById('foodBudget');
+        const activityBudget = document.getElementById('activityBudget');
+        
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN').format(amount) + ' VNĐ';
+        }
+        
+        function updateBudgetPreview() {
+            const budget = parseFloat(budgetInput.value) || 0;
+            if (budget > 0) {
+                accommodationBudget.textContent = formatCurrency(budget * 0.4);
+                transportBudget.textContent = formatCurrency(budget * 0.3);
+                foodBudget.textContent = formatCurrency(budget * 0.2);
+                activityBudget.textContent = formatCurrency(budget * 0.1);
+                budgetPreview.style.display = 'block';
+            } else {
+                budgetPreview.style.display = 'none';
+            }
+        }
+        
+        budgetInput.addEventListener('input', updateBudgetPreview);
+        
+        // Form validation
+        const form = document.getElementById('tripForm');
+        form.addEventListener('submit', function(e) {
+            const destination = document.getElementById('Destination').value.trim();
+            const budget = parseFloat(document.getElementById('Budget').value);
+            
+            if (!destination) {
+                e.preventDefault();
+                alert('Vui lòng nhập địa điểm du lịch!');
+                return;
+            }
+            
+            if (!budget || budget < 1000000) {
+                e.preventDefault();
+                alert('Ngân sách phải tối thiểu 1,000,000 VNĐ!');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang tạo kế hoạch...';
+            submitBtn.disabled = true;
+        });
+    });
+</script>

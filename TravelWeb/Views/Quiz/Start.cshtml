@@ -1,0 +1,285 @@
+﻿@{
+    ViewData["Title"] = "Quiz du lịch - Khám phá Việt Nam";
+}
+
+<!-- Hero Section -->
+<div class="hero-section bg-gradient-primary text-white">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-6">
+                <h1 class="display-3 fw-bold mb-4">
+                    🇻🇳 Khám phá Việt Nam
+                    <span class="text-warning">cùng AkiTravel</span>
+                </h1>
+                <p class="lead mb-4">
+                    Hãy trả lời vài câu hỏi ngắn để chúng tôi giúp bạn tìm ra điểm đến phù hợp nhất —
+                    nơi mang đậm phong vị văn hóa, ẩm thực và cảnh sắc mà bạn yêu thích.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-clock me-2"></i>
+                        <span>Chỉ 2-3 phút</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-question-circle me-2"></i>
+                        <span>5 câu hỏi thú vị</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span>Gợi ý điểm đến phù hợp</span>
+                    </div>
+                </div>
+                <form method="get" asp-action="Start">
+                    <button class="btn btn-warning btn-lg px-5 py-3">
+                        <i class="fas fa-rocket me-2"></i>Bắt đầu hành trình
+                    </button>
+                </form>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="quiz-illustration">
+                    <img src="/images/7a0d73e0-d5e2-4b1c-bbb1-efcd1ff9efe7.png" 
+                         class="img-fluid" 
+                         style="max-height:400px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);" 
+                         alt="Vietnam map" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold text-primary">Tại sao nên làm quiz?</h2>
+            <p class="lead text-muted">Khám phá điểm đến phù hợp với sở thích và phong cách du lịch của bạn</p>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card h-100">
+                <div class="feature-icon">
+                    <i class="fas fa-brain fa-3x text-primary"></i>
+                </div>
+                <h4 class="feature-title">AI Thông minh</h4>
+                <p class="feature-description">
+                    Sử dụng trí tuệ nhân tạo để phân tích sở thích và gợi ý điểm đến phù hợp nhất với bạn.
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card h-100">
+                <div class="feature-icon">
+                    <i class="fas fa-clock fa-3x text-success"></i>
+                </div>
+                <h4 class="feature-title">Nhanh chóng</h4>
+                <p class="feature-description">
+                    Chỉ cần 2-3 phút để hoàn thành quiz và nhận được gợi ý điểm đến phù hợp.
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card h-100">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt fa-3x text-info"></i>
+                </div>
+                <h4 class="feature-title">Cá nhân hóa</h4>
+                <p class="feature-description">
+                    Kết quả được tùy chỉnh dựa trên sở thích, ngân sách và phong cách du lịch của bạn.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How it works -->
+<div class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold text-primary">Cách thức hoạt động</h2>
+                <p class="lead text-muted">Chỉ với 3 bước đơn giản</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="step-card text-center">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Trả lời câu hỏi</h4>
+                    <p class="step-description">
+                        Trả lời 5 câu hỏi về sở thích du lịch, ngân sách và phong cách của bạn.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="step-card text-center">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">AI phân tích</h4>
+                    <p class="step-description">
+                        Hệ thống AI sẽ phân tích câu trả lời và tìm điểm đến phù hợp nhất.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="step-card text-center">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">Nhận gợi ý</h4>
+                    <p class="step-description">
+                        Nhận danh sách điểm đến được gợi ý cùng thông tin chi tiết và lễ hội.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="cta-card text-center">
+                <h2 class="display-5 fw-bold text-white mb-4">
+                    Sẵn sàng khám phá điểm đến lý tưởng?
+                </h2>
+                <p class="lead text-white mb-4">
+                    Bắt đầu quiz ngay để tìm ra nơi phù hợp nhất với bạn!
+                </p>
+                <form method="get" asp-action="Start">
+                    <button class="btn btn-warning btn-lg px-5">
+                        <i class="fas fa-play me-2"></i>Bắt đầu quiz ngay
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
+        background-size: cover;
+    }
+    
+    .min-vh-75 {
+        min-height: 75vh;
+    }
+    
+    .quiz-illustration {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .feature-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #f8f9fa;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .feature-icon {
+        margin-bottom: 1.5rem;
+    }
+    
+    .feature-title {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+    
+    .feature-description {
+        color: #6c757d;
+        line-height: 1.6;
+    }
+    
+    .step-card {
+        padding: 2rem 1rem;
+    }
+    
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 1.5rem;
+    }
+    
+    .step-title {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+    
+    .step-description {
+        color: #6c757d;
+        line-height: 1.6;
+    }
+    
+    .cta-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        padding: 4rem 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
+        background-size: cover;
+    }
+    
+    .btn {
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+   
+        
+        .display-5 {
+            font-size: 2rem;
+        }
+    }
+</style>

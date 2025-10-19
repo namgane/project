@@ -1,0 +1,47 @@
+﻿@model List<TravelWeb.Models.Festival>
+@{
+    ViewData["Title"] = "Danh sách lễ hội Việt Nam";
+}
+
+<h2 class="text-center mb-4 text-primary">🎉 Danh sách lễ hội trên khắp Việt Nam</h2>
+
+<div class="row align-items-center mb-3 g-2">
+    <div class="col-12 col-md-6">
+        <input id="festivalSearch" type="text" class="form-control" placeholder="Tìm theo tên, tỉnh/thành, miền..." />
+    </div>
+    <div class="col-12 col-md-6 text-md-end small text-muted">
+        Tổng số: @Model.Count
+    </div>
+    <div class="col-12"><hr class="my-2" /></div>
+    <div class="col-12">
+        <div class="row" id="festivalGrid">
+            @foreach (var fest in Model)
+            {
+                <div class="col-md-4 mb-4 festival-item" data-name="@fest.Name" data-province="@fest.Province" data-region="@fest.Region">
+                    @await Html.PartialAsync("_FestivalCard", fest)
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    (function(){
+        const input = document.getElementById('festivalSearch');
+        const items = document.querySelectorAll('#festivalGrid .festival-item');
+        function normalize(str){ return (str||'').toString().toLowerCase(); }
+        function filter(){
+            const q = normalize(input.value);
+            items.forEach(el => {
+                const name = normalize(el.getAttribute('data-name'));
+                const province = normalize(el.getAttribute('data-province'));
+                const region = normalize(el.getAttribute('data-region'));
+                const show = !q || name.includes(q) || province.includes(q) || region.includes(q);
+                el.style.display = show ? '' : 'none';
+            });
+        }
+        input.addEventListener('input', filter);
+    })();
+</script>
+}

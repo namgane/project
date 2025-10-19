@@ -1,0 +1,487 @@
+﻿@model TravelWeb.Models.TripPlan
+
+@{
+    ViewData["Title"] = "Kế hoạch du lịch - " + Model.Destination;
+}
+
+<!-- Hero Section -->
+<div class="hero-section bg-gradient-primary text-white">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-map-marked-alt me-3"></i>@Model.Destination
+                </h1>
+                <p class="lead mb-4">
+                    Kế hoạch du lịch @Model.SuggestedDays ngày được tối ưu hóa cho ngân sách của bạn
+                </p>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-warning">@Model.SuggestedDays</h3>
+                            <small>Ngày du lịch</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-warning">@Model.TotalBudget.ToString("N0")</h3>
+                            <small>Ngân sách (VNĐ)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-warning">@Model.EstimatedTotalCost.ToString("N0")</h3>
+                            <small>Chi phí ước tính (VNĐ)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="hero-image">
+                    <i class="fas fa-route fa-8x text-warning opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <button onclick="window.print()" class="btn btn-primary btn-lg">
+                    <i class="fas fa-print me-2"></i>In kế hoạch
+                </button>
+                <button onclick="downloadPDF()" class="btn btn-success btn-lg">
+                    <i class="fas fa-download me-2"></i>Tải PDF
+                </button>
+                <button onclick="sharePlan()" class="btn btn-info btn-lg">
+                    <i class="fas fa-share me-2"></i>Chia sẻ
+                </button>
+                <a asp-controller="TripPlanner" asp-action="Index" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-plus me-2"></i>Lập kế hoạch mới
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container my-5">
+    <div class="row">
+        <!-- Left Column - Main Content -->
+        <div class="col-lg-8">
+            <!-- Cost Breakdown -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-header bg-gradient bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-chart-pie me-2"></i>Phân tích chi phí
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="cost-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Ngân sách dự kiến</span>
+                                    <span class="text-primary fw-bold">@Model.TotalBudget.ToString("N0") VNĐ</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-primary" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="cost-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Chi phí ước tính</span>
+                                    <span class="text-success fw-bold">@Model.EstimatedTotalCost.ToString("N0") VNĐ</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-success" style="width: @((Model.EstimatedTotalCost / Model.TotalBudget * 100).ToString("F0"))%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center">
+                                <h4 class="text-primary">Tiết kiệm</h4>
+                                <h2 class="text-success">@((Model.TotalBudget - Model.EstimatedTotalCost).ToString("N0")) VNĐ</h2>
+                                <p class="text-muted">Dự kiến tiết kiệm được</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Itinerary -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-header bg-gradient bg-success text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-calendar-alt me-2"></i>Lịch trình chi tiết
+                    </h3>
+                </div>
+                <div class="card-body">
+                    @foreach (var day in Model.DailyPlans)
+                    {
+                        <div class="timeline-item mb-4">
+                            <div class="timeline-marker">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4 class="timeline-title">Ngày @day.DayNumber</h4>
+                                <div class="activities-list">
+                                    @foreach (var activity in day.Activities)
+                                    {
+                                        <div class="activity-item">
+                                            <div class="activity-time">
+                                                <i class="fas fa-clock me-2"></i>@activity.Time
+                                            </div>
+                                            <div class="activity-details">
+                                                <h6 class="activity-name">@activity.Name</h6>
+                                                <div class="activity-meta">
+                                                    <span class="badge bg-info me-2">@activity.Type</span>
+                                                    <span class="activity-cost">@activity.Cost.ToString("N0") VNĐ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="day-total">
+                                    <strong>Tổng chi phí ngày @day.DayNumber: @day.TotalCost.ToString("N0") VNĐ</strong>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Transport Options -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-header bg-gradient bg-warning text-dark">
+                    <h3 class="mb-0">
+                        <i class="fas fa-car me-2"></i>Gợi ý phương tiện
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var transport in Model.TransportOptions)
+                        {
+                            <div class="col-md-6 mb-3">
+                                <div class="transport-item">
+                                    <i class="fas fa-bus text-primary me-2"></i>
+                                    <span>@transport</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel Suggestions -->
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-gradient bg-info text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-bed me-2"></i>Gợi ý khách sạn
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var hotel in Model.HotelSuggestions)
+                        {
+                            <div class="col-md-6 mb-3">
+                                <div class="hotel-item">
+                                    <i class="fas fa-hotel text-success me-2"></i>
+                                    <span>@hotel</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Summary -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-header bg-gradient bg-secondary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Tóm tắt nhanh
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="summary-item">
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                        <strong>Điểm đến:</strong> @Model.Destination
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-calendar text-success me-2"></i>
+                        <strong>Thời gian:</strong> @Model.SuggestedDays ngày
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-wallet text-warning me-2"></i>
+                        <strong>Ngân sách:</strong> @Model.TotalBudget.ToString("N0") VNĐ
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-calculator text-info me-2"></i>
+                        <strong>Chi phí ước tính:</strong> @Model.EstimatedTotalCost.ToString("N0") VNĐ
+                    </div>
+                </div>
+            </div>
+
+            <!-- Travel Tips -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-header bg-gradient bg-dark text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>Mẹo du lịch
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="tip-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Đặt vé trước để tiết kiệm chi phí
+                        </li>
+                        <li class="tip-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Mang theo thuốc men cần thiết
+                        </li>
+                        <li class="tip-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Kiểm tra thời tiết trước khi đi
+                        </li>
+                        <li class="tip-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Chuẩn bị tiền mặt và thẻ tín dụng
+                        </li>
+</ul>
+                </div>
+            </div>
+
+            <!-- Emergency Contacts -->
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-gradient bg-danger text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-phone me-2"></i>Liên hệ khẩn cấp
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="contact-item">
+                        <strong>Cảnh sát:</strong> 113
+                    </div>
+                    <div class="contact-item">
+                        <strong>Cứu thương:</strong> 115
+                    </div>
+                    <div class="contact-item">
+                        <strong>Cứu hỏa:</strong> 114
+                    </div>
+                    <div class="contact-item">
+                        <strong>Hỗ trợ du lịch:</strong> 1900-xxxx
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
+        background-size: cover;
+    }
+    
+    .min-vh-50 {
+        min-height: 50vh;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .card {
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    }
+    
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+    }
+    
+    .bg-gradient {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-left: 3rem;
+    }
+    
+    .timeline-marker {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+    }
+    
+    .timeline-content {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+    
+    .timeline-title {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+    
+    .activity-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .activity-time {
+        min-width: 80px;
+        color: #667eea;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    
+    .activity-details {
+        flex: 1;
+        margin-left: 1rem;
+    }
+    
+    .activity-name {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+    }
+    
+    .activity-cost {
+        color: #28a745;
+        font-weight: 600;
+    }
+    
+    .day-total {
+        background: #e3f2fd;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        color: #1976d2;
+        margin-top: 1rem;
+    }
+    
+    .transport-item, .hotel-item {
+        padding: 0.75rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+    }
+    
+    .summary-item, .tip-item, .contact-item {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .summary-item:last-child, .tip-item:last-child, .contact-item:last-child {
+        border-bottom: none;
+    }
+    
+    .btn {
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    .hero-image {
+        position: relative;
+        z-index: 1;
+    }
+    
+    
+        .timeline-item {
+            padding-left: 2rem;
+        }
+        
+        .timeline-marker {
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.8rem;
+        }
+        
+        .activity-item {
+            flex-direction: column;
+        }
+        
+        .activity-details {
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+    }
+    
+  
+        
+        .card {
+            break-inside: avoid;
+        }
+        
+        .btn {
+            display: none !important;
+        }
+    }
+</style>
+
+<script>
+    function downloadPDF() {
+        alert('Tính năng tải PDF sẽ được phát triển trong phiên bản tiếp theo!');
+    }
+    
+    function sharePlan() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Kế hoạch du lịch @Model.Destination',
+                text: 'Xem kế hoạch du lịch @Model.SuggestedDays ngày tại @Model.Destination',
+                url: window.location.href
+            });
+        } else {
+            // Fallback: Copy to clipboard
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Đã sao chép link vào clipboard!');
+            });
+        }
+    }
+</script>

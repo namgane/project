@@ -1,0 +1,24 @@
+﻿@model TravelWeb.Models.Festival
+
+<div class="card shadow-sm border-0 h-100 festival-card">
+    <div class="position-relative">
+        <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" style="height:200px;object-fit:cover;">
+        <span class="badge bg-light text-dark position-absolute top-0 start-0 m-2 badge-soft">
+            @Model.Region
+        </span>
+        <span class="badge bg-primary position-absolute bottom-0 end-0 m-2">
+            @Model.StartDate.ToString("dd/MM") - @Model.EndDate.ToString("dd/MM")
+        </span>
+    </div>
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-primary mb-1">@Model.Name</h5>
+        <p class="card-text text-muted mb-2">
+            <strong>@Model.Province</strong>
+        </p>
+        <p class="card-text small text-truncate-2 mb-3">@Model.Description</p>
+        <div class="mt-auto d-flex gap-2">
+            <a href="@Url.Action("Details", "Festival", new { name = Model.Name })" class="btn btn-outline-primary btn-sm">Chi tiết</a>
+            <a href="@Url.Action("Suggest", "Transport", new { from = "TP.HCM", to = Model.Province })" class="btn btn-success btn-sm">Di chuyển</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+﻿@model List<TravelWeb.Models.TransportOption>
+
+<h2 class="mb-3 text-center text-primary">Gợi ý phương tiện du lịch</h2>
+
+@if (Model.Any())
+{
+    var providers = Model.Select(m => m.Provider).Distinct().OrderBy(x => x).ToList();
+    var modes = Model.Select(m => m.Mode).Distinct().OrderBy(x => x).ToList();
+
+    <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+            <div class="row g-2 align-items-end">
+                <div class="col-12 col-md-3">
+                    <label class="form-label">Nhà cung cấp</label>
+                    <select id="filterProvider" class="form-select">
+                        <option value="">Tất cả</option>
+                        @foreach (var p in providers)
+                        {
+                            <option value="@p">@p</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label">Phương tiện</label>
+                    <select id="filterMode" class="form-select">
+                        <option value="">Tất cả</option>
+                        @foreach (var m in modes)
+                        {
+                            <option value="@m">@m</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-12 col-md-4">
+                    <label class="form-label">Khoảng giá (VNĐ)</label>
+                    <div class="input-group">
+                        <input id="minPrice" type="number" class="form-control" placeholder="Min" min="0" />
+                        <span class="input-group-text">-</span>
+                        <input id="maxPrice" type="number" class="form-control" placeholder="Max" min="0" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 d-grid">
+                    <button id="btnClearFilters" class="btn btn-outline-secondary">Xóa lọc</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="card border-0 shadow-sm mx-auto" style="max-width:720px;">
+        <div class="card-body text-center">
+            <div class="display-6 mb-2">🚧</div>
+            <p class="text-muted mb-0">Hiện chưa có thông tin tuyến này. Vui lòng thử lại sau.</p>
+        </div>
+    </div>
+}
+else
+{
+    <table class="table table-bordered align-middle" id="transportTable">
+        <thead class="table-light">
+            <tr>
+                <th>Phương tiện</th>
+                <th>Nhà cung cấp</th>
+                <th>Thời gian</th>
+                <th>Giá vé (VNĐ)</th>
+                <th>Đặt vé</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-provider="@item.Provider" data-mode="@item.Mode" data-price="@item.Price">
+                    <td>@item.Mode</td>
+                    <td>@item.Provider</td>
+                    <td>@item.Duration</td>
+                    <td class="text-end">@item.Price.ToString("N0")</td>
+                    <td><a href="@item.BookingUrl" target="_blank" class="btn btn-sm btn-success">Đặt ngay</a></td>
+                    <td>@item.Note</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section Scripts{
+<script>
+    (function(){
+        const table = document.getElementById('transportTable');
+        if(!table) return;
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        const selProvider = document.getElementById('filterProvider');
+        const selMode = document.getElementById('filterMode');
+        const minPrice = document.getElementById('minPrice');
+        const maxPrice = document.getElementById('maxPrice');
+        const btnClear = document.getElementById('btnClearFilters');
+
+        function normalize(v){ return (v||'').toString().toLowerCase(); }
+        function toNum(v){ const n = Number(v); return isNaN(n) ? null : n; }
+
+        function applyFilters(){
+            const p = normalize(selProvider && selProvider.value);
+            const m = normalize(selMode && selMode.value);
+            const min = toNum(minPrice && minPrice.value);
+            const max = toNum(maxPrice && maxPrice.value);
+            rows.forEach(tr => {
+                const rp = normalize(tr.getAttribute('data-provider'));
+                const rm = normalize(tr.getAttribute('data-mode'));
+                const price = Number(tr.getAttribute('data-price')) || 0;
+                let ok = true;
+                if (p && rp !== p) ok = false;
+                if (m && rm !== m) ok = false;
+                if (min !== null && price < min) ok = false;
+                if (max !== null && price > max) ok = false;
+                tr.style.display = ok ? '' : 'none';
+            });
+        }
+
+        [selProvider, selMode, minPrice, maxPrice].forEach(el => el && el.addEventListener('input', applyFilters));
+        if (btnClear) btnClear.addEventListener('click', function(){
+            if (selProvider) selProvider.value = '';
+            if (selMode) selMode.value = '';
+            if (minPrice) minPrice.value = '';
+            if (maxPrice) maxPrice.value = '';
+            applyFilters();
+        });
+    })();
+</script>
+}

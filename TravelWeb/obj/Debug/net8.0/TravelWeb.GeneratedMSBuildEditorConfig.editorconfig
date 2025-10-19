@@ -17,145 +17,201 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TravelWeb
 build_property.RootNamespace = TravelWeb
-build_property.ProjectDir = C:\virtual\project\TravelWeb\
+build_property.ProjectDir = D:\Me\project\TravelWeb\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\virtual\project\TravelWeb
+build_property.MSBuildProjectDirectory = D:\Me\project\TravelWeb
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/Create.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/Delete.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/Details.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/Edit.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/HotelBookings.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/HotelBookings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcSG90ZWxCb29raW5ncy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/Index.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Bookings/MyBookings.cshtml]
+[D:/Me/project/TravelWeb/Views/Bookings/MyBookings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcTXlCb29raW5ncy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Home/Index.cshtml]
+[D:/Me/project/TravelWeb/Views/Festival/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVzdGl2YWxcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Festival/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVzdGl2YWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Festival/Upcoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVzdGl2YWxcVXBjb21pbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Festival/_FestivalCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVzdGl2YWxcX0Zlc3RpdmFsQ2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Home/Privacy.cshtml]
+[D:/Me/project/TravelWeb/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Hotels/Create.cshtml]
+[D:/Me/project/TravelWeb/Views/Hotels/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Hotels/Delete.cshtml]
+[D:/Me/project/TravelWeb/Views/Hotels/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Hotels/Details.cshtml]
+[D:/Me/project/TravelWeb/Views/Hotels/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Hotels/Edit.cshtml]
+[D:/Me/project/TravelWeb/Views/Hotels/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Hotels/Index.cshtml]
+[D:/Me/project/TravelWeb/Views/Hotels/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Shared/Error.cshtml]
+[D:/Me/project/TravelWeb/Views/Passport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc3BvcnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Quiz/Question.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxRdWVzdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Quiz/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxSZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Quiz/Start.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Me/project/TravelWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Tours/Create.cshtml]
+[D:/Me/project/TravelWeb/Views/TikTok/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlrVG9rXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/TikTok/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlrVG9rXFJlc3VsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Tours/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Tours/Delete.cshtml]
+[D:/Me/project/TravelWeb/Views/Tours/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Tours/Details.cshtml]
+[D:/Me/project/TravelWeb/Views/Tours/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Tours/Edit.cshtml]
+[D:/Me/project/TravelWeb/Views/Tours/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Tours/Index.cshtml]
+[D:/Me/project/TravelWeb/Views/Tours/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Users/Details.cshtml]
+[D:/Me/project/TravelWeb/Views/Transport/Suggest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0XFN1Z2dlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/TripPlanner/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFBsYW5uZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/TripPlanner/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFBsYW5uZXJcUmVzdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Trip/Suggestions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFxTdWdnZXN0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Me/project/TravelWeb/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Users/Index.cshtml]
+[D:/Me/project/TravelWeb/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Users/Login.cshtml]
+[D:/Me/project/TravelWeb/Views/Users/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Users/Register.cshtml]
+[D:/Me/project/TravelWeb/Views/Users/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/VirtualTours/Create.cshtml]
+[D:/Me/project/TravelWeb/Views/VirtualTours/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlydHVhbFRvdXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/VirtualTours/Delete.cshtml]
+[D:/Me/project/TravelWeb/Views/VirtualTours/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlydHVhbFRvdXJzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/VirtualTours/Details.cshtml]
+[D:/Me/project/TravelWeb/Views/VirtualTours/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlydHVhbFRvdXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/VirtualTours/Edit.cshtml]
+[D:/Me/project/TravelWeb/Views/VirtualTours/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlydHVhbFRvdXJzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/VirtualTours/Index.cshtml]
+[D:/Me/project/TravelWeb/Views/VirtualTours/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlydHVhbFRvdXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/_ViewImports.cshtml]
+[D:/Me/project/TravelWeb/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/_ViewStart.cshtml]
+[D:/Me/project/TravelWeb/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/virtual/project/TravelWeb/Views/Shared/_Layout.cshtml]
+[D:/Me/project/TravelWeb/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-rjjjr0vzwk

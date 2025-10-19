@@ -1,0 +1,111 @@
+﻿@model List<TravelWeb.Models.Trip>
+@{
+    ViewData["Title"] = "Gợi ý chuyến đi đến lễ hội sắp diễn ra";
+}
+
+<h2 class="text-center text-primary mb-4">🚌 Gợi ý chuyến đi sắp tới</h2>
+
+@if (!Model.Any())
+{
+    <div class="card border-0 shadow-sm mx-auto" style="max-width:720px;">
+        <div class="card-body text-center">
+            <div class="display-6 mb-2">🗓️</div>
+            <p class="text-muted mb-0">Hiện chưa có lễ hội nào trong 3 tháng tới.</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-end mb-2">
+        <div class="input-group" style="max-width:220px;">
+            <span class="input-group-text">Trang</span>
+            <select id="pageSize" class="form-select">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered shadow-sm align-middle" id="tripTable">
+        <thead class="table-primary text-center">
+            <tr>
+                <th>Từ</th>
+                <th>Đến</th>
+                <th>Phương tiện</th>
+                <th>Ngày khởi hành</th>
+                <th>Giá vé (VNĐ)</th>
+                <th>Lễ hội</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.FromCity</td>
+                    <td>@t.ToProvince</td>
+                    <td>@t.TransportType</td>
+                    <td>@t.DepartureDate.ToString("dd/MM/yyyy")</td>
+                    <td class="text-end">@t.Price.ToString("N0")</td>
+                    <td>
+                        <a href="@Url.Action("Details","Festival", new { name = t.FestivalName })" class="link-primary">@t.FestivalName</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav>
+        <ul class="pagination justify-content-center" id="pager"></ul>
+    </nav>
+}
+
+@section Scripts{
+<script>
+    (function(){
+        const table = document.getElementById('tripTable');
+        if(!table) return;
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const pager = document.getElementById('pager');
+        const pageSizeSel = document.getElementById('pageSize');
+        let page = 1;
+
+        function getPageSize(){ return Number(pageSizeSel.value) || 10; }
+        function totalPages(){ return Math.max(1, Math.ceil(rows.length / getPageSize())); }
+
+        function render(){
+            const size = getPageSize();
+            const start = (page - 1) * size;
+            const end = start + size;
+            rows.forEach((tr, idx) => {
+                tr.style.display = (idx >= start && idx < end) ? '' : 'none';
+            });
+            renderPager();
+        }
+
+        function renderPager(){
+            const pages = totalPages();
+            pager.innerHTML = '';
+            function add(label, targetPage, disabled, active){
+                const li = document.createElement('li');
+                li.className = 'page-item' + (disabled ? ' disabled' : '') + (active ? ' active' : '');
+                const a = document.createElement('a');
+                a.className = 'page-link';
+                a.href = '#';
+                a.textContent = label;
+                a.addEventListener('click', function(e){ e.preventDefault(); if(!disabled && !active){ page = targetPage; render(); }});
+                li.appendChild(a); pager.appendChild(li);
+            }
+            add('«', 1, page === 1, false);
+            add('‹', Math.max(1, page - 1), page === 1, false);
+            for(let i=1;i<=pages;i++) add(String(i), i, false, i===page);
+            add('›', Math.min(pages, page + 1), page === pages, false);
+            add('»', pages, page === pages, false);
+        }
+
+        pageSizeSel.addEventListener('change', function(){ page = 1; render(); });
+        render();
+    })();
+</script>
+}
