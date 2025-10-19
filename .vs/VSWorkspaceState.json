@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TravelWeb",
+    "\\TravelWeb\\Controllers",
+    "\\TravelWeb\\Migrations"
   ],
+  "SelectedNode": "\\TravelWeb\\Migrations",
   "PreviewInSolutionExplorer": false
 }

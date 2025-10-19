@@ -1,47 +1,79 @@
-﻿@model IEnumerable<TravelWeb.Models.Tour>
-
-@{
-    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Bản đồ các địa điểm";
 }
 
-<h1>Index</h1>
+<h2 class="text-center mt-3">Bản đồ Việt Nam - Các Thành Phố</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.TenTour)</th>
-            <th>@Html.DisplayNameFor(model => model.DiaDiem)</th>
-            <th>@Html.DisplayNameFor(model => model.MoTa)</th>
-            <th>@Html.DisplayNameFor(model => model.SoNgay)</th>
-            <th>@Html.DisplayNameFor(model => model.Gia)</th>
-            <th>@Html.DisplayName("Hình Ảnh")</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.TenTour)</td>
-                <td>@Html.DisplayFor(modelItem => item.DiaDiem)</td>
-                <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
-                <td>@Html.DisplayFor(modelItem => item.SoNgay)</td>
-                <td>@Html.DisplayFor(modelItem => item.Gia)</td>
-                <td>
-                    @if (!string.IsNullOrEmpty(item.HinhAnh))
-                    {
-                        <img src="@item.HinhAnh" alt="@item.TenTour" style="max-width:100px; max-height:100px;" class="img-thumbnail" />
-                    }
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+<style>
+    .map-container {
+        position: relative;
+        width: 600px;
+        height: 900px;
+        background-image: url('/images/VietNam.jpg');
+        background-size: cover;
+        background-position: center;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+    }
+
+    .airport-btn {
+        position: absolute;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: all 0.2s;
+    }
+
+        .airport-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
         }
-    </tbody>
-</table>
+
+    .centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<div class="centered mt-4">
+    <div class="map-container mx-auto">
+        <!-- Miền Bắc -->
+        <button class="airport-btn" style="top: 13%; left: 24%;" data-city="Hà Nội" data-lat="21.0285" data-lng="105.8542">Hà Nội</button>
+        <button class="airport-btn" style="top: 23%; left: 28%;" data-city="Thanh Hóa" data-lat="19.8067" data-lng="105.7852">Thanh Hóa</button>
+        <button class="airport-btn" style="top: 29%; left: 24%;" data-city="Vinh" data-lat="18.6796" data-lng="105.6813">Vinh</button>
+
+        <!-- Miền Trung -->
+        <button class="airport-btn" style="top: 43%; left: 36%;" data-city="Huế" data-lat="16.4637" data-lng="107.5909">Huế</button>
+        <button class="airport-btn" style="top: 45%; left: 42%;" data-city="Đà Nẵng" data-lat="16.0544" data-lng="108.2022">Đà Nẵng</button>
+        <button class="airport-btn" style="top: 61%; left: 52%;" data-city="Quy Nhơn" data-lat="13.7820" data-lng="109.2197">Quy Nhơn</button>
+        <button class="airport-btn" style="top: 70%; left: 55%;" data-city="Nha Trang" data-lat="12.2388" data-lng="109.1967">Nha Trang</button>
+        <button class="airport-btn" style="top: 78%; left: 45%;" data-city="Phan Thiết" data-lat="10.9804" data-lng="108.2615">Phan Thiết</button>
+
+        <!-- Tây Nguyên -->
+        <button class="airport-btn" style="top: 57%; left: 41%;" data-city="Buôn Ma Thuột" data-lat="12.6662" data-lng="108.0378">Buôn Ma Thuột</button>
+        <button class="airport-btn" style="top: 72%; left: 46%;" data-city="Đà Lạt" data-lat="11.9404" data-lng="108.4583">Đà Lạt</button>
+
+        <!-- Miền Nam -->
+        <button class="airport-btn" style="top: 81%; left: 35%;" data-city="Hồ Chí Minh" data-lat="10.7769" data-lng="106.7009">Hồ Chí Minh</button>
+        <button class="airport-btn" style="top: 85%; left: 2%;" data-city="Phú Quốc" data-lat="10.2899" data-lng="103.9840">Phú Quốc</button>
+        <button class="airport-btn" style="top: 92%; left: 19%;" data-city="Cà Mau" data-lat="9.1768" data-lng="105.1524">Cà Mau</button>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".airport-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const city = btn.getAttribute("data-city");
+            const lat = btn.getAttribute("data-lat");
+            const lng = btn.getAttribute("data-lng");
+
+            // Điều hướng đến trang Map/Index
+            window.location.href = `/Map/Index?city=${encodeURIComponent(city)}&lat=${lat}&lng=${lng}`;
+        });
+    });
+</script>

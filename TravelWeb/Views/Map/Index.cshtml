@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Bản đồ " + ViewBag.City;
+    var city = ViewBag.City;
+    var lat = ViewBag.Lat;
+    var lng = ViewBag.Lng;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        #map {
+            width: 90%;
+            height: 600px;
+            margin: 30px auto;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            display: block;
+            margin: 0 auto;
+            background: #3949ab;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .back-btn:hover {
+                background: #1a237e;
+            }
+    </style>
+</head>
+
+<body>
+    <h2 class="text-center mt-3">Bản đồ @city</h2>
+
+    <div id="map"></div>
+
+    <button class="back-btn" onclick="window.location.href='/Home/Index'">← Quay lại</button>
+
+    <script>
+        const lat = parseFloat("@lat");
+        const lng = parseFloat("@lng");
+        const city = "@city";
+
+        console.log("City:", city, "Lat:", lat, "Lng:", lng);
+
+        const map = L.map('map').setView([lat, lng], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        L.marker([lat, lng]).addTo(map)
+            .bindPopup(`<b>${city}</b><br><button onclick="book('${city}')">Đặt lịch</button>`)
+            .openPopup();
+
+        function book(city) {
+            alert("Bạn đã đặt lịch tại " + city + " thành công!");
+        }
+    </script>
+
+</body>
+</html>
