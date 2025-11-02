@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Bản đồ các địa điểm";
+    ViewData["Title"] = "Maps";
 }
 
 <h2 class="text-center mt-3">Bản đồ Việt Nam - Các Thành Phố</h2>
@@ -8,29 +8,34 @@
     .map-container {
         position: relative;
         width: 600px;
-        height: 900px;
-        background-image: url('/images/VietNam.jpg');
+        height: 1020px;
+        background-image: url('/images/ban-do-viet-nam-34-tinh.jpg');
         background-size: cover;
         background-position: center;
         border: 2px solid #ccc;
         border-radius: 12px;
+        margin: 0 auto;
     }
 
     .airport-btn {
         position: absolute;
-        background-color: #007bff;
+        background-color: rgba(0, 123, 255, 0.9);
         color: white;
-        border: none;
-        padding: 6px 10px;
-        border-radius: 8px;
+        border: 1px solid #0056b3;
+        padding: 3px 7px;
+        border-radius: 6px;
         cursor: pointer;
-        font-size: 13px;
+        font-size: 11px;
         transition: all 0.2s;
+        white-space: nowrap;
+        font-weight: 500;
     }
 
         .airport-btn:hover {
             background-color: #0056b3;
-            transform: scale(1.05);
+            transform: scale(1.15);
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
     .centered {
@@ -41,27 +46,34 @@
 </style>
 
 <div class="centered mt-4">
-    <div class="map-container mx-auto">
+    <div class="map-container">
         <!-- Miền Bắc -->
-        <button class="airport-btn" style="top: 13%; left: 24%;" data-city="Hà Nội" data-lat="21.0285" data-lng="105.8542">Hà Nội</button>
-        <button class="airport-btn" style="top: 23%; left: 28%;" data-city="Thanh Hóa" data-lat="19.8067" data-lng="105.7852">Thanh Hóa</button>
-        <button class="airport-btn" style="top: 29%; left: 24%;" data-city="Vinh" data-lat="18.6796" data-lng="105.6813">Vinh</button>
+        <button class="airport-btn" style="top: 21.5%; left: 35.3%;" data-city="Hà Nội" data-lat="21.0285" data-lng="105.8542">Hà Nội</button>
+        <button class="airport-btn" style="top: 22.1%; left: 44.7%;" data-city="Hải Phòng" data-lat="20.8449" data-lng="106.6881">Hải Phòng</button>
+        <button class="airport-btn" style="top: 28.4%; left: 34.3%;" data-city="Thanh Hóa" data-lat="19.8067" data-lng="105.7852">Thanh Hóa</button>
+        <button class="airport-btn" style="top: 35.3%; left: 34.3%;" data-city="Vinh" data-lat="18.6796" data-lng="105.6813">Vinh</button>
 
         <!-- Miền Trung -->
-        <button class="airport-btn" style="top: 43%; left: 36%;" data-city="Huế" data-lat="16.4637" data-lng="107.5909">Huế</button>
-        <button class="airport-btn" style="top: 45%; left: 42%;" data-city="Đà Nẵng" data-lat="16.0544" data-lng="108.2022">Đà Nẵng</button>
-        <button class="airport-btn" style="top: 61%; left: 52%;" data-city="Quy Nhơn" data-lat="13.7820" data-lng="109.2197">Quy Nhơn</button>
-        <button class="airport-btn" style="top: 70%; left: 55%;" data-city="Nha Trang" data-lat="12.2388" data-lng="109.1967">Nha Trang</button>
-        <button class="airport-btn" style="top: 78%; left: 45%;" data-city="Phan Thiết" data-lat="10.9804" data-lng="108.2615">Phan Thiết</button>
+        <button class="airport-btn" style="top: 47.5%; left: 53.8%;" data-city="Huế" data-lat="16.4637" data-lng="107.5909">Huế</button>
+        <button class="airport-btn" style="top: 54.0%; left: 58.3%;" data-city="Đà Nẵng" data-lat="16.0544" data-lng="108.2022">Đà Nẵng</button>
+        <button class="airport-btn" style="top: 63.1%; left: 72.0%;" data-city="Quy Nhơn" data-lat="13.7820" data-lng="109.2197">Quy Nhơn</button>
+        <button class="airport-btn" style="top: 75.9%; left: 71.3%;" data-city="Nha Trang" data-lat="12.2388" data-lng="109.1967">Nha Trang</button>
+        <button class="airport-btn" style="top: 84.0%; left: 58.2%;" data-city="Phan Thiết" data-lat="10.9804" data-lng="108.2615">Phan Thiết</button>
 
         <!-- Tây Nguyên -->
-        <button class="airport-btn" style="top: 57%; left: 41%;" data-city="Buôn Ma Thuột" data-lat="12.6662" data-lng="108.0378">Buôn Ma Thuột</button>
-        <button class="airport-btn" style="top: 72%; left: 46%;" data-city="Đà Lạt" data-lat="11.9404" data-lng="108.4583">Đà Lạt</button>
+        <button class="airport-btn" style="top: 73.4%; left: 59.5%;" data-city="Buôn Ma Thuột" data-lat="12.6662" data-lng="108.0378">Buôn Ma Thuột</button>
+        <button class="airport-btn" style="top: 78.0%; left: 64.2%;" data-city="Đà Lạt" data-lat="11.9404" data-lng="108.4583">Đà Lạt</button>
 
         <!-- Miền Nam -->
-        <button class="airport-btn" style="top: 81%; left: 35%;" data-city="Hồ Chí Minh" data-lat="10.7769" data-lng="106.7009">Hồ Chí Minh</button>
-        <button class="airport-btn" style="top: 85%; left: 2%;" data-city="Phú Quốc" data-lat="10.2899" data-lng="103.9840">Phú Quốc</button>
-        <button class="airport-btn" style="top: 92%; left: 19%;" data-city="Cà Mau" data-lat="9.1768" data-lng="105.1524">Cà Mau</button>
+        <button class="airport-btn" style="top: 85.4%; left: 45.0%;" data-city="TP.HCM" data-lat="10.7769" data-lng="106.7009">TP.HCM</button>
+        <button class="airport-btn" style="top: 91.7%; left: 35.8%;" data-city="Cần Thơ" data-lat="10.0452" data-lng="105.7469">Cần Thơ</button>
+        <button class="airport-btn" style="top: 89.9%; left: 45.8%;" data-city="Rạch Giá" data-lat="10.0159" data-lng="105.0809">Rạch Giá</button>
+        <button class="airport-btn" style="top: 86%; left: 12%;" data-city="Phú Quốc" data-lat="10.2899" data-lng="103.9840">Phú Quốc</button>
+        <button class="airport-btn" style="top: 94%; left: 30%;" data-city="Cà Mau" data-lat="9.1768" data-lng="105.1524">Cà Mau</button>
+
+        <!-- Quần đảo -->
+        <button class="airport-btn" style="top: 42%; left: 80%;" data-city="Hoàng Sa" data-lat="16.8333" data-lng="112.3333">Hoàng Sa</button>
+        <button class="airport-btn" style="top: 91%; left: 80%;" data-city="Trường Sa" data-lat="8.6" data-lng="111.9">Trường Sa</button>
     </div>
 </div>
 

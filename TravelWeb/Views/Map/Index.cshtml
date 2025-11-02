@@ -1,9 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Bản đồ " + ViewBag.City;
+    ViewData["Title"] = "Maps " + ViewBag.City;
     var city = ViewBag.City;
     var lat = ViewBag.Lat;
     var lng = ViewBag.Lng;
 }
+
+@using System.Text.Json
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -11,21 +13,26 @@
     <meta charset="UTF-8" />
     <title>@ViewData["Title"]</title>
 
+    <!-- Leaflet CSS + JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            text-align: center;
+        }
+
         #map {
             width: 90%;
             height: 600px;
             margin: 30px auto;
             border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
         .back-btn {
-            display: block;
-            margin: 0 auto;
             background: #3949ab;
             color: white;
             border: none;
@@ -33,6 +40,7 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 15px;
         }
 
             .back-btn:hover {
@@ -49,27 +57,83 @@
     <button class="back-btn" onclick="window.location.href='/Home/Index'">← Quay lại</button>
 
     <script>
+        // ====== Nhận dữ liệu từ Controller ======
         const lat = parseFloat("@lat");
         const lng = parseFloat("@lng");
         const city = "@city";
 
-        console.log("City:", city, "Lat:", lat, "Lng:", lng);
+        // Lấy dữ liệu địa điểm từ database (ViewBag)
+        const locations = @Html.Raw(JsonSerializer.Serialize(ViewBag.Locations));
 
+        // ====== Khởi tạo bản đồ ======
         const map = L.map('map').setView([lat, lng], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            attribution: '&copy; OpenStreetMap'
         }).addTo(map);
 
-        L.marker([lat, lng]).addTo(map)
-            .bindPopup(`<b>${city}</b><br><button onclick="book('${city}')">Đặt lịch</button>`)
+        // Marker trung tâm thành phố
+        L.marker([lat, lng])
+            .addTo(map)
+            .bindPopup(`<b>${city}</b><br>Vị trí trung tâm`)
             .openPopup();
 
-        function book(city) {
-            alert("Bạn đã đặt lịch tại " + city + " thành công!");
+        // ====== Hàm tạo icon tùy loại ======
+        function getIcon(type) {
+            let iconUrl;
+            switch (type) {
+                case 1:
+                    iconUrl = "https://cdn-icons-png.flaticon.com/512/139/139899.png"; // hotel
+                    break;
+                case 2:
+                    iconUrl = "https://cdn-icons-png.flaticon.com/512/922/922699.png"; // coffee
+                    break;
+                case 3:
+                    iconUrl = "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"; // food
+                    break;
+                case 4:
+                    iconUrl = "https://cdn-icons-png.flaticon.com/512/481/481817.png"; // park
+                    break;
+                default:
+                    iconUrl = "https://cdn-icons-png.flaticon.com/512/252/252025.png"; // default
+            }
+
+            return L.icon({
+                iconUrl: iconUrl,
+                iconSize: [35, 35],
+                iconAnchor: [17, 35],
+                popupAnchor: [0, -30]
+            });
+        }
+
+        // ====== Hàm hiển thị tên loại ======
+        function getTypeName(type) {
+            switch (type) {
+                case 1: return "Khách sạn 🏨";
+                case 2: return "Cafe ☕";
+                case 3: return "Quán ăn 🍜";
+                case 4: return "Công viên 🌳";
+                default: return "Khác";
+            }
+        }
+
+        // ====== Hiển thị các marker từ database ======
+        if (locations && locations.length > 0) {
+            locations.forEach(loc => {
+                const icon = getIcon(loc.Type);
+
+                L.marker([loc.Lat, loc.Lng], { icon })
+                    .addTo(map)
+                    .bindPopup(`
+                        <b>${loc.Ten}</b><br>
+                        ${loc.MoTa}<br>
+                        <i>Loại: ${getTypeName(loc.Type)}</i>
+                    `);
+            });
+        } else {
+            console.warn("⚠️ Không có dữ liệu địa điểm trong ViewBag.Locations");
         }
     </script>
-
 </body>
 </html>

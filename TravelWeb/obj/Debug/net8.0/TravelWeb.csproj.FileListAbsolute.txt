@@ -857,3 +857,4 @@ D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\ref
 D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.pdb
 D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.genruntimeconfig.cache
 D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\ref\TravelWeb.dll
+D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
