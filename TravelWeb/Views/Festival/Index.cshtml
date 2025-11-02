@@ -1,16 +1,37 @@
 ﻿@model List<TravelWeb.Models.Festival>
 @{
     ViewData["Title"] = "Danh sách lễ hội Việt Nam";
+    var currentPage = ViewBag.CurrentPage ?? 1;
+    var totalPages = ViewBag.TotalPages ?? 1;
+    var totalItems = ViewBag.TotalItems ?? 0;
+    var searchTerm = ViewBag.SearchTerm ?? "";
+    var allFestivals = TravelWeb.Models.FestivalData.GetAll();
 }
 
-<h2 class="text-center mb-4 text-primary">🎉 Danh sách lễ hội trên khắp Việt Nam</h2>
+<!-- Hero Section with Dynamic Background -->
+<section class="hero-section">
+    <div class="hero-bg-container" id="heroBgContainer">
+        <!-- Dynamic background images will be inserted here by JavaScript -->
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>🎉 Lễ Hội Việt Nam</h1>
+        <p>Khám phá những lễ hội đặc sắc và đầy màu sắc trên khắp đất nước Việt Nam</p>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary">Danh sách lễ hội trên khắp Việt Nam</h2>
 
 <div class="row align-items-center mb-3 g-2">
     <div class="col-12 col-md-6">
-        <input id="festivalSearch" type="text" class="form-control" placeholder="Tìm theo tên, tỉnh/thành, miền..." />
+        <form method="get" action="@Url.Action("Index")" class="d-flex">
+            <input name="search" type="text" class="form-control" placeholder="Tìm theo tên, tỉnh/thành, miền..." value="@searchTerm" />
+            <button type="submit" class="btn btn-primary ms-2">Tìm kiếm</button>
+        </form>
     </div>
     <div class="col-12 col-md-6 text-md-end small text-muted">
-        Tổng số: @Model.Count
+        Hiển thị @((currentPage - 1) * 6 + 1) - @Math.Min(currentPage * 6, totalItems) trong tổng số @totalItems lễ hội
     </div>
     <div class="col-12"><hr class="my-2" /></div>
     <div class="col-12">
@@ -22,26 +43,172 @@
                 </div>
             }
         </div>
+        
+        @if (totalPages > 1)
+        {
+            <div class="pagination-container">
+                <ul class="pagination">
+                    @if (currentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = 1, search = searchTerm })">Đầu</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, search = searchTerm })">Trước</a>
+                        </li>
+                    }
+                    
+                    @for (int i = Math.Max(1, currentPage - 2); i <= Math.Min(totalPages, currentPage + 2); i++)
+                    {
+                        <li class="page-item @(i == currentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i, search = searchTerm })">@i</a>
+                        </li>
+                    }
+                    
+                    @if (currentPage < totalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, search = searchTerm })">Sau</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = totalPages, search = searchTerm })">Cuối</a>
+                        </li>
+                    }
+                </ul>
+                <div class="pagination-info">
+                    Trang @currentPage / @totalPages
+                </div>
+            </div>
+        }
     </div>
 </div>
 
 @section Scripts{
 <script>
-    (function(){
-        const input = document.getElementById('festivalSearch');
-        const items = document.querySelectorAll('#festivalGrid .festival-item');
-        function normalize(str){ return (str||'').toString().toLowerCase(); }
-        function filter(){
-            const q = normalize(input.value);
-            items.forEach(el => {
-                const name = normalize(el.getAttribute('data-name'));
-                const province = normalize(el.getAttribute('data-province'));
-                const region = normalize(el.getAttribute('data-region'));
-                const show = !q || name.includes(q) || province.includes(q) || region.includes(q);
-                el.style.display = show ? '' : 'none';
+    // Festival data for hero background
+    const festivalImages = @Html.Raw(Json.Serialize(allFestivals.SelectMany(f => f.ImageUrls ?? new List<string> { f.ImageUrl }).Distinct().ToList()));
+    
+    // Dynamic Hero Background
+    function initializeHeroBackground() {
+        const heroContainer = document.getElementById('heroBgContainer');
+        if (!heroContainer || festivalImages.length === 0) return;
+        
+        // Create background image elements
+        festivalImages.forEach((imageUrl, index) => {
+            const bgDiv = document.createElement('div');
+            bgDiv.className = 'hero-bg-image';
+            bgDiv.style.backgroundImage = `url('${imageUrl}')`;
+            if (index === 0) bgDiv.classList.add('active');
+            heroContainer.appendChild(bgDiv);
+        });
+        
+        // Start rotation
+        let currentIndex = 0;
+        setInterval(() => {
+            const images = heroContainer.querySelectorAll('.hero-bg-image');
+            if (images.length === 0) return;
+            
+            // Remove active class from current image
+            images[currentIndex].classList.remove('active');
+            
+            // Move to next image
+            currentIndex = (currentIndex + 1) % images.length;
+            
+            // Add active class to next image
+            images[currentIndex].classList.add('active');
+        }, 2000); // Change every 2 seconds
+    }
+    
+    // Scroll animation for festival cards
+    function initializeScrollAnimation() {
+        const elements = document.querySelectorAll('.festival-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-        }
-        input.addEventListener('input', filter);
-    })();
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        elements.forEach(el => observer.observe(el));
+    }
+    
+    // Image carousel functions
+    function nextImage(carouselId) {
+        const carousel = document.querySelector(`[data-carousel-id="${carouselId}"]`);
+        if (!carousel) return;
+        
+        const images = carousel.querySelectorAll('img');
+        const indicators = carousel.querySelectorAll('.carousel-indicator');
+        const currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+        const nextIndex = (currentIndex + 1) % images.length;
+        
+        // Hide current image
+        images[currentIndex].classList.remove('active');
+        indicators[currentIndex].classList.remove('active');
+        
+        // Show next image
+        images[nextIndex].classList.add('active');
+        indicators[nextIndex].classList.add('active');
+    }
+    
+    function previousImage(carouselId) {
+        const carousel = document.querySelector(`[data-carousel-id="${carouselId}"]`);
+        if (!carousel) return;
+        
+        const images = carousel.querySelectorAll('img');
+        const indicators = carousel.querySelectorAll('.carousel-indicator');
+        const currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+        const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+        
+        // Hide current image
+        images[currentIndex].classList.remove('active');
+        indicators[currentIndex].classList.remove('active');
+        
+        // Show previous image
+        images[prevIndex].classList.add('active');
+        indicators[prevIndex].classList.add('active');
+    }
+    
+    function goToImage(carouselId, index) {
+        const carousel = document.querySelector(`[data-carousel-id="${carouselId}"]`);
+        if (!carousel) return;
+        
+        const images = carousel.querySelectorAll('img');
+        const indicators = carousel.querySelectorAll('.carousel-indicator');
+        
+        // Hide all images
+        images.forEach(img => img.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Show selected image
+        images[index].classList.add('active');
+        indicators[index].classList.add('active');
+    }
+    
+    // Auto-rotate festival card images
+    function initializeCardImageRotation() {
+        const carousels = document.querySelectorAll('.image-carousel');
+        carousels.forEach(carousel => {
+            const images = carousel.querySelectorAll('img');
+            if (images.length > 1) {
+                const carouselId = carousel.getAttribute('data-carousel-id');
+                setInterval(() => {
+                    nextImage(carouselId);
+                }, 3000);
+            }
+        });
+    }
+    
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeHeroBackground();
+        initializeScrollAnimation();
+        initializeCardImageRotation();
+    });
 </script>
 }
