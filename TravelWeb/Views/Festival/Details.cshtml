@@ -13,7 +13,21 @@
 
     <div class="row g-4 align-items-start">
         <div class="col-md-6">
-            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded shadow">
+            @if (Model.ImageUrls != null && Model.ImageUrls.Count > 0)
+            {
+                <div class="image-gallery">
+                    @foreach (var imageUrl in Model.ImageUrls)
+                    {
+                        <div class="gallery-item" onclick="openImageModal('@imageUrl', '@Model.Name')">
+                            <img src="@imageUrl" alt="@Model.Name" class="img-fluid rounded shadow">
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded shadow">
+            }
         </div>
         <div class="col-md-6">
             <h2 class="text-primary mb-2">@Model.Name</h2>
@@ -38,3 +52,31 @@
         </div>
     </div>
 </div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">@Model.Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    function openImageModal(imageUrl, title) {
+        document.getElementById('modalImage').src = imageUrl;
+        document.getElementById('modalImage').alt = title;
+        document.getElementById('imageModalLabel').textContent = title;
+        
+        var modal = new bootstrap.Modal(document.getElementById('imageModal'));
+        modal.show();
+    }
+</script>
+}

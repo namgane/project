@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TravelWeb.Models
 {
@@ -12,5 +13,6 @@ namespace TravelWeb.Models
         public string Description { get; set; }   // Mô tả ngắn
         public string Highlight { get; set; }     // Điểm đặc trưng (ẩm thực, văn hóa, tín ngưỡng…)
         public string ImageUrl { get; set; }      // Ảnh đại diện
+        public List<string> ImageUrls { get; set; } = new List<string>(); // Danh sách ảnh động
     }
 }

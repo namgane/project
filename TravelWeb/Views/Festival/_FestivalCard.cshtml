@@ -2,7 +2,31 @@
 
 <div class="card shadow-sm border-0 h-100 festival-card">
     <div class="position-relative">
-        <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" style="height:200px;object-fit:cover;">
+        <div class="image-carousel" data-carousel-id="@Model.Name.Replace(" ", "-")">
+            @if (Model.ImageUrls != null && Model.ImageUrls.Count > 0)
+            {
+                @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                {
+                    <img src="@Model.ImageUrls[i]" alt="@Model.Name" class="@(i == 0 ? "active" : "")" data-index="@i">
+                }
+            }
+            else
+            {
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="active">
+            }
+            
+            @if (Model.ImageUrls != null && Model.ImageUrls.Count > 1)
+            {
+                <button class="carousel-nav prev" onclick="previousImage('@Model.Name.Replace(" ", "-")')">‹</button>
+                <button class="carousel-nav next" onclick="nextImage('@Model.Name.Replace(" ", "-")')">›</button>
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                    {
+                        <span class="carousel-indicator @(i == 0 ? "active" : "")" onclick="goToImage('@Model.Name.Replace(" ", "-")', @i)"></span>
+                    }
+                </div>
+            }
+        </div>
         <span class="badge bg-light text-dark position-absolute top-0 start-0 m-2 badge-soft">
             @Model.Region
         </span>
@@ -22,3 +46,4 @@
         </div>
     </div>
 </div>
+
