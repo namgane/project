@@ -1,5 +1,6 @@
-﻿/*using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using TravelWeb.Services;
 using TravelWeb.Models;
 
 namespace TravelWeb.Controllers
@@ -7,12 +8,19 @@ namespace TravelWeb.Controllers
     public class TransportController : Controller
     {
         [HttpGet]
+        public IActionResult Index()
+        {
+            ViewBag.Places = TransportService.GetAllPlaces();
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Suggest(string from, string to)
         {
-            var all = TransportData.GetSampleData();
-            var options = all.Where(o => o.From == from && o.To == to).ToList();
+            var options = TransportService.Suggest(from, to);
+            ViewBag.From = from;
+            ViewBag.To = to;
             return View(options);
         }
     }
 }
-*/

@@ -1,0 +1,42 @@
+@model List<TravelWeb.Models.FavoriteItem>
+@{
+    ViewData["Title"] = "Bộ sưu tập của tôi";
+}
+
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0"><i class="bi bi-bookmark-heart me-2"></i>Bộ sưu tập của tôi</h2>
+        <a asp-controller="Cuisine" asp-action="Index" class="btn btn-outline-primary">Khám phá Ẩm thực</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">Chưa có mục nào. Hãy lưu món ăn hoặc hoạt động bạn yêu thích!</div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            @foreach (var it in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@it.ImageUrl" class="card-img-top cuisine-thumb" alt="@it.Title" onerror="this.src='/images/8f110666-07ea-4642-84fa-7ad555d77f50.jpg'">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">@it.Title</h5>
+                            <p class="text-muted small">@it.Subtitle</p>
+                            <div class="d-flex gap-2">
+                                <a href="@it.Url" class="btn btn-sm btn-outline-primary">Mở</a>
+                                <form method="post" asp-action="Remove" asp-controller="Favorites">
+                                    <input type="hidden" name="id" value="@it.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Xóa</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+

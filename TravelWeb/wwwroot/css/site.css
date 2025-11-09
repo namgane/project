@@ -20,3 +20,56 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Active nav styling */
+.navbar .nav-link.active {
+  font-weight: 600;
+  border-bottom: 2px solid #0d6efd;
+}
+
+/* Cuisine UI enhancements */
+.cuisine-thumb {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.cuisine-card:hover {
+  transform: translateY(-2px);
+  transition: transform .15s ease-in-out;
+}
+
+.cuisine-province-card {
+  border: 1px solid #e9ecef;
+}
+.cuisine-province-card .card-body {
+  min-height: 72px;
+}
+
+/* Soft hero for cuisine pages */
+.cuisine-hero {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  border-radius: 0 0 24px 24px;
+}
+
+.cuisine-search .form-control,
+.cuisine-search .form-select,
+.cuisine-search .input-group-text {
+  border-radius: 12px;
+}
+
+.cuisine-province-card:hover {
+  transform: translateY(-2px);
+  transition: transform .15s ease-in-out;
+}
+
+/* Passport visuals */
+.passport-hero {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 0 0 24px 24px;
+}
+.stamp-icon {
+  width: 40px;
+  height: 40px;
+  background: #f1f3f5;
+  color: #0d6efd;
+}

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 
 namespace TravelWeb.Models
@@ -19,10 +19,10 @@ namespace TravelWeb.Models
                     Description = "Lễ hội tâm linh lớn nhất miền Bắc, hành hương về đất Phật.",
                     Highlight = "Tín ngưỡng, du lịch tâm linh, thắng cảnh Hương Sơn.",
                     ImageUrl = "/images/festivals/chua-huong.jpg",
-                    ImageUrls = new List<string> { 
-                        "/images/festivals/chua-huong.jpg", 
-                        "/images/festivals/chua-huong-2.jpg", 
-                        "/images/festivals/chua-huong-3.jpg" 
+                    ImageUrls = new List<string> {
+                        "/images/festivals/chuahuongp2.webp", 
+                        "/images/festivals/chuahuongp1.webp",
+                        "/images/festivals/chuahuongp3.webp"
                     }
                 },
                 new Festival {
@@ -33,11 +33,11 @@ namespace TravelWeb.Models
                     EndDate = new DateTime(DateTime.Now.Year, 2, 14),
                     Description = "Lễ hội quan họ đặc sắc của vùng Kinh Bắc.",
                     Highlight = "Hát đối quan họ, trò chơi dân gian, mặc áo tứ thân.",
-                    ImageUrl = "/images/festivals/le-hoi-lim.jpg",
+                    ImageUrl = "/images/festivals/hoilimp1.webp",
                     ImageUrls = new List<string> { 
-                        "/images/festivals/le-hoi-lim.jpg", 
-                        "/images/festivals/le-hoi-lim-2.jpg", 
-                        "/images/festivals/le-hoi-lim-3.jpg" 
+                        "/images/festivals/hoilimp1.webp",
+                        "/images/festivals/hoilimp2.webp",
+                        "/images/festivals/hoilimp3.webp"
                     }
                 },
                 new Festival {
@@ -48,11 +48,11 @@ namespace TravelWeb.Models
                     EndDate = new DateTime(DateTime.Now.Year, 2, 17),
                     Description = "Tưởng nhớ công đức các vua Trần, cầu may mắn đầu năm.",
                     Highlight = "Lễ khai ấn, nghi thức rước nước, tế cá.",
-                    ImageUrl = "/images/festivals/den-tran.jpg",
-                    ImageUrls = new List<string> { 
-                        "/images/festivals/den-tran.jpg", 
-                        "/images/festivals/den-tran-2.jpg", 
-                        "/images/festivals/den-tran-3.jpg" 
+                    ImageUrl = "/images/festivals/hoidentranp1.webp",
+                    ImageUrls = new List<string> {
+                        "/images/festivals/hoidentranp1.webp",
+                        "/images/festivals/hoidentranp2.webp",
+                        "/images/festivals/hoidentranp3.webp"
                     }
                 },
 
@@ -65,11 +65,11 @@ namespace TravelWeb.Models
                     EndDate = new DateTime(DateTime.Now.Year, 3, 15),
                     Description = "Tôn vinh cây cà phê Việt Nam và văn hóa Tây Nguyên.",
                     Highlight = "Lễ diễu hành, hội chợ cà phê, biểu diễn cồng chiêng.",
-                    ImageUrl = "/images/festivals/ca-phe-bmt.jpg",
-                    ImageUrls = new List<string> { 
-                        "/images/festivals/ca-phe-bmt.jpg", 
-                        "/images/festivals/ca-phe-bmt-2.jpg", 
-                        "/images/festivals/ca-phe-bmt-3.jpg" 
+                    ImageUrl = "/images/festivals/caphep1.webp",
+                    ImageUrls = new List<string> {
+                        "/images/festivals/caphep1.webp",
+                        "/images/festivals/caphep2.webp",
+                        "/images/festivals/caphep3.webp"
                     }
                 },
                 new Festival {
@@ -80,11 +80,11 @@ namespace TravelWeb.Models
                     EndDate = new DateTime(DateTime.Now.Year, 4, 18),
                     Description = "Tưởng nhớ công ơn các vua Hùng dựng nước.",
                     Highlight = "Tín ngưỡng dân gian, nghi lễ quốc gia, rước kiệu vua Hùng.",
-                    ImageUrl = "/images/festivals/den-hung.jpg",
-                    ImageUrls = new List<string> { 
-                        "/images/festivals/den-hung.jpg", 
-                        "/images/festivals/den-hung-2.jpg", 
-                        "/images/festivals/den-hung-3.jpg" 
+                    ImageUrl = "/images/festivals/denhungp1.webp",
+                    ImageUrls = new List<string> {
+                        "/images/festivals/denhungp1.webp",
+                        "/images/festivals/denhungp1.webp",
+                        "/images/festivals/denhungp1.webp"
                     }
                 },
                 new Festival {
@@ -95,11 +95,11 @@ namespace TravelWeb.Models
                     EndDate = new DateTime(DateTime.Now.Year, 3, 13),
                     Description = "Lễ hội đua voi độc đáo tại Buôn Đôn.",
                     Highlight = "Đua voi, cưỡi voi, văn hóa Tây Nguyên.",
-                    ImageUrl = "/images/festivals/dua-voi.jpg",
-                    ImageUrls = new List<string> { 
-                        "/images/festivals/dua-voi.jpg", 
-                        "/images/festivals/dua-voi-2.jpg", 
-                        "/images/festivals/dua-voi-3.jpg" 
+                    ImageUrl = "/images/festivals/voip1.webp",
+                    ImageUrls = new List<string> {
+                        "/images/festivals/voip1.webp",
+                        "/images/festivals/voip2.webp",
+                        "/images/festivals/voip3.webp"
                     }
                 },
 

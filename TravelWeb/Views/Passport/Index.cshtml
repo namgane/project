@@ -1,77 +1,198 @@
-﻿@model TravelWeb.Models.TravelPassport
+﻿@model TravelWeb.Services.PassportState
+@using TravelWeb.Services
 @{
-    ViewData["Title"] = "Hộ chiếu du lịch ảo";
+    ViewData["Title"] = "Hộ chiếu vị giác & hành trình";
+    var leaderboard = ViewBag.Leaderboard as List<PassportState> ?? new List<PassportState>();
+    var progress = Math.Min(100, (int)Math.Round((Model.TotalStamps / 5.0) * 100));
 }
 
-<div class="container py-4">
+<div class="passport-hero py-5 mb-4 text-white">
+    <div class="container">
+        <h1 class="fw-bold mb-2"><i class="bi bi-passport me-2"></i>Hộ chiếu của @Model.Username</h1>
+        <p class="text-white-50 mb-0">Sưu tầm tem lễ hội, ẩm thực, hành trình để nhận huy hiệu và phần thưởng</p>
+    </div>
+  </div>
+
+<div class="container my-4">
     <div class="row g-4">
-        <div class="col-12">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-                    <h2 class="mb-1">🌍 Hộ chiếu du lịch ảo của @Model.UserName</h2>
-                    <p class="mb-0">
-                        <span class="badge bg-primary me-2">Điểm: @Model.TotalPoints</span>
-                        <span class="badge bg-success">Cấp độ: @Model.TravelLevel</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <div class="card shadow-sm border-0">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-4 mb-3">
                 <div class="card-body">
-                    <h5 class="mb-3">✍️ Thêm dấu mộc mới</h5>
-                    <form asp-action="AddStamp" method="post" class="row g-2">
-                        <div class="col-12 col-md-4">
-                            <input type="text" name="province" placeholder="Nhập tên tỉnh..." required class="form-control" />
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="text" name="eventName" placeholder="Tên sự kiện / lễ hội..." required class="form-control" />
-                        </div>
-                        <div class="col-12 col-md-2 d-grid">
-                            <button type="submit" class="btn btn-primary">Thêm dấu mộc ✈️</button>
-                        </div>
-                    </form>
-                    @if (TempData["Message"] != null)
-                    {
-                        <div class="alert alert-success mt-3 mb-0">@TempData["Message"]</div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12">
-            <h4 class="mb-3">🧳 Dấu mộc bạn đã sưu tầm</h4>
-            @if (Model.Stamps.Any())
-            {
-                <div class="row">
-                    @foreach (var s in Model.Stamps)
-                    {
+                    <div class="row text-center mb-3">
                         <div class="col-6 col-md-3 mb-3">
-                            <div class="card h-100 festival-card">
-                                <img src="@s.BadgeIcon" class="card-img-top" alt="stamp" style="height:120px;object-fit:contain;background:#f8f9fa;" />
-                                <div class="card-body">
-                                    <h6 class="card-title mb-1">@s.Province</h6>
-                                    <p class="card-text small text-truncate-2 mb-2">@s.EventName</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">@s.DateEarned.ToShortDateString()</small>
-                                        <span class="badge bg-success">+@s.Points</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="fw-semibold">Tổng tem</div>
+                            <div class="display-6 text-primary">@Model.TotalStamps</div>
                         </div>
-                    }
-                </div>
-            }
-            else
-            {
-                <div class="card shadow-sm border-0 mx-auto" style="max-width:720px;">
-                    <div class="card-body text-center">
-                        <div class="display-6 mb-2">🗺️</div>
-                        <p class="text-muted mb-0">Bạn chưa có dấu mộc nào. Hãy bắt đầu hành trình khám phá!</p>
+                        <div class="col-6 col-md-3 mb-3">
+                            <div class="fw-semibold">Lễ hội</div>
+                            <div class="h3 text-success">@Model.FestivalCount</div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <div class="fw-semibold">Ẩm thực</div>
+                            <div class="h3 text-danger">@Model.CuisineReviewCount</div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <div class="fw-semibold">Hành trình</div>
+                            <div class="h3 text-info">@Model.TripPlanCount</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold"><i class="bi bi-gift me-2"></i>Tiến độ mở phần thưởng</span>
+                            <small>@Model.TotalStamps/5 tem</small>
+                        </div>
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: @progress%"></div>
+                        </div>
+                        <div class="mt-2 d-flex align-items-center justify-content-between">
+                            <div class="text-muted small">@(Model.TotalStamps >= 5 ? "Bạn đã sẵn sàng nhận phần thưởng!" : $"Cần {5 - Model.TotalStamps} tem nữa để mở khoá.")</div>
+                            <form method="post" asp-action="ClaimReward">
+                                @Html.AntiForgeryToken()
+                                <button class="btn btn-sm btn-success" type="submit" @(Model.TotalStamps >= 5 ? "" : "disabled")>
+                                    <i class="bi bi-megaphone"></i> Gửi yêu cầu nhận thưởng
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="fw-semibold mb-2">Huy hiệu</div>
+                        @if (Model.Badges.Count == 0)
+                        {
+                            <span class="text-muted">Chưa có huy hiệu. Hãy bắt đầu đóng tem!</span>
+                        }
+                        else
+                        {
+                            foreach (var b in Model.Badges)
+                            {
+                                <span class="badge bg-light text-dark border me-2"><i class="bi bi-award me-1"></i>@b</span>
+                            }
+                        }
+                    </div>
+
+                    <div class="alert alert-light border d-flex align-items-center justify-content-between rounded-4">
+                        <div>
+                            <i class="bi bi-info-circle me-2"></i>Khám phá nhiều tỉnh thành để tăng cấp nhanh hơn.
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a asp-controller="Cuisine" asp-action="Index" class="btn btn-sm btn-outline-danger"><i class="bi bi-egg-fried"></i> Ẩm thực</a>
+                            <a asp-controller="Festival" asp-action="Index" class="btn btn-sm btn-outline-success"><i class="bi bi-stars"></i> Lễ hội</a>
+                            <a asp-controller="TripPlanner" asp-action="Index" class="btn btn-sm btn-outline-primary"><i class="bi bi-geo"></i> TripPlanner</a>
+                        </div>
                     </div>
                 </div>
-            }
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white border-0">
+                    <h5 class="mb-0"><i class="bi bi-journal-bookmark me-2"></i>Tem gần đây</h5>
+                </div>
+                <div class="card-body">
+                    @if (!Model.Stamps.Any())
+                    {
+                        <div class="text-muted">Chưa có tem nào. Hãy bắt đầu khám phá!</div>
+                    }
+                    else
+                    {
+                        <div class="row row-cols-1 row-cols-md-2 g-3">
+                            @foreach (var s in Model.Stamps.OrderByDescending(x => x.CreatedAt).Take(8))
+                            {
+                                <div class="col">
+                                    <div class="border rounded-3 p-3 d-flex align-items-center gap-3">
+                                        <div class="stamp-icon rounded-circle d-inline-flex align-items-center justify-content-center">
+                                            @switch (s.Type)
+                                            {
+                                                case PassportStampType.Festival:
+                                                    <text><i class="bi bi-stars"></i></text>
+                                                    break;
+                                                case PassportStampType.CuisineReview:
+                                                    <text><i class="bi bi-egg-fried"></i></text>
+                                                    break;
+                                                default:
+                                                    <text><i class="bi bi-geo"></i></text>
+                                                    break;
+                                            }
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">@s.Type</div>
+                                            <div class="text-muted small">@s.Meta • @s.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 rounded-4 mb-3">
+                <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-trophy me-2"></i>Bảng xếp hạng</h5>
+                    <span class="text-muted small">Top 10</span>
+                </div>
+                <div class="card-body">
+                    @if (!leaderboard.Any())
+                    {
+                        <div class="text-muted">Chưa có dữ liệu bảng xếp hạng.</div>
+                    }
+                    else
+                    {
+                        <ol class="list-group list-group-numbered">
+                            @foreach (var p in leaderboard)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>@p.Username</span>
+                                    <span>
+                                        <span class="badge bg-primary">@p.TotalStamps</span>
+                                    </span>
+                                </li>
+                            }
+                        </ol>
+                    }
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white border-0">
+                    <h5 class="mb-0"><i class="bi bi-gift me-2"></i>Phần thưởng</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted small">Mã ưu đãi của bạn (nếu có) sẽ hiển thị bên dưới sau khi admin duyệt.</p>
+                    @{
+                        var discounts = ViewBag.Discounts as List<TravelWeb.Services.Discount> ?? new List<TravelWeb.Services.Discount>();
+                    }
+                    @if (!discounts.Any())
+                    {
+                        <div class="alert alert-light border">Chưa có mã ưu đãi.</div>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var d in discounts)
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="fw-bold">@d.Code</div>
+                                        <div class="text-muted small">@d.Description</div>
+                                    </div>
+                                    <span class="badge bg-success">HSD: @d.ExpiresAt.ToLocalTime().ToString("dd/MM/yyyy")</span>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    function claimReward() {
+        alert('Yêu cầu của bạn đã được ghi nhận! Bộ phận hỗ trợ sẽ liên hệ trong thời gian sớm nhất.');
+    }
+</script>
+
+

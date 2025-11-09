@@ -59,6 +59,12 @@
                 <button onclick="sharePlan()" class="btn btn-info btn-lg">
                     <i class="fas fa-share me-2"></i>Chia sẻ
                 </button>
+                <button onclick="copyPermalink()" class="btn btn-outline-dark btn-lg">
+                    <i class="fas fa-link me-2"></i>Sao chép permalink
+                </button>
+                <a asp-controller="Cuisine" asp-action="Province" asp-route-name="@Model.Destination" class="btn btn-outline-danger btn-lg">
+                    <i class="fas fa-utensils me-2"></i>Ẩm thực tại @Model.Destination
+                </a>
                 <a asp-controller="TripPlanner" asp-action="Index" class="btn btn-outline-primary btn-lg">
                     <i class="fas fa-plus me-2"></i>Lập kế hoạch mới
                 </a>
@@ -69,6 +75,13 @@
 
 <!-- Main Content -->
 <div class="container my-5">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Tours" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="TripPlanner" asp-action="Index">TripPlanner</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Destination</li>
+        </ol>
+    </nav>
     <div class="row">
         <!-- Left Column - Main Content -->
         <div class="col-lg-8">
@@ -137,10 +150,27 @@
                                             </div>
                                             <div class="activity-details">
                                                 <h6 class="activity-name">@activity.Name</h6>
+                                                @if (!string.IsNullOrWhiteSpace(activity.Description))
+                                                {
+                                                    <p class="text-muted small mb-2">@activity.Description</p>
+                                                }
                                                 <div class="activity-meta">
                                                     <span class="badge bg-info me-2">@activity.Type</span>
                                                     <span class="activity-cost">@activity.Cost.ToString("N0") VNĐ</span>
                                                 </div>
+                                                @if (activity.Type == "Ăn uống")
+                                                {
+                                                    <form method="post" asp-controller="Favorites" asp-action="Add" class="mt-2">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="Id" value="@($"activity:{Model.Destination}:{day.DayNumber}:{activity.Name}")" />
+                                                        <input type="hidden" name="Type" value="activity" />
+                                                        <input type="hidden" name="Title" value="@activity.Name" />
+                                                        <input type="hidden" name="Subtitle" value="@Model.Destination - @activity.Cost.ToString("N0") đ" />
+                                                        <input type="hidden" name="Url" value="@Url.Action("Index", "TripPlanner", new { destination = Model.Destination, budget = Model.TotalBudget, days = Model.SuggestedDays })" />
+                                                        <input type="hidden" name="ImageUrl" value="/images/8f110666-07ea-4642-84fa-7ad555d77f50.jpg" />
+                                                        <button class="btn btn-sm btn-outline-primary" type="submit"><i class="bi bi-bookmark-plus"></i> Lưu</button>
+                                                    </form>
+                                                }
                                             </div>
                                         </div>
                                     }
@@ -483,5 +513,20 @@
                 alert('Đã sao chép link vào clipboard!');
             });
         }
+    }
+
+    function buildPermalink() {
+        const url = new URL(window.location.origin + '@Url.Action("Result", "TripPlanner")');
+        url.searchParams.set('destination', '@Model.Destination');
+        url.searchParams.set('budget', '@Model.TotalBudget');
+        url.searchParams.set('days', '@Model.SuggestedDays');
+        return url.toString();
+    }
+
+    function copyPermalink() {
+        const link = buildPermalink();
+        navigator.clipboard.writeText(link).then(() => {
+            alert('Đã sao chép permalink!');
+        });
     }
 </script>
