@@ -1,6 +1,27 @@
 ﻿@model List<TravelWeb.Models.TransportOption>
 
-<h2 class="mb-3 text-center text-primary">Gợi ý phương tiện du lịch</h2>
+<div class="passport-hero py-4 mb-3 text-white">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-1">Gợi ý phương tiện</h2>
+        <p class="mb-0">Tuyến: <strong>@(ViewBag.From ?? "?")</strong> → <strong>@(ViewBag.To ?? "?")</strong></p>
+    </div>
+  </div>
+
+<div class="container mb-3">
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <a class="btn btn-outline-primary" asp-controller="TripPlanner" asp-action="Index" asp-route-destination="@ViewBag.To">
+            <i class="bi bi-geo"></i> Lập kế hoạch tại @ViewBag.To
+        </a>
+        <a class="btn btn-outline-danger" asp-controller="Cuisine" asp-action="Province" asp-route-name="@ViewBag.To">
+            <i class="bi bi-egg-fried"></i> Ẩm thực @ViewBag.To
+        </a>
+        <form method="post" asp-controller="Passport" asp-action="AddTrip">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="destination" value="@ViewBag.To" />
+            <button class="btn btn-success" type="submit"><i class="bi bi-check2-circle"></i> Đóng tem hành trình</button>
+        </form>
+    </div>
+</div>
 
 @if (Model.Any())
 {
@@ -57,14 +78,14 @@
 }
 else
 {
-    <table class="table table-bordered align-middle" id="transportTable">
+    <table class="table table-hover align-middle" id="transportTable">
         <thead class="table-light">
             <tr>
                 <th>Phương tiện</th>
                 <th>Nhà cung cấp</th>
                 <th>Thời gian</th>
                 <th>Giá vé (VNĐ)</th>
-                <th>Đặt vé</th>
+                <th class="text-center">Đặt vé</th>
                 <th>Ghi chú</th>
             </tr>
         </thead>
@@ -76,7 +97,7 @@ else
                     <td>@item.Provider</td>
                     <td>@item.Duration</td>
                     <td class="text-end">@item.Price.ToString("N0")</td>
-                    <td><a href="@item.BookingUrl" target="_blank" class="btn btn-sm btn-success">Đặt ngay</a></td>
+                    <td class="text-center"><a href="@item.BookingUrl" target="_blank" class="btn btn-sm btn-success">Đặt ngay</a></td>
                     <td>@item.Note</td>
                 </tr>
             }

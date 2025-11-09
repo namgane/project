@@ -1,0 +1,76 @@
+@using TravelWeb.Models
+@model IEnumerable<string>
+@{
+    ViewData["Title"] = "Ẩm thực theo tỉnh";
+}
+
+<div class="cuisine-hero py-5 mb-4">
+    <div class="container">
+        <h1 class="display-6 fw-bold text-white mb-2">Khám phá Ẩm thực Việt</h1>
+        <p class="lead text-white-50 mb-0">Chọn tỉnh/thành hoặc tìm kiếm để xem top 10 món và giá trung bình</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mb-4 justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <form method="get" asp-action="Province" asp-controller="Cuisine" class="row g-2 align-items-center mb-2">
+                        <div class="col-md-8">
+                            <div class="input-group input-group-lg cuisine-search">
+                                <span class="input-group-text bg-white border-end-0"><i class="bi bi-geo-alt"></i></span>
+                                <select class="form-select border-start-0" name="name">
+                                    @foreach (var p in Model)
+                                    {
+                                        <option value="@p">@p</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary w-100 btn-lg" type="submit">Xem top 10 món</button>
+                        </div>
+                    </form>
+                    <form method="get" asp-action="Search" asp-controller="Cuisine" class="row g-2 align-items-center">
+                        <div class="col-md-8">
+                            <div class="input-group input-group-lg cuisine-search">
+                                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                                <input class="form-control border-start-0" list="provinces" type="text" name="q" placeholder="Nhập tên tỉnh/thành (ví dụ: Hà Nội, TP.HCM)" />
+                                <datalist id="provinces">
+                                    @foreach (var p in Model)
+                                    {
+                                        <option value="@p"></option>
+                                    }
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-outline-primary w-100 btn-lg" type="submit">Tìm kiếm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+        @foreach (var p in Model)
+        {
+            var count = CuisineData.GetCountByProvince(p);
+            <div class="col">
+                <a class="text-decoration-none" asp-action="Province" asp-route-name="@p">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 cuisine-province-card">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center text-center p-4">
+                            <div class="cuisine-province-icon mb-2"><i class="bi bi-geo-fill"></i></div>
+                            <span class="fw-semibold mb-1 text-dark">@p</span>
+                            <span class="badge bg-light text-dark border">@count món</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+

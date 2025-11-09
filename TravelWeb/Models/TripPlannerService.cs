@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TravelWeb.Models
 {
@@ -66,16 +67,62 @@ namespace TravelWeb.Models
         {
             var dailyPlans = new List<DailyExpense>();
             var random = new Random();
+            var canonicalProvince = CuisineData.CanonicalProvinceName(dest);
+            var cuisineTop = CuisineData.GetTopByProvince(canonicalProvince, 10);
+            var destinationInfo = DestinationData.GetAll()
+                .FirstOrDefault(d => string.Equals(d.Name, dest, StringComparison.OrdinalIgnoreCase)
+                    || (!string.IsNullOrWhiteSpace(d.Name) && d.Name.IndexOf(dest, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || (!string.IsNullOrWhiteSpace(dest) && dest.IndexOf(d.Name ?? string.Empty, StringComparison.OrdinalIgnoreCase) >= 0));
 
             for (int day = 1; day <= days; day++)
             {
-                var activities = new List<Activity>
+                var activities = new List<Activity>();
+
+                // Sáng: món đặc trưng
+                var breakfastIndex = (day - 1) % Math.Max(1, cuisineTop.Count);
+                var breakfast = cuisineTop.Count > 0 ? cuisineTop[breakfastIndex] : null;
+                activities.Add(new Activity
                 {
-                    new Activity { Time = "Sáng", Name = $"Ăn sáng tại quán địa phương ở {dest}", Type = "Ăn uống", Cost = foodBudget / (days * 3) },
-                    new Activity { Time = "Trưa", Name = $"Tham quan điểm nổi bật ngày {day} ở {dest}", Type = "Tham quan", Cost = funBudget / days },
-                    new Activity { Time = "Chiều", Name = $"Thưởng thức cà phê/ngắm hoàng hôn", Type = "Giải trí", Cost = funBudget / (days * 2) },
-                    new Activity { Time = "Tối", Name = $"Ăn tối và dạo phố đêm", Type = "Ăn uống", Cost = foodBudget / (days * 3) }
-                };
+                    Time = "Sáng",
+                    Type = "Ăn uống",
+                    Name = breakfast != null ? $"Ăn sáng: {breakfast.Name}" : $"Ăn sáng tại quán địa phương ở {dest}",
+                    Description = breakfast != null ? $"{breakfast.Description} — Món đặc trưng {canonicalProvince}." : "Bữa sáng nhẹ nhàng với món địa phương.",
+                    Cost = breakfast != null ? (double)breakfast.AveragePrice : foodBudget / (days * 3)
+                });
+
+                // Trưa: tham quan với mô tả điểm đến
+                var mainPlaceName = destinationInfo?.Name ?? dest;
+                var mainPlaceDesc = destinationInfo?.Description ?? $"Khám phá các điểm đến nổi bật tại {dest}.";
+                activities.Add(new Activity
+                {
+                    Time = "Trưa",
+                    Type = "Tham quan",
+                    Name = $"Tham quan: {mainPlaceName}",
+                    Description = mainPlaceDesc,
+                    Cost = funBudget / days
+                });
+
+                // Chiều: cafe/giải trí
+                activities.Add(new Activity
+                {
+                    Time = "Chiều",
+                    Type = "Giải trí",
+                    Name = "Cà phê/Ngắm hoàng hôn",
+                    Description = $"Chọn quán có view đẹp tại {dest} để nghỉ ngơi và chụp ảnh.",
+                    Cost = funBudget / (days * 2)
+                });
+
+                // Tối: món nổi bật khác
+                var dinnerIndex = (day + 3) % Math.Max(1, cuisineTop.Count);
+                var dinner = cuisineTop.Count > 0 ? cuisineTop[dinnerIndex] : null;
+                activities.Add(new Activity
+                {
+                    Time = "Tối",
+                    Type = "Ăn uống",
+                    Name = dinner != null ? $"Ăn tối: {dinner.Name}" : "Ăn tối và dạo phố đêm",
+                    Description = dinner != null ? $"{dinner.Description} — Giá trung bình khoảng {dinner.AveragePrice:N0} đ." : $"Thưởng thức ẩm thực đêm tại {dest}.",
+                    Cost = dinner != null ? (double)dinner.AveragePrice : foodBudget / (days * 3)
+                });
                 dailyPlans.Add(new DailyExpense { DayNumber = day, Activities = activities });
             }
 

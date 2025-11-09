@@ -34,40 +34,50 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Tours" asp-action="Index">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Tours"?"active":"")" asp-controller="Tours" asp-action="Index">
                                 <i class="bi bi-house-door"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="VirtualTours" asp-action="Index">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="VirtualTours"?"active":"")" asp-controller="VirtualTours" asp-action="Index">
                                 <i class="bi bi-globe"></i> Virtual Tour
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Hotels" asp-action="Index">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Hotels"?"active":"")" asp-controller="Hotels" asp-action="Index">
                                 <i class="bi bi-building"></i> Hotels
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Quiz" asp-action="Start">AkiCity</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Quiz"?"active":"")" asp-area="" asp-controller="Quiz" asp-action="Start">AkiCity</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Festival" asp-action="Index">Festival</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Festival"?"active":"")" asp-area="" asp-controller="Festival" asp-action="Index">Festival</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Transport" asp-action="Suggest">Transport</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Transport"?"active":"")" asp-area="" asp-controller="Transport" asp-action="Suggest">Transport</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trip" asp-action="Suggestions">Trip</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Trip"?"active":"")" asp-area="" asp-controller="Trip" asp-action="Suggestions">Trip</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Passport" asp-action="Index">Passport</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Passport"?"active":"")" asp-area="" asp-controller="Passport" asp-action="Index">Passport</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TikTok" asp-action="Index">SearchTiktok</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="TikTok"?"active":"")" asp-area="" asp-controller="TikTok" asp-action="Index">SearchTiktok</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TripPlanner" asp-action="Index">TripPlanner</a>
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="TripPlanner"?"active":"")" asp-area="" asp-controller="TripPlanner" asp-action="Index">TripPlanner</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Cuisine"?"active":"")" asp-area="" asp-controller="Cuisine" asp-action="Index">Ẩm thực</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Favorites"?"active":"")" asp-area="" asp-controller="Favorites" asp-action="Index">Bộ sưu tập</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Feedback"?"active":"")" asp-area="" asp-controller="Feedback" asp-action="Index">Góp ý</a>
                         </li>
 
 
@@ -98,6 +108,16 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Bookings" asp-action="HotelBookings">
                                     <i class="bi bi-shield-check"></i> Quản Lý Đặt Phòng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString()=="Admin" && ViewContext.RouteData.Values["controller"]?.ToString()=="Feedback"?"active":"")" asp-controller="Feedback" asp-action="Admin">
+                                    <i class="bi bi-inbox"></i> Feedback người dùng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString()=="AdminRewards" && ViewContext.RouteData.Values["controller"]?.ToString()=="Passport"?"active":"")" asp-controller="Passport" asp-action="AdminRewards">
+                                    <i class="bi bi-gift"></i> Duyệt phần thưởng
                                 </a>
                             </li>
                             
@@ -174,5 +194,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+ </body>
+ </html>
 </html>

@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 // Kết nối tới SQL Server
 builder.Services.AddDbContext<TravelContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TravelContext")));
 
 // Cấu hình Session
 builder.Services.AddSession(options =>

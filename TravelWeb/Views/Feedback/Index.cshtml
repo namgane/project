@@ -1,0 +1,39 @@
+@model TravelWeb.Models.Feedback
+@{
+    ViewData["Title"] = "Góp ý & Liên hệ";
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white border-0">
+                    <h3 class="mb-0"><i class="bi bi-chat-left-text me-2"></i>Góp ý & Liên hệ</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" asp-action="Index">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label class="form-label">Họ tên</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nội dung</label>
+                            <textarea asp-for="Message" rows="4" class="form-control"></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Gửi phản hồi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
