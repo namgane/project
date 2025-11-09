@@ -14,6 +14,7 @@ namespace TravelWeb.Controllers
             _context = context;
         }
 
+        // ===================== LOGIN =====================
         public IActionResult Login()
         {
             return View();
@@ -38,7 +39,22 @@ namespace TravelWeb.Controllers
                 return View();
             }
 
-            // LƯU SESSION - BỔ SUNG UserId
+            // 🔹 Kiểm tra Email để xác định trạng thái phê duyệt
+            // Quy ước: Email = "pending@approval.com" → Chờ duyệt
+            //          Email = "rejected@approval.com" → Bị từ chối
+            if (user.Email == "pending@approval.com")
+            {
+                ViewBag.Error = "Tài khoản của bạn đang chờ phê duyệt. Vui lòng đợi Admin xác nhận.";
+                return View();
+            }
+
+            if (user.Email == "rejected@approval.com")
+            {
+                ViewBag.Error = "Tài khoản của bạn đã bị từ chối. Vui lòng liên hệ Admin.";
+                return View();
+            }
+
+            // Lưu SESSION
             HttpContext.Session.SetString("UserId", user.Id.ToString());
             HttpContext.Session.SetString("Username", user.Username);
             HttpContext.Session.SetString("Role", user.Role);
@@ -46,12 +62,15 @@ namespace TravelWeb.Controllers
             TempData["Success"] = $"Xin chào {user.Username}!";
 
             // Redirect theo role
-            if (user.Role == "Admin")
-                return RedirectToAction("Dashboard", "Admin");
-            else if (user.Role == "Hotel")
-                return RedirectToAction("HotelBookings", "Bookings");
-            else
-                return RedirectToAction("Index", "Hotels");
+            return user.Role switch
+            {
+                "Admin" => RedirectToAction("PendingUsers", "Users"),
+                "Hotel" => RedirectToAction("HotelBookings", "Bookings"),
+                "Flight" => RedirectToAction("Index", "Tours"), // Tạm redirect về Tours
+                "Train" => RedirectToAction("Index", "Tours"),
+                "Bus" => RedirectToAction("Index", "Tours"),
+                _ => RedirectToAction("Index", "Tours")
+            };
         }
 
         public IActionResult Logout()
@@ -61,8 +80,10 @@ namespace TravelWeb.Controllers
             return RedirectToAction("Login", "Users");
         }
 
+        // ===================== REGISTER =====================
         public IActionResult Register()
         {
+            ViewBag.Roles = new List<string> { "Customer", "Hotel", "Flight", "Train", "Bus" };
             return View();
         }
 
@@ -70,8 +91,7 @@ namespace TravelWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(User model)
         {
-            ModelState.Remove("Role");
-            model.Role = "Customer";
+            ViewBag.Roles = new List<string> { "Customer", "Hotel", "Flight", "Train", "Bus" };
 
             if (!ModelState.IsValid)
             {
@@ -89,11 +109,36 @@ namespace TravelWeb.Controllers
                 return View(model);
             }
 
+            // 🔹 Xử lý Email theo Role
+            string originalEmail = model.Email; // Lưu email thật của user
+
+            if (model.Role == "Customer")
+            {
+                // Customer → Duyệt tự động, giữ nguyên email
+                // Không cần làm gì
+            }
+            else
+            {
+                // Hotel, Flight, Train, Bus → Chờ phê duyệt
+                // Lưu email thật vào Phone field tạm thời, set Email = "pending@approval.com"
+                model.Phone = $"EMAIL:{originalEmail}|PHONE:{model.Phone}"; // Lưu cả email và phone
+                model.Email = "pending@approval.com"; // Đánh dấu chờ duyệt
+            }
+
             _context.Users.Add(model);
             try
             {
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Đăng ký thành công! Vui lòng đăng nhập.";
+
+                if (model.Role == "Customer")
+                {
+                    TempData["Success"] = "Đăng ký thành công! Vui lòng đăng nhập.";
+                }
+                else
+                {
+                    TempData["Success"] = "Đăng ký thành công! Tài khoản của bạn đang chờ Admin phê duyệt.";
+                }
+
                 return RedirectToAction("Login");
             }
             catch (Exception ex)
@@ -103,12 +148,93 @@ namespace TravelWeb.Controllers
             }
         }
 
+        // ===================== ADMIN: QUẢN LÝ PHÊ DUYỆT =====================
+        public async Task<IActionResult> PendingUsers()
+        {
+            var role = HttpContext.Session.GetString("Role");
+            if (role != "Admin")
+            {
+                TempData["Error"] = "Bạn không có quyền truy cập trang này.";
+                return RedirectToAction("Index", "Tours");
+            }
+
+            // Lấy users có Email = "pending@approval.com"
+            var pendingUsers = await _context.Users
+.Where(u => u.Email == "pending@approval.com")
+                .ToListAsync();
+
+            return View(pendingUsers);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApproveUser(int id)
+        {
+            var role = HttpContext.Session.GetString("Role");
+            if (role != "Admin")
+            {
+                return Json(new { success = false, message = "Không có quyền" });
+            }
+
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Không tìm thấy user" });
+            }
+
+            // 🔹 Khôi phục Email và Phone từ trường Phone
+            if (user.Phone != null && user.Phone.StartsWith("EMAIL:"))
+            {
+                var parts = user.Phone.Split("|");
+                var emailPart = parts[0].Replace("EMAIL:", "");
+                var phonePart = parts.Length > 1 ? parts[1].Replace("PHONE:", "") : "";
+
+                user.Email = emailPart; // Khôi phục email thật
+                user.Phone = phonePart; // Khôi phục phone thật
+            }
+            else
+            {
+                user.Email = "approved@travel.com"; // Email mặc định nếu không có
+            }
+
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = $"Đã phê duyệt tài khoản {user.Username}";
+            return RedirectToAction("PendingUsers");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RejectUser(int id)
+        {
+            var role = HttpContext.Session.GetString("Role");
+            if (role != "Admin")
+            {
+                return Json(new { success = false, message = "Không có quyền" });
+            }
+
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Không tìm thấy user" });
+            }
+
+            // 🔹 Đánh dấu từ chối
+            user.Email = "rejected@approval.com";
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = $"Đã từ chối tài khoản {user.Username}";
+            return RedirectToAction("PendingUsers");
+        }
+
+        // ===================== USER LIST =====================
         public async Task<IActionResult> Index()
         {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
 
+        // ===================== DETAILS =====================
         public async Task<IActionResult> Details(int id)
         {
             var user = await _context.Users.FindAsync(id);

@@ -2,21 +2,53 @@
     ViewData["Title"] = "Maps";
 }
 
-<h2 class="text-center mt-3">Bản đồ Việt Nam - Các Thành Phố</h2>
+<h2 class="text-center mt-3 text-white" style="position: relative; z-index: 3;">Bản đồ Việt Nam - Các Thành Phố</h2>
 
 <style>
+    /* --- Slideshow nền phủ full trang --- */
+    .slideshow-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; /* nằm sau toàn bộ nội dung */
+        overflow: hidden;
+    }
+
+        .slideshow-bg img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+            filter: brightness(1.15) contrast(1.2) saturate(1.1);
+            image-rendering: high-quality;
+        }
+
+            .slideshow-bg img.active {
+                opacity: 1;
+            }
+
+    /* --- Bản đồ --- */
     .map-container {
         position: relative;
         width: 600px;
         height: 1020px;
-        background-image: url('/images/ban-do-viet-nam-34-tinh.jpg');
-        background-size: cover;
+        background-image: url('/images/ban-do.png');
+        background-size: contain;
+        background-repeat: no-repeat;
         background-position: center;
-        border: 2px solid #ccc;
+        border: 2px solid rgba(255, 255, 255, 0.8);
         border-radius: 12px;
-        margin: 0 auto;
+        margin: 60px auto 80px auto;
+        z-index: 2;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        backdrop-filter: brightness(1.05);
     }
 
+    /* --- Nút thành phố --- */
     .airport-btn {
         position: absolute;
         background-color: rgba(0, 123, 255, 0.9);
@@ -38,53 +70,72 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
+    /* --- Căn giữa bản đồ --- */
     .centered {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* --- Tăng độ rõ cho bản đồ --- */
+    .map-container img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 </style>
 
-<div class="centered mt-4">
+<!-- Slideshow nền -->
+<div class="slideshow-bg">
+    <img src="/images/slideshow/1.jpg" class="active" />
+    <img src="/images/slideshow/2.jpg" />
+    <img src="/images/slideshow/3.jpg" />
+    <img src="/images/slideshow/4.jpg" />
+    <img src="/images/slideshow/5.jpg" />
+</div>
+
+<!-- Bản đồ -->
+<div class="centered">
     <div class="map-container">
-        <!-- Miền Bắc -->
+        <!-- Các thành phố -->
         <button class="airport-btn" style="top: 21.5%; left: 35.3%;" data-city="Hà Nội" data-lat="21.0285" data-lng="105.8542">Hà Nội</button>
         <button class="airport-btn" style="top: 22.1%; left: 44.7%;" data-city="Hải Phòng" data-lat="20.8449" data-lng="106.6881">Hải Phòng</button>
         <button class="airport-btn" style="top: 28.4%; left: 34.3%;" data-city="Thanh Hóa" data-lat="19.8067" data-lng="105.7852">Thanh Hóa</button>
         <button class="airport-btn" style="top: 35.3%; left: 34.3%;" data-city="Vinh" data-lat="18.6796" data-lng="105.6813">Vinh</button>
-
-        <!-- Miền Trung -->
         <button class="airport-btn" style="top: 47.5%; left: 53.8%;" data-city="Huế" data-lat="16.4637" data-lng="107.5909">Huế</button>
         <button class="airport-btn" style="top: 54.0%; left: 58.3%;" data-city="Đà Nẵng" data-lat="16.0544" data-lng="108.2022">Đà Nẵng</button>
         <button class="airport-btn" style="top: 63.1%; left: 72.0%;" data-city="Quy Nhơn" data-lat="13.7820" data-lng="109.2197">Quy Nhơn</button>
         <button class="airport-btn" style="top: 75.9%; left: 71.3%;" data-city="Nha Trang" data-lat="12.2388" data-lng="109.1967">Nha Trang</button>
         <button class="airport-btn" style="top: 84.0%; left: 58.2%;" data-city="Phan Thiết" data-lat="10.9804" data-lng="108.2615">Phan Thiết</button>
-
-        <!-- Tây Nguyên -->
         <button class="airport-btn" style="top: 73.4%; left: 59.5%;" data-city="Buôn Ma Thuột" data-lat="12.6662" data-lng="108.0378">Buôn Ma Thuột</button>
         <button class="airport-btn" style="top: 78.0%; left: 64.2%;" data-city="Đà Lạt" data-lat="11.9404" data-lng="108.4583">Đà Lạt</button>
-
-        <!-- Miền Nam -->
         <button class="airport-btn" style="top: 85.4%; left: 45.0%;" data-city="TP.HCM" data-lat="10.7769" data-lng="106.7009">TP.HCM</button>
         <button class="airport-btn" style="top: 91.7%; left: 35.8%;" data-city="Cần Thơ" data-lat="10.0452" data-lng="105.7469">Cần Thơ</button>
         <button class="airport-btn" style="top: 89.9%; left: 45.8%;" data-city="Rạch Giá" data-lat="10.0159" data-lng="105.0809">Rạch Giá</button>
         <button class="airport-btn" style="top: 86%; left: 12%;" data-city="Phú Quốc" data-lat="10.2899" data-lng="103.9840">Phú Quốc</button>
         <button class="airport-btn" style="top: 94%; left: 30%;" data-city="Cà Mau" data-lat="9.1768" data-lng="105.1524">Cà Mau</button>
-
-        <!-- Quần đảo -->
         <button class="airport-btn" style="top: 42%; left: 80%;" data-city="Hoàng Sa" data-lat="16.8333" data-lng="112.3333">Hoàng Sa</button>
         <button class="airport-btn" style="top: 91%; left: 80%;" data-city="Trường Sa" data-lat="8.6" data-lng="111.9">Trường Sa</button>
     </div>
 </div>
 
 <script>
+    // Chạy slideshow nền
+    const slides = document.querySelectorAll(".slideshow-bg img");
+    let index = 0;
+    setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+    }, 5000);
+
+    // Chuyển hướng khi click
     document.querySelectorAll(".airport-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-            const city = btn.getAttribute("data-city");
-            const lat = btn.getAttribute("data-lat");
-            const lng = btn.getAttribute("data-lng");
-
-            // Điều hướng đến trang Map/Index
+            const city = btn.dataset.city;
+            const lat = btn.dataset.lat;
+            const lng = btn.dataset.lng;
             window.location.href = `/Map/Index?city=${encodeURIComponent(city)}&lat=${lat}&lng=${lng}`;
         });
     });

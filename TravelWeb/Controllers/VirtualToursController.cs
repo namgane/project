@@ -21,143 +21,76 @@ namespace TravelWeb.Controllers
         // GET: VirtualTours
         public async Task<IActionResult> Index()
         {
-            var travelContext = _context.VirtualTours.Include(v => v.Tour);
-            return View(await travelContext.ToListAsync());
-        }
-
-        // GET: VirtualTours/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var virtualTour = await _context.VirtualTours
-                .Include(v => v.Tour)
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (virtualTour == null)
-                return NotFound();
-
-            return View(virtualTour);
+            var tours = await _context.VirtualTours.Include(v => v.Tour).ToListAsync();
+            return View(tours);
         }
 
         // GET: VirtualTours/Create
-        public IActionResult Create()
+        public IActionResult Create(double? lat, double? lng)
         {
-            ViewData["TourId"] = new SelectList(_context.Tours, "Id", "DiaDiem");
+            ViewBag.Lat = lat;
+            ViewBag.Lng = lng;
+            ViewData["TourId"] = new SelectList(_context.Tours, "Id", "TenTour");
             return View();
         }
 
         // POST: VirtualTours/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationName,StreetViewLink,TourId")] VirtualTour virtualTour)
+        public async Task<IActionResult> Create(double? lat, double? lng, string StreetViewLink)
         {
-            // Debug: In ra lỗi ModelState
-            if (!ModelState.IsValid)
+            if (lat == null || lng == null)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    System.Diagnostics.Debug.WriteLine($"ModelState Error: {error.ErrorMessage}");
-                }
+                TempData["ErrorMessage"] = "Không có tọa độ hợp lệ.";
+                return RedirectToAction("Index", "Map");
             }
 
-            // Kiểm tra link embed trước
-            if (!string.IsNullOrEmpty(virtualTour.StreetViewLink) && !virtualTour.StreetViewLink.Contains("embed"))
+            // Lấy Tour đầu tiên (có thể sửa sau để chọn cụ thể)
+            var firstTour = await _context.Tours.FirstOrDefaultAsync();
+            if (firstTour == null)
             {
-                ModelState.AddModelError("StreetViewLink", "Vui lòng nhập link nhúng hợp lệ (có chứa 'embed').");
+                TempData["ErrorMessage"] = "Chưa có Tour nào trong hệ thống!";
+                return RedirectToAction("Index", "Map");
             }
 
-            if (ModelState.IsValid)
+            // Đảm bảo định dạng dấu chấm (.) cho số thập phân
+            var locationName = $"{lat.Value.ToString(System.Globalization.CultureInfo.InvariantCulture)},{lng.Value.ToString(System.Globalization.CultureInfo.InvariantCulture)}";
+
+            var virtualTour = new VirtualTour
             {
-                try
-                {
-                    _context.Add(virtualTour);
-                    await _context.SaveChangesAsync();
-                    TempData["SuccessMessage"] = "Thêm Virtual Tour thành công!";
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Error saving: {ex.Message}");
-                    ModelState.AddModelError("", "Có lỗi xảy ra khi lưu dữ liệu: " + ex.Message);
-                }
-            }
+                LocationName = locationName,
+                StreetViewLink = StreetViewLink,
+                TourId = firstTour.Id
+            };
 
-            ViewData["TourId"] = new SelectList(_context.Tours, "Id", "DiaDiem", virtualTour.TourId);
-            return View(virtualTour);
-        }
-
-        // GET: VirtualTours/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-                return NotFound();
-
-            var virtualTour = await _context.VirtualTours.FindAsync(id);
-            if (virtualTour == null)
-                return NotFound();
-
-            ViewData["TourId"] = new SelectList(_context.Tours, "Id", "DiaDiem", virtualTour.TourId);
-            return View(virtualTour);
-        }
-
-        // POST: VirtualTours/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,LocationName,StreetViewLink,TourId")] VirtualTour virtualTour)
-        {
-            if (id != virtualTour.Id)
-                return NotFound();
-
-            // Kiểm tra link embed
-            if (!string.IsNullOrEmpty(virtualTour.StreetViewLink) && !virtualTour.StreetViewLink.Contains("embed"))
+            try
             {
-                ModelState.AddModelError("StreetViewLink", "Vui lòng nhập link nhúng hợp lệ (có chứa 'embed').");
-            }
+                _context.Add(virtualTour);
+                await _context.SaveChangesAsync();
 
-            if (ModelState.IsValid)
+                TempData["SuccessMessage"] = "Thêm Virtual Tour thành công!";
+                // Chuyển hướng trở lại bản đồ, hiển thị đúng vị trí mới thêm
+                return RedirectToAction("Index", "Map", new { city = "TP.HCM", lat = lat.Value, lng = lng.Value });
+            }
+            catch (Exception ex)
             {
-                try
-                {
-                    _context.Update(virtualTour);
-                    await _context.SaveChangesAsync();
-                    TempData["SuccessMessage"] = "Cập nhật Virtual Tour thành công!";
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VirtualTourExists(virtualTour.Id))
-                        return NotFound();
-                    else
-                        throw;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Error updating: {ex.Message}");
-                    ModelState.AddModelError("", "Có lỗi xảy ra khi cập nhật: " + ex.Message);
-                }
+                TempData["ErrorMessage"] = $"Lỗi khi lưu Virtual Tour: {ex.Message}";
+                return RedirectToAction("Index", "Map");
             }
-
-            ViewData["TourId"] = new SelectList(_context.Tours, "Id", "DiaDiem", virtualTour.TourId);
-            return View(virtualTour);
         }
 
         // GET: VirtualTours/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-                return NotFound();
+            if (id == null) return NotFound();
 
-            var virtualTour = await _context.VirtualTours
+            var vt = await _context.VirtualTours
                 .Include(v => v.Tour)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (virtualTour == null)
-                return NotFound();
+            if (vt == null) return NotFound();
 
-            return View(virtualTour);
+            return View(vt);
         }
 
         // POST: VirtualTours/Delete/5
@@ -165,14 +98,13 @@ namespace TravelWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var virtualTour = await _context.VirtualTours.FindAsync(id);
-            if (virtualTour != null)
+            var vt = await _context.VirtualTours.FindAsync(id);
+            if (vt != null)
             {
-                _context.VirtualTours.Remove(virtualTour);
+                _context.VirtualTours.Remove(vt);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Xóa Virtual Tour thành công!";
+                TempData["SuccessMessage"] = "Đã xóa Virtual Tour thành công!";
             }
-
             return RedirectToAction(nameof(Index));
         }
 

@@ -12,8 +12,8 @@ using TravelWeb.Data;
 namespace TravelWeb.Migrations
 {
     [DbContext(typeof(TravelContext))]
-    [Migration("20251016140354_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251105042414_AddImageToLocation")]
+    partial class AddImageToLocation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,6 +100,40 @@ namespace TravelWeb.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Hotels");
+                });
+
+            modelBuilder.Entity("TravelWeb.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Lng")
+                        .HasColumnType("float");
+
+                    b.Property<string>("MoTa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ten")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<string>("img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("TravelWeb.Models.Tour", b =>

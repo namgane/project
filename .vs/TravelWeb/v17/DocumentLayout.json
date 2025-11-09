@@ -1,77 +1,113 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\",
+  "WorkspaceRootPath": "D:\\lam Game\\BASICPROJECT\\public\\project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\virtualtours\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\virtualtours\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\festival\\_festivalcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\_festivalcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\controllers\\virtualtourscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\virtualtourscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\controllers\\festivalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\festivalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\virtualtour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\virtualtour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\festival\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\festival\\upcoming.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\upcoming.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\tours\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tours\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tours\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\models\\travelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\travelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\festival\\_festivalcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\_festivalcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\migrations\\20251009032511_initialcreat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\migrations\\20251009032511_initialcreat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\festivaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\festivaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\migrations\\20251009032611_addvirtualtourtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\migrations\\20251009032611_addvirtualtourtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\controllers\\festivalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\festivalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\views\\tours\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tours\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\tiktoksearch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\tiktoksearch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\migrations\\20251102073944_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\migrations\\20251102073944_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\festival\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\festival\\upcoming.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\upcoming.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\travelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\travelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tours\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tours\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\controllers\\transportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\controllers\\transportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\transportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\models\\travelpassport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\travelpassport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\travelpassport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\travelweb\\project\\travelweb\\models\\transportoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\transportoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\transportoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -82,167 +118,129 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "TransportController.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Controllers\\TransportController.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\TransportController.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Controllers\\TransportController.cs",
-              "RelativeToolTip": "TravelWeb\\Controllers\\TransportController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T07:52:11.595Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FestivalController.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Controllers\\FestivalController.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\FestivalController.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Controllers\\FestivalController.cs",
-              "RelativeToolTip": "TravelWeb\\Controllers\\FestivalController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T04:36:14.614Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Upcoming.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-02T04:36:09.915Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Index.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAIAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\VirtualTours\\Create.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\VirtualTours\\Create.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\VirtualTours\\Create.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\VirtualTours\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-02T04:35:54.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Details.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-02T04:35:50.134Z",
+              "WhenOpened": "2025-11-09T04:14:59.083Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_FestivalCard.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-02T04:35:39.513Z",
+              "Title": "VirtualToursController.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\VirtualToursController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\VirtualToursController.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\VirtualToursController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\VirtualToursController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T04:14:36.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TravelContext.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\TravelContext.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Models\\TravelContext.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\TravelContext.cs",
-              "RelativeToolTip": "TravelWeb\\Models\\TravelContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "VirtualTour.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\VirtualTour.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\VirtualTour.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\VirtualTour.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\VirtualTour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T07:53:46.692Z"
+              "WhenOpened": "2025-11-09T04:14:31.996Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Users\\Login.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Users\\Login.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Users\\Login.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Users\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-09T04:00:31.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Users\\Index.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAUwEsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-09T04:00:28.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FestivalController.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\FestivalController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\FestivalController.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\FestivalController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\FestivalController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T04:36:14.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_FestivalCard.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T04:35:39.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MapController.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Controllers\\MapController.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\MapController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\MapController.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Controllers\\MapController.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\MapController.cs",
               "RelativeToolTip": "TravelWeb\\Controllers\\MapController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDgAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-19T08:05:26.387Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Map\\Index.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Map\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Users\\Register.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Users\\Register.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Users\\Register.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Users\\Register.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAUwFYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T08:05:50.933Z",
+              "WhenOpened": "2025-11-05T04:16:44.192Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Tours\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-19T08:06:07.146Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20251009032511_InitialCreat.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Migrations\\20251009032511_InitialCreat.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251009032511_InitialCreat.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Migrations\\20251009032511_InitialCreat.cs",
-              "RelativeToolTip": "TravelWeb\\Migrations\\20251009032511_InitialCreat.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T04:10:47.34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "20251009032611_AddVirtualTourTable.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
-              "RelativeToolTip": "TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T04:10:45.98Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Location.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\Location.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Location.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Location.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\Location.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Location.cs",
               "RelativeToolTip": "TravelWeb\\Models\\Location.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -250,11 +248,169 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Tours\\Index.cshtml",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAUwHwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T08:06:07.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAUwPUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T04:16:24.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Map\\Index.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Map\\Index.cshtml",
+              "ViewState": "AgIAAOQAAAAAAAAAAAAAANcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T08:05:50.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FestivalData.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\FestivalData.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\FestivalData.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\FestivalData.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\FestivalData.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAUwMgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T04:41:51.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\User.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\User.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\User.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T04:21:43.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TikTokSearch.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TikTokSearch.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\TikTokSearch.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TikTokSearch.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\TikTokSearch.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T04:21:36.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Details.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T04:35:50.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "TransportController.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\TransportController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\TransportController.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\TransportController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\TransportController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T07:52:11.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20251102073944_InitialCreate.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251102073944_InitialCreate.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251102073944_InitialCreate.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251102073944_InitialCreate.cs",
+              "RelativeToolTip": "TravelWeb\\Migrations\\20251102073944_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T07:39:44.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Index.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T04:35:54.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Upcoming.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T04:36:09.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\appsettings.json",
+              "RelativeDocumentMoniker": "TravelWeb\\appsettings.json",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\appsettings.json",
+              "RelativeToolTip": "TravelWeb\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-19T08:06:36.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TravelContext.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TravelContext.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\TravelContext.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TravelContext.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\TravelContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T07:53:46.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Tours\\Create.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Create.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Create.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Views\\Tours\\Create.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Create.cshtml",
               "RelativeToolTip": "TravelWeb\\Views\\Tours\\Create.cshtml",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -262,23 +418,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\appsettings.json",
-              "RelativeDocumentMoniker": "TravelWeb\\appsettings.json",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\appsettings.json",
-              "RelativeToolTip": "TravelWeb\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-19T08:06:36.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Program.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Program.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Program.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Program.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Program.cs",
               "RelativeToolTip": "TravelWeb\\Program.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -286,11 +430,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 25,
               "Title": "TravelPassport.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\TravelPassport.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TravelPassport.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TravelPassport.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\TravelPassport.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TravelPassport.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TravelPassport.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -298,11 +442,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 26,
               "Title": "TransportOption.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\TransportOption.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportOption.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportOption.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\TravelWEB\\project\\TravelWeb\\Models\\TransportOption.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportOption.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TransportOption.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
