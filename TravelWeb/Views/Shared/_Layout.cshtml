@@ -39,16 +39,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="VirtualTours"?"active":"")" asp-controller="VirtualTours" asp-action="Index">
-                                <i class="bi bi-globe"></i> Virtual Tour
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Hotels"?"active":"")" asp-controller="Hotels" asp-action="Index">
-                                <i class="bi bi-building"></i> Hotels
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Quiz"?"active":"")" asp-area="" asp-controller="Quiz" asp-action="Start">AkiCity</a>
                         </li>
                         <li class="nav-item">

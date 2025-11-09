@@ -1139,10 +1139,10 @@ D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\staticwebasse
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\staticwebassets.development.json
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.Up2Date
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\TravelWeb.dll
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\refint\TravelWeb.dll
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\TravelWeb.pdb
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\TravelWeb.genruntimeconfig.cache
 D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\ref\TravelWeb.dll
-D:\lam Game\BASICPROJECT\public\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

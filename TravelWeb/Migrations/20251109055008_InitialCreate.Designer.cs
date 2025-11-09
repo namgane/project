@@ -12,11 +12,7 @@ using TravelWeb.Data;
 namespace TravelWeb.Migrations
 {
     [DbContext(typeof(TravelContext))]
-<<<<<<<< HEAD:TravelWeb/Migrations/20251102073944_InitialCreate.Designer.cs
-    [Migration("20251102073944_InitialCreate")]
-========
-    [Migration("20251102091254_InitialCreate")]
->>>>>>>> origin/dong_full_functions:TravelWeb/Migrations/20251102091254_InitialCreate.Designer.cs
+    [Migration("20251109055008_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
