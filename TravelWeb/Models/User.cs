@@ -11,7 +11,7 @@ namespace TravelWeb.Models
         [StringLength(50)]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]   
         [StringLength(100)]
         public string Password { get; set; }
 

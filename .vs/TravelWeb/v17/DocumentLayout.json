@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "D:\\Me\\clone1\\project\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -59,10 +60,57 @@
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+=======
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\passport\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\passport\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\passportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\passportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\feedback\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\feedback\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\cuisine\\province.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\cuisine\\province.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\models\\cuisinedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\cuisinedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\models\\cuisineitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\cuisineitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\cuisine\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\cuisine\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\cuisinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\cuisinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+>>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\transportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\transportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -73,6 +121,66 @@
     {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\models\\transportoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\transportoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\tours\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tours\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\models\\festivaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\festivaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\models\\festival.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\festival.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\festival\\_festivalcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\_festivalcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\mapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\hotelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\hotelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\controllers\\festivalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\festivalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\festival\\upcoming.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\upcoming.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\me\\clone1\\project\\travelweb\\views\\festival\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\festival\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -82,10 +190,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 15,
               "Title": "TransportController.cs",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\TransportController.cs",
@@ -130,13 +239,35 @@
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
               "RelativeToolTip": "TravelWeb\\Views\\Festival\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAIAAAAAAAAAA==",
+=======
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Passport\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Passport\\Index.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Passport\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Passport\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAWAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-02T04:35:54.781Z",
+              "WhenOpened": "2025-11-04T14:35:01.694Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Feedback\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Feedback\\Index.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Feedback\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Feedback\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-04T14:19:54.475Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+<<<<<<< Updated upstream
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Details.cshtml",
@@ -167,11 +298,20 @@
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\TravelContext.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TravelContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
+=======
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\Feedback.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\Feedback.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\Feedback.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\Feedback.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T07:53:46.692Z"
+              "WhenOpened": "2025-11-04T14:18:14.647Z"
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 7,
               "Title": "MapController.cs",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\MapController.cs",
@@ -193,10 +333,22 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-19T08:05:50.933Z"
+=======
+              "DocumentIndex": 4,
+              "Title": "FeedbackController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\FeedbackController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\FeedbackController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\FeedbackController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\FeedbackController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T14:17:58.847Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+<<<<<<< Updated upstream
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
@@ -226,37 +378,123 @@
               "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
               "RelativeToolTip": "TravelWeb\\Migrations\\20251009032611_AddVirtualTourTable.cs",
+=======
+              "Title": "Result.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\TripPlanner\\Result.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\TripPlanner\\Result.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
+              "ViewState": "AgIAAOQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-04T13:51:14.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CuisineItem.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\CuisineItem.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\CuisineItem.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\CuisineItem.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\CuisineItem.cs",
+>>>>>>> Stashed changes
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T04:10:45.98Z"
+              "WhenOpened": "2025-11-04T13:40:32.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CuisineData.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\CuisineData.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\CuisineData.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\CuisineData.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\CuisineData.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwEkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T13:38:22.932Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+<<<<<<< Updated upstream
               "Title": "Location.cs",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\Location.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Location.cs",
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\Location.cs",
               "RelativeToolTip": "TravelWeb\\Models\\Location.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+=======
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Program.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Program.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Program.cs",
+              "RelativeToolTip": "TravelWeb\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T04:01:15.108Z"
+              "WhenOpened": "2025-11-04T13:34:56.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Province.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Cuisine\\Province.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Cuisine\\Province.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Cuisine\\Province.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Cuisine\\Province.cshtml",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAUwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-04T13:34:41.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Cuisine\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Cuisine\\Index.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Cuisine\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Cuisine\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-04T13:34:35.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CuisineController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\CuisineController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\CuisineController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\CuisineController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\CuisineController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T13:32:46.175Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
+<<<<<<< Updated upstream
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Tours\\Create.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Create.cshtml",
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Tours\\Create.cshtml",
               "RelativeToolTip": "TravelWeb\\Views\\Tours\\Create.cshtml",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+=======
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Tours\\Index.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAUwBoAAAAAAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-01T03:54:10.467Z"
+              "WhenOpened": "2025-11-03T14:18:03.968Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
+<<<<<<< Updated upstream
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\appsettings.json",
               "RelativeDocumentMoniker": "TravelWeb\\appsettings.json",
@@ -265,10 +503,21 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-10-19T08:06:36.077Z"
+=======
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T14:16:56.269Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
+<<<<<<< Updated upstream
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Program.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Program.cs",
@@ -277,30 +526,188 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-19T08:06:31.896Z"
+=======
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T14:16:50.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T14:16:48.929Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
+<<<<<<< Updated upstream
               "Title": "TravelPassport.cs",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\TravelPassport.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TravelPassport.cs",
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\TravelPassport.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TravelPassport.cs",
+=======
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Map\\Index.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Map\\Index.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAE8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T14:06:12.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MapController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\MapController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\MapController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\MapController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\MapController.cs",
+>>>>>>> Stashed changes
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T07:53:50.384Z"
+              "WhenOpened": "2025-11-03T14:06:03.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PassportController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\PassportController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\PassportController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\PassportController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\PassportController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T14:06:02.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HotelsController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\HotelsController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\HotelsController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\HotelsController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\HotelsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T14:06:00.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T14:05:57.64Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
+<<<<<<< Updated upstream
               "Title": "TransportOption.cs",
               "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\TransportOption.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportOption.cs",
               "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\TransportOption.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TransportOption.cs",
+=======
+              "Title": "FestivalData.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\FestivalData.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\FestivalData.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\FestivalData.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\FestivalData.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAQwGUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T12:26:03.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Festival.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\Festival.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\Festival.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Models\\Festival.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\Festival.cs",
+>>>>>>> Stashed changes
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T07:53:44.368Z"
+              "WhenOpened": "2025-11-03T12:26:02.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FestivalController.cs",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\FestivalController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\FestivalController.cs",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Controllers\\FestivalController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\FestivalController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T12:25:54.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_FestivalCard.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\_FestivalCard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T12:24:43.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Upcoming.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T12:24:40.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Index.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Index.cshtml",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAAAIAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T12:22:13.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Details.cshtml",
+              "ToolTip": "D:\\Me\\clone1\\project\\TravelWeb\\Views\\Festival\\Details.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Festival\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-03T12:22:10.26Z"
             }
           ]
         }

@@ -6,5 +6,6 @@
         public string Name { get; set; }  // VD: "Tham quan Thung lũng Tình Yêu"
         public double Cost { get; set; }  // Chi phí dự kiến
         public string Type { get; set; }  // "Ăn uống", "Vui chơi", "Tham quan"
+        public string Description { get; set; } = string.Empty; // Mô tả chi tiết
     }
 }

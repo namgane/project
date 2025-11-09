@@ -5,12 +5,18 @@
 }
 
 <div class="container mt-5">
-    <div class="card shadow p-4 mx-auto" style="max-width:720px;">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-            <h6 class="text-muted mb-0">Câu hỏi @ViewBag.QuestionIndex / @ViewBag.TotalQuestions</h6>
-            <span class="badge bg-primary">@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%</span>
+    <div class="card shadow border-0 mx-auto" style="max-width:720px;">
+        <div class="card-header bg-white border-0 pt-4 pb-0">
+            <div class="d-flex justify-content-between align-items-center">
+                <h6 class="text-muted mb-0">Câu hỏi @ViewBag.QuestionIndex / @ViewBag.TotalQuestions</h6>
+                <span class="badge bg-primary rounded-pill">@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%</span>
+            </div>
+            <div class="progress mt-3" style="height: 8px;">
+                <div class="progress-bar" role="progressbar" style="width:@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%" aria-valuenow="@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
         </div>
-        <h3 class="fw-bold mb-4">@ViewBag.Question</h3>
+        <div class="card-body p-4">
+            <h3 class="fw-bold mb-4">@ViewBag.Question</h3>
 
         <form method="post" asp-action="Question">
             <input type="hidden" name="key" value="@key" />
@@ -19,8 +25,8 @@
                 @foreach (var opt in options)
                 {
                     var inputId = ($"opt_{opt}").Replace(" ", "_");
-                    <label class="list-group-item d-flex align-items-center">
-                        <input class="form-check-input me-2" type="radio" name="answer" value="@opt" id="@inputId" required />
+                    <label class="list-group-item list-group-item-action py-3 d-flex align-items-center" for="@inputId" style="cursor:pointer;">
+                        <input class="form-check-input me-3" type="radio" name="answer" value="@opt" id="@inputId" required />
                         <span class="fs-5">@opt</span>
                     </label>
                 }
@@ -32,11 +38,6 @@
                 </button>
             </div>
         </form>
-
-        <div class="mt-4">
-            <div class="progress" style="height: 10px;">
-                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)" style="width:@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%"></div>
-            </div>
         </div>
     </div>
 </div>

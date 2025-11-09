@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Tìm phương tiện di chuyển";
+    var places = (IEnumerable<string>)ViewBag.Places ?? Array.Empty<string>();
+}
+
+<div class="passport-hero py-5 mb-4 text-white">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-2"><i class="bi bi-bus-front me-2"></i>Tìm phương tiện</h1>
+        <p class="text-white-50 mb-0">Chọn tuyến From → To để xem gợi ý nhà cung cấp, giá và thời gian</p>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <form method="get" asp-action="Suggest" asp-controller="Transport" class="row g-3 align-items-end">
+                        <div class="col-md-5">
+                            <label class="form-label">Từ</label>
+                            <input class="form-control" name="from" list="allPlaces" placeholder="Ví dụ: Hà Nội" />
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label">Đến</label>
+                            <input class="form-control" name="to" list="allPlaces" placeholder="Ví dụ: Đà Nẵng" />
+                        </div>
+                        <div class="col-md-2 d-grid">
+                            <button class="btn btn-primary" type="submit">Tìm</button>
+                        </div>
+                        <datalist id="allPlaces">
+                            @foreach (var p in places)
+                            {
+                                <option value="@p"></option>
+                            }
+                        </datalist>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center text-muted">Gợi ý: Kết nối với TripPlanner để tự động gợi ý tuyến.</div>
+</div>
+
+
