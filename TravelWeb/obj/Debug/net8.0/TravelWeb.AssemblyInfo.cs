@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TravelWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+829acad33d2a256e263de6892dff19b68cad2635")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c87911a20018e256534e08f23265f73a726755bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("TravelWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TravelWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
