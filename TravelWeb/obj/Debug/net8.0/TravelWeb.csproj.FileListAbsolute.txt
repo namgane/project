@@ -1,860 +1,284 @@
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\appsettings.Development.json
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\appsettings.json
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.runtime.json
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.endpoints.json
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.exe
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.deps.json
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.runtimeconfig.json
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\TravelWeb.pdb
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Azure.Core.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Azure.Identity.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Humanizer.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Framework.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Locator.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Features.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Elfie.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Features.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Scripting.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.DiaSymReader.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.DotNet.Scaffolding.Shared.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\dotnet-aspnet-codegenerator-design.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Mono.TextTemplating.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.Common.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.Configuration.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.Frameworks.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.LibraryModel.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.Packaging.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.ProjectModel.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.Protocol.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\NuGet.Versioning.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.ClientModel.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.CodeDom.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Composition.Convention.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Composition.Hosting.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Composition.Runtime.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Composition.TypedParts.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Drawing.Common.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Formats.Asn1.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.IO.Pipelines.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Memory.Data.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Runtime.Caching.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Text.Encodings.Web.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Text.Json.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\System.Windows.Extensions.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\af\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ar\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\az\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\bg\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\bn-BD\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\da\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\el\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fa\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fi-FI\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr-BE\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\he\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\hr\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\hu\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\hy\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\id\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\is\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko-KR\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ku\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\lv\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ms-MY\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\mt\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\nb\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\nb-NO\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\nl\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ro\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\sk\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\sl\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\sr\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\sr-Latn\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\sv\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\th-TH\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\uk\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\uz-Cyrl-UZ\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\uz-Latn-UZ\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\vi\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-CN\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Humanizer.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Features.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
-C:\virtual\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.AssemblyReference.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.GeneratedMSBuildEditorConfig.editorconfig
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfoInputs.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfo.cs
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.CoreCompileInputs.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.MvcApplicationPartsAssemblyInfo.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cs
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.sourcelink.json
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\scopedcss\bundle\TravelWeb.styles.css
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\scopedcss\projectbundle\TravelWeb.bundle.scp.css
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\staticwebassets.development.json
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.Up2Date
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.dll
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\refint\TravelWeb.dll
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.pdb
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\TravelWeb.genruntimeconfig.cache
-C:\virtual\project\TravelWeb\obj\Debug\net8.0\ref\TravelWeb.dll
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.AssemblyReference.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\rpswa.dswa.cache.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.GeneratedMSBuildEditorConfig.editorconfig
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfoInputs.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfo.cs
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.CoreCompileInputs.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.MvcApplicationPartsAssemblyInfo.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cs
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.sourcelink.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.dll
-D:\Me\project\TravelWeb\obj\Debug\net8.0\refint\TravelWeb.dll
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.pdb
-D:\Me\project\TravelWeb\bin\Debug\net8.0\appsettings.Development.json
-D:\Me\project\TravelWeb\bin\Debug\net8.0\appsettings.json
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.runtime.json
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.endpoints.json
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.exe
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.deps.json
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.runtimeconfig.json
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\TravelWeb.pdb
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Azure.Core.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Azure.Identity.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Humanizer.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Framework.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Locator.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Features.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Elfie.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Features.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Scripting.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.DiaSymReader.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.DotNet.Scaffolding.Shared.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\dotnet-aspnet-codegenerator-design.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Mono.TextTemplating.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\Newtonsoft.Json.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.Common.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.Configuration.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.Frameworks.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.LibraryModel.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.Packaging.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.ProjectModel.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.Protocol.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\NuGet.Versioning.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.ClientModel.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.CodeDom.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Composition.Convention.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Composition.Hosting.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Composition.Runtime.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Composition.TypedParts.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Drawing.Common.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Formats.Asn1.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.IO.Pipelines.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Memory.Data.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Runtime.Caching.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Text.Encodings.Web.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Text.Json.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\System.Windows.Extensions.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\af\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ar\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\az\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\bg\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\bn-BD\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\da\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\el\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fa\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fi-FI\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr-BE\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\he\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\hr\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\hu\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\hy\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\id\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\is\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko-KR\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ku\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\lv\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ms-MY\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\mt\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\nb\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\nb-NO\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\nl\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ro\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\sk\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\sl\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\sr\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\sr-Latn\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\sv\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\th-TH\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\uk\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\uz-Cyrl-UZ\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\uz-Latn-UZ\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\vi\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-CN\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Humanizer.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
-D:\Me\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
-D:\Me\project\TravelWeb\obj\Debug\net8.0\rjimswa.dswa.cache.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-D:\Me\project\TravelWeb\obj\Debug\net8.0\scopedcss\bundle\TravelWeb.styles.css
-D:\Me\project\TravelWeb\obj\Debug\net8.0\scopedcss\projectbundle\TravelWeb.bundle.scp.css
-D:\Me\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\staticwebassets.development.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.Up2Date
-D:\Me\project\TravelWeb\obj\Debug\net8.0\TravelWeb.genruntimeconfig.cache
-D:\Me\project\TravelWeb\obj\Debug\net8.0\ref\TravelWeb.dll
-D:\Me\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\appsettings.Development.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\appsettings.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.runtime.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.endpoints.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.exe
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.deps.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.runtimeconfig.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\TravelWeb.pdb
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Azure.Core.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Azure.Identity.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Humanizer.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Framework.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Locator.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Features.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Elfie.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Features.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Scripting.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.DiaSymReader.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.DotNet.Scaffolding.Shared.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\dotnet-aspnet-codegenerator-design.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Mono.TextTemplating.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\Newtonsoft.Json.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.Common.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.Configuration.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.Frameworks.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.LibraryModel.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.Packaging.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.ProjectModel.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.Protocol.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\NuGet.Versioning.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.ClientModel.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.CodeDom.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Composition.Convention.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Composition.Hosting.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Composition.Runtime.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Composition.TypedParts.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Drawing.Common.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Formats.Asn1.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.IO.Pipelines.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Memory.Data.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Runtime.Caching.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Text.Encodings.Web.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Text.Json.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\System.Windows.Extensions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\af\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ar\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\az\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\bg\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\bn-BD\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\da\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\el\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fa\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fi-FI\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr-BE\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\he\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\hr\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\hu\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\hy\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\id\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\is\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko-KR\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ku\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\lv\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ms-MY\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\mt\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\nb\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\nb-NO\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\nl\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ro\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\sk\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\sl\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\sr\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\sr-Latn\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\sv\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\th-TH\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\uk\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\uz-Cyrl-UZ\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\uz-Latn-UZ\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\vi\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-CN\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Humanizer.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Features.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.AssemblyReference.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\rpswa.dswa.cache.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.GeneratedMSBuildEditorConfig.editorconfig
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfoInputs.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfo.cs
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.CoreCompileInputs.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.MvcApplicationPartsAssemblyInfo.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cs
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.sourcelink.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\rjimswa.dswa.cache.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\scopedcss\bundle\TravelWeb.styles.css
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\scopedcss\projectbundle\TravelWeb.bundle.scp.css
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\staticwebassets.development.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.Up2Date
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\refint\TravelWeb.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.pdb
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\TravelWeb.genruntimeconfig.cache
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\ref\TravelWeb.dll
-D:\lam Game\BASICPROJECT\public\TravelWEB\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\appsettings.Development.json
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\appsettings.json
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.runtime.json
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.staticwebassets.endpoints.json
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.exe
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.deps.json
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.runtimeconfig.json
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\TravelWeb.pdb
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Azure.Core.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Azure.Identity.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Humanizer.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Framework.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Features.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Elfie.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Features.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Scripting.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.DiaSymReader.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.DotNet.Scaffolding.Shared.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\dotnet-aspnet-codegenerator-design.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.Common.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.Configuration.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.Frameworks.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.LibraryModel.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.Packaging.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.ProjectModel.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.Protocol.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\NuGet.Versioning.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.ClientModel.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.CodeDom.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Memory.Data.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Text.Json.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\af\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ar\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\az\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\bg\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\bn-BD\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\da\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\el\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fa\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fi-FI\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr-BE\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\he\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\hr\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\hu\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\hy\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\id\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\is\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko-KR\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ku\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\lv\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ms-MY\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\mt\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\nb\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\nb-NO\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\nl\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ro\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\sk\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\sl\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\sr\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\sr-Latn\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\sv\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\th-TH\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\uk\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\uz-Cyrl-UZ\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\uz-Latn-UZ\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\vi\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-CN\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Humanizer.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Features.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\virtual\TavelWeb\project\TravelWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.AssemblyReference.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.GeneratedMSBuildEditorConfig.editorconfig
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfoInputs.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.AssemblyInfo.cs
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.CoreCompileInputs.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.MvcApplicationPartsAssemblyInfo.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.RazorAssemblyInfo.cs
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.sourcelink.json
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\scopedcss\bundle\TravelWeb.styles.css
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\scopedcss\projectbundle\TravelWeb.bundle.scp.css
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\staticwebassets.development.json
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.csproj.Up2Date
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.dll
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\refint\TravelWeb.dll
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.pdb
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\TravelWeb.genruntimeconfig.cache
+C:\virtual\TavelWeb\project\TravelWeb\obj\Debug\net8.0\ref\TravelWeb.dll

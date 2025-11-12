@@ -1,39 +1,76 @@
-﻿@model IEnumerable<TravelWeb.Models.User>
-
+﻿@model List<TravelWeb.Models.User>
 @{
     ViewData["Title"] = "Danh sách người dùng";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Danh sách người dùng</h2>
+<h2 class="text-center mt-4">Danh sách người dùng</h2>
 
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Tên đăng nhập</th>
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Điện thoại</th>
-                <th>Quyền</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in Model)
-            {
+<div class="container mt-4">
+    <div class="mb-3">
+        <a asp-action="PendingUsers" class="btn btn-warning">
+            <i class="bi bi-clock-history"></i> Tài khoản chờ duyệt
+            (@Model.Count(u => u.Email == "pending@approval.com"))
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <td>@user.Id</td>
-                    <td>@user.Username</td>
-                    <td>@user.FullName</td>
-                    <td>@user.Email</td>
-                    <td>@user.Phone</td>
-                    <td>@user.Role</td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Xem</a>
-                    </td>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    // Xác định trạng thái dựa vào Email
+                    var status = "";
+                    var statusClass = "";
+                    var displayEmail = user.Email;
+
+                    if (user.Email == "pending@approval.com")
+                    {
+                        status = "⏳ Chờ duyệt";
+                        statusClass = "bg-warning";
+                        // Parse email thật từ Phone field
+                        if (!string.IsNullOrEmpty(user.Phone) && user.Phone.StartsWith("EMAIL:"))
+                        {
+                            displayEmail = user.Phone.Split("|")[0].Replace("EMAIL:", "");
+                        }
+                    }
+                    else if (user.Email == "rejected@approval.com")
+                    {
+                        status = "✗ Từ chối";
+                        statusClass = "bg-danger";
+                        displayEmail = "N/A";
+                    }
+                    else
+                    {
+                        status = "✓ Đã duyệt";
+                        statusClass = "bg-success";
+                    }
+
+                    <tr>
+                        <td>@user.Id</td>
+                        <td><strong>@user.Username</strong></td>
+                        <td>@user.FullName</td>
+                        <td>@displayEmail</td>
+                        <td><span class="badge bg-primary">@user.Role</span></td>
+                        <td>
+                            <span class="badge @statusClass">@status</span>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

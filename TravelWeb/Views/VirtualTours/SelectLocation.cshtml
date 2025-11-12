@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Chọn vị trí Virtual Tour";
+    var tourId = ViewBag.TourId;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Leaflet CSS + JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+        }
+
+        .instruction {
+            text-align: center;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        #map {
+            width: 90%;
+            height: 600px;
+            margin: 30px auto;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            cursor: crosshair;
+        }
+
+        .back-btn {
+            background: #3949ab;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 15px auto;
+            display: block;
+        }
+
+            .back-btn:hover {
+                background: #1a237e;
+            }
+
+        .selected-marker {
+            animation: pulse 1s infinite;
+        }
+
+        @@keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instruction">
+        <h3>📍 Nhấp vào bản đồ để chọn vị trí Virtual Tour</h3>
+        <p>Sau khi chọn vị trí, bạn sẽ được chuyển đến trang tạo Virtual Tour</p>
+    </div>
+
+    <div id="map"></div>
+
+    <button class="back-btn" onclick="window.history.back()">← Quay lại</button>
+
+    <script>
+        const tourId = @tourId;
+
+        // Khởi tạo bản đồ Việt Nam
+        const map = L.map('map').setView([16.0544, 108.2022], 6);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        let selectedMarker = null;
+
+        // Khi click vào bản đồ
+        map.on('click', function(e) {
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
+
+            // Xóa marker cũ nếu có
+            if (selectedMarker) {
+                map.removeLayer(selectedMarker);
+            }
+
+            // Tạo icon con mắt
+            const eyeIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/159/159604.png',
+                iconSize: [40, 40],
+                iconAnchor: [20, 40],
+                popupAnchor: [0, -40]
+            });
+
+            // Thêm marker mới
+            selectedMarker = L.marker([lat, lng], {
+                icon: eyeIcon,
+                className: 'selected-marker'
+            }).addTo(map);
+
+            selectedMarker.bindPopup(`
+                <b>Vị trí đã chọn</b><br>
+                Lat: ${lat.toFixed(6)}<br>
+                Lng: ${lng.toFixed(6)}<br>
+                <button onclick="confirmLocation(${lat}, ${lng})" style="margin-top:10px; padding:5px 10px; background:#4CAF50; color:white; border:none; border-radius:4px; cursor:pointer;">
+                    ✓ Xác nhận & Tạo Virtual Tour
+                </button>
+            `).openPopup();
+        });
+
+        // Hàm xác nhận và chuyển trang
+        function confirmLocation(lat, lng) {
+            window.location.href = `/VirtualTours/Create?tourId=${tourId}&lat=${lat}&lng=${lng}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TravelWeb.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TravelWeb.Controllers
 {
@@ -18,6 +19,9 @@ namespace TravelWeb.Controllers
             ViewBag.Lat = lat;
             ViewBag.Lng = lng;
             ViewBag.Locations = _context.Locations.ToList();
+
+            // Lấy tất cả VirtualTours
+            ViewBag.VirtualTours = _context.VirtualTours.ToList();
 
             return View();
         }

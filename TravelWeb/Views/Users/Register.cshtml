@@ -1,57 +1,87 @@
 ﻿@model TravelWeb.Models.User
-
 @{
     ViewData["Title"] = "Đăng ký tài khoản";
+    var roles = ViewBag.Roles as List<string>;
 }
 
-<div class="container mt-5" style="max-width: 500px;">
-    <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
+<h2 class="text-center mt-4">Đăng ký tài khoản</h2>
 
-    @if (ViewBag.Error != null)
-    {
-        <div class="alert alert-danger text-center">@ViewBag.Error</div>
-    }
-    @if (ViewBag.Success != null)
-    {
-        <div class="alert alert-success text-center">@ViewBag.Success</div>
-    }
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger text-center">@ViewBag.Error</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["Success"]</div>
+}
 
-    <form asp-action="Register" method="post">
-        <div class="form-group mb-3">
-            <label for="Username">Tên đăng nhập</label>
-            <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
-            <span asp-validation-for="Username" class="text-danger"></span>
-        </div>
+<form asp-action="Register" method="post" class="container mt-4 col-md-6">
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label">Tên đăng nhập</label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
 
-        <div class="form-group mb-3">
-            <label for="Password">Mật khẩu</label>
-            <input asp-for="Password" class="form-control" type="password" placeholder="Nhập mật khẩu" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Mật khẩu</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
 
-        <div class="form-group mb-3">
-            <label for="FullName">Họ và tên</label>
-            <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên (tuỳ chọn)" />
-        </div>
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label">Họ và tên</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
 
-        <div class="form-group mb-3">
-            <label for="Email">Email</label>
-            <input asp-for="Email" class="form-control" placeholder="Nhập email (tuỳ chọn)" />
-        </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" type="email" class="form-control" />
+    </div>
 
-        <div class="form-group mb-4">
-            <label for="Phone">Số điện thoại</label>
-            <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại (tuỳ chọn)" />
-        </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label">Số điện thoại</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
 
-        <button type="submit" class="btn btn-success w-100">Đăng ký</button>
-    </form>
+    <div class="mb-3">
+        <label asp-for="Role" class="form-label">Loại tài khoản</label>
+        <select asp-for="Role" class="form-select" id="roleSelect">
+            <option value="">-- Chọn vai trò --</option>
+            <option value="Customer">Khách hàng (Customer)</option>
+            <option value="Hotel">Quản lý Khách sạn (Hotel)</option>
+            <option value="Flight">Quản lý Vé máy bay (Flight)</option>
+            <option value="Train">Quản lý Vé tàu (Train)</option>
+            <option value="Bus">Quản lý Vé xe buýt (Bus)</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+        <small class="form-text text-muted" id="roleNote"></small>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
 
     <p class="text-center mt-3">
-        Đã có tài khoản? <a asp-action="Login" asp-controller="Users">Đăng nhập ngay</a>
+        Đã có tài khoản? <a asp-action="Login">Đăng nhập</a>
     </p>
-</div>
+</form>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('roleSelect').addEventListener('change', function() {
+            var note = document.getElementById('roleNote');
+            var value = this.value;
+
+            if (value === 'Customer') {
+                note.innerHTML = '✅ Tài khoản khách hàng được kích hoạt ngay lập tức';
+                note.className = 'form-text text-success';
+            } else if (value && value !== '') {
+                note.innerHTML = '⏳ Tài khoản này cần được Admin phê duyệt trước khi sử dụng';
+                note.className = 'form-text text-warning';
+            } else {
+                note.innerHTML = '';
+            }
+        });
+    </script>
 }

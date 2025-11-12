@@ -30,6 +30,7 @@
             margin: 30px auto;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            cursor: crosshair;
         }
 
         .back-btn {
@@ -46,11 +47,68 @@
             .back-btn:hover {
                 background: #1a237e;
             }
+
+        .leaflet-popup-content-wrapper {
+            padding: 0;
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 350px;
+        }
+
+        .street-view-container {
+            width: 100%;
+            height: 250px;
+        }
+
+            .street-view-container iframe {
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+        .popup-header {
+            background: #3949ab;
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+        }
+
+        .alert {
+            width: 90%;
+            margin: 15px auto;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .alert-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #81c784;
+        }
+
+        .alert-danger {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
     </style>
 </head>
 
 <body>
-    <h2 class="text-center mt-3">Bản đồ @city</h2>
+    <h2 class="text-center mt-3">Bản đồ @city - Click để thêm Virtual Tour 👁️</h2>
+
+    <!-- ✅ Hiển thị thông báo thành công/lỗi -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger text-center">@TempData["ErrorMessage"]</div>
+    }
 
     <div id="map"></div>
 
@@ -62,8 +120,8 @@
         const lng = parseFloat("@lng");
         const city = "@city";
 
-        // Lấy dữ liệu địa điểm từ database (ViewBag)
-        const locations = @Html.Raw(JsonSerializer.Serialize(ViewBag.Locations));
+        const locations = @Html.Raw(JsonSerializer.Serialize(ViewBag.Locations ?? new List<object>()));
+        const virtualTours = @Html.Raw(JsonSerializer.Serialize(ViewBag.VirtualTours ?? new List<object>()));
 
         // ====== Khởi tạo bản đồ ======
         const map = L.map('map').setView([lat, lng], 13);
@@ -79,7 +137,7 @@
             .bindPopup(`<b>${city}</b><br>Vị trí trung tâm`)
             .openPopup();
 
-        // ====== Hàm tạo icon tùy loại ======
+        // ====== Icon cho loại địa điểm (icon nhỏ gọn) ======
         function getIcon(type) {
             let iconUrl;
             switch (type) {
@@ -96,18 +154,28 @@
                     iconUrl = "https://cdn-icons-png.flaticon.com/512/481/481817.png"; // park
                     break;
                 default:
-                    iconUrl = "https://cdn-icons-png.flaticon.com/512/252/252025.png"; // default
+                    iconUrl = "https://cdn-icons-png.flaticon.com/512/252/252025.png";
             }
 
             return L.icon({
                 iconUrl: iconUrl,
-                iconSize: [35, 35],
-                iconAnchor: [17, 35],
-                popupAnchor: [0, -30]
+                iconSize: [24, 24],  // 👈 icon nhỏ gọn lại
+                iconAnchor: [12, 24],
+                popupAnchor: [0, -20]
             });
         }
 
-        // ====== Hàm hiển thị tên loại ======
+        // ====== Icon con mắt cho Virtual Tour (nhỏ hơn) ======
+        function getEyeIcon() {
+            return L.icon({
+                iconUrl: "https://cdn-icons-png.flaticon.com/512/159/159604.png",
+                iconSize: [24, 24],  // 👈 nhỏ lại
+                iconAnchor: [12, 24],
+                popupAnchor: [0, -20]
+            });
+        }
+
+        // ====== Tên loại địa điểm ======
         function getTypeName(type) {
             switch (type) {
                 case 1: return "Khách sạn 🏨";
@@ -118,11 +186,10 @@
             }
         }
 
-        // ====== Hiển thị các marker từ database ======
+        // ====== Hiển thị marker địa điểm ======
         if (locations && locations.length > 0) {
             locations.forEach(loc => {
                 const icon = getIcon(loc.Type);
-
                 L.marker([loc.Lat, loc.Lng], { icon })
                     .addTo(map)
                     .bindPopup(`
@@ -131,9 +198,35 @@
                         <i>Loại: ${getTypeName(loc.Type)}</i>
                     `);
             });
-        } else {
-            console.warn("⚠️ Không có dữ liệu địa điểm trong ViewBag.Locations");
         }
+
+        // ====== Hiển thị Virtual Tour ======
+        if (virtualTours && virtualTours.length > 0) {
+            virtualTours.forEach(vt => {
+                const coords = vt.LocationName.split(',');
+                if (coords.length === 2) {
+                    const vtLat = parseFloat(coords[0]);
+                    const vtLng = parseFloat(coords[1]);
+                    const eyeIcon = getEyeIcon();
+
+                    const marker = L.marker([vtLat, vtLng], { icon: eyeIcon }).addTo(map);
+                    const popupContent = `
+                        <div class="popup-header">👁️ Virtual Tour</div>
+                        <div class="street-view-container">
+                            <iframe src="${vt.StreetViewLink}" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    `;
+                    marker.bindPopup(popupContent, { maxWidth: 350, className: 'street-view-popup' });
+                }
+            });
+        }
+
+        // ====== Click để thêm Virtual Tour ======
+        map.on('click', function (e) {
+            const clickedLat = e.latlng.lat;
+            const clickedLng = e.latlng.lng;
+            window.location.href = `/VirtualTours/Create?lat=${clickedLat}&lng=${clickedLng}`;
+        });
     </script>
 </body>
 </html>
