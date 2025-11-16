@@ -74,10 +74,10 @@
             pointer-events: none;
         }
 
-       /*  keyframes slowPan {
-            from { transform: scale(1.05) translateY(0px); }
-            to { transform: scale(1.08) translateY(-10px); }
-        } */
+        /*  keyframes slowPan {
+                                            from { transform: scale(1.05) translateY(0px); }
+                                            to { transform: scale(1.08) translateY(-10px); }
+                                        } */
 
         #map {
             position: relative;
@@ -96,11 +96,22 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 15px;
+            margin-right: 6px;
         }
 
             .back-btn:hover {
                 background: #1a237e;
             }
+
+        /* distance tooltip style */
+        .distance-tooltip.leaflet-tooltip {
+            background: rgba(0,0,0,0.75);
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
     </style>
 </head>
 
@@ -117,6 +128,10 @@
 
     <button class="back-btn" onclick="window.location.href='/Home/Index'">← Quay lại</button>
     <button class="back-btn" style="background:#2e7d32;" onclick="enableAddMode()">➕ Thêm địa điểm</button>
+
+    <!-- Click-select measurement UI (kept) -->
+    <button class="back-btn" style="background:#ffb300;" onclick="enableClickSelectMode()">📏 Chọn 2 điểm (click)</button>
+    <button class="back-btn" style="background:#6c757d;" onclick="clearAllMeasurements()">🧹 Xóa đo</button>
 
     <!-- Form nhập địa điểm -->
     <div id="addForm" style="display:none; background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
@@ -149,39 +164,30 @@
         // ====== Ảnh lễ hội để làm nền phía sau bản đồ ======
         const festivalImages = @Html.Raw(JsonSerializer.Serialize(festivalImages));
 
-        // Tạo lưới ảnh nền (collage) một cách hài hòa và chuyên nghiệp
+        // Tạo lưới ảnh nền (collage)
         (function buildMapBackground() {
             try {
                 const grid = document.getElementById('mapBgGrid');
                 if (!grid || !festivalImages || festivalImages.length === 0) return;
 
-                // Lấy danh sách ảnh giới hạn để không quá nặng UI
                 const pool = [...festivalImages];
-                // Trộn ngẫu nhiên nhẹ
                 for (let i = pool.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [pool[i], pool[j]] = [pool[j], pool[i]];
                 }
 
-                const maxTiles = 48; // 6 x 8 tối đa
+                const maxTiles = 48;
                 const used = pool.slice(0, Math.min(maxTiles, pool.length));
 
                 used.forEach((url, idx) => {
                     const tile = document.createElement('div');
                     tile.className = 'map-bg-item';
                     tile.style.backgroundImage = `url('${url}')`;
-                    // Một vài tile cao gấp đôi để tạo nhịp điệu thị giác
-                    if (idx % 11 === 0) {
-                        tile.style.gridRow = 'span 2';
-                    }
-                    // Một vài tile rộng gấp đôi
-                    if (idx % 13 === 0) {
-                        tile.style.gridColumn = 'span 2';
-                    }
+                    if (idx % 11 === 0) tile.style.gridRow = 'span 2';
+                    if (idx % 13 === 0) tile.style.gridColumn = 'span 2';
                     grid.appendChild(tile);
                 });
 
-                // Thay đổi một vài tile theo thời gian để cảm giác "sống"
                 let swapIndex = 0;
                 setInterval(() => {
                     const items = grid.querySelectorAll('.map-bg-item');
@@ -207,13 +213,130 @@
             attribution: '&copy; OpenStreetMap'
         }).addTo(map);
 
+        // ====== State for click-select distance measurement ======
+        const locList = []; // will hold { id, name, lat, lng, marker } (kept for future use)
+        const allDistanceLayerGroup = L.layerGroup().addTo(map);
+
+        let clickSelectMode = false;
+        let clickSelected = []; // { id, marker, latlng }
+        let clickLine = null;
+        let clickPopup = null;
+
+        function formatDistance(meters) {
+            if (meters >= 1000) return (meters / 1000).toFixed(2) + " km";
+            return Math.round(meters) + " m";
+        }
+
+        function haversine(lat1, lon1, lat2, lon2) {
+            const R = 6371e3; // metres
+            const φ1 = lat1 * Math.PI / 180;
+            const φ2 = lat2 * Math.PI / 180;
+            const Δφ = (lat2 - lat1) * Math.PI / 180;
+            const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+            const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                      Math.cos(φ1) * Math.cos(φ2) *
+                      Math.sin(Δλ/2) * Math.sin(Δλ/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+            return R * c; // in meters
+        }
+
+        // enable click-select mode (user clicks markers to select)
+        function enableClickSelectMode() {
+            clickSelectMode = true;
+            clearClickSelection(false);
+        }
+
+        function clearClickSelection(resetAlert = true) {
+            clickSelected.forEach(s => {
+                if (s.marker && typeof s.marker.setOpacity === 'function') {
+                    s.marker.setOpacity(1.0);
+                    s.marker.setZIndexOffset(0);
+                }
+            });
+            clickSelected = [];
+            if (clickLine) {
+                map.removeLayer(clickLine);
+                clickLine = null;
+            }
+            if (clickPopup) {
+                map.removeLayer(clickPopup);
+                clickPopup = null;
+            }
+            if (resetAlert) console.info("Click selection cleared.");
+        }
+
+        function onMarkerClickSelect(e) {
+            if (!clickSelectMode) {
+                // default: open popup if not in selection mode
+                e.target.openPopup();
+                return;
+            }
+
+            const marker = e.target;
+            const id = marker._locId;
+            const latlng = marker.getLatLng();
+
+            const existingIndex = clickSelected.findIndex(x => x.id === id);
+            if (existingIndex !== -1) {
+                // deselect
+                marker.setOpacity(1.0);
+                marker.setZIndexOffset(0);
+                clickSelected.splice(existingIndex, 1);
+                if (clickLine) { map.removeLayer(clickLine); clickLine = null; }
+                if (clickPopup) { map.removeLayer(clickPopup); clickPopup = null; }
+                return;
+            }
+
+            // select
+            marker.setOpacity(0.6);
+            marker.setZIndexOffset(1000);
+            clickSelected.push({ id, marker, latlng });
+
+            if (clickSelected.length === 2) {
+                const a = clickSelected[0].latlng;
+                const b = clickSelected[1].latlng;
+                const meters = haversine(a.lat, a.lng, b.lat, b.lng);
+                const formatted = formatDistance(meters);
+
+                if (clickLine) map.removeLayer(clickLine);
+                clickLine = L.polyline([a, b], { color: '#ff8f00', weight: 4, dashArray: '6,6' }).addTo(allDistanceLayerGroup);
+
+                const midLat = (a.lat + b.lat) / 2;
+                const midLng = (a.lng + b.lng) / 2;
+                if (clickPopup) map.removeLayer(clickPopup);
+                clickPopup = L.popup({
+                    closeOnClick: false,
+                    autoClose: false,
+                    closeButton: true,
+                    className: 'distance-popup'
+                })
+                .setLatLng([midLat, midLng])
+                .setContent(`<b>Khoảng cách:</b> ${formatted}`)
+                .openOn(map);
+
+                // keep drawn line in allDistanceLayerGroup so it's preserved with other measurements
+                allDistanceLayerGroup.addLayer(clickLine);
+
+                // reset selection markers visual state but keep the line/popup
+                clickSelected.forEach(s => { s.marker.setOpacity(1.0); s.marker.setZIndexOffset(0); });
+                clickSelected = [];
+                // keep clickSelectMode true so user can measure more pairs without re-enabling
+            }
+        }
+
+        function clearAllMeasurements() {
+            allDistanceLayerGroup.clearLayers();
+            clearClickSelection(false);
+        }
+
         // Marker trung tâm
-        L.marker([lat, lng])
+        const centerMarker = L.marker([lat, lng], { title: "Trung tâm" })
             .addTo(map)
-            .bindPopup(`<b>${city}</b><br>Vị trí trung tâm`)
-            .openPopup();
+            .bindPopup(`<b>${city}</b><br>Vị trí trung tâm`);
 
-
+        // existing icon helpers
         function getIcon(type) {
             let iconUrl;
             switch (type) {
@@ -254,22 +377,33 @@
 
         // ====== Hiển thị các marker từ database ======
         if (locations && locations.length > 0) {
-            locations.forEach(loc => {
+            locations.forEach((loc, idx) => {
                 const icon = getIcon(loc.Type);
 
-                L.marker([loc.Lat, loc.Lng], { icon })
+                const marker = L.marker([loc.Lat, loc.Lng], { icon, title: loc.Ten })
                     .addTo(map)
                     .bindPopup(`
                         <img src="${loc.MoTa}" alt="${loc.Ten}" style="width:200px;height:auto;border-radius:8px;margin-top:5px;"><br>
                         <b>${loc.Ten}</b><br>
                         <i>Loại: ${getTypeName(loc.Type)}</i>
                     `);
+
+                // attach click handler that supports both normal popup and click-selection
+                marker._locId = idx; // custom property to identify marker
+                marker.on('click', onMarkerClickSelect);
+
+                // store into locList for potential future use
+                locList.push({
+                    id: idx,
+                    name: loc.Ten,
+                    lat: loc.Lat,
+                    lng: loc.Lng,
+                    marker: marker
+                });
             });
         } else {
             console.warn("⚠️ Không có dữ liệu địa điểm trong ViewBag.Locations");
         }
-
-
 
         let addMode = false;
         let tempMarker = null;
