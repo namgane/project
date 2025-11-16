@@ -12,10 +12,17 @@ namespace TravelWeb.Models
         [Required(ErrorMessage = "Vui lòng nhập ngân sách!")]
         [Range(1000000, 100000000, ErrorMessage = "Ngân sách phải từ 1,000,000 đến 100,000,000 VNĐ!")]
         [Display(Name = "Ngân sách (VNĐ)")]
-        public double Budget { get; set; } // VND
+        public double Budget { get; set; }
 
         [Range(1, 30, ErrorMessage = "Số ngày du lịch phải từ 1 đến 30 ngày!")]
         [Display(Name = "Số ngày du lịch")]
-        public int? Days { get; set; } // optional, có thể để trống
+        public int? Days { get; set; }
+
+        [Range(1, 50, ErrorMessage = "Số người phải từ 1 đến 50!")]
+        [Display(Name = "Số người đi")]
+        public int NumberOfPeople { get; set; } = 1;
+
+        [Display(Name = "Phương tiện di chuyển")]
+        public string TransportType { get; set; } = "Kết hợp tự động";
     }
 }

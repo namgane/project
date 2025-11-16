@@ -3,7 +3,10 @@
     "",
     "\\TravelWeb",
     "\\TravelWeb\\Controllers",
-    "\\TravelWeb\\Migrations"
+    "\\TravelWeb\\Views",
+    "\\TravelWeb\\Views\\Trip",
+    "\\TravelWeb\\Views\\TripPlanner"
   ],
+  "SelectedNode": "\\TravelWeb\\Views\\Trip\\Suggestions.cshtml",
   "PreviewInSolutionExplorer": false
 }

@@ -12,7 +12,7 @@ using TravelWeb.Data;
 namespace TravelWeb.Migrations
 {
     [DbContext(typeof(TravelContext))]
-    [Migration("20251109055008_InitialCreate")]
+    [Migration("20251113033942_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

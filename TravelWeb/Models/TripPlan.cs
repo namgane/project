@@ -11,5 +11,8 @@ namespace TravelWeb.Models
         public List<DailyExpense> DailyPlans { get; set; }
         public List<string> TransportOptions { get; set; }
         public List<string> HotelSuggestions { get; set; }
+
+        // Thông tin phương tiện chi tiết
+        public TransportCalculation TransportCalculation { get; set; }
     }
 }
