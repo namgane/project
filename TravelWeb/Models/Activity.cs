@@ -2,10 +2,13 @@
 {
     public class Activity
     {
-        public string Time { get; set; }  // Ví dụ: "Sáng", "Chiều", "Tối"
-        public string Name { get; set; }  // VD: "Tham quan Thung lũng Tình Yêu"
-        public double Cost { get; set; }  // Chi phí dự kiến
-        public string Type { get; set; }  // "Ăn uống", "Vui chơi", "Tham quan"
-        public string Description { get; set; } = string.Empty; // Mô tả chi tiết
+        public string Time { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public double Cost { get; set; }
+
+      
     }
 }
