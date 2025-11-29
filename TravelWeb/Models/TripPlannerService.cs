@@ -17,41 +17,97 @@ namespace TravelWeb.Models
             int people = Math.Max(1, request.NumberOfPeople);
             string transportType = request.TransportType ?? "Kết hợp tự động";
 
-            // Tính toán chi phí phương tiện theo số người
-            double transportBudget = CalculateTransportCost(transportType, days, budget, people);
-
             // Phân chia chi phí - Ăn uống & giải trí tính theo đầu người
             double foodBudgetPerPerson = (budget * 0.24) / people;
             double hotelBudget = budget * 0.28;
             double funBudgetPerPerson = (budget * 0.15) / people;
             double otherBudget = budget * 0.10;
 
+            // ✅ BƯỚC 1: Tạo lịch trình chi tiết VÀ ÁP DỤNG LỌC CHAY/MẶN NGAY TỪ ĐẦU
+            var dailyPlansResult = GenerateDailyExpenses(
+                request.Destination,
+                days,
+                foodBudgetPerPerson,
+                funBudgetPerPerson,
+                0,
+                transportType,
+                people,
+                request.IsVegetarian // ✅ TRUYỀN THAM SỐ LỌC MỚI
+            );
+
+            // ✅ BƯỚC 2 & 3: Tính toán khoảng cách và chi phí vận chuyển
+            double totalActualDistance = 0;
+            foreach (var day in dailyPlansResult)
+            {
+                foreach (var activity in day.Activities)
+                {
+                    if (activity.Type == "Di chuyển" && activity.Address != null)
+                    {
+                        var parts = activity.Address.Split('-');
+                        if (parts.Length >= 2)
+                        {
+                            var kmPart = parts[parts.Length - 1].Trim().Replace("km", "").Trim();
+                            if (double.TryParse(kmPart, out double km))
+                            {
+                                totalActualDistance += km;
+                            }
+                        }
+                    }
+                }
+            }
+
+            var transportCalc = CalculateDetailedTransportCost(
+                transportType,
+                days,
+                people,
+                totalActualDistance
+            );
+
+            // ✅ BƯỚC 4: Điều chỉnh chi phí di chuyển trong lịch trình
+            double totalTransportCostInItinerary = 0;
+            foreach (var day in dailyPlansResult)
+            {
+                foreach (var activity in day.Activities)
+                {
+                    if (activity.Type == "Di chuyển")
+                    {
+                        totalTransportCostInItinerary += activity.Cost;
+                    }
+                }
+            }
+
+            if (totalTransportCostInItinerary > 0 &&
+                transportType != "Xe riêng" &&
+                transportType != "Xe máy")
+            {
+                double adjustmentFactor = transportCalc.TotalTransportCost / totalTransportCostInItinerary;
+                foreach (var day in dailyPlansResult)
+                {
+                    foreach (var activity in day.Activities)
+                    {
+                        if (activity.Type == "Di chuyển")
+                        {
+                            activity.Cost *= adjustmentFactor;
+                        }
+                    }
+                }
+            }
+
             var plan = new TripPlan
             {
                 Destination = request.Destination,
                 SuggestedDays = days,
                 TotalBudget = request.Budget,
-                TransportOptions = SuggestTransport(request.Destination, transportBudget),
+                TransportOptions = SuggestTransport(request.Destination, transportCalc.TotalTransportCost),
                 HotelSuggestions = SuggestHotels(request.Destination, hotelBudget, people),
-                DailyPlans = GenerateDailyExpenses(request.Destination, days, foodBudgetPerPerson, funBudgetPerPerson, transportBudget, transportType, people)
+                DailyPlans = dailyPlansResult,
+                TransportCalculation = transportCalc
             };
 
-            // ✅ Tính toán chi tiết phương tiện
-            plan.TransportCalculation = TransportCalculatorService.CalculateTransport(
-                request.Destination,
-                transportType,
-                people,
-                "08:45"
-            );
+            // Tính lại EstimatedTotalCost
+            double totalDailyCost = plan.DailyPlans.Sum(d => d.TotalCost);
+            double estimatedTotal = totalDailyCost + hotelBudget + otherBudget + transportCalc.TotalTransportCost;
 
-            // Tính tổng chi phí thực tế
-            double totalDailyCost = 0;
-            foreach (var d in plan.DailyPlans)
-                totalDailyCost += d.TotalCost;
-
-            double estimatedTotal = totalDailyCost + hotelBudget + otherBudget;
-
-            // Đảm bảo chi phí không vượt ngân sách
             if (estimatedTotal > budget)
             {
                 double scaleFactor = (budget * 0.95) / estimatedTotal;
@@ -60,22 +116,13 @@ namespace TravelWeb.Models
                 {
                     foreach (var activity in dailyPlan.Activities)
                     {
-                        if (activity.Type == "Ăn uống" || activity.Type == "Giải trí" || activity.Type == "Di chuyển")
+                        if (activity.Type == "Ăn uống" || activity.Type == "Giải trí")
                         {
                             activity.Cost *= scaleFactor;
                         }
                     }
                 }
-
-                estimatedTotal = 0;
-                foreach (var d in plan.DailyPlans)
-                {
-                    double dayTotal = 0;
-                    foreach (var a in d.Activities)
-                        dayTotal += a.Cost;
-                    estimatedTotal += dayTotal;
-                }
-                estimatedTotal += hotelBudget + otherBudget;
+                estimatedTotal = plan.DailyPlans.Sum(d => d.TotalCost) + plan.TransportCalculation.TotalTransportCost + hotelBudget + otherBudget;
             }
 
             plan.EstimatedTotalCost = Math.Min(estimatedTotal, budget * 0.98);
@@ -83,99 +130,83 @@ namespace TravelWeb.Models
             return plan;
         }
 
-        // Tính chi phí phương tiện theo loại xe VÀ SỐ NGƯỜI
-        private static double CalculateTransportCost(string transportType, int days, double budget, int people)
+        // --- HÀM CalculateDetailedTransportCost (Giữ nguyên) ---
+        private static TransportCalculation CalculateDetailedTransportCost(
+            string transportType,
+            int days,
+            int people,
+            double totalDistance)
         {
-            int dailyTrips = 5; // Trung bình 5 chuyến/ngày
-            double avgDistancePerTrip = 8.0; // 8km/chuyến
-            double totalDistance = avgDistancePerTrip * dailyTrips * days;
+            int numVehicles = 0;
             double totalCost = 0;
+            double fuelCost = 0;
+            double rentalCost = 0;
 
             switch (transportType)
             {
                 case "Xe riêng":
-                    // ✅ XE RIÊNG = Xe máy của mình - CHỈ TỐN XĂNG (KHÔNG THUÊ)
-                    int numOwnMotorbikes = (int)Math.Ceiling(people / 2.0); // 2 người/xe
-                    double ownMotorbikeFuelConsumption = 2.5; // Lít/100km
-                    double fuelPrice = 23000; // VNĐ/lít
-                    double ownMotorbikeFuelCost = (totalDistance / 100) * ownMotorbikeFuelConsumption * fuelPrice;
-                    totalCost = ownMotorbikeFuelCost * numOwnMotorbikes; // CHỈ TÍNH XĂNG
-                    break;
-
-                case "Xe bus":
-                    // Vé bus cố định - NHÂN SỐ NGƯỜI
-                    double busFare = 7000; // ~7k/lượt/người
-                    totalCost = busFare * dailyTrips * days * people;
-                    break;
-
-                case "Taxi":
-                    // Giá theo km - CHIA CHO NHÓM (tối đa 4 người/xe)
-                    double taxiFarePerKm = 11000; // ~11k/km
-                    int numTaxis = (int)Math.Ceiling(people / 4.0); // 4 người/taxi
-                    totalCost = totalDistance * taxiFarePerKm * numTaxis;
+                    numVehicles = (int)Math.Ceiling(people / 2.0);
+                    double ownFuelConsumption = 2.5;
+                    double fuelPrice = 23000;
+                    fuelCost = (totalDistance / 100) * ownFuelConsumption * fuelPrice * numVehicles;
+                    totalCost = fuelCost;
                     break;
 
                 case "Xe máy":
-                    // ✅ XE MÁY THUÊ = 100k/ngày/xe + xăng (2 người/xe)
-                    int numMotorbikes = (int)Math.Ceiling(people / 2.0); // 2 người/xe
-                    double rentalCostPerBike = 100000 * days; // 100k/ngày/xe
-                    double motorbikeFuelConsumption = 2.5; // Lít/100km
-                    double motorbikeFuelCost = (totalDistance / 100) * motorbikeFuelConsumption * 23000;
-                    totalCost = (rentalCostPerBike + motorbikeFuelCost) * numMotorbikes;
+                    numVehicles = (int)Math.Ceiling(people / 2.0);
+                    rentalCost = 100000 * days * numVehicles;
+                    double rentFuelConsumption = 2.5;
+                    fuelCost = (totalDistance / 100) * rentFuelConsumption * 23000 * numVehicles;
+                    totalCost = rentalCost + fuelCost;
                     break;
 
+                case "Xe bus":
+                    numVehicles = 1;
+                    double busFarePerTrip = 7000;
+                    int tripsPerDay = 5;
+                    totalCost = busFarePerTrip * tripsPerDay * days * people;
+                    break;
+
+                case "Taxi":
                 case "Kết hợp tự động":
-                default:
-                    // Taxi/Grab trung bình - CHIA CHO NHÓM
-                    int numCars = (int)Math.Ceiling(people / 4.0);
-                    totalCost = totalDistance * 11000 * numCars;
+                    numVehicles = (int)Math.Ceiling(people / 4.0);
+                    double taxiRatePerKm = 11000;
+                    totalCost = totalDistance * taxiRatePerKm * numVehicles;
                     break;
             }
 
-            // Giới hạn không quá 20% ngân sách
-            double maxTransportBudget = budget * 0.20;
-            if (totalCost > maxTransportBudget)
+            double averageSpeed = 40;
+            double totalDuration = (totalDistance / averageSpeed) * 60;
+
+            return new TransportCalculation
             {
-                totalCost = maxTransportBudget;
-            }
-
-            return totalCost;
-        }
-
-        private static int SuggestDaysByBudget(double budget)
-        {
-            if (budget < 3000000) return 2;
-            if (budget < 6000000) return 3;
-            if (budget < 10000000) return 4;
-            return 5;
-        }
-
-        private static List<string> SuggestTransport(string dest, double budget)
-        {
-            return new List<string>
-            {
-                $"Xe giường nằm tới {dest} (khoảng {budget * 0.3:N0} VNĐ)",
-                $"Máy bay (nếu xa, tầm {budget * 0.7:N0} VNĐ)"
+                TransportType = transportType,
+                NumberOfPeople = people,
+                VehiclesNeeded = numVehicles,
+                TotalDistance = totalDistance,
+                TotalTransportCost = totalCost,
+                FuelCost = fuelCost,
+                TotalDuration = totalDuration,
+                Segments = new List<RouteSegment>()
             };
         }
 
-        private static List<string> SuggestHotels(string dest, double budget, int people)
-        {
-            // Tính số phòng cần (2-3 người/phòng)
-            int numRooms = (int)Math.Ceiling(people / 2.5); // Trung bình 2.5 người/phòng
-
-            return new List<string>
-            {
-                $"Khách sạn 3* tại trung tâm {dest} (~{(budget / numRooms / 3):N0} VNĐ/phòng/đêm) × {numRooms} phòng",
-                $"Homestay/Airbnb giá rẻ (~{(budget / numRooms / 5):N0} VNĐ/phòng/đêm) × {numRooms} phòng"
-            };
-        }
-
-        private static List<DailyExpense> GenerateDailyExpenses(string dest, int days, double foodBudgetPerPerson, double funBudgetPerPerson, double transportBudget, string transportType, int people)
+        // --- HÀM GenerateDailyExpenses ĐÃ SỬA ---
+        private static List<DailyExpense> GenerateDailyExpenses(
+            string dest,
+            int days,
+            double foodBudgetPerPerson,
+            double funBudgetPerPerson,
+            double transportBudget,
+            string transportType,
+            int people,
+            bool isVegetarian) // ✅ THAM SỐ MỚI ĐỂ LỌC
         {
             var dailyPlans = new List<DailyExpense>();
             var canonicalProvince = CuisineData.CanonicalProvinceName(dest);
-            var cuisineTop = CuisineData.GetTopByProvince(canonicalProvince, 20);
+
+            // ✅ LỌC MÓN ĂN NGAY TỪ ĐẦU DỰA TRÊN isVegetarian
+            var cuisineTop = CuisineData.GetTopByProvince(canonicalProvince, 20, isVegetarian);
 
             cuisineTop = cuisineTop.OrderBy(x => _random.Next()).ToList();
 
@@ -191,63 +222,59 @@ namespace TravelWeb.Models
             {
                 "Cà phê/Ngắm hoàng hôn",
                 "Cafe view đẹp/Chụp ảnh",
+                "Mua sắm/Thư giãn tại trung tâm"
             };
 
             var usedCuisineIndices = new HashSet<int>();
             var usedAttractionIndices = new HashSet<int>();
 
-            double dailyTransportCost = transportBudget / days;
             var (transportIcon, transportName) = GetTransportInfo(transportType);
 
-            // ✅ KHOẢNG CÁCH CAO HƠN VÀ RANDOM MỖI LẦN (4-8 km mỗi chặng)
-            double[] baseDistances = { 6.2, 7.0, 7.5, 7.8, 7.6 }; // 5 chặng/ngày, trung bình 5-7km
-            double[] segmentDistances = baseDistances.Select(d => d * (0.8 + _random.NextDouble() * 0.4)).ToArray(); // Random ±20%
-            double totalDailyDistance = segmentDistances.Sum();
+            double[] baseDistances = { 6.5, 7.2, 7.8, 7.3, 6.8 };
 
-            // Tính chi phí theo km (VNĐ/km) dựa trên loại phương tiện
+            int numVehicles;
+            if (transportType == "Xe bus")
+            {
+                numVehicles = 1;
+            }
+            else if (transportType == "Taxi" || transportType == "Kết hợp tự động")
+            {
+                numVehicles = (int)Math.Ceiling(people / 4.0);
+            }
+            else
+            {
+                numVehicles = (int)Math.Ceiling(people / 2.0);
+            }
+
             double costPerKm = 0;
             switch (transportType)
             {
                 case "Xe riêng":
                 case "Xe máy":
-                    // Xe máy: xăng 2.5 lít/100km × 23,000 đ/lít = 575 đ/km
                     costPerKm = (2.5 / 100) * 23000;
                     break;
                 case "Taxi":
                 case "Kết hợp tự động":
-                    // Taxi/Grab: ~11,000 đ/km
                     costPerKm = 11000;
                     break;
                 case "Xe bus":
-                    // Bus: giá cố định ~7,000 đ/lượt (không phụ thuộc km)
-                    costPerKm = dailyTransportCost / totalDailyDistance;
+                    costPerKm = 7000 / 8.0;
                     break;
-                default:
-                    costPerKm = dailyTransportCost / totalDailyDistance;
-                    break;
-            }
-
-            // ✅ FIX: Số xe cần thiết (Taxi 4 người/xe, còn lại 2 người/xe)
-            int numVehicles;
-            if (transportType == "Xe bus")
-            {
-                numVehicles = 1; // Bus chở cả nhóm
-            }
-            else if (transportType == "Taxi" || transportType == "Kết hợp tự động")
-            {
-                numVehicles = (int)Math.Ceiling(people / 4.0); // Taxi: 4 người/xe
-            }
-            else // Xe riêng, Xe máy
-            {
-                numVehicles = (int)Math.Ceiling(people / 2.0); // 2 người/xe máy
             }
 
             for (int day = 1; day <= days; day++)
             {
                 var activities = new List<Activity>();
+                double[] segmentDistances = baseDistances
+                    .Select(d => d * (0.85 + _random.NextDouble() * 0.3))
+                    .ToArray();
 
-                // SÁNG: Ăn sáng
                 var breakfast = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
+                var lunch = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
+                var dinner = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
+                var attraction = GetRandomUnusedAttraction(attractions, usedAttractionIndices);
+
+                // --- SÁNG: Ăn sáng ---
                 if (breakfast != null)
                 {
                     activities.Add(new Activity
@@ -255,8 +282,9 @@ namespace TravelWeb.Models
                         Time = "07:00 - 08:30",
                         Type = "Ăn uống",
                         Name = $"Ăn sáng: {breakfast.Name}",
-                        Description = $"{breakfast.Description} — Món đặc trưng {canonicalProvince}. ({people} người)",
-                        Address = AddressData.GetBreakfastAddress(dest),
+                        // ✅ CẬP NHẬT MÔ TẢ ĐỂ PHẢN ÁNH CHẾ ĐỘ ĂN
+                        Description = $"{breakfast.Description} — Món {(isVegetarian ? "chay " : "")}đặc trưng {canonicalProvince}. ({people} người)",
+                        Address = AddressData.GetBreakfastAddress(dest, breakfast.Name),
                         Cost = (double)breakfast.AveragePrice * people * RandomVariation()
                     });
                 }
@@ -273,21 +301,19 @@ namespace TravelWeb.Models
                     });
                 }
 
-                // DI CHUYỂN đến điểm tham quan
+                // --- DI CHUYỂN 1: Đến điểm tham quan ---
                 double distance1 = segmentDistances[0];
-                double cost1 = distance1 * costPerKm * numVehicles;
                 activities.Add(new Activity
                 {
                     Time = "08:45 - 09:15",
                     Type = "Di chuyển",
                     Name = $"{transportIcon} {transportName} đến điểm tham quan",
-                    Description = $"Di chuyển từ nơi ăn sáng đến điểm du lịch. ({distance1:F1} km)",
+                    Description = $"Di chuyển từ nơi ăn sáng đến điểm du lịch. ({numVehicles} xe)",
                     Address = $"📍 Từ khu trung tâm đến điểm tham quan - {distance1:F1} km",
-                    Cost = cost1
+                    Cost = distance1 * costPerKm * numVehicles
                 });
 
-                // THAM QUAN
-                var attraction = GetRandomUnusedAttraction(attractions, usedAttractionIndices);
+                // --- THAM QUAN ---
                 if (attraction != null)
                 {
                     activities.Add(new Activity
@@ -315,21 +341,19 @@ namespace TravelWeb.Models
                     });
                 }
 
-                // DI CHUYỂN đến nhà hàng
+                // --- DI CHUYỂN 2: Đến nhà hàng ---
                 double distance2 = segmentDistances[1];
-                double cost2 = distance2 * costPerKm * numVehicles;
                 activities.Add(new Activity
                 {
                     Time = "12:45 - 13:00",
                     Type = "Di chuyển",
                     Name = $"{transportIcon} {transportName} đến nhà hàng",
-                    Description = $"Di chuyển đến nhà hàng ăn trưa. ({distance2:F1} km)",
+                    Description = $"Di chuyển đến nhà hàng ăn trưa. ({numVehicles} xe)",
                     Address = $"📍 Từ điểm tham quan đến khu ẩm thực - {distance2:F1} km",
-                    Cost = cost2
+                    Cost = distance2 * costPerKm * numVehicles
                 });
 
-                // ĂN TRƯA
-                var lunch = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
+                // --- ĂN TRƯA ---
                 if (lunch != null)
                 {
                     activities.Add(new Activity
@@ -337,7 +361,8 @@ namespace TravelWeb.Models
                         Time = "13:00 - 14:30",
                         Type = "Ăn uống",
                         Name = $"Ăn trưa: {lunch.Name}",
-                        Description = $"{lunch.Description} — Giá trung bình khoảng {lunch.AveragePrice:N0} đ/người. ({people} người)",
+                        // ✅ CẬP NHẬT MÔ TẢ ĐỂ PHẢN ÁNH CHẾ ĐỘ ĂN
+                        Description = $"{lunch.Description} — Giá trung bình khoảng {lunch.AveragePrice:N0} đ/người. Món {(isVegetarian ? "chay " : "")}đặc trưng. ({people} người)",
                         Address = AddressData.GetRestaurantAddress(dest, lunch.Name),
                         Cost = (double)lunch.AveragePrice * people * RandomVariation()
                     });
@@ -355,20 +380,19 @@ namespace TravelWeb.Models
                     });
                 }
 
-                // DI CHUYỂN đến cafe
+                // --- DI CHUYỂN 3: Đến cafe ---
                 double distance3 = segmentDistances[2];
-                double cost3 = distance3 * costPerKm * numVehicles;
                 activities.Add(new Activity
                 {
                     Time = "14:45 - 15:00",
                     Type = "Di chuyển",
                     Name = $"{transportIcon} {transportName} đến quán cafe",
-                    Description = $"Di chuyển đến quán cafe nghỉ ngơi. ({distance3:F1} km)",
+                    Description = $"Di chuyển đến quán cafe nghỉ ngơi. ({numVehicles} xe)",
                     Address = $"📍 Từ nhà hàng đến khu cafe - {distance3:F1} km",
-                    Cost = cost3
+                    Cost = distance3 * costPerKm * numVehicles
                 });
 
-                // GIẢI TRÍ CHIỀU
+                // --- GIẢI TRÍ CHIỀU ---
                 var afternoonActivity = afternoonActivities[_random.Next(afternoonActivities.Count)];
                 activities.Add(new Activity
                 {
@@ -380,21 +404,19 @@ namespace TravelWeb.Models
                     Cost = (funBudgetPerPerson * people / days * 0.4) * RandomVariation()
                 });
 
-                // DI CHUYỂN về khách sạn
+                // --- DI CHUYỂN 4: Về khách sạn/nhà hàng ---
                 double distance4 = segmentDistances[3];
-                double cost4 = distance4 * costPerKm * numVehicles;
                 activities.Add(new Activity
                 {
                     Time = "17:45 - 18:15",
                     Type = "Di chuyển",
                     Name = $"{transportIcon} {transportName} về khách sạn/nhà hàng",
-                    Description = $"Di chuyển về khách sạn nghỉ ngơi hoặc đến nhà hàng ăn tối. ({distance4:F1} km)",
+                    Description = $"Di chuyển về khách sạn nghỉ ngơi hoặc đến nhà hàng ăn tối. ({numVehicles} xe)",
                     Address = $"📍 Từ quán cafe về khu trung tâm - {distance4:F1} km",
-                    Cost = cost4
+                    Cost = distance4 * costPerKm * numVehicles
                 });
 
-                // ĂN TỐI
-                var dinner = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
+                // --- ĂN TỐI ---
                 if (dinner != null)
                 {
                     activities.Add(new Activity
@@ -402,7 +424,8 @@ namespace TravelWeb.Models
                         Time = "18:30 - 20:00",
                         Type = "Ăn uống",
                         Name = $"Ăn tối: {dinner.Name}",
-                        Description = $"{dinner.Description} — Giá trung bình khoảng {dinner.AveragePrice:N0} đ/người. ({people} người)",
+                        // ✅ CẬP NHẬT MÔ TẢ ĐỂ PHẢN ÁNH CHẾ ĐỘ ĂN
+                        Description = $"{dinner.Description} — Giá trung bình khoảng {dinner.AveragePrice:N0} đ/người. Món {(isVegetarian ? "chay " : "")}đặc trưng. ({people} người)",
                         Address = AddressData.GetRestaurantAddress(dest, dinner.Name),
                         Cost = (double)dinner.AveragePrice * people * RandomVariation()
                     });
@@ -420,23 +443,94 @@ namespace TravelWeb.Models
                     });
                 }
 
-                // DI CHUYỂN về khách sạn cuối ngày
-                double distance5 = segmentDistances[4] * (0.8 + _random.NextDouble() * 0.4);
-                double cost5 = distance5 * costPerKm * numVehicles;
+                // --- DI CHUYỂN 5: Về khách sạn cuối ngày ---
+                double distance5 = segmentDistances[4];
                 activities.Add(new Activity
                 {
                     Time = "20:15 - 20:30",
                     Type = "Di chuyển",
                     Name = $"{transportIcon} {transportName} về khách sạn",
-                    Description = $"Kết thúc ngày, về khách sạn nghỉ ngơi. ({distance5:F1} km)",
+                    Description = $"Kết thúc ngày, về khách sạn nghỉ ngơi. ({numVehicles} xe)",
                     Address = $"📍 Từ nhà hàng về khách sạn - {distance5:F1} km",
-                    Cost = cost5
+                    Cost = distance5 * costPerKm * numVehicles
                 });
 
                 dailyPlans.Add(new DailyExpense { DayNumber = day, Activities = activities });
             }
 
             return dailyPlans;
+        }
+
+        // --- Các hàm hỗ trợ GetRandomUnused... (Giữ nguyên) ---
+        private static CuisineItem GetRandomUnusedCuisineItem(List<CuisineItem> cuisines, HashSet<int> usedIndices)
+        {
+            if (cuisines == null || cuisines.Count == 0) return null;
+
+            var availableIndices = Enumerable.Range(0, cuisines.Count)
+                .Where(i => !usedIndices.Contains(i))
+                .ToList();
+
+            if (availableIndices.Count == 0)
+            {
+                usedIndices.Clear();
+                availableIndices = Enumerable.Range(0, cuisines.Count).ToList();
+            }
+
+            if (availableIndices.Count == 0) return null;
+
+            var selectedIndex = availableIndices[_random.Next(availableIndices.Count)];
+            usedIndices.Add(selectedIndex);
+            return cuisines[selectedIndex];
+        }
+
+        private static AttractionPoint GetRandomUnusedAttraction(List<AttractionPoint> attractions, HashSet<int> usedIndices)
+        {
+            if (attractions == null || attractions.Count == 0) return null;
+
+            var availableIndices = Enumerable.Range(0, attractions.Count)
+                .Where(i => !usedIndices.Contains(i))
+                .ToList();
+
+            if (availableIndices.Count == 0)
+            {
+                usedIndices.Clear();
+                availableIndices = Enumerable.Range(0, attractions.Count).ToList();
+            }
+
+            if (availableIndices.Count == 0) return null;
+
+            var selectedIndex = availableIndices[_random.Next(availableIndices.Count)];
+            usedIndices.Add(selectedIndex);
+            return attractions[selectedIndex];
+        }
+
+        // ... (Các hàm hỗ trợ GetTransportInfo, SuggestDaysByBudget, SuggestTransport, SuggestHotels, RandomVariation giữ nguyên)
+        private static int SuggestDaysByBudget(double budget)
+        {
+            if (budget < 3000000) return 2;
+            if (budget < 6000000) return 3;
+            if (budget < 10000000) return 4;
+            return 5;
+        }
+
+        private static List<string> SuggestTransport(string dest, double budget)
+        {
+            return new List<string>
+            {
+                $"Xe giường nằm tới {dest} (khoảng {budget * 0.3:N0} VNĐ)",
+                $"Máy bay (nếu xa, tầm {budget * 0.7:N0} VNĐ)"
+            };
+        }
+
+        private static List<string> SuggestHotels(string dest, double budget, int people)
+        {
+            int numRooms = (int)Math.Ceiling(people / 2.5);
+
+            return new List<string>
+            {
+                $"Khách sạn 3* tại trung tâm {dest} (~{(budget / numRooms / 3):N0} VNĐ/phòng/đêm) × {numRooms} phòng",
+                $"Homestay/Airbnb giá rẻ (~{(budget / numRooms / 5):N0} VNĐ/phòng/đêm) × {numRooms} phòng"
+            };
         }
 
         private static (string Icon, string Name) GetTransportInfo(string transportType)
@@ -455,36 +549,6 @@ namespace TravelWeb.Models
                 default:
                     return ("🚕", "Grab/Taxi");
             }
-        }
-
-        private static CuisineItem GetRandomUnusedCuisineItem(List<CuisineItem> cuisines, HashSet<int> usedIndices)
-        {
-            if (cuisines == null || cuisines.Count == 0) return null;
-
-            var availableIndices = Enumerable.Range(0, cuisines.Count)
-                .Where(i => !usedIndices.Contains(i))
-                .ToList();
-
-            if (availableIndices.Count == 0) return null;
-
-            var selectedIndex = availableIndices[_random.Next(availableIndices.Count)];
-            usedIndices.Add(selectedIndex);
-            return cuisines[selectedIndex];
-        }
-
-        private static AttractionPoint GetRandomUnusedAttraction(List<AttractionPoint> attractions, HashSet<int> usedIndices)
-        {
-            if (attractions == null || attractions.Count == 0) return null;
-
-            var availableIndices = Enumerable.Range(0, attractions.Count)
-                .Where(i => !usedIndices.Contains(i))
-                .ToList();
-
-            if (availableIndices.Count == 0) return null;
-
-            var selectedIndex = availableIndices[_random.Next(availableIndices.Count)];
-            usedIndices.Add(selectedIndex);
-            return attractions[selectedIndex];
         }
 
         private static double RandomVariation()

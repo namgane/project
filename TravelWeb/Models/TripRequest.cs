@@ -24,5 +24,8 @@ namespace TravelWeb.Models
 
         [Display(Name = "Phương tiện di chuyển")]
         public string TransportType { get; set; } = "Kết hợp tự động";
+
+        [Display(Name = "Chế độ ăn chay")]
+        public bool IsVegetarian { get; set; } = false;
     }
 }

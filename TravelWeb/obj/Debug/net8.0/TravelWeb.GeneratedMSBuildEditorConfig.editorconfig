@@ -204,6 +204,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFBsYW5uZXJcUmVzdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/virtual/TavelWeb/project/TravelWeb/Views/TripPlanner/_DailyItineraryPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFBsYW5uZXJcX0RhaWx5SXRpbmVyYXJ5UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/virtual/TavelWeb/project/TravelWeb/Views/Trip/Suggestions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJpcFxTdWdnZXN0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
