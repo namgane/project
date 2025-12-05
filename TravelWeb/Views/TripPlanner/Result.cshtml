@@ -2,9 +2,11 @@
 
 @{
     ViewData["Title"] = "Kế hoạch du lịch - " + Model.Destination;
+
+    bool isVegetarian = ViewBag.IsVegetarian ?? false;
+    string vegetarianButtonText = isVegetarian ? "Chuyển sang Ăn Mặn" : "Chuyển sang Ăn Chay";
 }
 
-<!-- Hero Section -->
 <div class="hero-section bg-gradient-primary text-white">
     <div class="container">
         <div class="row align-items-center min-vh-50">
@@ -30,7 +32,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="stat-item">
-                            <h3 class="fw-bold text-warning">@Model.EstimatedTotalCost.ToString("N0")</h3>
+                            <h3 class="fw-bold text-warning" id="estimatedTotalCostDisplay">@Model.EstimatedTotalCost.ToString("N0")</h3>
                             <small>Chi phí ước tính (VNĐ)</small>
                         </div>
                     </div>
@@ -45,7 +47,6 @@
     </div>
 </div>
 
-<!-- Action Buttons -->
 <div class="container my-4">
     <div class="row">
         <div class="col-12">
@@ -67,7 +68,6 @@
     </div>
 </div>
 
-<!-- Main Content -->
 <div class="container my-5">
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
@@ -78,137 +78,71 @@
     </nav>
 
     <div class="row">
-        <!-- Left Column - Main Content -->
         <div class="col-lg-8">
-            <!-- Transport Details Section -->
-            <div class="card shadow-lg border-0 mb-4">
-                <div class="card-header bg-gradient bg-danger text-white">
-                    <h3 class="mb-0">
-                        <i class="fas fa-car-side me-2"></i>Chi tiết phương tiện di chuyển
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <!-- Transport Summary -->
-                    <div class="row mb-4">
-                        <div class="col-md-3">
-                            <div class="text-center p-3 bg-light rounded">
-                                <i class="fas fa-motorcycle fa-2x text-primary mb-2"></i>
-                                <h6 class="mb-0">@Model.TransportCalculation.TransportType</h6>
-                                <small class="text-muted">Phương tiện</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="text-center p-3 bg-light rounded">
-                                <i class="fas fa-users fa-2x text-success mb-2"></i>
-                                <h6 class="mb-0">@Model.TransportCalculation.VehiclesNeeded xe</h6>
-                                <small class="text-muted">Số xe cần</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="text-center p-3 bg-light rounded">
-                                <i class="fas fa-road fa-2x text-info mb-2"></i>
-                                <h6 class="mb-0">@Model.TransportCalculation.TotalDistance.ToString("N1") km</h6>
-                                <small class="text-muted">Tổng quãng đường</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="text-center p-3 bg-light rounded">
-                                <i class="fas fa-dollar-sign fa-2x text-warning mb-2"></i>
-                                <h6 class="mb-0">@Model.TransportCalculation.TotalTransportCost.ToString("N0") đ</h6>
-                                <small class="text-muted">Chi phí di chuyển</small>
-                            </div>
-                        </div>
+            @if (Model.TransportCalculation != null)
+            {
+                <div class="card shadow-lg border-0 mb-4">
+                    <div class="card-header bg-gradient bg-danger text-white">
+                        <h3 class="mb-0">
+                            <i class="fas fa-car-side me-2"></i>Chi tiết phương tiện di chuyển
+                        </h3>
                     </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="fas fa-motorcycle fa-2x text-primary mb-2"></i>
+                                    <h6 class="mb-0">@Model.TransportCalculation.TransportType</h6>
+                                    <small class="text-muted">Phương tiện</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="fas fa-users fa-2x text-success mb-2"></i>
+                                    <h6 class="mb-0">@Model.TransportCalculation.VehiclesNeeded xe</h6>
+                                    <small class="text-muted">Số xe cần</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="fas fa-road fa-2x text-info mb-2"></i>
+                                    <h6 class="mb-0">@Model.TransportCalculation.TotalDistance.ToString("N1") km</h6>
+                                    <small class="text-muted">Tổng quãng đường</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="fas fa-dollar-sign fa-2x text-warning mb-2"></i>
+                                    <h6 class="mb-0" id="transportTotalCostDisplay">@Model.TransportCalculation.TotalTransportCost.ToString("N0") đ</h6>
+                                    <small class="text-muted">Chi phí di chuyển</small>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Total Duration -->
-                    <div class="alert alert-success">
-                        <i class="fas fa-hourglass-half me-2"></i>
-                        <strong>Tổng thời gian di chuyển:</strong>
-                        @TravelWeb.Models.TransportCalculatorService.FormatDuration(Model.TransportCalculation.TotalDuration)
+                        <div class="alert alert-success">
+                            <i class="fas fa-hourglass-half me-2"></i>
+                            <strong>Tổng thời gian di chuyển:</strong>
+                            @TravelWeb.Models.TransportCalculatorService.FormatDuration(Model.TransportCalculation.TotalDuration)
+                        </div>
                     </div>
                 </div>
-            </div>
             }
 
-            <!-- Daily Itinerary -->
             <div class="card shadow-lg border-0 mb-4">
                 <div class="card-header bg-gradient bg-success text-white">
-                    <h3 class="mb-0">
-                        <i class="fas fa-calendar-alt me-2"></i>Lịch trình chi tiết
+                    <h3 class="mb-0 d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-calendar-alt me-2"></i>Lịch trình chi tiết
+                        </div>
+
                     </h3>
                 </div>
-                <div class="card-body">
-                    @foreach (var day in Model.DailyPlans)
-                    {
-                        <div class="timeline-item mb-4">
-                            <div class="timeline-marker">
-                                <i class="fas fa-calendar-day"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h4 class="timeline-title">Ngày @day.DayNumber</h4>
-                                <div class="activities-list">
-                                    @foreach (var activity in day.Activities)
-                                    {
-                                        <div class="activity-item">
-                                            <div class="activity-time">
-                                                <i class="fas fa-clock me-2"></i>@activity.Time
-                                            </div>
-                                            <div class="activity-details">
-                                                <h6 class="activity-name">
-                                                    @activity.Name
-                                                    @if (activity.Type == "Ăn uống")
-                                                    {
-                                                        <span class="badge bg-danger ms-2">
-                                                            <i class="fas fa-utensils"></i>
-                                                        </span>
-                                                    }
-                                                    else if (activity.Type == "Tham quan")
-                                                    {
-                                                        <span class="badge bg-info ms-2">
-                                                            <i class="fas fa-landmark"></i>
-                                                        </span>
-                                                    }
-                                                    else if (activity.Type == "Giải trí")
-                                                    {
-                                                        <span class="badge bg-warning ms-2">
-                                                            <i class="fas fa-coffee"></i>
-                                                        </span>
-                                                    }
-                                                </h6>
+                <div class="card-body" id="dailyItineraryContainer">
 
-                                                @if (!string.IsNullOrWhiteSpace(activity.Address))
-                                                {
-                                                    <div class="activity-address mb-2">
-                                                        <i class="fas fa-map-marker-alt text-danger me-1"></i>
-                                                        <span class="text-muted">@activity.Address</span>
-                                                    </div>
-                                                }
-
-                                                @if (!string.IsNullOrWhiteSpace(activity.Description))
-                                                {
-                                                    <p class="text-muted small mb-2">@activity.Description</p>
-                                                }
-
-                                                <div class="activity-meta">
-                                                    <span class="badge bg-info me-2">@activity.Type</span>
-                                                    <span class="activity-cost">
-                                                        <i class="fas fa-coins me-1"></i>@activity.Cost.ToString("N0") VNĐ
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                                <div class="day-total">
-                                    <strong>Tổng chi phí ngày @day.DayNumber: @day.TotalCost.ToString("N0") VNĐ</strong>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                    @await Html.PartialAsync("_DailyItineraryPartial", Model.DailyPlans)
                 </div>
             </div>
 
-            <!-- ✅ BẢNG TỔNG HỢP CHI PHÍ - DI CHUYỂN XUỐNG CUỐI -->
             @if (Model.TransportCalculation != null)
             {
                 <div class="card shadow-lg border-0 mb-4">
@@ -228,7 +162,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Khách sạn -->
                                     <tr>
                                         <td><i class="fas fa-hotel text-info me-2"></i><strong>Khách sạn</strong></td>
                                         <td class="text-end">
@@ -243,17 +176,15 @@
                                         <td class="text-end text-success fw-bold">@hotelBudget.ToString("N0") đ</td>
                                     </tr>
 
-                                    <!-- Phương tiện di chuyển -->
                                     <tr>
                                         <td><i class="fas fa-car-side text-danger me-2"></i><strong>Phương tiện</strong></td>
                                         <td class="text-end">
                                             @Model.TransportCalculation.TransportType: @Model.TransportCalculation.VehiclesNeeded xe<br />
                                             <small class="text-muted">(@Model.TransportCalculation.TotalDistance.ToString("N1") km)</small>
                                         </td>
-                                        <td class="text-end text-success fw-bold">@Model.TransportCalculation.TotalTransportCost.ToString("N0") đ</td>
+                                        <td class="text-end text-success fw-bold" id="totalTransportCostInTable">@Model.TransportCalculation.TotalTransportCost.ToString("N0") đ</td>
                                     </tr>
 
-                                    <!-- Chi tiết thuê xe (CHỈ HIỆN KHI LÀ XE MÁY THUÊ) -->
                                     @if (Model.TransportCalculation.TransportType == "Xe máy")
                                     {
                                         <tr class="table-light">
@@ -267,10 +198,9 @@
                                         </tr>
                                     }
 
-                                    <!-- Chi tiết xăng xe -->
                                     @if (Model.TransportCalculation.FuelCost > 0)
                                     {
-                                        <tr class="table-light">
+                                        <tr class="table-light" id="fuelCostRow">
                                             <td class="ps-5"><small><i class="fas fa-gas-pump me-2"></i>Tiền xăng</small></td>
                                             <td class="text-end">
                                                 <small>
@@ -281,19 +211,18 @@
                                                 </small>
                                             </td>
                                             <td class="text-end">
-                                                <small>@Model.TransportCalculation.FuelCost.ToString("N0") đ</small>
+                                                <small id="fuelCostDisplayInTable">@Model.TransportCalculation.FuelCost.ToString("N0") đ</small>
                                             </td>
                                         </tr>
                                     }
 
-                                    <!-- Ăn uống & Giải trí -->
                                     <tr>
                                         <td><i class="fas fa-utensils text-warning me-2"></i><strong>Ăn uống & Giải trí</strong></td>
                                         <td class="text-end">
                                             @Model.TransportCalculation.NumberOfPeople người × @Model.SuggestedDays ngày<br />
                                             <small class="text-muted">(Ăn 3 bữa + 1 hoạt động giải trí/ngày)</small>
                                         </td>
-                                        <td class="text-end text-success fw-bold">
+                                        <td class="text-end text-success fw-bold" id="totalDailyCostInTable">
                                             @{
                                                 double totalDailyCost = Model.DailyPlans.Sum(d => d.TotalCost);
                                             }
@@ -301,7 +230,6 @@
                                         </td>
                                     </tr>
 
-                                    <!-- Chi phí khác -->
                                     <tr>
                                         <td><i class="fas fa-shopping-bag text-secondary me-2"></i><strong>Chi phí khác</strong></td>
                                         <td class="text-end">
@@ -313,7 +241,7 @@
                                 <tfoot class="table-success">
                                     <tr>
                                         <th colspan="2" class="text-end fs-5">TỔNG CHI PHÍ ƯỚC TÍNH:</th>
-                                        <th class="text-end text-danger fs-4">@Model.EstimatedTotalCost.ToString("N0") đ</th>
+                                        <th class="text-end text-danger fs-4" id="finalEstimatedTotalCost">@Model.EstimatedTotalCost.ToString("N0") đ</th>
                                     </tr>
                                     <tr class="table-warning">
                                         <th colspan="2" class="text-end">Ngân sách ban đầu:</th>
@@ -321,7 +249,7 @@
                                     </tr>
                                     <tr class="table-info">
                                         <th colspan="2" class="text-end">Dự kiến tiết kiệm:</th>
-                                        <th class="text-end text-success">
+                                        <th class="text-end text-success" id="savingsAmount">
                                             @((Model.TotalBudget - Model.EstimatedTotalCost).ToString("N0")) đ
                                         </th>
                                     </tr>
@@ -329,7 +257,6 @@
                             </table>
                         </div>
 
-                        <!-- Thông báo quan trọng -->
                         <div class="alert alert-info mt-3">
                             <i class="fas fa-info-circle me-2"></i>
                             <strong>Lưu ý:</strong>
@@ -345,9 +272,7 @@
             }
         </div>
 
-        <!-- Right Column - Sidebar -->
         <div class="col-lg-4">
-            <!-- Quick Summary -->
             <div class="card shadow-lg border-0 mb-4">
                 <div class="card-header bg-gradient bg-secondary text-white">
                     <h5 class="mb-0">
@@ -369,7 +294,11 @@
                     </div>
                     <div class="summary-item">
                         <i class="fas fa-calculator text-info me-2"></i>
-                        <strong>Chi phí ước tính:</strong> @Model.EstimatedTotalCost.ToString("N0") VNĐ
+                        <strong>Chi phí ước tính:</strong> <span id="summaryEstimatedCost">@Model.EstimatedTotalCost.ToString("N0")</span> VNĐ
+                    </div>
+                    <div class="summary-item" id="vegetarianStatusSummary">
+                        <i class="fas fa-leaf text-success me-2"></i>
+                        <strong>Chế độ ăn:</strong> <span class="fw-bold text-danger">@(isVegetarian ? "Ăn Chay" : "Ăn Mặn")</span>
                     </div>
                     @if (Model.TransportCalculation != null)
                     {
@@ -385,7 +314,6 @@
                 </div>
             </div>
 
-            <!-- Travel Tips -->
             <div class="card shadow-lg border-0 mb-4">
                 <div class="card-header bg-gradient bg-dark text-white">
                     <h5 class="mb-0">
@@ -418,7 +346,6 @@
                 </div>
             </div>
 
-            <!-- Emergency Contacts -->
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-gradient bg-danger text-white">
                     <h5 class="mb-0">
@@ -477,7 +404,7 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
         }
 
     .card-header {
@@ -527,12 +454,12 @@
         padding: 1rem;
         background: white;
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         transition: all 0.3s ease;
     }
 
         .activity-item:hover {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transform: translateX(5px);
         }
 
@@ -592,7 +519,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
     .hero-image {
@@ -614,5 +541,20 @@
                 alert('Đã sao chép link vào clipboard!');
             });
         }
+    }
+
+    function decodeHtml(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
+    function parseCurrency(currencyString) {
+
+        return parseFloat(currencyString.replace(/[.,]/g, ''));
+    }
+
+    function formatCurrency(number) {
+        return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 </script>

@@ -3,20 +3,52 @@
   "WorkspaceRootPath": "C:\\virtual\\TavelWeb\\project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\views\\destination\\checkdestination.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\destination\\checkdestination.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\views\\tripplanner\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\addressdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\addressdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\destination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\destination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\tripplannerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\tripplannerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\controllers\\tripplannercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\controllers\\tripplannercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\transportcalculatorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\transportcalculatorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\triprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\triprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\cuisinedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\cuisinedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\views\\tripplanner\\_dailyitinerarypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\_dailyitinerarypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\tripplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\tripplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\activity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\activity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|c:\\virtual\\tavelweb\\project\\travelweb\\models\\dailyexpense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\dailyexpense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,51 +63,158 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CheckDestination.cshtml",
-              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\Destination\\CheckDestination.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Destination\\CheckDestination.cshtml",
-              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\Destination\\CheckDestination.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Destination\\CheckDestination.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-16T02:53:26.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TransportCalculatorService.cs",
-              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TransportCalculatorService.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportCalculatorService.cs",
-              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TransportCalculatorService.cs",
-              "RelativeToolTip": "TravelWeb\\Models\\TransportCalculatorService.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAQwIcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T00:32:12.331Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Result.cshtml",
               "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\TripPlanner\\Result.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
               "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\TripPlanner\\Result.cshtml",
               "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
-              "ViewState": "AgIAANQAAAAAAAAAAAAAAOQAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAABYCAAAAAAAAAAAkwC8CAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T02:07:52.915Z"
+              "WhenOpened": "2025-11-15T02:07:52.915Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\TripPlanner\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Index.cshtml",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\TripPlanner\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\Index.cshtml",
+              "ViewState": "AgIAAGYBAAAAAAAAAADwv28BAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T08:15:18.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Destination.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\Destination.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\Destination.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\Destination.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\Destination.cs",
+              "ViewState": "AgIAAFQHAAAAAAAAAAAqwGsHAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T08:00:13.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TripPlannerService.cs",
               "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TripPlannerService.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlannerService.cs",
               "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TripPlannerService.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TripPlannerService.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAswMkAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAOQBAAAAAAAAAAAcwPMBAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T06:29:19.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TripPlannerController.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Controllers\\TripPlannerController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\TripPlannerController.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Controllers\\TripPlannerController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\TripPlannerController.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T15:04:45.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TripRequest.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TripRequest.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\TripRequest.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TripRequest.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\TripRequest.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAcwB0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:55:43.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddressData.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\AddressData.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\AddressData.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\AddressData.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\AddressData.cs",
+              "ViewState": "AgIAACgDAAAAAAAAAAAcwJwDAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T03:52:04.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_DailyItineraryPartial.cshtml",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
+              "ViewState": "AgIAADcAAAAAAAAAAAAqwE4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T02:57:17.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Activity.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\Activity.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\Activity.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\Activity.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\Activity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T07:26:56.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CuisineData.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\CuisineData.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\CuisineData.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\CuisineData.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\CuisineData.cs",
+              "ViewState": "AgIAAB8BAAAAAAAAAAAiwCQBAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T03:56:06.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DailyExpense.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\DailyExpense.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\DailyExpense.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\DailyExpense.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\DailyExpense.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T07:27:09.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TripPlan.cs",
+              "DocumentMoniker": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TripPlan.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlan.cs",
+              "ToolTip": "C:\\virtual\\TavelWeb\\project\\TravelWeb\\Models\\TripPlan.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\TripPlan.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAowBEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T05:02:52.217Z",
               "EditorCaption": ""
             }
           ]

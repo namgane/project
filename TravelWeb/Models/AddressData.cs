@@ -8,7 +8,7 @@ namespace TravelWeb.Models
     {
         private static Random _random = new Random();
 
-        // Địa chỉ nhà hàng/quán ăn cụ thể (gấp 3-4 lần)
+        // Địa chỉ nhà hàng/quán ăn cụ thể (đã bổ sung quán chay cho mọi tỉnh)
         private static readonly Dictionary<string, List<string>> RestaurantAddresses = new Dictionary<string, List<string>>
         {
             ["Hà Nội"] = new List<string>
@@ -30,7 +30,18 @@ namespace TravelWeb.Models
                 "📍 Cơm Gà Bà Buội, 22 Phan Bội Châu, Hoàn Kiếm",
                 "📍 Quán Ăn Ngon, 18 Phan Bội Châu, Hoàn Kiếm",
                 "📍 Bánh Đúc Bà Châu, ngõ Hàng Khoai, Đống Đa",
-                "📍 Chè Lam, 108 Nguyễn Đình Chiểu, Hai Bà Trưng"
+                "📍 Chè Lam, 108 Nguyễn Đình Chiểu, Hai Bà Trưng",
+                // >>> 10 QUÁN CHAY TẠI HÀ NỘI (Đã bổ sung) <<<
+                "📍 Quán Chay Nàng Tấm, 79 Quán Sứ, Hoàn Kiếm",
+                "📍 Ưu Đàm Chay, 34 Hàng Bài, Hoàn Kiếm",
+                "📍 Veggie Castle (Buffet Chay), 7 Yên Ninh, Ba Đình",
+                "📍 Cơm Chay Khai Tâm, 141 Triệu Việt Vương, Hai Bà Trưng",
+                "📍 An Lạc Chay, 107 D11, Thái Thịnh, Đống Đa",
+                "📍 V's Home Cooking, 5 Đặng Thai Mai, Tây Hồ",
+                "📍 Buffet Chay Hương Thiền, 261 Xã Đàn, Đống Đa",
+                "📍 Nhà hàng Chay Vô Ưu, 55 Nguyễn Trãi, Thanh Xuân",
+                "📍 Quán Chay Bồ Đề Tâm, 88 Võ Thị Sáu, Hai Bà Trưng",
+                "📍 Cơm Chay Tịnh Thực, 59 Nguyễn Chí Thanh, Ba Đình"
             },
             ["Đà Lạt"] = new List<string>
             {
@@ -48,7 +59,18 @@ namespace TravelWeb.Models
                 "📍 Ốc Oanh, 43 Nguyễn Chí Thanh, Phường 1",
                 "📍 Chả Cá Đà Lạt, 6 Phan Như Thạch, Phường 1",
                 "📍 Gà Nướng Ụ Gà, 27 Hồ Tùng Mậu, Phường 3",
-                "📍 Đậu Hủ Khói Phương Mai, 204 Phan Đình Phùng, Phường 2"
+                "📍 Đậu Hủ Khói Phương Mai, 204 Phan Đình Phùng, Phường 2",
+                // >>> 10 QUÁN CHAY TẠI ĐÀ LẠT (Đã bổ sung) <<<
+                "📍 Quán chay Từ Hạnh, 14 Khe Sanh, Phường 10",
+                "📍 Cơm Chay An Lạc, 24/2 Nhà Chung, Phường 3",
+                "📍 Loving Hut (Ẩm thực quốc tế), 14 Khe Sanh, Phường 10",
+                "📍 Cơm Chay Sen, 78 Phan Đình Phùng, Phường 2",
+                "📍 Quán Chay Hoa Sen, 6 Thiện Ý, Phường 4",
+                "📍 Vườn Hồng Chay, 37 Bùi Thị Xuân, Phường 2",
+                "📍 Cơm Chay Giác Tâm, 57 Mai Hắc Đế, Phường 6",
+                "📍 Lẩu Chay Chùa, 10 Trương Công Định, Phường 1",
+                "📍 An Lạc Thiên Thuỷ, 185 Bùi Thị Xuân, Phường 2",
+                "📍 Buffet Chay Đà Lạt, 12 Nguyễn Văn Cừ, Phường 1"
             },
             ["Đà Nẵng"] = new List<string>
             {
@@ -66,7 +88,18 @@ namespace TravelWeb.Models
                 "📍 Lẩu Thái Sơn Trà, 200 Võ Nguyên Giáp, Sơn Trà",
                 "📍 Gỏi Cá Nam Ô, làng chài Nam Ô, Hòa Hiệp Nam",
                 "📍 Bánh Bột Lọc Huế, 88 Phan Chu Trinh, Hải Châu",
-                "📍 Chè Hẻm 49, 49 Trần Quốc Toản, Hải Châu"
+                "📍 Chè Hẻm 49, 49 Trần Quốc Toản, Hải Châu",
+                // >>> 10 QUÁN CHAY TẠI ĐÀ NẴNG (Đã bổ sung) <<<
+                "📍 Quán Chay Thiền Tâm, 90 Ngũ Hành Sơn, Ngũ Hành Sơn",
+                "📍 Cơm Chay Diệu Hương, 182 Phan Châu Trinh, Hải Châu",
+                "📍 Quán Chay An Lạc, 23/2A Lý Tự Trọng, Hải Châu",
+                "📍 Quán Chay Từ Thiện, 34/4 Hoàng Diệu, Hải Châu",
+                "📍 Cơm Chay Khai Tâm, 18 Lý Tự Trọng, Hải Châu",
+                "📍 Quán Chay Rõ ràng, 85 Ngô Quyền, Sơn Trà",
+                "📍 Chay Bát Nhã, 14/1 Lê Hồng Phong, Hải Châu",
+                "📍 Buffet Chay Hạnh Phúc, 123 Nguyễn Văn Linh, Hải Châu",
+                "📍 Bún Chay Cô Ba, 45 Lê Duẩn, Hải Châu",
+                "📍 Mì Chay Tịnh Tâm, 68 Trần Quốc Toản, Hải Châu"
             },
             ["Nha Trang"] = new List<string>
             {
@@ -82,7 +115,18 @@ namespace TravelWeb.Models
                 "📍 Bánh Canh Chả Cá 69, 69 Nguyễn Đức Thuận, Vĩnh Hòa",
                 "📍 Hải Sản Đại Dương, 112 Trần Phú, Lộc Thọ",
                 "📍 Bún Chả Cá Ngon, 95 Hoàng Hoa Thám, Lộc Thọ",
-                "📍 Chè Bưởi Nha Trang, 20 Thống Nhất, Vĩnh Hải"
+                "📍 Chè Bưởi Nha Trang, 20 Thống Nhất, Vĩnh Hải",
+                // >>> 10 QUÁN CHAY TẠI NHA TRANG (Đã bổ sung) <<<
+                "📍 Cơm Chay Bồ Đề, 89 Thống Nhất, Vạn Thắng",
+                "📍 Quán Chay Sen, 12 Lê Thành Phương, Vạn Thắng",
+                "📍 Cơm Chay Thiện Duyên, 100 Ngô Gia Tự, Phước Tiến",
+                "📍 Quán Chay An Nhiên, 45 Nguyễn Thị Minh Khai, Lộc Thọ",
+                "📍 Cơm Chay Tịnh Tâm, 32 Nguyễn Thiện Thuật, Lộc Thọ",
+                "📍 Lẩu Nấm Chay, 60 Trần Phú, Lộc Thọ",
+                "📍 Món Chay Âu Lạc, 12 Hùng Vương, Lộc Thọ",
+                "📍 Quán Chay Phúc Lộc Thọ, 25 Pasteur, Xương Huân",
+                "📍 Cơm Chay Hạnh Phúc, 77 Hoàng Văn Thụ, Phương Sài",
+                "📍 Quán Chay Tịnh Độ, 15 Trần Quý Cáp, Vạn Thắng"
             },
             ["TP.HCM"] = new List<string>
             {
@@ -101,7 +145,18 @@ namespace TravelWeb.Models
                 "📍 Cơm Tấm Sườn Bì, 138 Nguyễn Văn Cừ, Q1",
                 "📍 Bánh Mì Ông Màu, 43 Nguyễn Trãi, Q1",
                 "📍 Chè Thạch Sài Gòn, 89 Cách Mạng Tháng 8, Q3",
-                "📍 Bánh Khọt Vũng Tàu 81, 81 Đề Thám, Q1"
+                "📍 Bánh Khọt Vũng Tàu 81, 81 Đề Thám, Q1",
+                // >>> 10 QUÁN CHAY TẠI TP.HCM (Đã bổ sung) <<<
+                "📍 Hum Vegetarian (Cao cấp), 32 Võ Văn Tần, Q3",
+                "📍 Quán Chay Bùi Viện, 180 Nguyễn Công Trứ, Q1",
+                "📍 Quán Chay Bông Súng, 86 Nguyễn Công Trứ, Q1",
+                "📍 Chay Garden Restaurant, 52 Võ Văn Tần, Q3",
+                "📍 Nhà hàng Chay Mandala, 11 Sương Nguyệt Ánh, Q1",
+                "📍 Buffet Chay Chân Nguyên, 115 Nguyễn Thái Bình, Q1",
+                "📍 Chay Âu Lạc, 13-15-17 Huỳnh Đình Hai, Bình Thạnh",
+                "📍 Quán Chay Giác Ngộ, 39 Sư Vạn Hạnh, Q10",
+                "📍 Cơm Chay Diệu Lý, 115 Trần Hưng Đạo, Q5",
+                "📍 Lẩu Nấm Chay, 25 Nguyễn Bỉnh Khiêm, Q1"
             },
             ["Huế"] = new List<string>
             {
@@ -117,7 +172,18 @@ namespace TravelWeb.Models
                 "📍 Bún Nghệ Cô Hương, 15 Chí Lăng, Phú Hội",
                 "📍 Bánh Khoái Cô Đỡ, 11 Nguyễn Bỉnh Khiêm, Vĩnh Ninh",
                 "📍 Nem Lụi Lệ, 8 Phạm Hồng Thái, Vĩnh Ninh",
-                "📍 Bún Thịt Nướng Cô Mai, 17 Chí Lăng, Phú Hội"
+                "📍 Bún Thịt Nướng Cô Mai, 17 Chí Lăng, Phú Hội",
+                // >>> 10 QUÁN CHAY TẠI HUẾ (Đã bổ sung) <<<
+                "📍 Quán Chay Bồ Đề, 11 Lê Lợi, Vĩnh Ninh",
+                "📍 Cơm Chay Thanh Liễu, 50 Kim Long, Kim Long",
+                "📍 Cơm Chay Tịnh Tâm, 41 Bến Nghé, Phú Hội",
+                "📍 Quán Chay Liên Hoa, 3 Lê Quý Đôn, Phú Hội",
+                "📍 Quán Chay Tường Vân, 143 Trương Công Định, Thuận Thành",
+                "📍 Bánh Khoái Chay, 65 Nguyễn Công Trứ, Phú Hội",
+                "📍 Phở Chay Huế, 32 Chi Lăng, Phú Hậu",
+                "📍 Bún Chay Huế, 17 Nguyễn Khuyến, Phú Hội",
+                "📍 Quán Chay Diệu Đế, 100 Lý Thái Tổ, Phú Hậu",
+                "📍 Cơm Chay Hoa Đăng, 55 Lý Thường Kiệt, Phú Nhuận"
             },
             ["Phú Quốc"] = new List<string>
             {
@@ -130,7 +196,18 @@ namespace TravelWeb.Models
                 "📍 Bún Kèn Phú Quốc, 65 Nguyễn Trung Trực, Dương Đông",
                 "📍 Hàu Nướng Mỡ Hành, 120 Trần Hưng Đạo, Dương Đông",
                 "📍 Bánh Tráng Nướng, Chợ Đêm, Dương Đông",
-                "📍 Lẩu Hải Sản, 78 Bạch Đằng, Dương Đông"
+                "📍 Lẩu Hải Sản, 78 Bạch Đằng, Dương Đông",
+                // >>> 10 QUÁN CHAY TẠI PHÚ QUỐC (Đã bổ sung) <<<
+                "📍 Cơm Chay Bồ Đề, 100 Trần Hưng Đạo, Dương Đông",
+                "📍 Quán Chay Hạnh Phúc, 24 Nguyễn Trung Trực, Dương Đông",
+                "📍 Chay Thiên Lý, 123 30/4, Dương Đông",
+                "📍 Quán Chay Phước Thiện, 67 Bạch Đằng, Dương Đông",
+                "📍 Cơm Chay Phú Quốc, 40 Trần Hưng Đạo, Dương Đông",
+                "📍 Quán Chay Sen, 78 Trần Hưng Đạo, Dương Đông",
+                "📍 Cơm Chay An Nhiên, 11 Nguyễn Trãi, Dương Đông",
+                "📍 Chay Vĩnh Nghiêm, 90 Nguyễn Trung Trực, Dương Đông",
+                "📍 Quán Chay Từ Bi, 15 Dương Đông, Dương Đông",
+                "📍 Lẩu Chay Phú Quốc, 55 30/4, Dương Đông"
             },
             ["Hải Phòng"] = new List<string>
             {
@@ -141,7 +218,18 @@ namespace TravelWeb.Models
                 "📍 Chè Giun Cô Ba, 32 Minh Khai, Hồng Bàng",
                 "📍 Lẩu Cua Đồng, 156 Tô Hiệu, Lê Chân",
                 "📍 Cơm Rang Cua Bể, 67 Trần Nguyên Hãn, Lê Chân",
-                "📍 Bánh Bèo Hải Phòng, 25 Trần Phú, Ngô Quyền"
+                "📍 Bánh Bèo Hải Phòng, 25 Trần Phú, Ngô Quyền",
+                // >>> 10 QUÁN CHAY TẠI HẢI PHÒNG (Đã bổ sung) <<<
+                "📍 Quán Chay Tâm Liên, 22 Lương Khánh Thiện, Ngô Quyền",
+                "📍 Cơm Chay An Lạc, 55 Cát Cụt, Lê Chân",
+                "📍 Quán Chay Sen Vàng, 88 Hoàng Văn Thụ, Hồng Bàng",
+                "📍 Buffet Chay Bồ Đề, 123 Đà Nẵng, Ngô Quyền",
+                "📍 Quán Chay Vô Ưu, 45 Lê Lợi, Ngô Quyền",
+                "📍 Cơm Chay Hạnh Phúc, 78 Tô Hiệu, Lê Chân",
+                "📍 Quán Chay Thiện Tâm, 19 Điện Biên Phủ, Hồng Bàng",
+                "📍 Lẩu Chay Hải Phòng, 67 Lạch Tray, Ngô Quyền",
+                "📍 Món Chay Tịnh Độ, 11 Minh Khai, Hồng Bàng",
+                "📍 Quán Chay Từ Bi, 33 Trần Phú, Ngô Quyền"
             },
             ["Quảng Ninh"] = new List<string>
             {
@@ -149,42 +237,108 @@ namespace TravelWeb.Models
                 "📍 Chả Mực Hạ Long, 98 Hạ Long, Bãi Cháy",
                 "📍 Sứa Đỏ Quảng Ninh, 156 Vũ Văn Hiếu, Hạ Long",
                 "📍 Nem Cua Bể, 45 Bạch Đằng, Hạ Long",
-                "📍 Ốc Nướng Chợ Đêm, Chợ Đêm Hạ Long, Bãi Cháy"
+                "📍 Ốc Nướng Chợ Đêm, Chợ Đêm Hạ Long, Bãi Cháy",
+                // >>> 10 QUÁN CHAY TẠI QUẢNG NINH (Đã bổ sung) <<<
+                "📍 Cơm Chay A Di Đà, 325 Bãi Cháy, Hạ Long",
+                "📍 Quán Chay Vạn Hạnh, 18 Lê Thánh Tông, Hạ Long",
+                "📍 Quán Chay Tâm An, 68 Cái Dăm, Bãi Cháy",
+                "📍 Quán Chay Phúc Lộc Thọ, 45 Trần Hưng Đạo, Hạ Long",
+                "📍 Cơm Chay Thiện Tâm, 79 Nguyễn Văn Cừ, Hạ Long",
+                "📍 Quán Chay Chùa Lôi Âm, 11 Hoàng Hoa Thám, Hạ Long",
+                "📍 Buffet Chay Hạ Long, 123 Bãi Cháy, Hạ Long",
+                "📍 Quán Chay Vô Lượng, 88 Vũ Văn Hiếu, Hạ Long",
+                "📍 Cơm Chay Tịnh Độ, 55 Trần Phú, Cẩm Phả",
+                "📍 Quán Chay Từ Hạnh, 22 Cao Xanh, Hạ Long"
             },
             ["Lào Cai"] = new List<string>
             {
                 "📍 Thắng Cố Sapa, 15 Cầu Mây, Sa Pa",
                 "📍 Cá Tầm Sapa, 89 Fansipan, Sa Pa",
                 "📍 Lẩu Dê Đen, 45 Hoàng Liên, Sa Pa",
-                "📍 Bánh Mì Chảo Sapa, 67 Xuân Viên, Sa Pa"
+                "📍 Bánh Mì Chảo Sapa, 67 Xuân Viên, Sa Pa",
+                // >>> 10 QUÁN CHAY TẠI LÀO CAI (Đã bổ sung) <<<
+                "📍 Cơm Chay Sa Pa, 18 Thạch Sơn, Sa Pa",
+                "📍 Quán Chay Tịnh Tâm, 56 Xuân Viên, Sa Pa",
+                "📍 Chay Bồ Đề, 8 Cầu Mây, Sa Pa",
+                "📍 Cơm Chay Lào Cai, 123 Nguyễn Huệ, TP Lào Cai",
+                "📍 Quán Chay An Lạc, 45 Hàm Rồng, Sa Pa",
+                "📍 Chay Tâm An, 78 Ngũ Chỉ Sơn, Sa Pa",
+                "📍 Cơm Chay Thiện Duyên, 20 Fansipan, Sa Pa",
+                "📍 Quán Chay Vô Ưu, 35 Cầu Mây, Sa Pa",
+                "📍 Lẩu Chay Sapa, 99 Hoàng Liên, Sa Pa",
+                "📍 Món Chay Tịnh Độ, 11 Thạch Sơn, Sa Pa"
             },
             ["Ninh Bình"] = new List<string>
             {
                 "📍 Cơm Cháy Chả Cá, 12 Đường Hồng, Ninh Bình",
                 "📍 Dê Núi Ninh Bình, 56 Lê Hồng Phong, Ninh Bình",
                 "📍 Măng Tre Non, 23 Trần Hưng Đạo, Ninh Bình",
-                "📍 Miến Lươn Tam Cốc, 89 Tam Cốc, Hoa Lư"
+                "📍 Miến Lươn Tam Cốc, 89 Tam Cốc, Hoa Lư",
+                // >>> 10 QUÁN CHAY TẠI NINH BÌNH (Đã bổ sung) <<<
+                "📍 Cơm Chay Khánh Chi, 79 Tràng An, Hoa Lư",
+                "📍 Quán Chay Phù Vân, 33 Nguyễn Công Trứ, TP Ninh Bình",
+                "📍 Chay An Lạc, 123 Trần Hưng Đạo, TP Ninh Bình",
+                "📍 Cơm Chay Vĩnh Nghiêm, 55 Dinh Tiên Hoàng, TP Ninh Bình",
+                "📍 Quán Chay Hoa Lư, 18 Tam Cốc, Hoa Lư",
+                "📍 Chay Tịnh Tâm, 67 Lê Hồng Phong, TP Ninh Bình",
+                "📍 Cơm Chay Thiện Duyên, 20 Đường Hồng, TP Ninh Bình",
+                "📍 Quán Chay Vô Ưu, 88 Xuân Thành, TP Ninh Bình",
+                "📍 Lẩu Chay Ninh Bình, 99 Lê Thái Tổ, TP Ninh Bình",
+                "📍 Món Chay Từ Bi, 11 Nguyễn Văn Trỗi, TP Ninh Bình"
             },
             ["Thanh Hóa"] = new List<string>
             {
                 "📍 Nem Chua Thanh Hóa, 45 Phan Chu Trinh, TP Thanh Hóa",
                 "📍 Chả Rươi, 78 Trần Phú, TP Thanh Hóa",
                 "📍 Hải Sản Sầm Sơn, 123 Hồ Xuân Hương, Sầm Sơn",
-                "📍 Cơm Lam Thanh Hóa, 56 Quang Trung, TP Thanh Hóa"
+                "📍 Cơm Lam Thanh Hóa, 56 Quang Trung, TP Thanh Hóa",
+                // >>> 10 QUÁN CHAY TẠI THANH HÓA (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 77 Trường Thi, TP Thanh Hóa",
+                "📍 Cơm Chay Tịnh Tâm, 123 Hàng Đồng, TP Thanh Hóa",
+                "📍 Quán Chay Sen Vàng, 45 Phan Chu Trinh, TP Thanh Hóa",
+                "📍 Buffet Chay Thanh Hóa, 88 Lê Hoàn, TP Thanh Hóa",
+                "📍 Quán Chay Từ Bi, 22 Trần Phú, TP Thanh Hóa",
+                "📍 Cơm Chay Thiện Duyên, 67 Bà Triệu, TP Thanh Hóa",
+                "📍 Quán Chay Vô Ưu, 19 Hạc Thành, TP Thanh Hóa",
+                "📍 Lẩu Chay Sầm Sơn, 55 Hồ Xuân Hương, Sầm Sơn",
+                "📍 Món Chay Tịnh Độ, 99 Nguyễn Trãi, TP Thanh Hóa",
+                "📍 Quán Chay Phước Thiện, 11 Lê Quý Đôn, TP Thanh Hóa"
             },
             ["Nghệ An"] = new List<string>
             {
                 "📍 Bánh Mướt Nghệ An, 34 Quang Trung, TP Vinh",
                 "📍 Chả Cốm Cửa Lò, 89 Bình Minh, Cửa Lò",
                 "📍 Hải Sản Cửa Lò, 123 Bãi Biển, Cửa Lò",
-                "📍 Nem Chua Yên Thành, 67 Hà Huy Tập, TP Vinh"
+                "📍 Nem Chua Yên Thành, 67 Hà Huy Tập, TP Vinh",
+                // >>> 10 QUÁN CHAY TẠI NGHỆ AN (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Quang Trung, TP Vinh",
+                "📍 Cơm Chay Tịnh Tâm, 45 Nguyễn Thị Minh Khai, TP Vinh",
+                "📍 Quán Chay Sen, 78 Nguyễn Du, TP Vinh",
+                "📍 Buffet Chay Nghệ An, 99 Lê Lợi, TP Vinh",
+                "📍 Quán Chay Từ Bi, 22 Trần Phú, TP Vinh",
+                "📍 Cơm Chay Thiện Duyên, 67 Nguyễn Văn Cừ, TP Vinh",
+                "📍 Quán Chay Vô Ưu, 19 Lê Hồng Phong, TP Vinh",
+                "📍 Lẩu Chay Cửa Lò, 55 Bình Minh, Cửa Lò",
+                "📍 Món Chay Tịnh Độ, 99 Hà Huy Tập, TP Vinh",
+                "📍 Quán Chay Phước Thiện, 11 Hồ Tùng Mậu, TP Vinh"
             },
             ["Quảng Bình"] = new List<string>
             {
                 "📍 Ram Tép Quảng Bình, 45 Phạm Văn Đồng, Đồng Hới",
                 "📍 Bánh Xèo Tôm Nhảy, 78 Quách Xuân Kỳ, Đồng Hới",
                 "📍 Cháo Canh Quảng Bình, 123 Trương Phước Phan, Đồng Hới",
-                "📍 Bún Măng Vịt, 56 Lý Thường Kiệt, Đồng Hới"
+                "📍 Bún Măng Vịt, 56 Lý Thường Kiệt, Đồng Hới",
+                // >>> 10 QUÁN CHAY TẠI QUẢNG BÌNH (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Trần Hưng Đạo, Đồng Hới",
+                "📍 Cơm Chay Tịnh Tâm, 45 Phan Bội Châu, Đồng Hới",
+                "📍 Quán Chay Sen Vàng, 78 Quách Xuân Kỳ, Đồng Hới",
+                "📍 Buffet Chay Đồng Hới, 99 Lý Thường Kiệt, Đồng Hới",
+                "📍 Quán Chay Từ Bi, 22 Quang Trung, Đồng Hới",
+                "📍 Cơm Chay Thiện Duyên, 67 Phạm Văn Đồng, Đồng Hới",
+                "📍 Quán Chay Vô Ưu, 19 Hùng Vương, Đồng Hới",
+                "📍 Lẩu Chay Đồng Hới, 55 Nguyễn Hữu Cảnh, Đồng Hới",
+                "📍 Món Chay Tịnh Độ, 99 Mẹ Suốt, Đồng Hới",
+                "📍 Quán Chay Phước Thiện, 11 Lê Lợi, Đồng Hới"
             },
             ["Quảng Nam"] = new List<string>
             {
@@ -192,21 +346,54 @@ namespace TravelWeb.Models
                 "📍 Bánh Mì Phượng, 2B Phan Châu Trinh, Hội An",
                 "📍 Mỳ Quảng Bà Mua, 6B Trưng Nữ Vương, Hội An",
                 "📍 Cơm Gà Hội An, 12 Bà Triệu, Hội An",
-                "📍 Bánh Bao Bánh Vạc, 45 Nguyễn Thị Minh Khai, Hội An"
+                "📍 Bánh Bao Bánh Vạc, 45 Nguyễn Thị Minh Khai, Hội An",
+                // >>> 10 QUÁN CHAY TẠI QUẢNG NAM (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Trần Hưng Đạo, Hội An",
+                "📍 Cơm Chay Tịnh Tâm, 45 Phan Châu Trinh, Hội An",
+                "📍 Quán Chay Sen Vàng, 78 Lê Lợi, Hội An",
+                "📍 Buffet Chay Hội An, 99 Lý Thường Kiệt, Hội An",
+                "📍 Quán Chay Từ Bi, 22 Trần Phú, Hội An",
+                "📍 Cơm Chay Thiện Duyên, 67 Bà Triệu, Hội An",
+                "📍 Quán Chay Vô Ưu, 19 Nguyễn Thị Minh Khai, Hội An",
+                "📍 Lẩu Chay Hội An, 55 Cửa Đại, Hội An",
+                "📍 Món Chay Tịnh Độ, 99 Hùng Vương, Hội An",
+                "📍 Quán Chay Phước Thiện, 11 Thái Phiên, Hội An"
             },
             ["Bình Định"] = new List<string>
             {
                 "📍 Bánh Hỏi Lòng Heo, 78 Nguyễn Huệ, Quy Nhơn",
                 "📍 Nhum Biển Quy Nhơn, 123 Xuân Diệu, Quy Nhơn",
                 "📍 Bánh Ít Lá Gai, 45 Trần Hưng Đạo, Quy Nhơn",
-                "📍 Chả Ram Tôm Đất, 56 Lê Hồng Phong, Quy Nhơn"
+                "📍 Chả Ram Tôm Đất, 56 Lê Hồng Phong, Quy Nhơn",
+                // >>> 10 QUÁN CHAY TẠI BÌNH ĐỊNH (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Nguyễn Huệ, Quy Nhơn",
+                "📍 Cơm Chay Tịnh Tâm, 45 Lê Lợi, Quy Nhơn",
+                "📍 Quán Chay Sen Vàng, 78 Xuân Diệu, Quy Nhơn",
+                "📍 Buffet Chay Quy Nhơn, 99 Trần Hưng Đạo, Quy Nhơn",
+                "📍 Quán Chay Từ Bi, 22 Bạch Đằng, Quy Nhơn",
+                "📍 Cơm Chay Thiện Duyên, 67 Phan Chu Trinh, Quy Nhơn",
+                "📍 Quán Chay Vô Ưu, 19 Ngô Mây, Quy Nhơn",
+                "📍 Lẩu Chay Quy Nhơn, 55 Nguyễn Thái Học, Quy Nhơn",
+                "📍 Món Chay Tịnh Độ, 99 Trần Cao Vân, Quy Nhơn",
+                "📍 Quán Chay Phước Thiện, 11 Nguyễn Trãi, Quy Nhơn"
             },
             ["Phú Yên"] = new List<string>
             {
                 "📍 Bánh Hỏi Cháo Lòng, 34 Ngô Gia Tự, Tuy Hòa",
                 "📍 Bánh Căn Mini, 67 Trần Hưng Đạo, Tuy Hòa",
                 "📍 Cá Ngừ Đại Dương, 89 Lê Duẩn, Tuy Hòa",
-                "📍 Ốc Phú Yên, 123 Hùng Vương, Tuy Hòa"
+                "📍 Ốc Phú Yên, 123 Hùng Vương, Tuy Hòa",
+                // >>> 10 QUÁN CHAY TẠI PHÚ YÊN (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Hùng Vương, Tuy Hòa",
+                "📍 Cơm Chay Tịnh Tâm, 45 Lê Duẩn, Tuy Hòa",
+                "📍 Quán Chay Sen Vàng, 78 Trần Hưng Đạo, Tuy Hòa",
+                "📍 Buffet Chay Tuy Hòa, 99 Nguyễn Huệ, Tuy Hòa",
+                "📍 Quán Chay Từ Bi, 22 Bạch Đằng, Tuy Hòa",
+                "📍 Cơm Chay Thiện Duyên, 67 Ngô Gia Tự, Tuy Hòa",
+                "📍 Quán Chay Vô Ưu, 19 Duy Tân, Tuy Hòa",
+                "📍 Lẩu Chay Phú Yên, 55 Trần Phú, Tuy Hòa",
+                "📍 Món Chay Tịnh Độ, 99 Nguyễn Công Trứ, Tuy Hòa",
+                "📍 Quán Chay Phước Thiện, 11 Lê Lợi, Tuy Hòa"
             },
             ["Khánh Hòa"] = new List<string>
             {
@@ -214,14 +401,36 @@ namespace TravelWeb.Models
                 "📍 Nem Nướng Ninh Hòa, 78 Yersin, Nha Trang",
                 "📍 Bánh Căn Cô Ba, 45 Hoàng Hoa Thám, Nha Trang",
                 "📍 Bún Sứa Nha Trang, 67 Pasteur, Nha Trang",
-                "📍 Bánh Canh Chả Cá, 123 Nguyễn Thiện Thuật, Nha Trang"
+                "📍 Bánh Canh Chả Cá, 123 Nguyễn Thiện Thuật, Nha Trang",
+                // >>> 10 QUÁN CHAY TẠI KHÁNH HÒA (Đã bổ sung) <<<
+                "📍 Cơm Chay Bồ Đề, 89 Thống Nhất, Nha Trang",
+                "📍 Quán Chay Sen, 12 Lê Thành Phương, Nha Trang",
+                "📍 Cơm Chay Thiện Duyên, 100 Ngô Gia Tự, Nha Trang",
+                "📍 Quán Chay An Nhiên, 45 Nguyễn Thị Minh Khai, Nha Trang",
+                "📍 Cơm Chay Tịnh Tâm, 32 Nguyễn Thiện Thuật, Nha Trang",
+                "📍 Lẩu Nấm Chay, 60 Trần Phú, Nha Trang",
+                "📍 Món Chay Âu Lạc, 12 Hùng Vương, Nha Trang",
+                "📍 Quán Chay Phúc Lộc Thọ, 25 Pasteur, Nha Trang",
+                "📍 Cơm Chay Hạnh Phúc, 77 Hoàng Văn Thụ, Nha Trang",
+                "📍 Quán Chay Tịnh Độ, 15 Trần Quý Cáp, Nha Trang"
             },
             ["Bình Thuận"] = new List<string>
             {
                 "📍 Bánh Căn Phan Thiết, 45 Nguyễn Tất Thành, Phan Thiết",
                 "📍 Bánh Xèo Tôm Nhảy, 78 Trần Hưng Đạo, Phan Thiết",
                 "📍 Lẩu Thả Phan Thiết, 123 Nguyễn Huệ, Phan Thiết",
-                "📍 Hải Sản Mũi Né, 234 Nguyễn Đình Chiểu, Mũi Né"
+                "📍 Hải Sản Mũi Né, 234 Nguyễn Đình Chiểu, Mũi Né",
+                // >>> 10 QUÁN CHAY TẠI BÌNH THUẬN (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Nguyễn Huệ, Phan Thiết",
+                "📍 Cơm Chay Tịnh Tâm, 45 Trần Hưng Đạo, Phan Thiết",
+                "📍 Quán Chay Sen Vàng, 78 Nguyễn Tất Thành, Phan Thiết",
+                "📍 Buffet Chay Phan Thiết, 99 Thủ Khoa Huân, Phan Thiết",
+                "📍 Quán Chay Từ Bi, 22 Võ Văn Kiệt, Phan Thiết",
+                "📍 Cơm Chay Thiện Duyên, 67 Lê Hồng Phong, Phan Thiết",
+                "📍 Quán Chay Vô Ưu, 19 Hải Thượng Lãn Ông, Phan Thiết",
+                "📍 Lẩu Chay Mũi Né, 55 Nguyễn Đình Chiểu, Mũi Né",
+                "📍 Món Chay Tịnh Độ, 99 Trần Quý Cáp, Phan Thiết",
+                "📍 Quán Chay Phước Thiện, 11 Lý Thường Kiệt, Phan Thiết"
             },
             ["Lâm Đồng"] = new List<string>
             {
@@ -229,38 +438,97 @@ namespace TravelWeb.Models
                 "📍 Nem Nướng Đà Lạt, 89 Bùi Thị Xuân, Đà Lạt",
                 "📍 Bánh Căn Mini, 123 Nguyễn Thị Minh Khai, Đà Lạt",
                 "📍 Bánh Ướt Lòng Gà, 45 Hoàng Diệu, Đà Lạt"
+                // Lưu ý: Đà Lạt đã được liệt kê ở trên
             },
             ["Đắk Lắk"] = new List<string>
             {
                 "📍 Lẩu Cá Linh Bông Điên Điển, 45 Lê Duẩn, BMT",
                 "📍 Nem Nướng Gia Lai, 78 Phan Chu Trinh, BMT",
                 "📍 Cơm Lam Tây Nguyên, 123 Lý Thường Kiệt, BMT",
-                "📍 Gà Nướng Tây Nguyên, 56 Trần Nhật Duật, BMT"
+                "📍 Gà Nướng Tây Nguyên, 56 Trần Nhật Duật, BMT",
+                // >>> 10 QUÁN CHAY TẠI ĐẮK LẮK (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Lê Duẩn, BMT",
+                "📍 Cơm Chay Tịnh Tâm, 45 Phan Chu Trinh, BMT",
+                "📍 Quán Chay Sen Vàng, 78 Lý Thường Kiệt, BMT",
+                "📍 Buffet Chay BMT, 99 Nguyễn Công Trứ, BMT",
+                "📍 Quán Chay Từ Bi, 22 Trần Hưng Đạo, BMT",
+                "📍 Cơm Chay Thiện Duyên, 67 Phan Bội Châu, BMT",
+                "📍 Quán Chay Vô Ưu, 19 Y Jút, BMT",
+                "📍 Lẩu Chay Tây Nguyên, 55 Nguyễn Chí Thanh, BMT",
+                "📍 Món Chay Tịnh Độ, 99 Ama Khê, BMT",
+                "📍 Quán Chay Phước Thiện, 11 Ngô Quyền, BMT"
             },
             ["Cần Thơ"] = new List<string>
             {
                 "📍 Bánh Xèo Cần Thơ, 34 Hai Bà Trưng, Ninh Kiều",
                 "📍 Lẩu Mắm Cần Thơ, 67 Nguyễn An Ninh, Ninh Kiều",
                 "📍 Hủ Tiếu Cần Thơ, 89 Mậu Thân, Ninh Kiều",
-                "📍 Bún Riêu Cua Đồng, 123 Trần Phú, Ninh Kiều"
+                "📍 Bún Riêu Cua Đồng, 123 Trần Phú, Ninh Kiều",
+                // >>> 10 QUÁN CHAY TẠI CẦN THƠ (Đã bổ sung) <<<
+                "📍 Quán Chay 173, 173 Trần Hưng Đạo, Ninh Kiều",
+                "📍 Cơm Chay Bồ Đề, 89 Hùng Vương, Ninh Kiều",
+                "📍 Quán Chay Thiện Duyên, 56 Xô Viết Nghệ Tĩnh, Ninh Kiều",
+                "📍 Buffet Chay Cần Thơ, 99 Lý Tự Trọng, Ninh Kiều",
+                "📍 Quán Chay Từ Bi, 22 Mậu Thân, Ninh Kiều",
+                "📍 Cơm Chay An Lạc, 67 Nguyễn An Ninh, Ninh Kiều",
+                "📍 Quán Chay Vô Ưu, 19 Trần Văn Khéo, Ninh Kiều",
+                "📍 Lẩu Chay Miền Tây, 55 Hai Bà Trưng, Ninh Kiều",
+                "📍 Món Chay Tịnh Độ, 99 Trần Phú, Ninh Kiều",
+                "📍 Quán Chay Phước Thiện, 11 Ngô Quyền, Ninh Kiều"
             },
             ["An Giang"] = new List<string>
             {
                 "📍 Bún Nước Lèo, 45 Tôn Đức Thắng, Châu Đốc",
                 "📍 Lẩu Mắm U Minh, 78 Lê Lợi, Châu Đốc",
                 "📍 Cá Lóc Nướng Trui, 123 Núi Sam, Châu Đốc",
-                "📍 Bánh Xèo Miền Tây, 56 Nguyễn Văn Thoại, Châu Đốc"
+                "📍 Bánh Xèo Miền Tây, 56 Nguyễn Văn Thoại, Châu Đốc",
+                // >>> 10 QUÁN CHAY TẠI AN GIANG (Đã bổ sung) <<<
+                "📍 Quán Chay An Lạc, 123 Tôn Đức Thắng, Long Xuyên",
+                "📍 Cơm Chay Tịnh Tâm, 45 Lê Lợi, Châu Đốc",
+                "📍 Quán Chay Sen Vàng, 78 Trần Hưng Đạo, Long Xuyên",
+                "📍 Buffet Chay Châu Đốc, 99 Thủ Khoa Huân, Châu Đốc",
+                "📍 Quán Chay Từ Bi, 22 Nguyễn Văn Thoại, Châu Đốc",
+                "📍 Cơm Chay Thiện Duyên, 67 Nguyễn Trãi, Long Xuyên",
+                "📍 Quán Chay Vô Ưu, 19 Thoại Ngọc Hầu, Châu Đốc",
+                "📍 Lẩu Chay Núi Sam, 55 Núi Sam, Châu Đốc",
+                "📍 Món Chay Tịnh Độ, 99 Phan Huy Chú, Long Xuyên",
+                "📍 Quán Chay Phước Thiện, 11 Hai Bà Trưng, Châu Đốc"
             },
             ["Kiên Giang"] = new List<string>
             {
                 "📍 Hải Sản Phú Quốc, 234 Trần Hưng Đạo, Dương Đông",
                 "📍 Bún Quậy Phú Quốc, 123 30/4, Dương Đông",
                 "📍 Ghẹ Hấp Phú Quốc, 89 Nguyễn Trung Trực, Dương Đông",
-                "📍 Nhum Nướng Phú Quốc, 67 Bạch Đằng, Dương Đông"
+                "📍 Nhum Nướng Phú Quốc, 67 Bạch Đằng, Dương Đông",
+                // >>> 10 QUÁN CHAY TẠI KIÊN GIANG (Đã bổ sung) <<<
+                "📍 Cơm Chay Bồ Đề, 100 Trần Hưng Đạo, Rạch Giá",
+                "📍 Quán Chay Hạnh Phúc, 24 Nguyễn Trung Trực, Phú Quốc",
+                "📍 Chay Thiên Lý, 123 30/4, Rạch Giá",
+                "📍 Quán Chay Phước Thiện, 67 Bạch Đằng, Phú Quốc",
+                "📍 Cơm Chay Phú Quốc, 40 Trần Hưng Đạo, Phú Quốc",
+                "📍 Quán Chay Sen, 78 Trần Hưng Đạo, Rạch Giá",
+                "📍 Cơm Chay An Nhiên, 11 Nguyễn Trãi, Rạch Giá",
+                "📍 Chay Vĩnh Nghiêm, 90 Nguyễn Trung Trực, Rạch Giá",
+                "📍 Quán Chay Từ Bi, 15 Dương Đông, Phú Quốc",
+                "📍 Lẩu Chay Rạch Giá, 55 Trần Phú, Rạch Giá"
+            },
+            // DANH SÁCH CHUNG CHO CÁC MÓN CHAY (Key: "Chay")
+            ["Chay"] = new List<string>
+            {
+                "📍 Quán Chay Phổ Hiền, 123 Lương Định Của",
+                "📍 Cơm Chay Tịnh Tâm, 45 Trần Quang Khải",
+                "📍 Nhà hàng Chay Bồ Đề Tâm, 88 Võ Thị Sáu",
+                "📍 Quán Chay Vô Ưu, 55 Nguyễn Trãi",
+                "📍 Cơm Chay Thiện Duyên, 100 Ngô Gia Tự",
+                "📍 Quán Chay An Lạc, 77 Trường Thi",
+                "📍 Buffet Chay Sen Vàng, 99 Lý Thường Kiệt",
+                "📍 Món Chay Từ Bi, 22 Trần Hưng Đạo",
+                "📍 Quán Chay Phước Thiện, 11 Lê Lợi",
+                "📍 Lẩu Chay Thanh Đạm, 55 Nguyễn Du"
             }
         };
 
-        // Địa chỉ quán cafe cụ thể
+        // Địa chỉ quán cafe cụ thể (Giữ nguyên)
         private static readonly Dictionary<string, List<string>> CafeAddresses = new Dictionary<string, List<string>>
         {
             ["Hà Nội"] = new List<string>
@@ -420,7 +688,7 @@ namespace TravelWeb.Models
             }
         };
 
-        // Địa chỉ chợ đêm/khu ẩm thực
+        // Địa chỉ chợ đêm/khu ẩm thực (Giữ nguyên)
         private static readonly Dictionary<string, List<string>> NightMarketAddresses = new Dictionary<string, List<string>>
         {
             ["Hà Nội"] = new List<string>
@@ -551,16 +819,88 @@ namespace TravelWeb.Models
             }
         };
 
-        public static string GetRestaurantAddress(string destination, string dishName)
+        // =======================================================
+        // ✅ FIX LỖI OVERLOAD CHO GETBREAKFASTADDRESS
+        // =======================================================
+
+        // Phương thức gốc (chỉ nhận điểm đến)
+        public static string GetBreakfastAddress(string destination)
         {
-            if (RestaurantAddresses.TryGetValue(destination, out var addresses))
+            // Logic tương tự GetRestaurantAddress cho món ăn sáng
+            if (RestaurantAddresses.TryGetValue(destination, out var addresses) && addresses.Count > 0)
             {
-                return addresses[_random.Next(addresses.Count)];
+                // Loại bỏ các quán chay trong fallback mặc định nếu không có tên món cụ thể
+                var nonVegAddresses = addresses.Where(a => a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) < 0).ToList();
+                if (nonVegAddresses.Count > 0)
+                {
+                    return nonVegAddresses[_random.Next(nonVegAddresses.Count)];
+                }
             }
 
-            // Fallback với địa chỉ mặc định cũng cụ thể hơn
-            return $"📍 Khu phố ẩm thực trung tâm {destination}";
+            return $"📍 Quán ăn sáng địa phương trung tâm {destination}";
         }
+
+        // ✅ PHƯƠNG THỨC OVERLOAD ĐÃ FIX (Nhận 2 đối số)
+        public static string GetBreakfastAddress(string destination, string dishName)
+        {
+            // Nếu có tên món ăn cụ thể, ta thử tìm quán chay/mặn phù hợp
+            if (!string.IsNullOrWhiteSpace(dishName))
+            {
+                bool isVegetarian = dishName.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) >= 0;
+
+                if (RestaurantAddresses.TryGetValue(destination, out var localAddresses))
+                {
+                    var filteredAddresses = localAddresses.Where(a => a.IndexOf(isVegetarian ? "Chay" : "📍 Quán", StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                    if (filteredAddresses.Count > 0)
+                    {
+                        // Chọn một quán ngẫu nhiên từ danh sách đã lọc
+                        return filteredAddresses[_random.Next(filteredAddresses.Count)];
+                    }
+                }
+
+                // Fallback nếu không tìm thấy địa chỉ cụ thể: Dùng tên món ăn
+                return $"📍 Quán {dishName} tại khu vực {destination}";
+            }
+
+            // Fallback về phương thức gốc
+            return GetBreakfastAddress(destination);
+        }
+
+        // =======================================================
+        // ✅ FIX LOGIC VÀ CHUẨN HÓA LẠI GETRESTAURANTADDRESS (Đã có 2 tham số)
+        // =======================================================
+        public static string GetRestaurantAddress(string destination, string dishName)
+        {
+            // 1. Kiểm tra chế độ ăn
+            bool isVegetarian = dishName.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) >= 0;
+
+            if (RestaurantAddresses.TryGetValue(destination, out var addresses))
+            {
+                if (isVegetarian)
+                {
+                    // Lọc lấy các quán có chữ "Chay"
+                    var vegAddresses = addresses.Where(a => a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                    if (vegAddresses.Count > 0)
+                    {
+                        return vegAddresses[_random.Next(vegAddresses.Count)];
+                    }
+                }
+                else
+                {
+                    // Lọc lấy các quán KHÔNG có chữ "Chay" (Ăn Mặn)
+                    var nonVegAddresses = addresses.Where(a => a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) < 0).ToList();
+                    if (nonVegAddresses.Count > 0)
+                    {
+                        return nonVegAddresses[_random.Next(nonVegAddresses.Count)];
+                    }
+                }
+            }
+
+            // Fallback nếu không có địa chỉ cụ thể cho chế độ ăn đó
+            return $"📍 Khu phố ẩm thực {(isVegetarian ? "Chay " : "")} trung tâm {destination}";
+        }
+
 
         public static string GetCafeAddress(string destination)
         {
@@ -580,17 +920,6 @@ namespace TravelWeb.Models
             }
 
             return $"📍 Khu ẩm thực đêm {destination}";
-        }
-
-        public static string GetBreakfastAddress(string destination)
-        {
-            // Địa chỉ quán ăn sáng cụ thể
-            if (RestaurantAddresses.TryGetValue(destination, out var addresses) && addresses.Count > 0)
-            {
-                return addresses[_random.Next(addresses.Count)];
-            }
-
-            return $"📍 Quán ăn sáng địa phương trung tâm {destination}";
         }
     }
 }

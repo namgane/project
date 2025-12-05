@@ -4,7 +4,6 @@
 }
 
 <div class="container-fluid px-0">
-    <!-- Hero Section -->
     <div class="hero-section bg-gradient-primary text-white py-5">
         <div class="container">
             <div class="row align-items-center">
@@ -33,9 +32,7 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container my-5">
-        <!-- Alert Messages -->
         @if (TempData["ErrorMessage"] != null)
         {
             <div class="row justify-content-center mb-4">
@@ -62,10 +59,12 @@
             </div>
         }
 
-        <!-- Validation Summary -->
-        <div asp-validation-summary="All" class="alert alert-danger" role="alert" style="display: none;"></div>
+        <div asp-validation-summary="ModelOnly"
+             class="alert alert-danger"
+             role="alert"
+             style="@(ViewContext.ModelState.IsValid ? "display:none;" : "")">
+        </div>
 
-        <!-- Trip Planning Form -->
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow-lg border-0">
@@ -79,7 +78,6 @@
                     <div class="card-body p-5">
                         <form method="post" asp-action="Index" id="tripForm" novalidate>
                             <div class="row">
-                                <!-- Destination Input -->
                                 <div class="col-md-6 mb-4">
                                     <label for="Destination" class="form-label fw-bold">
                                         <i class="fas fa-map-marker-alt text-primary me-2"></i>Địa điểm du lịch
@@ -91,10 +89,10 @@
                                            placeholder="Ví dụ: Đà Lạt, Hội An, Phú Quốc..."
                                            value="@Model?.Destination"
                                            required>
+                                    <span asp-validation-for="Destination" class="text-danger"></span>
                                     <div class="form-text">Nhập tên thành phố hoặc địa điểm bạn muốn đến</div>
                                 </div>
 
-                                <!-- Budget Input -->
                                 <div class="col-md-6 mb-4">
                                     <label for="Budget" class="form-label fw-bold">
                                         <i class="fas fa-wallet text-success me-2"></i>Ngân sách (VNĐ)
@@ -111,11 +109,11 @@
                                                required>
                                         <span class="input-group-text">VNĐ</span>
                                     </div>
+                                    <span asp-validation-for="Budget" class="text-danger"></span>
                                     <div class="form-text">Ngân sách tối thiểu: 1,000,000 VNĐ</div>
                                 </div>
                             </div>
 
-                            <!-- Days and Number of People -->
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="Days" class="form-label fw-bold">
@@ -129,6 +127,7 @@
                                            value="@Model?.Days"
                                            min="1"
                                            max="30">
+                                    <span asp-validation-for="Days" class="text-danger"></span>
                                     <div class="form-text">Để trống nếu muốn AI gợi ý dựa trên ngân sách</div>
                                 </div>
 
@@ -145,13 +144,13 @@
                                            min="1"
                                            max="50"
                                            required>
+                                    <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
                                     <div class="form-text">Số người tham gia chuyến đi</div>
                                 </div>
                             </div>
 
-                            <!-- Transport Type -->
                             <div class="row">
-                                <div class="col-12 mb-4">
+                                <div class="col-md-6 mb-4">
                                     <label class="form-label fw-bold">
                                         <i class="fas fa-car text-danger me-2"></i>Phương tiện di chuyển
                                     </label>
@@ -162,11 +161,23 @@
                                         <option value="Taxi">Taxi</option>
                                         <option value="Xe máy">Xe máy</option>
                                     </select>
-                                    <div class="form-text">Hệ thống sẽ tự động đề xuất đi bộ cho chặng dưới 2km để tiết kiệm chi phí</div>
+                                    <span asp-validation-for="TransportType" class="text-danger"></span>
+                                    <div class="form-text">Hệ thống sẽ tự động đề xuất đi bộ cho chặng dưới 2km</div>
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    <label asp-for="IsVegetarian" class="form-label fw-bold">
+                                        <i class="fas fa-leaf text-success me-2"></i>Chế độ ăn
+                                    </label>
+                                    <select asp-for="IsVegetarian" class="form-select form-select-lg">
+                                        <option value="False" selected>Ăn Mặn (Mặc định)</option>
+                                        <option value="True">Ăn Chay</option>
+                                    </select>
+                                    <span asp-validation-for="IsVegetarian" class="text-danger"></span>
+                                    <div class="form-text">Chọn chế độ ăn để lọc nhà hàng</div>
                                 </div>
                             </div>
 
-                            <!-- Budget Breakdown Preview -->
                             <div class="row mb-4" id="budgetPreview" style="display: none;">
                                 <div class="col-12">
                                     <div class="card bg-light">
@@ -203,7 +214,6 @@
                                 </div>
                             </div>
 
-                            <!-- Submit Button -->
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-lg px-5 py-3" id="submitBtn">
                                     <i class="fas fa-magic me-2"></i>Tạo kế hoạch du lịch
@@ -215,7 +225,6 @@
             </div>
         </div>
 
-        <!-- Features Section -->
         <div class="row mt-5">
             <div class="col-12">
                 <h3 class="text-center mb-5">Tại sao chọn Trip Planner AI?</h3>
@@ -331,6 +340,7 @@
         function updateBudgetPreview() {
             const budget = parseFloat(budgetInput.value) || 0;
             if (budget > 0) {
+                // Phân bổ ngân sách dựa trên tỉ lệ giả định (30%, 20%, 25%, 15%)
                 accommodationBudget.textContent = formatCurrency(budget * 0.3);
                 transportBudget.textContent = formatCurrency(budget * 0.2);
                 foodBudget.textContent = formatCurrency(budget * 0.25);
@@ -341,9 +351,11 @@
             }
         }
 
+        // Khởi chạy lần đầu và lắng nghe sự kiện
+        updateBudgetPreview();
         budgetInput.addEventListener('input', updateBudgetPreview);
 
-        // Form validation
+        // Form submission and validation logic
         const form = document.getElementById('tripForm');
         form.addEventListener('submit', function(e) {
             const destination = document.getElementById('Destination').value.trim();

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<TravelWeb.Models.DailyExpense>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var day in Model)
+    {
+        <div class="timeline-item mb-4">
+            <div class="timeline-marker">
+                <i class="fas fa-calendar-day"></i>
+            </div>
+            <div class="timeline-content">
+                <h4 class="timeline-title">Ngày @day.DayNumber</h4>
+                <div class="activities-list">
+                    @foreach (var activity in day.Activities)
+                    {
+                        <div class="activity-item">
+                            <div class="activity-time">
+                                <i class="fas fa-clock me-2"></i>@activity.Time
+                            </div>
+                            <div class="activity-details">
+                                <h6 class="activity-name">
+                                    @activity.Name
+                                    @if (activity.Type == "Ăn uống")
+                                    {
+                                        <span class="badge bg-danger ms-2">
+                                            <i class="fas fa-utensils"></i>
+                                        </span>
+                                    }
+                                    else if (activity.Type == "Tham quan")
+                                    {
+                                        <span class="badge bg-info ms-2">
+                                            <i class="fas fa-landmark"></i>
+                                        </span>
+                                    }
+                                    else if (activity.Type == "Giải trí")
+                                    {
+                                        <span class="badge bg-warning ms-2">
+                                            <i class="fas fa-coffee"></i>
+                                        </span>
+                                    }
+                                </h6>
+
+                                @* ✅ HIỂN THỊ ĐỊA CHỈ/LỘ TRÌNH (Bao gồm cả chi tiết Di chuyển) *@
+                                @if (!string.IsNullOrWhiteSpace(activity.Address))
+                                {
+                                    <div class="activity-address mb-2">
+                                        <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                                        <span class="text-muted">@activity.Address</span>
+                                    </div>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(activity.Description))
+                                {
+                                    <p class="text-muted small mb-2">@activity.Description</p>
+                                }
+
+                                <div class="activity-meta">
+                                    <span class="badge bg-info me-2">@activity.Type</span>
+                                    <span class="activity-cost">
+                                        <i class="fas fa-coins me-1"></i><span class="activity-cost-value">@activity.Cost.ToString("N0")</span> VNĐ
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="day-total">
+                    <strong>Tổng chi phí ngày @day.DayNumber: <span class="day-total-cost">@day.TotalCost.ToString("N0")</span> VNĐ</strong>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-danger text-center">
+        <strong>Lỗi tải kế hoạch:</strong> Không thể tạo lịch trình chi tiết. Vui lòng thử lại.
+    </div>
+}
