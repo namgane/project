@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\lam Game\\BASICPROJECT\\public\\project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\tripplannerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\tripplannerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -179,10 +187,6 @@
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\festivaldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\virtualtours\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\virtualtours\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -261,23 +265,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TransportMode.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportMode.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportMode.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportMode.cs",
-              "RelativeToolTip": "TravelWeb\\Models\\TransportMode.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T07:02:04.917Z"
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T08:46:15.918Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "TripPlan.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlan.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlan.cs",
@@ -289,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "CuisineItem.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\CuisineItem.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\CuisineItem.cs",
@@ -301,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "TripPlannerService.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlannerService.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlannerService.cs",
@@ -314,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "_DailyItineraryPartial.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
@@ -326,7 +331,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\appsettings.json",
+              "RelativeDocumentMoniker": "TravelWeb\\appsettings.json",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\appsettings.json",
+              "RelativeToolTip": "TravelWeb\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-16T04:10:40.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TransportMode.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportMode.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportMode.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportMode.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\TransportMode.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T07:02:04.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "TripPlanOptionsViewModel.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlanOptionsViewModel.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlanOptionsViewModel.cs",
@@ -338,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "TripPlannerController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\TripPlannerController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\TripPlannerController.cs",
@@ -350,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "AddressData.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\AddressData.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\AddressData.cs",
@@ -362,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "CuisineProvinceViewModel.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\CuisineProvinceViewModel.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\CuisineProvinceViewModel.cs",
@@ -374,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ReviewsController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\ReviewsController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\ReviewsController.cs",
@@ -386,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "TransportController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\TransportController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\TransportController.cs",
@@ -398,7 +428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "PassportController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\PassportController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\PassportController.cs",
@@ -410,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "HotelsController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\HotelsController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\HotelsController.cs",
@@ -422,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "FeedbackController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\FeedbackController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\FeedbackController.cs",
@@ -434,7 +464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "FestivalController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\FestivalController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\FestivalController.cs",
@@ -446,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "ToursController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\ToursController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\ToursController.cs",
@@ -458,7 +488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "VirtualToursController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\VirtualToursController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\VirtualToursController.cs",
@@ -470,7 +500,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "BookingsController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\BookingsController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\BookingsController.cs",
@@ -482,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "CuisineController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\CuisineController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\CuisineController.cs",
@@ -494,7 +524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "OrderController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\OrderController.cs",
@@ -506,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "DestinationController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\DestinationController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\DestinationController.cs",
@@ -518,7 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "Result.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\Result.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
@@ -530,7 +560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Result.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Quiz\\Result.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Quiz\\Result.cshtml",
@@ -542,7 +572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "Order.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Order.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Order.cs",
@@ -554,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Index.cshtml",
@@ -566,7 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Index.cshtml",
@@ -578,7 +608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "TransportData.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportData.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportData.cs",
@@ -590,7 +620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Tour.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Tour.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Tour.cs",
@@ -602,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "Activity.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Activity.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Activity.cs",
@@ -614,7 +644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "Upcoming.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Festival\\Upcoming.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Festival\\Upcoming.cshtml",
@@ -626,7 +656,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "TravelContext.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TravelContext.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TravelContext.cs",
@@ -638,7 +668,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "TikTokSearchService.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TikTokSearchService.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TikTokSearchService.cs",
@@ -650,7 +680,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "20251205080137_Initial.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251205080137_Initial.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251205080137_Initial.cs",
@@ -662,7 +692,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "20251205075917_AddOrderTable.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251205075917_AddOrderTable.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251205075917_AddOrderTable.cs",
@@ -674,7 +704,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Location.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Location.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Location.cs",
@@ -686,7 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "CuisineData.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\CuisineData.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\CuisineData.cs",
@@ -698,7 +728,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "CheckDestination.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Destination\\CheckDestination.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Destination\\CheckDestination.cshtml",
@@ -710,7 +740,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "Destination.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Destination.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Destination.cs",
@@ -722,7 +752,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "QuizController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\QuizController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\QuizController.cs",
@@ -734,7 +764,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "DailyExpense.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\DailyExpense.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\DailyExpense.cs",
@@ -746,7 +776,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "FavoriteItem.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\FavoriteItem.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\FavoriteItem.cs",
@@ -758,7 +788,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "Festival.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Festival.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Festival.cs",
@@ -770,7 +800,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Map\\Index.cshtml",
@@ -782,7 +812,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "FestivalData.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\FestivalData.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\FestivalData.cs",
@@ -794,7 +824,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Edit.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Edit.cshtml",
@@ -806,7 +836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\VirtualTours\\Details.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\VirtualTours\\Details.cshtml",
@@ -818,19 +848,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\appsettings.json",
-              "RelativeDocumentMoniker": "TravelWeb\\appsettings.json",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\appsettings.json",
-              "RelativeToolTip": "TravelWeb\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-16T04:10:40.034Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -840,7 +858,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
@@ -852,7 +870,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
@@ -864,7 +882,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\VirtualTours\\Create.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\VirtualTours\\Create.cshtml",
@@ -876,7 +894,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\VirtualTours\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\VirtualTours\\Index.cshtml",
@@ -888,7 +906,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Delete.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Delete.cshtml",
@@ -900,7 +918,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\ErrorViewModel.cs",
@@ -912,7 +930,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "TransportOption.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportOption.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportOption.cs",
@@ -924,7 +942,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "TravelPassport.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TravelPassport.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TravelPassport.cs",
@@ -936,7 +954,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "TripRequest.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripRequest.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TripRequest.cs",
@@ -948,7 +966,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\User.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\User.cs",
@@ -960,7 +978,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "TripController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\TripController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\TripController.cs",
@@ -972,7 +990,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "TransportCalculatorService.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TransportCalculatorService.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TransportCalculatorService.cs",
@@ -984,7 +1002,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "MapController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\MapController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\MapController.cs",
@@ -996,7 +1014,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "Trip.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\Trip.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Models\\Trip.cs",
@@ -1008,7 +1026,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "UsersController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\UsersController.cs",
