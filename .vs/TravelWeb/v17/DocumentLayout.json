@@ -252,10 +252,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\migrations\\20251205081908_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\migrations\\20251205081908_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -277,8 +273,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\TransportMode.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwCUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T07:02:04.917Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T07:02:04.917Z"
             },
             {
               "$type": "Document",
@@ -290,8 +285,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\TripPlan.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAcwAoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:57:37.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:57:37.441Z"
             },
             {
               "$type": "Document",
@@ -303,8 +297,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\CuisineItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T05:53:50.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T05:53:50.275Z"
             },
             {
               "$type": "Document",
@@ -314,7 +307,7 @@
               "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlannerService.cs",
               "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlannerService.cs",
               "RelativeToolTip": "TravelWeb\\Models\\TripPlannerService.cs",
-              "ViewState": "AgIAAOgAAAAAAAAAAAAlwOIAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAlwPoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T06:29:19.894Z",
               "EditorCaption": ""
@@ -329,8 +322,7 @@
               "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABEAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-05T08:44:31.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T08:44:31.678Z"
             },
             {
               "$type": "Document",
@@ -342,8 +334,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\TripPlanOptionsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T08:59:41.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T08:59:41.017Z"
             },
             {
               "$type": "Document",
@@ -355,8 +346,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\TripPlannerController.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAIA3wDEAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T01:58:54.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T01:58:54.68Z"
             },
             {
               "$type": "Document",
@@ -368,8 +358,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\AddressData.cs",
               "ViewState": "AgIAACkDAAAAAAAAAAAhwEcDAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T07:24:09.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T07:24:09.497Z"
             },
             {
               "$type": "Document",
@@ -381,8 +370,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\CuisineProvinceViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T05:53:37.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T05:53:37.205Z"
             },
             {
               "$type": "Document",
@@ -394,8 +382,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\ReviewsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:22.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:22.557Z"
             },
             {
               "$type": "Document",
@@ -407,8 +394,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\TransportController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:20.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:20.087Z"
             },
             {
               "$type": "Document",
@@ -420,8 +406,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\PassportController.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:07.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:07.316Z"
             },
             {
               "$type": "Document",
@@ -433,8 +418,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\HotelsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:05.859Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:05.859Z"
             },
             {
               "$type": "Document",
@@ -446,8 +430,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\FeedbackController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:04.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:04.843Z"
             },
             {
               "$type": "Document",
@@ -459,8 +442,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\FestivalController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:02.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:02.84Z"
             },
             {
               "$type": "Document",
@@ -472,8 +454,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\ToursController.cs",
               "ViewState": "AgIAAL8AAAAAAAAAAAAqwMoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T05:29:40.166Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T05:29:40.166Z"
             },
             {
               "$type": "Document",
@@ -485,8 +466,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\VirtualToursController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAAABcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T05:32:50.05Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T05:32:50.05Z"
             },
             {
               "$type": "Document",
@@ -498,8 +478,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\BookingsController.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:46:01.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:46:01.397Z"
             },
             {
               "$type": "Document",
@@ -511,8 +490,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\CuisineController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T06:45:59.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T06:45:59.063Z"
             },
             {
               "$type": "Document",
@@ -524,8 +502,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\OrderController.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAQwEQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T04:58:04.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T04:58:04.784Z"
             },
             {
               "$type": "Document",
@@ -537,8 +514,7 @@
               "RelativeToolTip": "TravelWeb\\Controllers\\DestinationController.cs",
               "ViewState": "AgIAADkAAAAAAAAAAAAYwAsAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T06:16:21.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T06:16:21.871Z"
             },
             {
               "$type": "Document",
@@ -550,8 +526,7 @@
               "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
               "ViewState": "AgIAABACAAAAAAAAAAAQwBUCAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-15T02:07:52.915Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T02:07:52.915Z"
             },
             {
               "$type": "Document",
@@ -563,8 +538,7 @@
               "RelativeToolTip": "TravelWeb\\Views\\Quiz\\Result.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-05T06:56:17.355Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T06:56:17.355Z"
             },
             {
               "$type": "Document",
@@ -576,8 +550,7 @@
               "RelativeToolTip": "TravelWeb\\Models\\Order.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T07:41:53.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T07:41:53.682Z"
             },
             {
               "$type": "Document",
@@ -589,8 +562,7 @@
               "RelativeToolTip": "TravelWeb\\Views\\Festival\\Index.cshtml",
               "ViewState": "AgIAALwAAAAAAAAAAAAwwMoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-05T14:08:19.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-05T14:08:19.356Z"
             },
             {
               "$type": "Document",
@@ -651,18 +623,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-12-05T09:12:05.679Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "20251205081908_Initial.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251205081908_Initial.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251205081908_Initial.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251205081908_Initial.cs",
-              "RelativeToolTip": "TravelWeb\\Migrations\\20251205081908_Initial.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-05T08:19:08.448Z"
             },
             {
               "$type": "Document",
