@@ -1,0 +1,624 @@
+@{
+    var item = ViewBag.Item as TravelWeb.Models.CuisineItem;
+    var province = ViewBag.Province as string;
+    var reviews = ViewBag.Reviews as List<TravelWeb.Models.Review> ?? new List<TravelWeb.Models.Review>();
+    var averageRating = (double)(ViewBag.AverageRating ?? 0);
+    var ratingsCount = (int)(ViewBag.RatingsCount ?? 0);
+    var ratingDistribution = ViewBag.RatingDistribution as Dictionary<int, int> ?? new Dictionary<int, int>();
+    var cuisineId = ViewBag.CuisineId as string ?? "";
+    
+    ViewData["Title"] = $"{item?.Name} - Ẩm thực {province}";
+}
+
+<!-- HERO SECTION -->
+<section class="cuisine-detail-hero py-5 mb-4 text-white position-relative">
+    <div class="hero-bg-image" style="background-image: url('@item?.ImageUrl');"></div>
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" class="text-white-50">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Cuisine" asp-action="Index" class="text-white-50">Ẩm thực</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Cuisine" asp-action="Province" asp-route-name="@province" class="text-white-50">@province</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">@item?.Name</li>
+            </ol>
+        </nav>
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">@item?.Name</h1>
+                <p class="lead mb-3">@item?.Description</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <div class="rating-display">
+                        @if (averageRating > 0)
+                        {
+                            <div class="d-flex align-items-center">
+                                <div class="rating-stars-large me-2">
+                                    @for (int s = 1; s <= 5; s++)
+                                    {
+                                        if (averageRating >= s)
+                                        {
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        }
+                                        else if (averageRating >= s - 0.5)
+                                        {
+                                            <i class="bi bi-star-half text-warning"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-star text-warning"></i>
+                                        }
+                                    }
+                                </div>
+                                <span class="fs-4 fw-bold me-2">@averageRating.ToString("F1")</span>
+                                <span class="text-white-50">(@ratingsCount đánh giá)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <span class="text-white-50">Chưa có đánh giá</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                <div class="price-card">
+                    <div class="price-label">Giá trung bình</div>
+                    <div class="price-value">@item?.AveragePrice.ToString("N0")</div>
+                    <div class="price-unit">VNĐ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- LEFT COLUMN - MAIN INFO -->
+        <div class="col-lg-8 mb-4">
+            <!-- IMAGE GALLERY -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-0">
+                    <div class="cuisine-image-container">
+                        <img src="@item?.ImageUrl" 
+                             alt="@item?.Name" 
+                             class="cuisine-main-image"
+                             loading="lazy"
+                             onerror="this.src='/images/default-food.jpg'" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETAILS -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-4">
+                        <i class="bi bi-info-circle text-primary"></i> Thông tin món ăn
+                    </h3>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="bi bi-geo-alt-fill text-primary"></i> Tỉnh/Thành
+                                </div>
+                                <div class="info-value">@province</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="bi bi-cash-coin text-success"></i> Giá trung bình
+                                </div>
+                                <div class="info-value">@item?.AveragePrice.ToString("N0") VNĐ</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="bi bi-star-fill text-warning"></i> Độ phổ biến
+                                </div>
+                                <div class="info-value">
+                                    <div class="progress" style="height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" 
+                                             style="width: @item?.Popularity%" 
+                                             aria-valuenow="@item?.Popularity" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                            @item?.Popularity%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-label">
+                                    <i class="bi bi-chat-dots text-info"></i> Số đánh giá
+                                </div>
+                                <div class="info-value">@ratingsCount đánh giá</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                    <div>
+                        <h5 class="fw-bold mb-3">Mô tả</h5>
+                        <p class="text-muted mb-0">@item?.Description</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RATING DISTRIBUTION -->
+            @if (ratingsCount > 0)
+            {
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4">
+                            <i class="bi bi-bar-chart text-primary"></i> Phân bố đánh giá
+                        </h3>
+                        <div class="rating-distribution">
+                            @for (int i = 5; i >= 1; i--)
+                            {
+                                var count = ratingDistribution.ContainsKey(i) ? ratingDistribution[i] : 0;
+                                var percentage = ratingsCount > 0 ? (count * 100.0 / ratingsCount) : 0;
+                                <div class="rating-bar-item mb-3">
+                                    <div class="d-flex align-items-center mb-1">
+                                        <span class="rating-label">@i sao</span>
+                                        <div class="rating-bar flex-grow-1 mx-3">
+                                            <div class="progress" style="height: 25px;">
+                                                <div class="progress-bar bg-warning" 
+                                                     role="progressbar" 
+                                                     style="width: @percentage%" 
+                                                     aria-valuenow="@percentage" 
+                                                     aria-valuemin="0" 
+                                                     aria-valuemax="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="rating-count">@count</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- REVIEWS SECTION -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">
+                            <i class="bi bi-chat-left-text text-primary"></i> Đánh giá (@ratingsCount)
+                        </h3>
+                        <button class="btn btn-primary" 
+                                type="button" 
+                                data-bs-toggle="collapse" 
+                                data-bs-target="#reviewForm">
+                            <i class="bi bi-plus-circle"></i> Viết đánh giá
+                        </button>
+                    </div>
+
+                    <!-- REVIEW FORM -->
+                    <div class="collapse mb-4" id="reviewForm">
+                        <div class="card border">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3">Chia sẻ trải nghiệm của bạn</h5>
+                                <form method="post" asp-controller="Reviews" asp-action="Add">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="cuisineId" value="@cuisineId" />
+                                    <input type="hidden" name="returnProvince" value="@province" />
+                                    <input type="hidden" name="returnTo" value="Details" />
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold">Tên của bạn *</label>
+                                        <input name="displayName" class="form-control" placeholder="Nhập tên của bạn" required />
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold">Đánh giá *</label>
+                                        <div class="star-rating-input">
+                                            <input type="radio" name="rating" value="5" id="star5" required />
+                                            <label for="star5" class="star-label"><i class="bi bi-star-fill"></i></label>
+                                            <input type="radio" name="rating" value="4" id="star4" />
+                                            <label for="star4" class="star-label"><i class="bi bi-star-fill"></i></label>
+                                            <input type="radio" name="rating" value="3" id="star3" />
+                                            <label for="star3" class="star-label"><i class="bi bi-star-fill"></i></label>
+                                            <input type="radio" name="rating" value="2" id="star2" />
+                                            <label for="star2" class="star-label"><i class="bi bi-star-fill"></i></label>
+                                            <input type="radio" name="rating" value="1" id="star1" />
+                                            <label for="star1" class="star-label"><i class="bi bi-star-fill"></i></label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold">Nhận xét (tùy chọn)</label>
+                                        <textarea name="comment" class="form-control" rows="4" placeholder="Chia sẻ trải nghiệm của bạn về món ăn này..."></textarea>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary w-100" type="submit">
+                                        <i class="bi bi-send"></i> Gửi đánh giá
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REVIEWS LIST -->
+                    @if (reviews.Any())
+                    {
+                        <div class="reviews-list">
+                            @foreach (var review in reviews)
+                            {
+                                <div class="review-item mb-4 pb-4 border-bottom">
+                                    <div class="d-flex align-items-start">
+                                        <div class="reviewer-avatar me-3">
+                                            <div class="avatar-circle">
+                                                @(review.DisplayName.Length > 0 ? review.DisplayName.Substring(0, 1).ToUpper() : "?")
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">@review.DisplayName</h6>
+                                                    <div class="rating-stars-small mb-1">
+                                                        @for (int s = 1; s <= 5; s++)
+                                                        {
+                                                            if (review.Rating >= s)
+                                                            {
+                                                                <i class="bi bi-star-fill text-warning"></i>
+                                                            }
+                                                            else
+                                                            {
+                                                                <i class="bi bi-star text-warning"></i>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <small class="text-muted">
+                                                    @review.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                                                    @if (review.User != null)
+                                                    {
+                                                        <span class="badge bg-info ms-2">@review.User.Username</span>
+                                                    }
+                                                </small>
+                                            </div>
+                                            @if (!string.IsNullOrWhiteSpace(review.Comment))
+                                            {
+                                                <p class="text-muted mb-0">@review.Comment</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <div class="display-1 mb-3">💬</div>
+                            <h5 class="fw-bold mb-2">Chưa có đánh giá nào</h5>
+                            <p class="text-muted">Hãy là người đầu tiên đánh giá món ăn này!</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN - SIDEBAR -->
+        <div class="col-lg-4">
+            <!-- QUICK ACTIONS -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-lightning-charge text-warning"></i> Hành động nhanh
+                    </h5>
+                    <div class="d-grid gap-2">
+                        <a asp-controller="Cuisine" asp-action="Province" asp-route-name="@province" class="btn btn-outline-primary">
+                            <i class="bi bi-arrow-left"></i> Quay lại danh sách món
+                        </a>
+                        <form method="post" asp-controller="Favorites" asp-action="Add" class="d-grid">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="Id" value="@cuisineId" />
+                            <input type="hidden" name="Type" value="cuisine" />
+                            <input type="hidden" name="Title" value="@item?.Name" />
+                            <input type="hidden" name="Subtitle" value="@province - @item?.AveragePrice.ToString("N0") đ" />
+                            <input type="hidden" name="Url" value="@Url.Action("Details", "Cuisine", new { province = province, name = item?.Name })" />
+                            <input type="hidden" name="ImageUrl" value="@item?.ImageUrl" />
+                            <button class="btn btn-success" type="submit">
+                                <i class="bi bi-bookmark-plus"></i> Lưu vào yêu thích
+                            </button>
+                        </form>
+                        <a asp-controller="TripPlanner" asp-action="Index" asp-route-destination="@province" class="btn btn-outline-info">
+                            <i class="bi bi-calendar-event"></i> Lập kế hoạch tại @province
+                        </a>
+                        <a asp-controller="Festival" asp-action="Index" asp-route-province="@province" class="btn btn-outline-warning">
+                            <i class="bi bi-calendar3"></i> Lễ hội @province
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATISTICS -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-graph-up text-primary"></i> Thống kê
+                    </h5>
+                    <div class="stat-item-small mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Đánh giá trung bình</span>
+                            <strong>@averageRating.ToString("F1") / 5.0</strong>
+                        </div>
+                    </div>
+                    <div class="stat-item-small mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Tổng đánh giá</span>
+                            <strong>@ratingsCount</strong>
+                        </div>
+                    </div>
+                    <div class="stat-item-small mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Giá trung bình</span>
+                            <strong>@item?.AveragePrice.ToString("N0") đ</strong>
+                        </div>
+                    </div>
+                    <div class="stat-item-small">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Độ phổ biến</span>
+                            <strong>@item?.Popularity%</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATED DISHES -->
+            @{
+                var relatedDishes = TravelWeb.Models.CuisineData.GetTopByProvince(province, 5)
+                    .Where(d => d.Name != item?.Name)
+                    .Take(4)
+                    .ToList();
+            }
+            @if (relatedDishes.Any())
+            {
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">
+                            <i class="bi bi-egg-fried text-success"></i> Món khác tại @province
+                        </h5>
+                        <div class="list-group list-group-flush">
+                            @foreach (var dish in relatedDishes)
+                            {
+                                <a asp-action="Details" asp-route-province="@province" asp-route-name="@dish.Name" 
+                                   class="list-group-item list-group-item-action border-0 px-0">
+                                    <div class="d-flex align-items-center">
+                                        <img src="@dish.ImageUrl" 
+                                             alt="@dish.Name" 
+                                             class="related-dish-image me-3"
+                                             loading="lazy"
+                                             onerror="this.src='/images/default-food.jpg'" />
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">@dish.Name</h6>
+                                            <small class="text-muted">@dish.AveragePrice.ToString("N0") đ</small>
+                                        </div>
+                                        <i class="bi bi-chevron-right text-muted"></i>
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        /* Hero Section */
+        .cuisine-detail-hero {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+            transform: scale(1.1);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            z-index: 1;
+        }
+        
+        .cuisine-detail-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Price Card */
+        .price-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            display: inline-block;
+        }
+        
+        .price-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .price-unit {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Rating Stars */
+        .rating-stars-large {
+            font-size: 1.5rem;
+        }
+        
+        .rating-stars-small {
+            font-size: 0.9rem;
+        }
+        
+        /* Cuisine Image */
+        .cuisine-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .cuisine-main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        /* Info Items */
+        .info-item {
+            padding: 1rem 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        /* Rating Distribution */
+        .rating-bar-item {
+            position: relative;
+        }
+        
+        .rating-label {
+            min-width: 50px;
+            font-weight: 500;
+        }
+        
+        .rating-count {
+            min-width: 30px;
+            text-align: right;
+            font-weight: 500;
+        }
+        
+        /* Star Rating Input */
+        .star-rating-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+        
+        .star-rating-input input[type="radio"] {
+            display: none;
+        }
+        
+        .star-rating-input .star-label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating-input input[type="radio"]:checked ~ .star-label,
+        .star-rating-input .star-label:hover,
+        .star-rating-input .star-label:hover ~ .star-label {
+            color: #ffc107;
+        }
+        
+        /* Review Item */
+        .review-item:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+        
+        .avatar-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* Related Dishes */
+        .related-dish-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .stat-item-small {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .stat-item-small:last-child {
+            border-bottom: none;
+        }
+        
+        /* Responsive */
+      
+            .cuisine-main-image {
+                height: 250px;
+            }
+            
+            .price-card {
+                padding: 1.5rem;
+            }
+            
+            .price-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <script>
+        // Auto-expand review form if there's an error
+        @if (TempData["Error"] != null)
+        {
+            <text>
+            document.addEventListener('DOMContentLoaded', function() {
+                const reviewForm = document.getElementById('reviewForm');
+                if (reviewForm) {
+                    const bsCollapse = new bootstrap.Collapse(reviewForm, { toggle: true });
+                }
+            });
+            </text>
+        }
+    </script>
+}
+

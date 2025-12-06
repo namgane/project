@@ -1,0 +1,250 @@
+@{
+    var activities = ViewBag.Activities as List<TravelWeb.Models.ActivityHistory> ?? new List<TravelWeb.Models.ActivityHistory>();
+    var stats = ViewBag.Stats as dynamic;
+    var currentPage = (int)(ViewBag.CurrentPage ?? 1);
+    var totalPages = (int)(ViewBag.TotalPages ?? 1);
+    var totalItems = (int)(ViewBag.TotalItems ?? 0);
+    var activityType = ViewBag.ActivityType as string;
+    var activityTypes = ViewBag.ActivityTypes as string[] ?? new string[0];
+    
+    ViewData["Title"] = "Lịch sử hoạt động";
+}
+
+<!-- HERO SECTION -->
+<section class="activity-hero py-4 mb-4 text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-2">
+            <i class="bi bi-clock-history"></i> Lịch sử hoạt động
+        </h1>
+        <p class="lead mb-0">Xem lại tất cả các hoạt động của bạn trên hệ thống</p>
+    </div>
+</section>
+
+<div class="container mb-5">
+    <!-- STATISTICS -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-2">
+                    <i class="bi bi-activity"></i>
+                </div>
+                <h3 class="fw-bold text-primary mb-1">@(stats?.Total ?? 0)</h3>
+                <p class="text-muted mb-0 small">Tổng hoạt động</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-2">
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <h3 class="fw-bold text-warning mb-1">@(stats?.Reviews ?? 0)</h3>
+                <p class="text-muted mb-0 small">Đánh giá</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-2">
+                    <i class="bi bi-bookmark-heart"></i>
+                </div>
+                <h3 class="fw-bold text-danger mb-1">@(stats?.Favorites ?? 0)</h3>
+                <p class="text-muted mb-0 small">Đã lưu</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-2">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <h3 class="fw-bold text-success mb-1">@(stats?.Bookings ?? 0)</h3>
+                <p class="text-muted mb-0 small">Đặt chỗ</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+                <span class="fw-semibold">Lọc theo loại:</span>
+                <a asp-action="Index" asp-route-activityType="" 
+                   class="btn btn-sm @(string.IsNullOrEmpty(activityType) ? "btn-primary" : "btn-outline-primary")">
+                    Tất cả
+                </a>
+                @foreach (var type in activityTypes)
+                {
+                    <a asp-action="Index" asp-route-activityType="@type" 
+                       class="btn btn-sm @(activityType == type ? "btn-primary" : "btn-outline-primary")">
+                        @type
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVITIES LIST -->
+    @if (!activities.Any())
+    {
+        <div class="card border-0 shadow-sm">
+            <div class="card-body text-center py-5">
+                <div class="display-1 mb-3">📋</div>
+                <h5 class="fw-bold mb-2">Chưa có hoạt động nào</h5>
+                <p class="text-muted">Bắt đầu sử dụng hệ thống để xem lịch sử hoạt động của bạn!</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-list-ul text-primary"></i> Danh sách hoạt động (@totalItems)
+                </h5>
+                
+                <div class="timeline">
+                    @foreach (var activity in activities)
+                    {
+                        <div class="timeline-item mb-4 pb-4 border-bottom">
+                            <div class="d-flex align-items-start">
+                                <div class="activity-icon me-3">
+                                    <div class="icon-circle bg-@(GetActivityColor(activity.ActivityType))">
+                                        <i class="bi bi-@(GetActivityIcon(activity.ActivityType))"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">
+                                                @activity.ItemTitle
+                                                <span class="badge bg-@(GetActivityColor(activity.ActivityType)) ms-2">
+                                                    @activity.ActivityType
+                                                </span>
+                                            </h6>
+                                            @if (!string.IsNullOrEmpty(activity.Description))
+                                            {
+                                                <p class="text-muted small mb-1">@activity.Description</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(activity.Location))
+                                            {
+                                                <p class="text-muted small mb-0">
+                                                    <i class="bi bi-geo-alt"></i> @activity.Location
+                                                </p>
+                                            }
+                                        </div>
+                                        <small class="text-muted">
+                                            @activity.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- PAGINATION -->
+                @if (totalPages > 1)
+                {
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            @if (currentPage > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index" asp-route-activityType="@activityType" asp-route-page="1">Đầu</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index" asp-route-activityType="@activityType" asp-route-page="@(currentPage - 1)">Trước</a>
+                                </li>
+                            }
+                            
+                            @for (int i = Math.Max(1, currentPage - 2); i <= Math.Min(totalPages, currentPage + 2); i++)
+                            {
+                                <li class="page-item @(i == currentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="Index" asp-route-activityType="@activityType" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+                            
+                            @if (currentPage < totalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index" asp-route-activityType="@activityType" asp-route-page="@(currentPage + 1)">Sau</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index" asp-route-activityType="@activityType" asp-route-page="@totalPages">Cuối</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@functions {
+    string GetActivityIcon(string activityType)
+    {
+        return activityType switch
+        {
+            "Review" => "star-fill",
+            "Favorite" => "bookmark-heart",
+            "Booking" => "calendar-check",
+            "Payment" => "credit-card",
+            "TripPlan" => "map",
+            _ => "circle"
+        };
+    }
+
+    string GetActivityColor(string activityType)
+    {
+        return activityType switch
+        {
+            "Review" => "warning",
+            "Favorite" => "danger",
+            "Booking" => "success",
+            "Payment" => "info",
+            "TripPlan" => "primary",
+            _ => "secondary"
+        };
+    }
+}
+
+@section Scripts {
+    <style>
+        .activity-hero {
+            border-radius: 0 0 25px 25px;
+        }
+
+        .stat-card {
+            background: white;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+    </style>
+}
+
+
