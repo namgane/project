@@ -107,6 +107,18 @@ namespace TravelWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ChiTiet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiaChi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GiaCa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GioCua")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Lat")
                         .HasColumnType("float");
 
@@ -115,6 +127,12 @@ namespace TravelWeb.Migrations
 
                     b.Property<string>("MoTa")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("SoDienThoai")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
@@ -212,6 +230,9 @@ namespace TravelWeb.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LocationName")
                         .IsRequired()

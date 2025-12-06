@@ -3,12 +3,7 @@
     var city = ViewBag.City;
     var lat = ViewBag.Lat;
     var lng = ViewBag.Lng;
-    // Lấy toàn bộ ảnh lễ hội để dùng làm nền phía sau bản đồ
-    var festivalImages = TravelWeb.Models.FestivalData.GetAll()
-        .SelectMany(f => (f.ImageUrls != null && f.ImageUrls.Count > 0) ? f.ImageUrls : new List<string> { f.ImageUrl })
-        .Where(url => !string.IsNullOrWhiteSpace(url))
-        .Distinct()
-        .ToList();
+    var userRole = Context.Session.GetString("Role");
 }
 
 @using System.Text.Json
@@ -18,477 +13,437 @@
 <head>
     <meta charset="UTF-8" />
     <title>@ViewData["Title"]</title>
-
-    <!-- Leaflet CSS + JS -->
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        * { box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #eef1f5;
+            margin: 0; padding: 20px;
         }
+        h2 { text-align: center; color: #333; margin-bottom: 10px; }
 
-        /* ====== Map hero wrapper with subtle festival collage background ====== */
+        /* ===== ALERT ===== */
+        .alert {
+            max-width: 1200px; margin: 10px auto 20px;
+            padding: 15px 20px; border-radius: 12px; font-size: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+        /* ===== MAP ===== */
         .map-hero {
-            position: relative;
-            width: 90%;
-            margin: 30px auto;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.15);
-            background: #0e1116;
+            position: relative; width: 100%; max-width: 1200px;
+            margin: 0 auto 20px; background: white; padding: 10px;
+            border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
+        #map { width: 100%; height: 600px; border-radius: 8px; z-index: 1; cursor: crosshair; }
 
-        .map-bg-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-
-        .map-bg-grid {
-            position: absolute;
-            inset: -10%; /* bleed so edges are covered */
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-auto-rows: 120px;
-            gap: 8px;
-            filter: blur(6px) saturate(110%);
-            opacity: 0.18; /* subtle */
-            transform: scale(1.05);
-            animation: slowPan 30s linear infinite alternate;
-        }
-
-        .map-bg-item {
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-        }
-
-        .map-bg-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.6) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /*  keyframes slowPan {
-                                            from { transform: scale(1.05) translateY(0px); }
-                                            to { transform: scale(1.08) translateY(-10px); }
-                                        } */
-
-        #map {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 600px;
-            border-radius: 16px;
-        }
-
+        /* ===== BUTTONS ===== */
+        .btn-container { text-align: center; margin-bottom: 20px; }
         .back-btn {
-            background: #3949ab;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 15px;
-            margin-right: 6px;
+            background: white; border: 1px solid #ddd; padding: 10px 20px;
+            border-radius: 20px; cursor: pointer; font-weight: 600; margin: 0 5px;
+            display: inline-block; font-size: 14px;
         }
+        .back-btn:hover { background: #f0f0f0; }
+        .back-btn.green { background: #28a745; color: white; border: none; }
+        .back-btn.blue { background: #0088cc; color: white; border: none; }
 
-            .back-btn:hover {
-                background: #1a237e;
-            }
-
-        /* distance tooltip style */
-        .distance-tooltip.leaflet-tooltip {
-            background: rgba(0,0,0,0.75);
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
+        /* ===== MODAL ĐỊA ĐIỂM (Xem chi tiết) ===== */
+        .detail-modal {
+            display: none; position: fixed; z-index: 9999; inset: 0;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
+            opacity: 0; transition: opacity 0.3s ease;
         }
+        .detail-modal.show { opacity: 1; display: block; }
+        .detail-content {
+            background: white; margin: 30px auto; width: 95%; max-width: 500px; 
+            border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden; transform: translateY(20px); transition: transform 0.3s ease;
+            max-height: 90vh; overflow-y: auto;
+        }
+        .detail-modal.show .detail-content { transform: translateY(0); }
+        .detail-header-img { height: 250px; background-size: cover; background-position: center; position: relative; }
+        .btn-close-modal {
+            position: absolute; top: 15px; right: 15px; width: 32px; height: 32px;
+            background: white; border-radius: 50%; border: none; font-size: 18px; color: #555;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .detail-body { padding: 20px; }
+        .detail-title { font-size: 32px; font-weight: 800; color: #222; margin: 0 0 5px 0; }
+        .rating-section { margin-bottom: 25px; }
+        .big-stars { color: #ffc107; font-size: 22px; letter-spacing: 2px; }
+        
+        /* CSS cho danh sách thông tin có icon */
+        .info-list { list-style: none; padding: 0; margin: 0; }
+        .info-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .info-left { display: flex; align-items: center; gap: 10px; color: #555; font-size: 14px; min-width: 120px; }
+        .info-icon { width: 20px; text-align: center; color: #e91e63; font-size: 16px; } /* Màu hồng cho icon */
+        .info-right { font-weight: 500; color: #333; font-size: 14px; text-align: right; max-width: 60%; line-height: 1.4; }
+
+        /* ===== MODAL VIRTUAL TOUR ===== */
+        .vt-modal {
+            display: none; position: fixed; z-index: 9999; inset: 0;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(3px);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .vt-modal.show { opacity: 1; display: block; }
+        .vt-content {
+            background: black; margin: 50px auto; width: 95%; max-width: 900px;
+            border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            overflow: hidden; transform: scale(0.9); transition: transform 0.3s ease;
+        }
+        .vt-modal.show .vt-content { transform: scale(1); }
+        .vt-header { background: transparent; position: absolute; top: 0; right: 0; z-index: 10; padding: 10px; }
+        .vt-iframe-container { width: 100%; height: 500px; background: #000; }
+        .vt-iframe-container iframe { width: 100%; height: 100%; border: 0; }
+
+        /* ===== FORM ADD/VT (HIỆN Ở CUỐI TRANG - BOTTOM SHEET) ===== */
+        #addForm, #vtForm {
+            display: none; 
+            background: white; 
+            padding: 25px;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.2);
+            
+            /* Vị trí Dưới Cùng */
+            position: fixed; 
+            bottom: 0; left: 50%; transform: translateX(-50%); top: auto;
+            
+            z-index: 2000; 
+            width: 100%; max-width: 600px;
+            
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+
+            /* Thanh cuộn */
+            max-height: 80vh; overflow-y: auto;
+        }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #333; font-size: 14px; }
+        .form-control { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; color: white; margin-top: 10px; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .btn-success { background: #28a745; } .btn-primary { background: #0088cc; } .btn-secondary { background: #888; }
+        .price-range-control { display: flex; gap: 10px; align-items: center; } .price-range-control > div { flex: 1; }
+        .star-rating-input { display: flex; flex-direction: row-reverse; justify-content: center; font-size: 28px; margin-top: 10px; }
+        .star-rating-input input { display: none; }
+        .star-rating-input label { cursor: pointer; color: #ddd; margin: 0 2px; }
+        .star-rating-input input:checked ~ label, .star-rating-input label:hover ~ label { color: #ffc107; }
+
+        /* ===== LEGEND ===== */
+        .map-legend {
+            position: absolute; bottom: 30px; right: 20px; z-index: 1000;
+            background: white; padding: 15px; border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15); font-size: 13px; max-width: 200px;
+        }
+        .legend-title { font-weight: 700; margin-bottom: 10px; color: #333; }
+        .legend-item { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+        .legend-icon { width: 24px; height: 24px; }
     </style>
 </head>
 
 <body>
-    <h2 class="text-center mt-3">Bản đồ @city</h2>
+    <h2>🗺️ Bản đồ @city</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <i class="fa-solid fa-circle-check"></i> <span>@TempData["SuccessMessage"]</span>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            <i class="fa-solid fa-circle-exclamation"></i> <span>@TempData["ErrorMessage"]</span>
+        </div>
+    }
 
     <div class="map-hero">
-        <div class="map-bg-layer">
-            <div class="map-bg-grid" id="mapBgGrid"></div>
-            <div class="map-bg-overlay"></div>
-        </div>
         <div id="map"></div>
+        <div class="map-legend">
+            <div class="legend-title">📍 Chú giải</div>
+            <div class="legend-item"><img src="https://cdn-icons-png.flaticon.com/512/1946/1946788.png" class="legend-icon"><span>Khách sạn</span></div>
+            <div class="legend-item"><img src="https://cdn-icons-png.flaticon.com/512/924/924514.png" class="legend-icon"><span>Cafe</span></div>
+            <div class="legend-item"><img src="https://cdn-icons-png.flaticon.com/512/685/685352.png" class="legend-icon"><span>Nhà hàng</span></div>
+            <div class="legend-item"><img src="https://cdn-icons-png.flaticon.com/512/2169/2169456.png" class="legend-icon"><span>Công viên</span></div>
+            <div class="legend-item"><img src="https://cdn-icons-png.flaticon.com/512/159/159604.png" class="legend-icon"><span>Virtual Tour</span></div>
+        </div>
     </div>
 
-    <button class="back-btn" onclick="window.location.href='/Home/Index'">← Quay lại</button>
-    <button class="back-btn" style="background:#2e7d32;" onclick="enableAddMode()">➕ Thêm địa điểm</button>
-
-    <!-- Click-select measurement UI (kept) -->
-    <button class="back-btn" style="background:#ffb300;" onclick="enableClickSelectMode()">📏 Chọn 2 điểm (click)</button>
-    <button class="back-btn" style="background:#6c757d;" onclick="clearAllMeasurements()">🧹 Xóa đo</button>
-
-    <!-- Form nhập địa điểm -->
-    <div id="addForm" style="display:none; background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-        <label>Tên địa điểm:</label><br>
-        <input type="text" id="ten" class="form-control mb-2">
-
-        <label>Hình ảnh:</label><br>
-        <input type="file" id="imageFile" accept="image/*" class="form-control mb-2">
-
-        <label>Loại:</label><br>
-        <select id="loai" class="form-control mb-3">
-            <option value="1">Khách sạn</option>
-            <option value="2">Quán cà phê</option>
-            <option value="3">Nhà hàng</option>
-            <option value="4">Công viên</option>
-        </select>
-
-        <button onclick="saveLocation()" class="btn btn-success">Lưu</button>
-        <button onclick="cancelAdd()" class="btn btn-secondary">Hủy</button>
+    <div class="btn-container">
+        <button class="back-btn" onclick="window.location.href='/Tours/Index'">← Quay lại</button>
+        @if (userRole == "Admin")
+        {
+            <button class="back-btn green" onclick="enableAddMode()">➕ Thêm địa điểm</button>
+            <button class="back-btn blue" onclick="enableVTMode()">👁️ Thêm Virtual Tour</button>
+        }
     </div>
 
+    <div id="detailModal" class="detail-modal" onclick="if(event.target === this) closeDetail()">
+        <div class="detail-content">
+            <div class="detail-header-img" id="detailHeaderImg">
+                <button class="btn-close-modal" onclick="closeDetail()">✕</button>
+            </div>
+            <div class="detail-body">
+                <h1 class="detail-title" id="detailTitle">Title</h1>
+                <div class="rating-section" id="ratingSection">
+                    <span class="big-stars" id="bigStars">★★★★☆</span> <span class="rating-score" id="ratingScore">(4.5/5)</span>
+                </div>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <div class="info-left"><i class="fa-solid fa-mug-hot info-icon"></i><span>Loại hình</span></div>
+                        <div class="info-right" id="detailType">--</div>
+                    </li>
+                    <li class="info-item" id="rowHours">
+                        <div class="info-left"><i class="fa-regular fa-clock info-icon"></i><span>Giờ mở cửa</span></div>
+                        <div class="info-right" id="detailHours">--</div>
+                    </li>
+                    <li class="info-item" id="rowPrice">
+                        <div class="info-left"><i class="fa-solid fa-dollar-sign info-icon"></i><span>Giá cả</span></div>
+                        <div class="info-right" id="detailPrice">--</div>
+                    </li>
+                    <li class="info-item" id="rowPhone">
+                        <div class="info-left"><i class="fa-solid fa-phone info-icon"></i><span>SĐT</span></div>
+                        <div class="info-right" id="detailPhone">--</div>
+                    </li>
+                    <li class="info-item" id="rowDesc">
+                        <div class="info-left"><i class="fa-solid fa-align-left info-icon"></i><span>Mô tả</span></div>
+                        <div class="info-right" id="detailDescList">--</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="vtModal" class="vt-modal" onclick="if(event.target === this) closeVT()">
+        <div class="vt-content">
+            <div class="vt-header">
+                <button class="btn-close-modal" style="position:relative; top:0; right:0;" onclick="closeVT()">✕</button>
+            </div>
+            <div class="vt-iframe-container">
+                <iframe id="vtIframe" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="addForm">
+        <h3>➕ Thêm địa điểm mới</h3>
+        <div class="form-group"><label>Tên địa điểm *</label><input type="text" id="ten" class="form-control" placeholder="Ví dụ: Cafe Highlands"></div>
+        <div class="form-group"><label>Hình ảnh *</label><input type="file" id="imageFile" accept="image/*" class="form-control"></div>
+        <div class="form-group">
+            <label>Loại hình *</label>
+            <select id="loai" class="form-control">
+                <option value="1">🏨 Khách sạn</option>
+                <option value="2">☕ Quán cà phê</option>
+                <option value="3">🍜 Nhà hàng</option>
+                <option value="4">🌳 Công viên</option>
+            </select>
+        </div>
+        <div class="form-group"><label>Mô tả chi tiết</label><textarea id="chitiet" class="form-control" rows="2" placeholder="Mô tả ngắn..."></textarea></div>
+        <div class="form-group"><label>Giờ mở cửa</label><select id="giocua" class="form-control"><option value="">— Chọn giờ —</option><option value="Mở cửa 24/7">Mở cửa 24/7</option><option value="Sáng: 6:00 - 12:00">Sáng: 6:00 - 12:00</option><option value="08:00 - 22:00">08:00 - 22:00</option><option value="17:00 - 23:00">17:00 - 23:00</option></select></div>
+        <div class="form-group"><label>Khoảng Giá (nghìn đồng)</label><div class="price-range-control"><div><input type="number" id="giaMin" class="form-control" placeholder="Từ" value="0"></div><span>-</span><div><input type="number" id="giaMax" class="form-control" placeholder="Đến" value="0"></div></div></div>
+        <div class="form-group"><label>Số điện thoại</label><input type="text" id="sodienthoai" class="form-control" placeholder="0123456789"></div>
+        <div class="form-group"><label style="text-align:center;">Đánh giá</label><div class="star-rating-input"><input type="radio" id="s5" name="rating" value="5"/><label for="s5">★</label><input type="radio" id="s4" name="rating" value="4"/><label for="s4">★</label><input type="radio" id="s3" name="rating" value="3"/><label for="s3">★</label><input type="radio" id="s2" name="rating" value="2"/><label for="s2">★</label><input type="radio" id="s1" name="rating" value="1"/><label for="s1">★</label></div></div>
+        
+        <div style="display:flex; gap:10px; margin-top:20px;">
+            <button onclick="saveLocation()" class="btn btn-success">Lưu</button>
+            <button onclick="cancelAdd()" class="btn btn-secondary">Hủy</button>
+        </div>
+    </div>
+
+    <div id="vtForm">
+        <h3>👁️ Thêm Virtual Tour</h3>
+        <p style="color:#666; font-size:13px; margin-bottom:15px;">Vị trí: <strong id="vtCoords">--</strong></p>
+        <div class="form-group">
+            <label>Link Google Street View *</label>
+            <input type="url" id="vtLink" class="form-control" placeholder="Dán link Embed...">
+            <small style="color:#888; font-size:12px;">💡 Lấy link từ Google Maps → Share → Embed a map</small>
+        </div>
+        <div style="display:flex; gap:10px;">
+            <button onclick="saveVT()" class="btn btn-primary">Lưu</button>
+            <button onclick="cancelVT()" class="btn btn-secondary">Hủy</button>
+        </div>
+    </div>
 
     <script>
-        // ====== Nhận dữ liệu từ Controller ======
         const lat = parseFloat("@lat");
         const lng = parseFloat("@lng");
-        const city = "@city";
-        const locations = @Html.Raw(JsonSerializer.Serialize(ViewBag.Locations));
+        const locations = @Html.Raw(JsonSerializer.Serialize(ViewBag.Locations ?? new List<object>()));
+        const virtualTours = @Html.Raw(JsonSerializer.Serialize(ViewBag.VirtualTours ?? new List<object>()));
+        const userRole = "@userRole";
 
-        // ====== Ảnh lễ hội để làm nền phía sau bản đồ ======
-        const festivalImages = @Html.Raw(JsonSerializer.Serialize(festivalImages));
-
-        // Tạo lưới ảnh nền (collage)
-        (function buildMapBackground() {
-            try {
-                const grid = document.getElementById('mapBgGrid');
-                if (!grid || !festivalImages || festivalImages.length === 0) return;
-
-                const pool = [...festivalImages];
-                for (let i = pool.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [pool[i], pool[j]] = [pool[j], pool[i]];
-                }
-
-                const maxTiles = 48;
-                const used = pool.slice(0, Math.min(maxTiles, pool.length));
-
-                used.forEach((url, idx) => {
-                    const tile = document.createElement('div');
-                    tile.className = 'map-bg-item';
-                    tile.style.backgroundImage = `url('${url}')`;
-                    if (idx % 11 === 0) tile.style.gridRow = 'span 2';
-                    if (idx % 13 === 0) tile.style.gridColumn = 'span 2';
-                    grid.appendChild(tile);
-                });
-
-                let swapIndex = 0;
-                setInterval(() => {
-                    const items = grid.querySelectorAll('.map-bg-item');
-                    if (items.length === 0 || festivalImages.length === 0) return;
-                    const item = items[swapIndex % items.length];
-                    const nextUrl = festivalImages[Math.floor(Math.random() * festivalImages.length)];
-                    item.style.transition = 'opacity 0.8s ease';
-                    item.style.opacity = '0';
-                    setTimeout(() => {
-                        item.style.backgroundImage = `url('${nextUrl}')`;
-                        item.style.opacity = '1';
-                    }, 800);
-                    swapIndex++;
-                }, 3000);
-            } catch (e) { console.warn('Background build error:', e); }
-        })();
-
-        // ====== Khởi tạo bản đồ ======
         const map = L.map('map').setView([lat, lng], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap contributors' }).addTo(map);
+        L.marker([lat, lng]).addTo(map).bindPopup("<b>Trung tâm @city</b>");
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; OpenStreetMap'
-        }).addTo(map);
+        // Helper
+        function getTypeName(type) { return type==1?"Khách sạn":type==2?"Cafe":type==3?"Nhà hàng":"Công viên"; }
+        function getIconUrl(type) { if(type==1) return "https://cdn-icons-png.flaticon.com/128/1946/1946788.png"; if(type==2) return "https://cdn-icons-png.flaticon.com/512/924/924514.png"; if(type==3) return "https://cdn-icons-png.flaticon.com/128/685/685352.png"; return "https://cdn-icons-png.flaticon.com/512/2169/2169456.png"; }
+        function formatVND(val) { return val ? (parseFloat(val) * 1000).toLocaleString('vi-VN') + ' ₫' : ""; }
 
-        // ====== State for click-select distance measurement ======
-        const locList = []; // will hold { id, name, lat, lng, marker } (kept for future use)
-        const allDistanceLayerGroup = L.layerGroup().addTo(map);
-
-        let clickSelectMode = false;
-        let clickSelected = []; // { id, marker, latlng }
-        let clickLine = null;
-        let clickPopup = null;
-
-        function formatDistance(meters) {
-            if (meters >= 1000) return (meters / 1000).toFixed(2) + " km";
-            return Math.round(meters) + " m";
+        // Render Locations
+        if (locations) {
+            locations.forEach(loc => {
+                const icon = L.icon({ iconUrl: getIconUrl(loc.Type), iconSize: [35, 35], iconAnchor: [17, 35], popupAnchor: [0, -30] });
+                L.marker([loc.Lat, loc.Lng], {icon}).addTo(map).on('click', () => showDetail(loc));
+            });
         }
-
-        function haversine(lat1, lon1, lat2, lon2) {
-            const R = 6371e3; // metres
-            const φ1 = lat1 * Math.PI / 180;
-            const φ2 = lat2 * Math.PI / 180;
-            const Δφ = (lat2 - lat1) * Math.PI / 180;
-            const Δλ = (lon2 - lon1) * Math.PI / 180;
-
-            const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-                      Math.cos(φ1) * Math.cos(φ2) *
-                      Math.sin(Δλ/2) * Math.sin(Δλ/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-            return R * c; // in meters
-        }
-
-        // enable click-select mode (user clicks markers to select)
-        function enableClickSelectMode() {
-            clickSelectMode = true;
-            clearClickSelection(false);
-        }
-
-        function clearClickSelection(resetAlert = true) {
-            clickSelected.forEach(s => {
-                if (s.marker && typeof s.marker.setOpacity === 'function') {
-                    s.marker.setOpacity(1.0);
-                    s.marker.setZIndexOffset(0);
+        // Render Virtual Tours
+        if (virtualTours) {
+            const eyeIcon = L.icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/159/159604.png", iconSize: [35, 35], iconAnchor: [17, 35], popupAnchor: [0, -30] });
+            virtualTours.forEach(vt => {
+                const parts = vt.LocationName.split(',');
+                if (parts.length === 2) {
+                    L.marker([parseFloat(parts[0]), parseFloat(parts[1])], { icon: eyeIcon }).addTo(map).on('click', () => showVT(vt.StreetViewLink));
                 }
             });
-            clickSelected = [];
-            if (clickLine) {
-                map.removeLayer(clickLine);
-                clickLine = null;
-            }
-            if (clickPopup) {
-                map.removeLayer(clickPopup);
-                clickPopup = null;
-            }
-            if (resetAlert) console.info("Click selection cleared.");
         }
 
-        function onMarkerClickSelect(e) {
-            if (!clickSelectMode) {
-                // default: open popup if not in selection mode
-                e.target.openPopup();
-                return;
-            }
-
-            const marker = e.target;
-            const id = marker._locId;
-            const latlng = marker.getLatLng();
-
-            const existingIndex = clickSelected.findIndex(x => x.id === id);
-            if (existingIndex !== -1) {
-                // deselect
-                marker.setOpacity(1.0);
-                marker.setZIndexOffset(0);
-                clickSelected.splice(existingIndex, 1);
-                if (clickLine) { map.removeLayer(clickLine); clickLine = null; }
-                if (clickPopup) { map.removeLayer(clickPopup); clickPopup = null; }
-                return;
-            }
-
-            // select
-            marker.setOpacity(0.6);
-            marker.setZIndexOffset(1000);
-            clickSelected.push({ id, marker, latlng });
-
-            if (clickSelected.length === 2) {
-                const a = clickSelected[0].latlng;
-                const b = clickSelected[1].latlng;
-                const meters = haversine(a.lat, a.lng, b.lat, b.lng);
-                const formatted = formatDistance(meters);
-
-                if (clickLine) map.removeLayer(clickLine);
-                clickLine = L.polyline([a, b], { color: '#ff8f00', weight: 4, dashArray: '6,6' }).addTo(allDistanceLayerGroup);
-
-                const midLat = (a.lat + b.lat) / 2;
-                const midLng = (a.lng + b.lng) / 2;
-                if (clickPopup) map.removeLayer(clickPopup);
-                clickPopup = L.popup({
-                    closeOnClick: false,
-                    autoClose: false,
-                    closeButton: true,
-                    className: 'distance-popup'
-                })
-                .setLatLng([midLat, midLng])
-                .setContent(`<b>Khoảng cách:</b> ${formatted}`)
-                .openOn(map);
-
-                // keep drawn line in allDistanceLayerGroup so it's preserved with other measurements
-                allDistanceLayerGroup.addLayer(clickLine);
-
-                // reset selection markers visual state but keep the line/popup
-                clickSelected.forEach(s => { s.marker.setOpacity(1.0); s.marker.setZIndexOffset(0); });
-                clickSelected = [];
-                // keep clickSelectMode true so user can measure more pairs without re-enabling
-            }
-        }
-
-        function clearAllMeasurements() {
-            allDistanceLayerGroup.clearLayers();
-            clearClickSelection(false);
-        }
-
-        // Marker trung tâm
-        const centerMarker = L.marker([lat, lng], { title: "Trung tâm" })
-            .addTo(map)
-            .bindPopup(`<b>${city}</b><br>Vị trí trung tâm`);
-
-        // existing icon helpers
-        function getIcon(type) {
-            let iconUrl;
-            switch (type) {
-                case 1:
-                    iconUrl = "https://cdn-icons-png.flaticon.com/512/139/139899.png"; // hotel
-                    break;
-                case 2:
-                    iconUrl = "https://cdn-icons-png.flaticon.com/512/922/922699.png"; // coffee
-                    break;
-                case 3:
-                    iconUrl = "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"; // food
-                    break;
-                case 4:
-                    iconUrl = "https://cdn-icons-png.flaticon.com/512/481/481817.png"; // park
-                    break;
-                default:
-                    iconUrl = "https://cdn-icons-png.flaticon.com/512/252/252025.png"; // default
-            }
-
-            return L.icon({
-                iconUrl: iconUrl,
-                iconSize: [35, 35],
-                iconAnchor: [17, 35],
-                popupAnchor: [0, -30]
-            });
-        }
-
-        // ====== Hiển thị tên loại ======
-        function getTypeName(type) {
-            switch (type) {
-                case 1: return "Khách sạn 🏨";
-                case 2: return "Cafe ☕";
-                case 3: return "Quán ăn 🍜";
-                case 4: return "Công viên 🌳";
-                default: return "Khác";
-            }
-        }
-
-        // ====== Hiển thị các marker từ database ======
-        if (locations && locations.length > 0) {
-            locations.forEach((loc, idx) => {
-                const icon = getIcon(loc.Type);
-
-                const marker = L.marker([loc.Lat, loc.Lng], { icon, title: loc.Ten })
-                    .addTo(map)
-                    .bindPopup(`
-                        <img src="${loc.MoTa}" alt="${loc.Ten}" style="width:200px;height:auto;border-radius:8px;margin-top:5px;"><br>
-                        <b>${loc.Ten}</b><br>
-                        <i>Loại: ${getTypeName(loc.Type)}</i>
-                    `);
-
-                // attach click handler that supports both normal popup and click-selection
-                marker._locId = idx; // custom property to identify marker
-                marker.on('click', onMarkerClickSelect);
-
-                // store into locList for potential future use
-                locList.push({
-                    id: idx,
-                    name: loc.Ten,
-                    lat: loc.Lat,
-                    lng: loc.Lng,
-                    marker: marker
-                });
-            });
-        } else {
-            console.warn("⚠️ Không có dữ liệu địa điểm trong ViewBag.Locations");
-        }
-
-        let addMode = false;
-        let tempMarker = null;
-        let newLat = null, newLng = null;
-
-        function enableAddMode() {
-            addMode = true;
-        }
-
-        function cancelAdd() {
-            addMode = false;
-            if (tempMarker) {
-                map.removeLayer(tempMarker);
-                tempMarker = null;
-            }
-            document.getElementById("addForm").style.display = "none";
-        }
-
-        map.on('click', function (e) {
-            if (!addMode) return;
-
-            newLat = e.latlng.lat;
-            newLng = e.latlng.lng;
-
-            if (tempMarker) map.removeLayer(tempMarker);
-
-            tempMarker = L.marker([newLat, newLng]).addTo(map)
-                .bindPopup("Vị trí mới được chọn").openPopup();
-
-            document.getElementById("addForm").style.display = "block";
-        });
-
-        async function saveLocation() {
-            const ten = document.getElementById("ten").value.trim();
-            const loai = parseInt(document.getElementById("loai").value);
-            const fileInput = document.getElementById("imageFile");
-            const file = fileInput.files[0];
-
-            if (!ten || newLat === null || newLng === null || !file) {
-                alert("❗ Vui lòng nhập đầy đủ thông tin và chọn ảnh!");
-                return;
-            }
-
-            // Upload ảnh lên server
-            const formData = new FormData();
-            formData.append("imageFile", file);
-
-            const uploadRes = await fetch("/Map/UploadImage", {
-                method: "POST",
-                body: formData
-            });
-
-            if (!uploadRes.ok) {
-                alert("❌ Upload ảnh thất bại!");
-                return;
-            }
-
-            const result = await uploadRes.json();
-            const imagePath = result.imagePath; // "/images/tên_ảnh.jpg"
-
-            // Gửi dữ liệu thêm địa điểm
-            const data = {
-                Ten: ten,
-                MoTa: imagePath, // <--- chính là cột hình ảnh trong database
-                Type: loai,
-                Lat: newLat,
-                Lng: newLng
+        // Functions
+        function showDetail(loc) {
+            document.getElementById('detailModal').style.display='block';
+            setTimeout(()=>document.getElementById('detailModal').classList.add('show'),10);
+            document.getElementById('detailTitle').innerText = loc.Ten;
+            document.getElementById('detailType').innerText = getTypeName(loc.Type);
+            document.getElementById('detailHeaderImg').style.backgroundImage = `url('${loc.MoTa}')`;
+            
+            // Logic điền data chi tiết
+            const toggleRow = (rowId, value, formatFn = (x) => x) => {
+                const row = document.getElementById(rowId);
+                if (value) {
+                    row.style.display = 'flex';
+                    row.querySelector('.info-right').textContent = formatFn(value);
+                } else {
+                    row.style.display = 'none';
+                }
+            };
+            const formatPrice = (priceText) => {
+                if(priceText && priceText.includes('-')) {
+                    const [min, max] = priceText.split('-').map(x => x.trim());
+                    return `${formatVND(min)} - ${formatVND(max)}`;
+                }
+                return priceText;
             };
 
-            fetch('/Map/AddLocation', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(res => {
-                if (res.ok) {
-                    alert("✅ Thêm địa điểm thành công!");
-                    location.reload();
-                } else {
-                    alert("❌ Lưu thất bại!");
-                }
-            })
-            .catch(err => console.error("Lỗi:", err));
+            toggleRow('rowHours', loc.GioCua);
+            toggleRow('rowPrice', loc.GiaCa, formatPrice);
+            toggleRow('rowPhone', loc.SoDienThoai);
+            toggleRow('rowDesc', loc.ChiTiet);
+            
+            // Xử lý Rating
+            const ratingVal = loc.Rating || 0;
+            if(ratingVal > 0) {
+                const fullStars = Math.floor(ratingVal);
+                const hasHalf = (ratingVal % 1) >= 0.5;
+                let stars = '★'.repeat(fullStars);
+                if(hasHalf) stars += '½';
+                const emptyStars = 5 - Math.ceil(ratingVal);
+                stars += '☆'.repeat(emptyStars);
+                document.getElementById('ratingSection').style.display = 'block';
+                document.getElementById('bigStars').textContent = stars;
+                document.getElementById('ratingScore').textContent = `(${ratingVal}/5)`;
+            } else {
+                document.getElementById('ratingSection').style.display = 'none';
+            }
+        }
+        function closeDetail() {
+            document.getElementById('detailModal').classList.remove('show');
+            setTimeout(()=>document.getElementById('detailModal').style.display='none',300);
+        }
+        function showVT(link) {
+            document.getElementById('vtIframe').src = link;
+            document.getElementById('vtModal').style.display = 'block';
+            setTimeout(()=>document.getElementById('vtModal').classList.add('show'),10);
+        }
+        function closeVT() {
+            document.getElementById('vtModal').classList.remove('show');
+            setTimeout(()=>{
+                document.getElementById('vtModal').style.display='none';
+                document.getElementById('vtIframe').src='';
+            },300);
         }
 
+        // Logic Add
+        let addMode = false, vtMode = false, tempMarker = null, newLat = 0, newLng = 0;
+
+        function enableAddMode() { if(userRole!="Admin") return alert("Cần quyền Admin"); addMode=true; vtMode=false; document.getElementById("vtForm").style.display="none"; alert("Chọn vị trí trên bản đồ!"); }
+        function enableVTMode() { if(userRole!="Admin") return alert("Cần quyền Admin"); vtMode=true; addMode=false; document.getElementById("addForm").style.display="none"; alert("Chọn vị trí trên bản đồ!"); }
+        function cancelAdd() { addMode=false; document.getElementById("addForm").style.display="none"; if(tempMarker) map.removeLayer(tempMarker); }
+        function cancelVT() { vtMode=false; document.getElementById("vtForm").style.display="none"; if(tempMarker) map.removeLayer(tempMarker); }
+
+        map.on('click', function(e) {
+            if(!addMode && !vtMode) return;
+            newLat = e.latlng.lat; newLng = e.latlng.lng;
+            if(tempMarker) map.removeLayer(tempMarker);
+            tempMarker = L.marker([newLat, newLng]).addTo(map);
+
+            if(addMode) document.getElementById("addForm").style.display = "block";
+            else if(vtMode) {
+                document.getElementById("vtForm").style.display = "block";
+                document.getElementById("vtCoords").innerText = `${newLat.toFixed(5)}, ${newLng.toFixed(5)}`;
+                document.getElementById("vtLink").value = "";
+            }
+        });
+
+        // Save Location
+        async function saveLocation() {
+            const ten = document.getElementById("ten").value;
+            const file = document.getElementById("imageFile").files[0];
+            if(!ten || !file) return alert("Nhập tên và ảnh!");
+
+            const fd = new FormData(); fd.append("imageFile", file);
+            const rImg = await fetch("/Map/UploadImage", {method:"POST", body:fd});
+            if(!rImg.ok) return alert("Lỗi upload ảnh");
+            const imgJson = await rImg.json();
+
+            const data = {
+                Ten: ten, MoTa: imgJson.imagePath, Lat: newLat, Lng: newLng,
+                Type: parseInt(document.getElementById("loai").value),
+                ChiTiet: document.getElementById("chitiet").value,
+                GioCua: document.getElementById("giocua").value,
+                SoDienThoai: document.getElementById("sodienthoai").value,
+                GiaCa: document.getElementById("giaMin").value + " - " + document.getElementById("giaMax").value,
+                Rating: document.querySelector('input[name="rating"]:checked')?.value
+            };
+
+            const res = await fetch('/Map/AddLocation', {
+                method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)
+            });
+            if(res.ok) { alert("Thành công!"); location.reload(); }
+            else alert("Lỗi lưu DB");
+        }
+
+        // Save VT (Fix Regex)
+        async function saveVT() {
+            let link = document.getElementById("vtLink").value.trim();
+            if(!link) return alert("Nhập link!");
+
+            // Regex Fix
+            const srcMatch = link.match(/src="([^"]+)"/);
+            if (srcMatch && srcMatch[1]) link = srcMatch[1];
+            else if (link.startsWith("<iframe")) {
+                const srcMatchSingle = link.match(/src='([^']+)'/);
+                if (srcMatchSingle && srcMatchSingle[1]) link = srcMatchSingle[1];
+            }
+
+            if (!link.includes("google.com") || !link.includes("embed")) return alert("Link không hợp lệ!");
+
+            const res = await fetch('/VirtualTours/CreateJson', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ LocationName: `${newLat},${newLng}`, StreetViewLink: link })
+            });
+            const d = await res.json();
+            if(d.success) { alert(d.message); location.reload(); }
+            else alert(d.message);
+        }
     </script>
 </body>
 </html>

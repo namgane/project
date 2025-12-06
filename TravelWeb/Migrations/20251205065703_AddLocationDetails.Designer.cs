@@ -12,8 +12,8 @@ using TravelWeb.Data;
 namespace TravelWeb.Migrations
 {
     [DbContext(typeof(TravelContext))]
-    [Migration("20251113033942_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251205065703_AddLocationDetails")]
+    partial class AddLocationDetails
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,6 +110,18 @@ namespace TravelWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ChiTiet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiaChi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GiaCa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GioCua")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Lat")
                         .HasColumnType("float");
 
@@ -118,6 +130,12 @@ namespace TravelWeb.Migrations
 
                     b.Property<string>("MoTa")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("SoDienThoai")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
