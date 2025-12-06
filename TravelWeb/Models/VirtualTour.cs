@@ -19,7 +19,7 @@ namespace TravelWeb.Models
         // Khóa ngoại đến Tour
         [ForeignKey("Tour")]
         public int TourId { get; set; }
-
+        public string? ImageUrl { get; set; }
         public Tour? Tour { get; set; }
     }
 }

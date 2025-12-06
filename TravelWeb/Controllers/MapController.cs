@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TravelWeb.Data;
 using TravelWeb.Models;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace TravelWeb.Controllers
 {
@@ -14,20 +14,41 @@ namespace TravelWeb.Controllers
             _context = context;
         }
 
-        // ======= Hiển thị bản đồ =======
-        public IActionResult Index(string city, double lat, double lng)
+        // 1. Hiển thị Map
+        public IActionResult Index(string city, double? lat, double? lng)
         {
-            ViewBag.City = city;
-            ViewBag.Lat = lat;
-            ViewBag.Lng = lng;
+            ViewBag.City = string.IsNullOrEmpty(city) ? "TP. Hồ Chí Minh" : city;
+            ViewBag.Lat = lat ?? 10.7769;
+            ViewBag.Lng = lng ?? 106.7009;
 
-            // Lấy toàn bộ danh sách địa điểm từ database
+            // Lấy danh sách địa điểm thường
             ViewBag.Locations = _context.Locations.ToList();
+
+            // ✅ QUAN TRỌNG: Lấy danh sách Virtual Tour để hiển thị con mắt
+            ViewBag.VirtualTours = _context.VirtualTours.ToList();
 
             return View();
         }
 
-        // ======= API: Thêm địa điểm mới =======
+        // 2. Upload ảnh (Dùng cho form thêm địa điểm)
+        [HttpPost]
+        public async Task<IActionResult> UploadImage(IFormFile imageFile)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+                return BadRequest(new { message = "Chưa chọn ảnh" });
+
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(stream);
+            }
+
+            return Json(new { imagePath = "/images/" + fileName });
+        }
+
+        // 3. API Thêm địa điểm thường (JSON)
         [HttpPost]
         public IActionResult AddLocation([FromBody] Location model)
         {
@@ -37,34 +58,14 @@ namespace TravelWeb.Controllers
                 {
                     _context.Locations.Add(model);
                     _context.SaveChanges();
-                    return Ok(new { success = true, message = "Đã lưu địa điểm thành công!" });
+                    return Ok(new { success = true, message = "Lưu thành công!" });
                 }
                 catch (Exception ex)
                 {
-                    return BadRequest(new { success = false, message = $"Lỗi lưu vào DB: {ex.Message}" });
+                    return BadRequest(new { success = false, message = ex.Message });
                 }
             }
-
             return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ." });
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UploadImage(IFormFile imageFile)
-        {
-            if (imageFile == null || imageFile.Length == 0)
-                return BadRequest("Không có ảnh được chọn.");
-
-            var fileName = Path.GetFileName(imageFile.FileName);
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(stream);
-            }
-
-            var imagePath = $"/images/{fileName}";
-
-            return Json(new { imagePath });
         }
     }
 }
