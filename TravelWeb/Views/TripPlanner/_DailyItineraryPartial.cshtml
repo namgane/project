@@ -8,44 +8,77 @@
             <div class="timeline-marker">
                 <i class="fas fa-calendar-day"></i>
             </div>
+
             <div class="timeline-content">
                 <h4 class="timeline-title">Ngày @day.DayNumber</h4>
+
                 <div class="activities-list">
                     @foreach (var activity in day.Activities)
                     {
+                        var id = $"act_{day.DayNumber}_{activity.Time.Replace(":", "").Replace(" ", "")}";
+
                         <div class="activity-item">
                             <div class="activity-time">
                                 <i class="fas fa-clock me-2"></i>@activity.Time
                             </div>
+
                             <div class="activity-details">
-                                <h6 class="activity-name">
+                                <h6 class="activity-name" id="@id-name">
                                     @activity.Name
                                     @if (activity.Type == "Ăn uống")
                                     {
-                                        <span class="badge bg-danger ms-2">
-                                            <i class="fas fa-utensils"></i>
-                                        </span>
+                                        <span class="badge bg-danger ms-2"><i class="fas fa-utensils"></i></span>
                                     }
                                     else if (activity.Type == "Tham quan")
                                     {
-                                        <span class="badge bg-info ms-2">
-                                            <i class="fas fa-landmark"></i>
-                                        </span>
+                                        <span class="badge bg-info ms-2"><i class="fas fa-landmark"></i></span>
                                     }
                                     else if (activity.Type == "Giải trí")
                                     {
-                                        <span class="badge bg-warning ms-2">
-                                            <i class="fas fa-coffee"></i>
-                                        </span>
+                                        <span class="badge bg-warning ms-2"><i class="fas fa-coffee"></i></span>
                                     }
                                 </h6>
 
-                                @* ✅ HIỂN THỊ ĐỊA CHỈ/LỘ TRÌNH (Bao gồm cả chi tiết Di chuyển) *@
-                                @if (!string.IsNullOrWhiteSpace(activity.Address))
-                                {
-                                    <div class="activity-address mb-2">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div id="@id-default" style="cursor: pointer;" onclick="toggleSuggestions('@id')">
                                         <i class="fas fa-map-marker-alt text-danger me-1"></i>
-                                        <span class="text-muted">@activity.Address</span>
+                                        <span class="text-muted" id="@id-address">@activity.Address</span>
+
+                                        @if (activity.Suggestions != null && activity.Suggestions.Any())
+                                        {
+                                            <span class="text-primary small ms-2 fw-bold" style="font-size: 0.85rem;">
+                                                <i class="fas fa-exchange-alt"></i> Đổi điểm khác
+                                            </span>
+                                        }
+                                    </div>
+
+                                    @if (activity.Type == "Ăn uống" || activity.Type == "Giải trí")
+                                    {
+                                        <button class="btn btn-sm btn-primary"
+                                                type="button"
+                                                onclick="openBookingModal('@activity.Address', 3, '@activity.Time')">
+                                            <i class="fas fa-calendar-check me-1"></i> Đặt lịch
+                                        </button>
+                                    }
+                                </div>
+
+                                @if (activity.Suggestions != null && activity.Suggestions.Any())
+                                {
+                                    <div id="@id-suggestions" class="d-none mt-2 p-2 bg-light border rounded">
+                                        <div class="text-muted small fw-bold mb-2">Gợi ý thay thế ngẫu nhiên:</div>
+                                        @foreach (var s in activity.Suggestions)
+                                        {
+                                            <div class="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2">
+                                                <div style="font-size: 0.9em; width: 75%;">
+                                                    <strong class="text-dark">@s.Name</strong><br />
+                                                    <span class="text-muted small"><i class="fas fa-map-pin me-1"></i>@s.Address</span>
+                                                </div>
+                                                <button class="btn btn-sm btn-outline-success"
+                                                        onclick="selectSuggestion('@id', '@s.Address', '@s.Name')">
+                                                    Chọn
+                                                </button>
+                                            </div>
+                                        }
                                     </div>
                                 }
 
@@ -55,17 +88,16 @@
                                 }
 
                                 <div class="activity-meta">
-                                    <span class="badge bg-info me-2">@activity.Type</span>
-                                    <span class="activity-cost">
-                                        <i class="fas fa-coins me-1"></i><span class="activity-cost-value">@activity.Cost.ToString("N0")</span> VNĐ
-                                    </span>
+                                    <span class="badge bg-light text-dark border me-2">@activity.Type</span>
+                                    <span><i class="fas fa-coins me-1"></i>@activity.Cost.ToString("N0") VNĐ</span>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
-                <div class="day-total">
-                    <strong>Tổng chi phí ngày @day.DayNumber: <span class="day-total-cost">@day.TotalCost.ToString("N0")</span> VNĐ</strong>
+
+                <div class="day-total mt-3 pt-2 border-top">
+                    <strong>Tổng chi phí ngày @day.DayNumber: @day.TotalCost.ToString("N0") VNĐ</strong>
                 </div>
             </div>
         </div>
@@ -74,6 +106,116 @@
 else
 {
     <div class="alert alert-danger text-center">
-        <strong>Lỗi tải kế hoạch:</strong> Không thể tạo lịch trình chi tiết. Vui lòng thử lại.
+        <strong>Lỗi tải kế hoạch:</strong> Không thể tạo lịch trình chi tiết.
     </div>
 }
+
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Xác nhận đặt lịch</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form id="bookingForm">
+                <div class="modal-body">
+                    <input type="hidden" name="userId" id="bookingUserId" value="3" />
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Địa điểm:</label>
+                        <input type="text" class="form-control" name="location" id="bookingLocation" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Thời gian:</label>
+                        <input type="time" class="form-control" name="time" id="bookingTime" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-success">Lưu đặt lịch</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- 1. Sửa lỗi nhảy Popup (QUAN TRỌNG NHẤT) ---
+    // Đoạn code này sẽ chuyển hẳn thẻ Modal ra ngoài body khi trang web tải xong
+    document.addEventListener("DOMContentLoaded", function() {
+        var modalElement = document.getElementById('bookingModal');
+        if (modalElement) {
+            document.body.appendChild(modalElement);
+        }
+    });
+
+    // --- 2. Hàm mở Modal và điền dữ liệu ---
+    function openBookingModal(address, userId, time) {
+        document.getElementById('bookingLocation').value = address;
+        document.getElementById('bookingUserId').value = userId;
+
+        // Xử lý hiển thị giờ (Nếu time dạng "14:30 abc" thì chỉ lấy "14:30")
+        // Input type="time" chỉ nhận định dạng HH:mm
+        var cleanTime = time.trim();
+        // Regex đơn giản để lấy HH:mm nếu chuỗi có thêm chữ
+        var timeMatch = cleanTime.match(/([01]?[0-9]|2[0-3]):[0-5][0-9]/);
+        if(timeMatch) {
+             document.getElementById('bookingTime').value = timeMatch[0];
+        } else {
+             // Nếu không match thì để nguyên cho user tự nhập
+             document.getElementById('bookingTime').value = "";
+        }
+
+        var myModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        myModal.show();
+    }
+
+    // --- 3. Xử lý Submit Form (AJAX) ---
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch('/Order/Create', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                // Đóng Modal
+                var modalInstance = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                modalInstance.hide();
+            } else {
+                alert("Lỗi: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Đã có lỗi kết nối server.");
+        });
+    });
+
+    // --- 4. Các hàm giao diện cũ ---
+    function toggleSuggestions(id) {
+        var el = document.getElementById(id + "-suggestions");
+        if (el) el.classList.toggle("d-none");
+    }
+
+    function selectSuggestion(id, newAddress, newName) {
+        document.getElementById(id + "-address").innerText = newAddress;
+
+        var nameEl = document.getElementById(id + "-name");
+        var badges = nameEl.getElementsByTagName("span");
+        var tempBadges = [];
+        for (var i = 0; i < badges.length; i++) tempBadges.push(badges[i].cloneNode(true));
+
+        nameEl.innerHTML = newName + " ";
+        for (var i = 0; i < tempBadges.length; i++) nameEl.appendChild(tempBadges[i]);
+
+        document.getElementById(id + "-suggestions").classList.add("d-none");
+    }
+</script>

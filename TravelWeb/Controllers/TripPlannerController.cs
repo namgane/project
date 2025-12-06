@@ -12,12 +12,20 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using System.IO;
 using System.Text;
+using TravelWeb.Data;
+using System.Security.Claims;
 
 namespace TravelWeb.Controllers
 {
     public class TripPlannerController : Controller
     {
         private Random _random = new Random();
+        private readonly TravelContext _context;
+
+        public TripPlannerController(TravelContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public IActionResult Index(string? destination = null, double? budget = null, int? days = null)
@@ -101,6 +109,71 @@ namespace TravelWeb.Controllers
                 };
 
                 return Json(response);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Lỗi server: " + ex.Message });
+            }
+        }
+
+        // New endpoint: create an Order record with CreatedDate, UserId, Location, Time
+        public class OrderCreateDto
+        {
+            public string Location { get; set; }
+            public string Time { get; set; } // expects ISO or parsable datetime-local string
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateOrder([FromBody] OrderCreateDto dto)
+        {
+            try
+            {
+                if (dto == null || string.IsNullOrWhiteSpace(dto.Location) || string.IsNullOrWhiteSpace(dto.Time))
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new { success = false, message = "Dữ liệu đặt lịch không hợp lệ." });
+                }
+
+                if (!User.Identity?.IsAuthenticated ?? true)
+                {
+                    return StatusCode(StatusCodes.Status401Unauthorized, new { success = false, message = "Bạn cần đăng nhập để đặt lịch." });
+                }
+
+                // Try several claim keys commonly used for user id
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                                  ?? User.FindFirst("sub")?.Value
+                                  ?? User.FindFirst("id")?.Value
+                                  ?? User.FindFirst("userId")?.Value
+                                  ?? User.FindFirst("userid")?.Value;
+
+                if (!int.TryParse(userIdClaim, out int userId))
+                {
+                    // fallback: try User.Identity.Name if it contains an int id (rare)
+                    if (!int.TryParse(User.Identity?.Name, out userId))
+                    {
+                        return StatusCode(StatusCodes.Status401Unauthorized, new { success = false, message = "Không xác định được UserId. Vui lòng đăng nhập lại." });
+                    }
+                }
+
+                if (!DateTime.TryParse(dto.Time, out DateTime requestedTime))
+                {
+                    if (!DateTime.TryParse(dto.Time, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.AssumeLocal, out requestedTime))
+                    {
+                        return StatusCode(StatusCodes.Status400BadRequest, new { success = false, message = "Định dạng thời gian không hợp lệ." });
+                    }
+                }
+
+                var order = new Order
+                {
+                    CreatedDate = DateTime.Now,
+                    UserId = userId,
+                    Location = dto.Location,
+                    Time = requestedTime
+                };
+
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true, message = "Đặt lịch thành công." });
             }
             catch (Exception ex)
             {

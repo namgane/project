@@ -6,6 +6,7 @@ namespace TravelWeb.Models
     {
         public string Destination { get; set; }
         public int SuggestedDays { get; set; }
+        public int NumberOfPeople { get; set; }
         public double TotalBudget { get; set; }
         public double EstimatedTotalCost { get; set; }
         public List<DailyExpense> DailyPlans { get; set; }
