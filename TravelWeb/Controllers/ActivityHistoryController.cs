@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+/*using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelWeb.Data;
 using TravelWeb.Models;
@@ -87,3 +87,4 @@ namespace TravelWeb.Controllers
 }
 
 
+*/

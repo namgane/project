@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+/*using Microsoft.EntityFrameworkCore;
 using TravelWeb.Data;
 using TravelWeb.Models;
 using System;
@@ -101,3 +101,4 @@ namespace TravelWeb.Services
 }
 
 
+*/

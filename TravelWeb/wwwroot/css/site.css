@@ -1,3 +1,281 @@
+﻿
+/* --- BẢNG MÀU LUXURY ICE BLUE --- */
+:root {
+    /* Màu nền chính: Xanh xám rất nhạt, tạo cảm giác rộng rãi */
+    --main-bg: #F5F7FA;
+    /* Gradient Header: Từ trắng sang xanh băng tinh khiết */
+    --header-gradient: linear-gradient(120deg, #ffffff 0%, #E1F5FE 100%);
+    /* Màu Sidebar: Trắng tinh khôi */
+    --sidebar-bg: #ffffff;
+    /* Màu chữ: Xanh than đậm (thay vì đen tuyền) để sang hơn */
+    --text-primary: #2C3E50;
+    --text-secondary: #546E7A;
+    /* Màu điểm nhấn (Accent): Xanh ngọc lam đậm */
+    --accent-color: #00838F;
+    --accent-hover: #006064;
+    /* Hiệu ứng bóng đổ mềm (Soft Shadow) */
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 15px 40px rgba(0, 131, 143, 0.15);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* --- 1. HEADER SANG TRỌNG (Glassmorphism) --- */
+.custom-header {
+    background: var(--header-gradient);
+    /* Hiệu ứng kính mờ */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    /* Đường viền mỏng trong suốt phía dưới */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow-soft);
+    padding: 15px 0;
+    min-height: 90px;
+    transition: all 0.4s ease;
+}
+
+/* Logo Text */
+.navbar-brand span {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(45deg, #0288D1, #26C6DA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Chữ gradient thời thượng */
+}
+
+/* Nút 3 gạch (Hamburger) */
+.hamburger-btn {
+    border: none;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    color: var(--accent-color);
+    padding: 8px 14px;
+    transition: transform 0.3s ease;
+}
+
+    .hamburger-btn:hover {
+        transform: scale(1.05);
+        background: #E0F7FA;
+        color: var(--accent-hover);
+    }
+
+/* Avatar User */
+.avatar-circle {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #29B6F6, #0288D1);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
+    border: 2px solid white;
+}
+
+/* Tên User */
+.nav-link span {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* --- 2. SIDEBAR (Thanh Menu Trượt) --- */
+.custom-sidebar {
+    background-color: var(--sidebar-bg);
+    width: 320px;
+    border: none;
+    box-shadow: 5px 0 30px rgba(0,0,0,0.05);
+}
+
+.offcanvas-header {
+    background: linear-gradient(to right, #E1F5FE, #ffffff);
+    padding: 20px 25px;
+}
+
+.offcanvas-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.btn-close {
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+    .btn-close:hover {
+        opacity: 1;
+        transform: rotate(90deg);
+    }
+
+/* Sidebar Links */
+.sidebar-nav {
+    padding: 20px 15px;
+}
+
+    .sidebar-nav .nav-link {
+        color: var(--text-secondary);
+        font-weight: 500;
+        padding: 14px 20px;
+        margin-bottom: 8px;
+        border-radius: 12px; /* Bo góc mềm mại */
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .sidebar-nav .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #90A4AE;
+            transition: color 0.3s;
+        }
+
+        /* Hiệu ứng Hover & Active cực đẹp */
+        .sidebar-nav .nav-link:hover,
+        .sidebar-nav .nav-link.active {
+            background-color: #E1F5FE; /* Nền xanh băng nhạt */
+            color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(225, 245, 254, 0.8);
+            transform: translateX(5px);
+        }
+
+            .sidebar-nav .nav-link:hover i,
+            .sidebar-nav .nav-link.active i {
+                color: var(--accent-color);
+            }
+
+            /* Dấu gạch đứng nhỏ khi Active để tạo điểm nhấn */
+            .sidebar-nav .nav-link.active::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 60%;
+                width: 4px;
+                background-color: var(--accent-color);
+                border-radius: 0 4px 4px 0;
+            }
+
+/* Link Đặc biệt (Admin/Booking) */
+.highlight-link {
+    background-color: #FFF8E1; /* Vàng kem nhạt */
+    color: #F57F17 !important;
+}
+
+    .highlight-link i {
+        color: #FFB300 !important;
+    }
+
+.admin-link {
+    background-color: #FFEBEE; /* Hồng phấn nhạt */
+    color: #D32F2F !important;
+}
+
+    .admin-link i {
+        color: #EF5350 !important;
+    }
+
+/* Đường kẻ phân cách */
+.sidebar-hr {
+    border-top: 1px dashed #CFD8DC;
+    margin: 15px 20px;
+}
+
+/* --- 3. CÁC THÀNH PHẦN KHÁC --- */
+
+/* Footer */
+footer.footer {
+    background: white;
+    border-top: none !important;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.02);
+    padding: 30px 0;
+}
+
+footer a {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+}
+
+    footer a::after {
+        content: '';
+        width: 0%;
+        height: 2px;
+        background: var(--accent-color);
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        transition: 0.3s;
+    }
+
+    footer a:hover::after {
+        width: 100%;
+    }
+
+/* Alert Messages */
+.alert {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.alert-success {
+    background-color: #E0F2F1;
+    color: #00695C;
+    border-left: 5px solid #00695C;
+}
+
+.alert-danger {
+    background-color: #FFEBEE;
+    color: #C62828;
+    border-left: 5px solid #C62828;
+}
+
+/* Nút Login/Register trên Header */
+.btn-outline-light {
+    /* Thực tế là nút Login */
+    color: var(--text-primary);
+    border: 1px solid #CFD8DC;
+    font-weight: 500;
+}
+
+    .btn-outline-light:hover {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        color: white;
+    }
+
+.btn-light {
+    /* Nền gradient xanh hiện tại */
+    background: linear-gradient(135deg, #29B6F6, #0288D1);
+    border: none;
+    /* QUAN TRỌNG: Màu trắng tinh và thêm bóng chữ nhẹ */
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Bóng đen nhẹ giúp chữ "bật" lên */
+
+    box-shadow: 0 4px 10px rgba(2, 136, 209, 0.4);
+    font-weight: 600; /* Tăng độ đậm của chữ thêm một chút */
+    transition: all 0.3s ease;
+}
+
+    /* Hiệu ứng khi di chuột vào */
+    .btn-light:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(2, 136, 209, 0.6);
+        /* Khi hover, làm nền sáng hơn một chút để tăng tương phản hơn nữa */
+        filter: brightness(1.1);
+    }
 html {
   font-size: 14px;
 }

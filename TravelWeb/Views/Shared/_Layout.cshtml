@@ -10,160 +10,191 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TravelWeb</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TravelWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/festival.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-controller="Tours" asp-action="Index">
-                    <i class="bi bi-airplane"></i> TravelWeb
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav class="navbar navbar-dark fixed-top custom-header">
+            <div class="container-fluid d-flex align-items-center justify-content-between px-4">
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Tours"?"active":"")" asp-controller="Tours" asp-action="Index">
-                                <i class="bi bi-house-door"></i> Home
+                <div class="d-flex align-items-center">
+                    <button class="btn hamburger-btn me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+                        <i class="bi bi-list fs-2"></i>
+                    </button>
+
+                    <a class="navbar-brand d-flex align-items-center" asp-controller="Tours" asp-action="Index">
+                        <i class="bi bi-airplane-fill me-2 fs-3 text-white"></i>
+                        <span class="fs-3 fw-bold text-white">TravelWeb</span>
+                    </a>
+                </div>
+
+                <ul class="navbar-nav flex-row align-items-center">
+                    @if (string.IsNullOrEmpty(username))
+                    {
+                        <li class="nav-item me-2">
+                            <a class="btn btn-outline-light rounded-pill px-4" asp-controller="Users" asp-action="Login">
+                                Login
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Quiz"?"active":"")" asp-area="" asp-controller="Quiz" asp-action="Start">AkiCity</a>
+                            <a class="btn custom-btn-register fw-bold rounded-pill px-4" asp-controller="Users" asp-action="Register">
+                                Register
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Festival"?"active":"")" asp-area="" asp-controller="Festival" asp-action="Index">Festival</a>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center text-white" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="avatar-circle me-2">@username.Substring(0, 1).ToUpper()</div>
+                                <span class="d-none d-sm-inline fw-medium">@username</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Users" asp-action="Logout">
+                                        <i class="bi bi-box-arrow-right text-danger"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Transport"?"active":"")" asp-area="" asp-controller="Transport" asp-action="Suggest">Transport</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Trip"?"active":"")" asp-area="" asp-controller="Trip" asp-action="Suggestions">Trip</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Passport"?"active":"")" asp-area="" asp-controller="Passport" asp-action="Index">Passport</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="TikTok"?"active":"")" asp-area="" asp-controller="TikTok" asp-action="Index">SearchTiktok</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="TripPlanner"?"active":"")" asp-area="" asp-controller="TripPlanner" asp-action="Index">TripPlanner</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Cuisine"?"active":"")" asp-area="" asp-controller="Cuisine" asp-action="Index">Ẩm thực</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Favorites"?"active":"")" asp-area="" asp-controller="Favorites" asp-action="Index">Bộ sưu tập</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark @(ViewContext.RouteData.Values["controller"]?.ToString()=="Feedback"?"active":"")" asp-area="" asp-controller="Feedback" asp-action="Index">Góp ý</a>
-                        </li>
-
-
-
-                        @* Menu cho Customer - Lịch Sử Đặt Phòng *@
-                        @if (role == "Customer")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Bookings" asp-action="MyBookings">
-                                    <i class="bi bi-calendar-check"></i> Lịch Sử Đặt Phòng
-                                </a>
-                            </li>
-                        }
-
-                        @* Menu cho Hotel - Quản lý đơn đặt phòng *@
-                        @if (role == "Hotel")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Bookings" asp-action="HotelBookings">
-                                    <i class="bi bi-envelope"></i> Yêu Cầu Đặt Phòng
-                                </a>
-                            </li>
-                        }
-
-                        @* Menu cho Admin *@
-                        @if (username == "admin")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Bookings" asp-action="HotelBookings">
-                                    <i class="bi bi-shield-check"></i> Quản Lý Đặt Phòng
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString()=="Admin" && ViewContext.RouteData.Values["controller"]?.ToString()=="Feedback"?"active":"")" asp-controller="Feedback" asp-action="Admin">
-                                    <i class="bi bi-inbox"></i> Feedback người dùng
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark @(ViewContext.RouteData.Values["action"]?.ToString()=="AdminRewards" && ViewContext.RouteData.Values["controller"]?.ToString()=="Passport"?"active":"")" asp-controller="Passport" asp-action="AdminRewards">
-                                    <i class="bi bi-gift"></i> Duyệt phần thưởng
-                                </a>
-                            </li>
-                            
-                        }
-                    </ul>
-
-                    <ul class="navbar-nav">
-                        @if (string.IsNullOrEmpty(username))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Login">
-                                    <i class="bi bi-box-arrow-in-right"></i> Login
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Register">
-                                    <i class="bi bi-person-plus"></i> Register
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle"></i> @username
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Users" asp-action="Logout">
-                                            <i class="bi bi-box-arrow-right"></i> Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        }
-                    </ul>
-                </div>
+                    }
+                </ul>
             </div>
         </nav>
+
+        <div class="offcanvas offcanvas-start custom-sidebar" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title fw-bold" id="sidebarMenuLabel">
+                    <i class="bi bi-map-fill me-2"></i> MENU
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body pt-3">
+                <ul class="nav flex-column sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Tours" ? "active" : "")" asp-controller="Tours" asp-action="Index">
+                            <i class="bi bi-house-door"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Quiz" ? "active" : "")" asp-controller="Quiz" asp-action="Start">
+                            <i class="bi bi-puzzle"></i> AkiCity
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Festival" ? "active" : "")" asp-controller="Festival" asp-action="Index">
+                            <i class="bi bi-balloon"></i> Festival
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Transport" ? "active" : "")" asp-controller="Transport" asp-action="Suggest">
+                            <i class="bi bi-bus-front"></i> Transport
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Trip" ? "active" : "")" asp-controller="Trip" asp-action="Suggestions">
+                            <i class="bi bi-map"></i> Trip Suggestions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Passport" ? "active" : "")" asp-controller="Passport" asp-action="Index">
+                            <i class="bi bi-pass"></i> Passport
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "TikTok" ? "active" : "")" asp-controller="TikTok" asp-action="Index">
+                            <i class="bi bi-tiktok"></i> Search Tiktok
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "TripPlanner" ? "active" : "")" asp-controller="TripPlanner" asp-action="Index">
+                            <i class="bi bi-calendar-range"></i> Trip Planner
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Cuisine" ? "active" : "")" asp-controller="Cuisine" asp-action="Index">
+                            <i class="bi bi-egg-fried"></i> Ẩm thực
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Favorites" ? "active" : "")" asp-controller="Favorites" asp-action="Index">
+                            <i class="bi bi-heart"></i> Bộ sưu tập
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Feedback" ? "active" : "")" asp-controller="Feedback" asp-action="Index">
+                            <i class="bi bi-chat-text"></i> Góp ý
+                        </a>
+                    </li>
+
+                    <div class="sidebar-hr"></div>
+
+                    @if (role == "Customer")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link highlight-link" asp-controller="Bookings" asp-action="MyBookings">
+                                <i class="bi bi-calendar-check"></i> Lịch Sử Đặt Phòng
+                            </a>
+                        </li>
+                    }
+
+                    @if (role == "Hotel")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link highlight-link" asp-controller="Bookings" asp-action="HotelBookings">
+                                <i class="bi bi-envelope"></i> Yêu Cầu Đặt Phòng
+                            </a>
+                        </li>
+                    }
+
+                    @if (username == "admin")
+                    {
+                        <li class="nav-item">
+                            <div class="small text-uppercase fw-bold px-3 text-secondary mt-2 mb-1">Quản trị</div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link admin-link" asp-controller="Bookings" asp-action="HotelBookings">
+                                <i class="bi bi-shield-check"></i> Quản Lý Đặt Phòng
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link admin-link" asp-controller="Feedback" asp-action="Admin">
+                                <i class="bi bi-inbox"></i> Feedback
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link admin-link" asp-controller="Passport" asp-action="AdminRewards">
+                                <i class="bi bi-gift"></i> Duyệt phần thưởng
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        @* Hiển thị thông báo TempData *@
+    <div class="container" style="padding-top: 130px;">
         @if (TempData["Success"] != null)
         {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0" role="alert" style="background-color: #e0f7fa; color: #006064;">
+                <i class="bi bi-check-circle-fill me-2"></i> @TempData["Success"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         }
 
         @if (TempData["Error"] != null)
         {
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         }
@@ -173,10 +204,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted mt-4">
-        <div class="container text-center">
-            &copy; 2025 - TravelWeb -
-            <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted mt-5">
+        <div class="container text-center small">
+            &copy; 2025 - TravelWeb - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 
@@ -184,6 +214,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
- </body>
- </html>
+</body>
 </html>
