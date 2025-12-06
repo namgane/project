@@ -1,58 +1,127 @@
 ﻿@model List<TravelWeb.Models.TransportOption>
+@{
+    var trips = ViewBag.Trips as List<TravelWeb.Models.Trip> ?? new List<TravelWeb.Models.Trip>();
+    var from = ViewBag.From as string ?? "";
+    var to = ViewBag.To as string ?? "";
+    var totalOptions = ViewBag.TotalOptions as int? ?? 0;
+}
 
+<<<<<<< Updated upstream
 <h2 class="mb-3 text-center text-primary">Gợi ý phương tiện du lịch</h2>
+=======
+<!-- HERO SECTION -->
+<div class="transport-hero py-5 mb-4 text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0 0 25px 25px;">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-2">🚌 Gợi ý phương tiện di chuyển</h1>
+        <p class="mb-1 fs-5">
+            <i class="bi bi-geo-alt-fill"></i> 
+            <strong>@from</strong> 
+            <i class="bi bi-arrow-right mx-2"></i> 
+            <strong>@to</strong>
+        </p>
+        @if (totalOptions > 0)
+        {
+            <p class="mb-0 text-white-50">
+                Tìm thấy <strong>@totalOptions</strong> phương án di chuyển
+            </p>
+        }
+    </div>
+</div>
+>>>>>>> Stashed changes
 
+<!-- QUICK ACTIONS -->
+<div class="container mb-4">
+    <div class="row g-2">
+        <div class="col-12 col-md-4">
+            <a class="btn btn-outline-primary w-100" asp-controller="TripPlanner" asp-action="Index" asp-route-destination="@to">
+                <i class="bi bi-calendar-event"></i> Lập kế hoạch tại @to
+            </a>
+        </div>
+        <div class="col-12 col-md-4">
+            <a class="btn btn-outline-danger w-100" asp-controller="Cuisine" asp-action="Province" asp-route-name="@to">
+                <i class="bi bi-egg-fried"></i> Ẩm thực @to
+            </a>
+        </div>
+        <div class="col-12 col-md-4">
+            <a class="btn btn-outline-success w-100" asp-controller="Festival" asp-action="Index" asp-route-province="@to">
+                <i class="bi bi-calendar3"></i> Lễ hội @to
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- FILTER SECTION -->
 @if (Model.Any())
 {
     var providers = Model.Select(m => m.Provider).Distinct().OrderBy(x => x).ToList();
     var modes = Model.Select(m => m.Mode).Distinct().OrderBy(x => x).ToList();
+    var minPrice = Model.Min(m => m.Price);
+    var maxPrice = Model.Max(m => m.Price);
 
-    <div class="card border-0 shadow-sm mb-3">
-        <div class="card-body">
-            <div class="row g-2 align-items-end">
-                <div class="col-12 col-md-3">
-                    <label class="form-label">Nhà cung cấp</label>
-                    <select id="filterProvider" class="form-select">
-                        <option value="">Tất cả</option>
-                        @foreach (var p in providers)
-                        {
-                            <option value="@p">@p</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-12 col-md-3">
-                    <label class="form-label">Phương tiện</label>
-                    <select id="filterMode" class="form-select">
-                        <option value="">Tất cả</option>
-                        @foreach (var m in modes)
-                        {
-                            <option value="@m">@m</option>
-                        }
-                    </select>
-                </div>
-                <div class="col-12 col-md-4">
-                    <label class="form-label">Khoảng giá (VNĐ)</label>
-                    <div class="input-group">
-                        <input id="minPrice" type="number" class="form-control" placeholder="Min" min="0" />
-                        <span class="input-group-text">-</span>
-                        <input id="maxPrice" type="number" class="form-control" placeholder="Max" min="0" />
+    <div class="container mb-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0"><i class="bi bi-funnel"></i> Bộ lọc tìm kiếm</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12 col-md-3">
+                        <label class="form-label fw-semibold">Nhà cung cấp</label>
+                        <select id="filterProvider" class="form-select">
+                            <option value="">Tất cả</option>
+                            @foreach (var p in providers)
+                            {
+                                <option value="@p">@p</option>
+                            }
+                        </select>
                     </div>
-                </div>
-                <div class="col-12 col-md-2 d-grid">
-                    <button id="btnClearFilters" class="btn btn-outline-secondary">Xóa lọc</button>
+
+                    <div class="col-12 col-md-3">
+                        <label class="form-label fw-semibold">Phương tiện</label>
+                        <select id="filterMode" class="form-select">
+                            <option value="">Tất cả</option>
+                            @foreach (var m in modes)
+                            {
+                                <option value="@m">@m</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label fw-semibold">Khoảng giá (VNĐ)</label>
+                        <div class="input-group">
+                            <input id="minPrice" type="number" class="form-control" placeholder="Từ" min="0" value="@((int)minPrice)" />
+                            <span class="input-group-text">-</span>
+                            <input id="maxPrice" type="number" class="form-control" placeholder="Đến" min="0" value="@((int)maxPrice)" />
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-grid">
+                        <button id="btnClearFilters" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i> Xóa lọc
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 }
 
-@if (!Model.Any())
-{
-    <div class="card border-0 shadow-sm mx-auto" style="max-width:720px;">
-        <div class="card-body text-center">
-            <div class="display-6 mb-2">🚧</div>
-            <p class="text-muted mb-0">Hiện chưa có thông tin tuyến này. Vui lòng thử lại sau.</p>
+<!-- RESULTS SECTION -->
+<div class="container">
+    @if (!Model.Any())
+    {
+        <div class="card border-0 shadow-sm mx-auto mt-4" style="max-width: 600px;">
+            <div class="card-body text-center py-5">
+                <div class="display-1 mb-3">🚫</div>
+                <h4 class="fw-bold mb-2">Chưa có dữ liệu cho tuyến này</h4>
+                <p class="text-muted mb-4">Vui lòng thử đổi tuyến hoặc quay lại sau.</p>
+                <a href="@Url.Action("Index", "Transport")" class="btn btn-primary">
+                    <i class="bi bi-arrow-left"></i> Quay lại tìm kiếm
+                </a>
+            </div>
         </div>
+<<<<<<< Updated upstream
     </div>
 }
 else
@@ -79,52 +148,237 @@ else
                     <td><a href="@item.BookingUrl" target="_blank" class="btn btn-sm btn-success">Đặt ngay</a></td>
                     <td>@item.Note</td>
                 </tr>
+=======
+    }
+    else
+    {
+        <!-- SORT OPTIONS -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <span class="text-muted">Sắp xếp theo:</span>
+                <select id="sortOptions" class="form-select d-inline-block w-auto ms-2">
+                    <option value="price-asc">Giá tăng dần</option>
+                    <option value="price-desc">Giá giảm dần</option>
+                    <option value="duration-asc">Thời gian ngắn nhất</option>
+                    <option value="provider-asc">Nhà cung cấp A-Z</option>
+                </select>
+            </div>
+            <div class="text-muted">
+                Hiển thị <span id="visibleCount">@Model.Count</span> / @Model.Count phương án
+            </div>
+        </div>
+
+        <!-- TRANSPORT CARDS -->
+        <div class="row g-4" id="transportCards">
+            @foreach (var item in Model)
+            {
+                var trip = trips.FirstOrDefault(t => 
+                    t.FromCity == item.From && 
+                    t.ToProvince == item.To && 
+                    t.TransportType == item.Mode);
+                
+                <div class="col-md-6 col-lg-4 transport-card"
+                     data-provider="@item.Provider"
+                     data-mode="@item.Mode"
+                     data-price="@item.Price"
+                     data-duration="@item.Duration">
+                    
+                    <div class="card shadow-sm border-0 h-100 transport-card-item">
+                        <div class="card-header bg-transparent border-0 pb-0">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <span class="badge bg-primary fs-6 px-3 py-2">
+                                    <i class="bi bi-@(item.Mode == "Máy bay" ? "airplane" : item.Mode == "Tàu hỏa" ? "train-front" : "bus-front")"></i>
+                                    @item.Mode
+                                </span>
+                                @if (trip != null && !string.IsNullOrEmpty(trip.FestivalName))
+                                {
+                                    <span class="badge bg-success">
+                                        <i class="bi bi-calendar-event"></i> Lễ hội
+                                    </span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">
+                                <i class="bi bi-building"></i> @item.Provider
+                            </h5>
+
+                            <div class="mb-3">
+                                <p class="mb-1 text-muted small">
+                                    <i class="bi bi-geo-alt"></i> <strong>@item.From</strong> 
+                                    <i class="bi bi-arrow-right mx-1"></i> 
+                                    <strong>@item.To</strong>
+                                </p>
+                                <p class="mb-1">
+                                    <i class="bi bi-clock"></i> <strong>@item.Duration</strong>
+                                </p>
+                                @if (trip != null)
+                                {
+                                    <p class="mb-1 text-muted small">
+                                        <i class="bi bi-calendar"></i> Khởi hành: <strong>@trip.DepartureDate.ToString("dd/MM/yyyy")</strong>
+                                    </p>
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <p class="h4 text-primary fw-bold mb-0">
+                                    <i class="bi bi-currency-exchange"></i> @item.Price.ToString("N0") VNĐ
+                                </p>
+                                @if (trip != null && !string.IsNullOrEmpty(trip.FestivalName))
+                                {
+                                    <p class="text-success small mb-0 mt-1">
+                                        <i class="bi bi-info-circle"></i> @trip.FestivalName
+                                    </p>
+                                }
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(item.Note))
+                            {
+                                <div class="alert alert-info py-2 px-3 mb-3 small">
+                                    <i class="bi bi-info-circle"></i> @item.Note
+                                </div>
+                            }
+
+                            <div class="d-grid gap-2">
+                                <a href="@item.BookingUrl" target="_blank" class="btn btn-success">
+                                    <i class="bi bi-cart-check"></i> Đặt ngay
+                                </a>
+                                @if (trip != null && !string.IsNullOrEmpty(trip.FestivalName))
+                                {
+                                    <a href="@Url.Action("Details", "Festival", new { name = trip.FestivalName })" class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-calendar-event"></i> Xem lễ hội
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> Stashed changes
             }
-        </tbody>
-    </table>
-}
+        </div>
+    }
+</div>
 
-@section Scripts{
-<script>
-    (function(){
-        const table = document.getElementById('transportTable');
-        if(!table) return;
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-        const selProvider = document.getElementById('filterProvider');
-        const selMode = document.getElementById('filterMode');
-        const minPrice = document.getElementById('minPrice');
-        const maxPrice = document.getElementById('maxPrice');
-        const btnClear = document.getElementById('btnClearFilters');
+@section Scripts {
+    <script>
+        (function(){
+            const cards = document.querySelectorAll(".transport-card");
+            const selProvider = document.getElementById("filterProvider");
+            const selMode = document.getElementById("filterMode");
+            const minPrice = document.getElementById("minPrice");
+            const maxPrice = document.getElementById("maxPrice");
+            const btnClear = document.getElementById("btnClearFilters");
+            const sortOptions = document.getElementById("sortOptions");
+            const visibleCount = document.getElementById("visibleCount");
 
-        function normalize(v){ return (v||'').toString().toLowerCase(); }
-        function toNum(v){ const n = Number(v); return isNaN(n) ? null : n; }
+            function normalize(v){ return (v||"").toString().toLowerCase(); }
+            function toNum(v){ const n = Number(v); return isNaN(n)?null:n; }
 
-        function applyFilters(){
-            const p = normalize(selProvider && selProvider.value);
-            const m = normalize(selMode && selMode.value);
-            const min = toNum(minPrice && minPrice.value);
-            const max = toNum(maxPrice && maxPrice.value);
-            rows.forEach(tr => {
-                const rp = normalize(tr.getAttribute('data-provider'));
-                const rm = normalize(tr.getAttribute('data-mode'));
-                const price = Number(tr.getAttribute('data-price')) || 0;
-                let ok = true;
-                if (p && rp !== p) ok = false;
-                if (m && rm !== m) ok = false;
-                if (min !== null && price < min) ok = false;
-                if (max !== null && price > max) ok = false;
-                tr.style.display = ok ? '' : 'none';
+            function applyFilters(){
+                const p = normalize(selProvider?.value || "");
+                const m = normalize(selMode?.value || "");
+                const min = toNum(minPrice?.value);
+                const max = toNum(maxPrice?.value);
+
+                let visible = 0;
+                cards.forEach(card => {
+                    const rp = normalize(card.dataset.provider);
+                    const rm = normalize(card.dataset.mode);
+                    const price = Number(card.dataset.price) || 0;
+
+                    let ok = true;
+                    if (p && rp !== p) ok = false;
+                    if (m && rm !== m) ok = false;
+                    if (min !== null && price < min) ok = false;
+                    if (max !== null && price > max) ok = false;
+
+                    card.style.display = ok ? "" : "none";
+                    if (ok) visible++;
+                });
+
+                if (visibleCount) visibleCount.textContent = visible;
+            }
+
+            function applySort(){
+                const sortValue = sortOptions?.value || "price-asc";
+                const container = document.getElementById("transportCards");
+                const cardArray = Array.from(container.querySelectorAll(".transport-card"));
+                
+                cardArray.sort((a, b) => {
+                    switch(sortValue) {
+                        case "price-asc":
+                            return (Number(a.dataset.price) || 0) - (Number(b.dataset.price) || 0);
+                        case "price-desc":
+                            return (Number(b.dataset.price) || 0) - (Number(a.dataset.price) || 0);
+                        case "duration-asc":
+                            const durA = a.dataset.duration || "";
+                            const durB = b.dataset.duration || "";
+                            return durA.localeCompare(durB);
+                        case "provider-asc":
+                            return (a.dataset.provider || "").localeCompare(b.dataset.provider || "");
+                        default:
+                            return 0;
+                    }
+                });
+
+                cardArray.forEach(card => container.appendChild(card));
+            }
+
+            [selProvider, selMode, minPrice, maxPrice].forEach(el =>
+                el && el.addEventListener("input", applyFilters)
+            );
+
+            sortOptions?.addEventListener("change", applySort);
+
+            btnClear?.addEventListener("click", () => {
+                if (selProvider) selProvider.value = "";
+                if (selMode) selMode.value = "";
+                if (minPrice) minPrice.value = minPrice.getAttribute("value") || "";
+                if (maxPrice) maxPrice.value = maxPrice.getAttribute("value") || "";
+                applyFilters();
             });
+
+            // Initialize
+            applyFilters();
+        })();
+    </script>
+
+    <style>
+        .transport-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        [selProvider, selMode, minPrice, maxPrice].forEach(el => el && el.addEventListener('input', applyFilters));
-        if (btnClear) btnClear.addEventListener('click', function(){
-            if (selProvider) selProvider.value = '';
-            if (selMode) selMode.value = '';
-            if (minPrice) minPrice.value = '';
-            if (maxPrice) maxPrice.value = '';
-            applyFilters();
-        });
-    })();
-</script>
+        .transport-card-item {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .transport-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+        }
+
+        .transport-card-item .card-header .badge {
+            font-weight: 500;
+        }
+
+        .transport-card-item .btn-success {
+            background: linear-gradient(135deg, #22b573 0%, #1a9a63 100%);
+            border: none;
+            font-weight: 500;
+        }
+
+        .transport-card-item .btn-success:hover {
+            background: linear-gradient(135deg, #1a9a63 0%, #158a55 100%);
+            transform: translateY(-1px);
+        }
+
+        .alert-info {
+            background-color: #e7f3ff;
+            border-color: #b3d9ff;
+            color: #004085;
+        }
+    </style>
 }

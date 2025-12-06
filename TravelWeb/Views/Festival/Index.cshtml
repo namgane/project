@@ -1,6 +1,7 @@
 ﻿@model List<TravelWeb.Models.Festival>
 @{
     ViewData["Title"] = "Danh sách lễ hội Việt Nam";
+<<<<<<< Updated upstream
 }
 
 <h2 class="text-center mb-4 text-primary">🎉 Danh sách lễ hội trên khắp Việt Nam</h2>
@@ -22,11 +23,161 @@
                 </div>
             }
         </div>
+=======
+    var currentPage = ViewBag.CurrentPage ?? 1;
+    var totalPages = ViewBag.TotalPages ?? 1;
+    var totalItems = ViewBag.TotalItems ?? 0;
+
+    var searchTerm = ViewBag.SearchTerm ?? "";
+    var selectedProvince = ViewBag.Province ?? "";
+    var selectedRegion = ViewBag.Region ?? "";
+    var selectedMonth = ViewBag.Month;
+
+    var allFestivals = TravelWeb.Models.FestivalData.GetAll();
+}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-bg-container" id="heroBgContainer"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>🎉 Lễ Hội Việt Nam</h1>
+        <p>Khám phá những lễ hội đặc sắc và đầy màu sắc trên khắp đất nước</p>
     </div>
+</section>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4 text-primary">Danh sách lễ hội trên khắp Việt Nam</h2>
+
+    <!-- BỘ LỌC + TÌM KIẾM -->
+    <div class="card shadow-sm p-3 mb-4">
+        <form method="get" action="@Url.Action("Index")" class="row g-3">
+
+            <!-- Tìm kiếm -->
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Tìm kiếm</label>
+                <input name="search" type="text" class="form-control"
+                       placeholder="Tên lễ hội, tỉnh/thành..."
+                       value="@searchTerm" />
+            </div>
+
+            <!-- Lọc theo tỉnh -->
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Tỉnh/Thành</label>
+                <select name="province" class="form-select">
+                    <option value="">Tất cả</option>
+                    @foreach (var p in allFestivals.Select(f => f.Province).Distinct())
+                    {
+                        if (selectedProvince == p)
+                        {
+                            <option value="@p" selected="selected">@p</option>
+                        }
+                        else
+                        {
+                            <option value="@p">@p</option>
+                        }
+                    }
+
+                </select>
+            </div>
+
+
+            <!-- Lọc theo tháng -->
+            <div class="col-md-2">
+                <label class="form-label fw-bold">Tháng</label>
+                <select name="month" class="form-select">
+                    <option value="">Tất cả</option>
+                    @for (int m = 1; m <= 12; m++)
+                    {
+                        <option value="@m" selected="@(selectedMonth == m)">Tháng @m</option>
+                    }
+                </select>
+            </div>
+
+
+            <!-- Nút -->
+            <div class="col-12 text-end mt-2">
+                <button class="btn btn-primary px-4">Lọc</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Xóa lọc</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Tổng số kết quả -->
+    <div class="mb-3 small text-muted">
+        Hiển thị @((currentPage - 1) * 6 + 1) – @Math.Min(currentPage * 6, totalItems)
+        trong tổng @totalItems lễ hội
+    </div>
+
+    <hr />
+
+    <!-- GRID LỄ HỘI -->
+    <div class="row">
+        @foreach (var fest in Model)
+        {
+            <div class="col-md-4 mb-4 festival-item">
+                @await Html.PartialAsync("_FestivalCard", fest)
+            </div>
+        }
+>>>>>>> Stashed changes
+    </div>
+
+    <!-- PHÂN TRANG -->
+    @if (totalPages > 1)
+    {
+        <div class="pagination-container">
+            <ul class="pagination">
+
+                <!-- ĐẦU + TRƯỚC -->
+                @if (currentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index",
+                            new { page = 1, search = searchTerm, province = selectedProvince, region = selectedRegion, month = selectedMonth })">Đầu</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index",
+                            new { page = currentPage - 1, search = searchTerm, province = selectedProvince, region = selectedRegion, month = selectedMonth })">Trước</a>
+                    </li>
+                }
+
+                <!-- SỐ TRANG -->
+                @for (int i = Math.Max(1, currentPage - 2); i <= Math.Min(totalPages, currentPage + 2); i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link"
+                           href="@Url.Action("Index",
+                               new { page = i, search = searchTerm, province = selectedProvince, region = selectedRegion, month = selectedMonth })">
+                            @i
+                        </a>
+                    </li>
+                }
+
+                <!-- SAU + CUỐI -->
+                @if (currentPage < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index",
+                            new { page = currentPage + 1, search = searchTerm, province = selectedProvince, region = selectedRegion, month = selectedMonth })">Sau</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index",
+                            new { page = totalPages, search = searchTerm, province = selectedProvince, region = selectedRegion, month = selectedMonth })">Cuối</a>
+                    </li>
+                }
+            </ul>
+
+            <div class="pagination-info">Trang @currentPage / @totalPages</div>
+        </div>
+    }
 </div>
 
-@section Scripts{
+@section Scripts {
 <script>
+<<<<<<< Updated upstream
     (function(){
         const input = document.getElementById('festivalSearch');
         const items = document.querySelectorAll('#festivalGrid .festival-item');
@@ -43,5 +194,104 @@
         }
         input.addEventListener('input', filter);
     })();
+=======
+    // HERO BACKGROUND ROTATION
+    const festivalImages =
+        @Html.Raw(Json.Serialize(allFestivals
+        .SelectMany(f => f.ImageUrls ?? new List<string> { f.ImageUrl })
+        .Distinct().ToList()));
+
+    function initializeHeroBackground() {
+        const heroContainer = document.getElementById('heroBgContainer');
+        if (!heroContainer || festivalImages.length === 0) return;
+
+        festivalImages.forEach((url, index) => {
+            const div = document.createElement('div');
+            div.className = 'hero-bg-image';
+            div.style.backgroundImage = `url('${url}')`;
+            if (index === 0) div.classList.add('active');
+            heroContainer.appendChild(div);
+        });
+
+        let index = 0;
+        setInterval(() => {
+            const images = heroContainer.querySelectorAll('.hero-bg-image');
+            images[index].classList.remove('active');
+            index = (index + 1) % images.length;
+            images[index].classList.add('active');
+        }, 3000);
+    }
+
+    // SCROLL ANIMATION
+    function initializeScrollAnimation() {
+        const items = document.querySelectorAll('.festival-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.2 });
+
+        items.forEach(el => observer.observe(el));
+    }
+
+    // CARD IMAGE AUTO ROTATE - Mỗi 2 giây tự động chuyển ảnh
+    function nextImage(id) {
+        const carousel = document.querySelector(`[data-carousel-id="${id}"]`);
+        if (!carousel) return;
+
+        const images = carousel.querySelectorAll('.carousel-image');
+        const indicators = carousel.querySelectorAll('.carousel-indicator');
+        if (images.length <= 1) return;
+
+        let currentIndex = [...images].findIndex(img => img.classList.contains('active'));
+        if (currentIndex === -1) {
+            currentIndex = 0;
+            images[0].classList.add('active');
+            if (indicators[0]) indicators[0].classList.add('active');
+            return;
+        }
+
+        const nextIndex = (currentIndex + 1) % images.length;
+
+        images[currentIndex].classList.remove('active');
+        if (indicators[currentIndex]) indicators[currentIndex].classList.remove('active');
+
+        images[nextIndex].classList.add('active');
+        if (indicators[nextIndex]) indicators[nextIndex].classList.add('active');
+    }
+
+    function initializeCardImageRotation() {
+        document.querySelectorAll('.image-carousel').forEach(c => {
+            const images = c.querySelectorAll('.carousel-image');
+            if (images.length > 1) {
+                // Đảm bảo ảnh đầu tiên có class active
+                images.forEach((img, idx) => {
+                    if (idx === 0) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+                // Đảm bảo indicator đầu tiên active
+                const indicators = c.querySelectorAll('.carousel-indicator');
+                indicators.forEach((ind, idx) => {
+                    if (idx === 0) {
+                        ind.classList.add('active');
+                    } else {
+                        ind.classList.remove('active');
+                    }
+                });
+                
+                const id = c.getAttribute("data-carousel-id");
+                // Tự động chuyển mỗi 2 giây
+                setInterval(() => nextImage(id), 2000);
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        initializeHeroBackground();
+        initializeScrollAnimation();
+        initializeCardImageRotation();
+    });
+>>>>>>> Stashed changes
 </script>
 }

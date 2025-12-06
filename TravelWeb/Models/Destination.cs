@@ -4,6 +4,7 @@ namespace TravelWeb.Models
 {
     public class Destination
     {
+<<<<<<< Updated upstream
         public string Name { get; set; }
         public bool HasBeach { get; set; }
         public bool HasMountain { get; set; }
@@ -13,13 +14,153 @@ namespace TravelWeb.Models
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public int Score { get; set; } = 0;
+=======
+        // Thông tin cơ bản
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Province { get; set; } = string.Empty;
+        public string Region { get; set; } = string.Empty;   // Bắc / Trung / Nam / Tây Nguyên
+        public string ImageUrl { get; set; } = string.Empty;
+
+        // Tọa độ địa điểm chính
+        public double Latitude { get; set; }  // Vĩ độ
+        public double Longitude { get; set; } // Kinh độ
+
+        // Đặc điểm địa điểm (cho Quiz)
+        public bool HasBeach { get; set; } = false;
+        public bool HasMountain { get; set; } = false;
+        public bool HasCulture { get; set; } = false;
+        public bool HasFood { get; set; } = false;
+
+        public bool IsModernCity { get; set; }
+        public bool HasNature { get; set; }
+        public bool IsPeaceful { get; set; }
+
+        // Điểm số (cho Quiz)
+        public int Score { get; set; } = 0;
+
+        // Điểm chuẩn hóa 0-100 để hiển thị UI
+        public double NormalizedScore { get; set; } = 0;
+
+        // Nhật ký rule đã match để giải thích
+        public List<string> MatchedRules { get; set; } = new List<string>();
+        public List<RuleMatch> RuleMatches { get; set; } = new List<RuleMatch>();
+
+        // Ghi chú thêm cho UI
+        public string SeasonRecommendation { get; set; } = string.Empty;
+        public string BudgetNote { get; set; } = string.Empty;
+        public string DurationNote { get; set; } = string.Empty;
+
+        // Danh sách các điểm tham quan
+        public List<AttractionPoint> Attractions { get; set; } = new List<AttractionPoint>();
+    }
+
+    public class AttractionPoint
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Type { get; set; } = string.Empty; // "Cultural", "Nature", "Entertainment", "Shopping", "Food"
+        public int VisitDuration { get; set; } // Thời gian tham quan (phút)
+        public decimal EntranceFee { get; set; } // Phí vào cửa
+>>>>>>> Stashed changes
+    }
+
+    public class RuleMatch
+    {
+        public string RuleKey { get; set; } = string.Empty;
+        public double Score { get; set; }
+        public string Explanation { get; set; } = string.Empty;
     }
 
     public static class DestinationData
     {
         public static List<Destination> GetAll()
         {
+<<<<<<< Updated upstream
             return new List<Destination>
+=======
+            return Destinations.Select(CloneDestination).ToList();
+        }
+
+        public static List<Destination> GetAllNormalized()
+        {
+            return GetAll();
+        }
+
+        public static Destination GetByName(string name)
+        {
+            return Destinations.FirstOrDefault(d =>
+                d.Name.Equals(name, StringComparison.OrdinalIgnoreCase) ||
+                d.Name.Contains(name, StringComparison.OrdinalIgnoreCase) ||
+                name.Contains(d.Name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Tính khoảng cách giữa 2 điểm theo công thức Haversine (km)
+        public static double CalculateDistance(double lat1, double lon1, double lat2, double lon2)
+        {
+            const double R = 6371; // Bán kính Trái Đất (km)
+            var dLat = ToRadians(lat2 - lat1);
+            var dLon = ToRadians(lon2 - lon1);
+
+            var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                    Math.Cos(ToRadians(lat1)) * Math.Cos(ToRadians(lat2)) *
+                    Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+            return R * c;
+        }
+
+        private static double ToRadians(double degrees)
+        {
+            return degrees * Math.PI / 180;
+        }
+
+        private static Destination CloneDestination(Destination d)
+        {
+            return new Destination
+            {
+                Name = d.Name,
+                Description = d.Description,
+                Province = d.Province,
+                Region = d.Region,
+                ImageUrl = d.ImageUrl,
+                Latitude = d.Latitude,
+                Longitude = d.Longitude,
+                HasBeach = d.HasBeach,
+                HasMountain = d.HasMountain,
+                HasCulture = d.HasCulture,
+                HasFood = d.HasFood,
+                IsModernCity = d.IsModernCity,
+                HasNature = d.HasNature,
+                IsPeaceful = d.IsPeaceful,
+                Score = 0,
+                NormalizedScore = 0,
+                MatchedRules = new List<string>(),
+                RuleMatches = new List<RuleMatch>(),
+                SeasonRecommendation = string.Empty,
+                BudgetNote = string.Empty,
+                DurationNote = string.Empty,
+                Attractions = d.Attractions.Select(a => new AttractionPoint
+                {
+                    Name = a.Name,
+                    Description = a.Description,
+                    Latitude = a.Latitude,
+                    Longitude = a.Longitude,
+                    Type = a.Type,
+                    VisitDuration = a.VisitDuration,
+                    EntranceFee = a.EntranceFee
+                }).ToList()
+            };
+        }
+
+        public static List<(string From, string To, double Distance)> GetRouteSegmentsWithCoordinates(string destinationName)
+        {
+            var destination = GetByName(destinationName);
+            if (destination == null || destination.Attractions.Count == 0)
+>>>>>>> Stashed changes
             {
                 // ====== MIỀN BẮC ======
                 new Destination { Name = "Hà Nội", HasBeach = false, HasMountain = false, HasCulture = true, HasFood = true, Region = "Bắc", Description = "Thủ đô nghìn năm văn hiến với phố cổ, hồ Gươm và ẩm thực phong phú.", ImageUrl = "/images/hanoi.jpg" },

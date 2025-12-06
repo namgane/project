@@ -4,6 +4,7 @@
     var key = ViewBag.Key as string;
 }
 
+<<<<<<< Updated upstream
 <div class="container mt-5">
     <div class="card shadow p-4 mx-auto" style="max-width:720px;">
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -11,32 +12,148 @@
             <span class="badge bg-primary">@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%</span>
         </div>
         <h3 class="fw-bold mb-4">@ViewBag.Question</h3>
+=======
+<style>
+    /* =====================
+            GLOBAL STYLE
+        ====================== */
+    body {
+        background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+        min-height: 100vh;
+    }
 
-        <form method="post" asp-action="Question">
+    .quiz-card {
+        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+        transition: 0.25s ease;
+    }
+
+        .quiz-card:hover {
+            box-shadow: 0 12px 45px rgba(0,0,0,0.12);
+        }
+
+    /* Question title */
+    .question-title {
+        font-weight: 800;
+        font-size: 1.9rem;
+        color: #2c3e50;
+    }
+
+    /* Options */
+    .quiz-option {
+        border-radius: 14px !important;
+        transition: 0.25s ease;
+        border: 1px solid #e1e1e1;
+    }
+
+        .quiz-option:hover {
+            background: #f1f8ff;
+            transform: translateY(-2px);
+            border-color: #4dabf7;
+        }
+
+    /* Progress bar */
+    .progress {
+        height: 10px;
+        border-radius: 50px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        background: linear-gradient(90deg, #4e73df, #1cc88a);
+    }
+
+    /* Badge Percentage */
+    .progress-badge {
+        background: linear-gradient(90deg, #4e73df, #1cc88a);
+        padding: 6px 14px;
+        font-size: 0.9rem;
+    }
+
+    /* Mobile */
+    @@media (max-width: 768px) {
+        .question-title {
+            font-size: 1.5rem;
+        }
+
+        .quiz-card {
+            padding: 22px;
+        }
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <div class="quiz-card mx-auto" style="max-width: 760px;">
+
+        <!-- HEADER -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="text-muted">Câu hỏi @ViewBag.QuestionIndex / @ViewBag.TotalQuestions</h6>
+            <span class="badge progress-badge rounded-pill">
+                @((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%
+            </span>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress mb-4">
+            <div class="progress-bar"
+                 role="progressbar"
+                 style="width:@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%">
+            </div>
+        </div>
+>>>>>>> Stashed changes
+
+        <!-- QUESTION -->
+        <h3 class="question-title mb-4">
+            @ViewBag.Question
+        </h3>
+
+        <!-- Hint bubble -->
+        @if (ViewBag.Hint != null)
+        {
+            <div class="alert alert-info shadow-sm border-0">
+                <i class="bi bi-lightbulb-fill me-2"></i>
+                @ViewBag.Hint
+            </div>
+        }
+
+        <!-- FORM -->
+        <form method="post" asp-action="Question" class="mt-4">
             <input type="hidden" name="key" value="@key" />
 
             <div class="list-group">
                 @foreach (var opt in options)
                 {
+<<<<<<< Updated upstream
                     var inputId = ($"opt_{opt}").Replace(" ", "_");
                     <label class="list-group-item d-flex align-items-center">
                         <input class="form-check-input me-2" type="radio" name="answer" value="@opt" id="@inputId" required />
+=======
+                    var inputId = ($"opt_{opt}").Replace(" ", "_").Replace("/", "_");
+                    <label class="list-group-item quiz-option py-3 d-flex align-items-center" for="@inputId">
+                        <input class="form-check-input me-3" type="radio" name="answer" value="@opt" id="@inputId" required />
+>>>>>>> Stashed changes
                         <span class="fs-5">@opt</span>
                     </label>
                 }
             </div>
 
-            <div class="mt-4 d-flex justify-content-end">
-                <button type="submit" class="btn btn-success px-4 py-2">
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-success px-4 py-2 fw-bold">
                     Tiếp tục →
                 </button>
             </div>
         </form>
+<<<<<<< Updated upstream
 
         <div class="mt-4">
             <div class="progress" style="height: 10px;">
                 <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)" style="width:@((int)ViewBag.QuestionIndex * 100 / (int)ViewBag.TotalQuestions)%"></div>
             </div>
         </div>
+=======
+>>>>>>> Stashed changes
     </div>
 </div>

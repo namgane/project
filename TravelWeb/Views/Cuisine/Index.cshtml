@@ -1,0 +1,456 @@
+@using TravelWeb.Models
+@model IEnumerable<string>
+@{
+    ViewData["Title"] = "Ẩm thực Việt Nam";
+    
+    // Nhóm tỉnh theo miền
+    var provincesByRegion = new Dictionary<string, List<string>>
+    {
+        { "Miền Bắc", new List<string>() },
+        { "Miền Trung", new List<string>() },
+        { "Miền Nam", new List<string>() }
+    };
+    
+    foreach (var province in Model)
+    {
+        if (province == "Hà Nội" || province == "Hải Phòng")
+            provincesByRegion["Miền Bắc"].Add(province);
+        else if (province == "Đà Nẵng" || province == "Huế")
+            provincesByRegion["Miền Trung"].Add(province);
+        else if (province == "TP.HCM")
+            provincesByRegion["Miền Nam"].Add(province);
+    }
+    
+    var totalDishes = Model.Sum(p => CuisineData.GetCountByProvince(p));
+    var avgPrice = Model.SelectMany(p => CuisineData.GetTopByProvince(p, 100))
+        .SelectMany(x => new[] { x.AveragePrice })
+        .DefaultIfEmpty(0)
+        .Average();
+}
+
+<!-- HERO SECTION -->
+<section class="cuisine-hero-section py-5 mb-5">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center text-white">
+                <h1 class="display-4 fw-bold mb-3 animate-fade-in">
+                    <i class="bi bi-egg-fried"></i> Khám phá Ẩm thực Việt Nam
+                </h1>
+                <p class="lead mb-4 animate-fade-in-delay">
+                    Hơn <strong>@totalDishes món ăn</strong> đặc trưng từ khắp các tỉnh thành
+                </p>
+                
+                <!-- SEARCH BOX -->
+                <div class="row g-2 justify-content-center mb-4 animate-fade-in-delay-2">
+        <div class="col-lg-8">
+                        <form method="get" asp-action="Search" asp-controller="Cuisine" class="position-relative">
+                            <div class="input-group input-group-lg shadow-lg">
+                                <span class="input-group-text bg-white border-0">
+                                    <i class="bi bi-search text-primary"></i>
+                                </span>
+                                <input class="form-control border-0 py-3" 
+                                       type="text" 
+                                       name="q" 
+                                       placeholder="Tìm kiếm tỉnh/thành (ví dụ: Hà Nội, TP.HCM, Đà Nẵng...)" 
+                                       list="provinces"
+                                       autocomplete="off" />
+                                <datalist id="provinces">
+                                    @foreach (var p in Model)
+                                    {
+                                        <option value="@p"></option>
+                                    }
+                                </datalist>
+                                <button class="btn btn-primary px-4" type="submit">
+                                    <i class="bi bi-arrow-right"></i> Tìm kiếm
+                                </button>
+                            </div>
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATISTICS -->
+<div class="container mb-5">
+    <div class="row g-4">
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-3">
+                    <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <h3 class="fw-bold text-primary mb-1">@Model.Count()</h3>
+                <p class="text-muted mb-0">Tỉnh/Thành</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-3">
+                    <i class="bi bi-egg-fried"></i>
+                </div>
+                <h3 class="fw-bold text-success mb-1">@totalDishes</h3>
+                <p class="text-muted mb-0">Món ăn</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-3">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <h3 class="fw-bold text-warning mb-1">@((int)avgPrice)K</h3>
+                <p class="text-muted mb-0">Giá TB</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card text-center p-4 rounded-4 shadow-sm">
+                <div class="stat-icon mb-3">
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <h3 class="fw-bold text-danger mb-1">4.5</h3>
+                <p class="text-muted mb-0">Đánh giá TB</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FILTER BY REGION -->
+<div class="container mb-4">
+    <div class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+        <button class="btn btn-filter active" data-region="all">
+            <i class="bi bi-grid"></i> Tất cả
+        </button>
+        <button class="btn btn-filter" data-region="Miền Bắc">
+            <i class="bi bi-snow"></i> Miền Bắc
+        </button>
+        <button class="btn btn-filter" data-region="Miền Trung">
+            <i class="bi bi-sun"></i> Miền Trung
+        </button>
+        <button class="btn btn-filter" data-region="Miền Nam">
+            <i class="bi bi-water"></i> Miền Nam
+        </button>
+    </div>
+</div>
+
+<!-- PROVINCES GRID -->
+<div class="container mb-5">
+    @foreach (var region in provincesByRegion.Keys)
+    {
+        if (provincesByRegion[region].Count == 0) continue;
+        
+        <div class="region-section mb-5" data-region="@region">
+            <h2 class="section-title mb-4">
+                <i class="bi bi-@(region == "Miền Bắc" ? "snow" : region == "Miền Trung" ? "sun" : "water")"></i>
+                @region
+            </h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                @foreach (var province in provincesByRegion[region])
+                {
+                    var count = CuisineData.GetCountByProvince(province);
+                    var avgPriceProvince = CuisineData.GetAveragePriceForProvince(province);
+                    var topDish = CuisineData.GetTopByProvince(province, 1).FirstOrDefault();
+                    
+                    <div class="col province-card-wrapper" data-province="@province" data-region="@region">
+                        <a class="text-decoration-none" asp-action="Province" asp-route-name="@province">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 cuisine-province-card">
+                                <div class="position-relative overflow-hidden">
+                                    @if (topDish != null && !string.IsNullOrEmpty(topDish.ImageUrl))
+                                    {
+                                        <img src="@topDish.ImageUrl" 
+                                             alt="@province" 
+                                             class="province-image"
+                                             loading="lazy"
+                                             onerror="this.src='/images/default-food.jpg'" />
+                                    }
+                                    else
+                                    {
+                                        <div class="province-image-placeholder">
+                                            <i class="bi bi-egg-fried"></i>
+                                        </div>
+                                    }
+                                    <div class="province-overlay">
+                                        <span class="badge bg-white text-dark">
+                                            <i class="bi bi-arrow-right"></i> Xem chi tiết
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <h5 class="card-title mb-0 fw-bold text-dark">
+                                            <i class="bi bi-geo-alt-fill text-primary"></i> @province
+                                        </h5>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-2 mb-2">
+                                        <span class="badge bg-primary">
+                                            <i class="bi bi-egg-fried"></i> @count món
+                                        </span>
+                                        @if (avgPriceProvince > 0)
+                                        {
+                                            <span class="badge bg-success">
+                                                <i class="bi bi-cash-coin"></i> @((int)avgPriceProvince)K
+                                            </span>
+                                        }
+                                    </div>
+                                    @if (topDish != null)
+                                    {
+                                        <p class="text-muted small mb-0">
+                                            <i class="bi bi-star-fill text-warning"></i> 
+                                            <strong>@topDish.Name</strong> - Món nổi bật
+                                        </p>
+                                    }
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+    }
+</div>
+
+<!-- QUICK SELECT -->
+<div class="container mb-5">
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+            <h5 class="fw-bold mb-3">
+                <i class="bi bi-lightning-charge text-warning"></i> Chọn nhanh tỉnh/thành
+            </h5>
+            <div class="row g-2">
+                @foreach (var province in Model)
+                {
+                    <div class="col-auto">
+                        <a asp-action="Province" asp-route-name="@province" 
+                           class="btn btn-outline-primary btn-sm">
+                            @province
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        // Filter by region
+        document.querySelectorAll('.btn-filter').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const region = this.dataset.region;
+                
+                // Update active button
+                document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show/hide regions
+                document.querySelectorAll('.region-section').forEach(section => {
+                    if (region === 'all' || section.dataset.region === region) {
+                        section.style.display = '';
+                        setTimeout(() => section.classList.add('fade-in'), 10);
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.province-card-wrapper').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+    
+    <style>
+        /* Hero Section */
+        .cuisine-hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .cuisine-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/images/food-pattern.png') repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            z-index: 2;
+        }
+        
+        .cuisine-hero-section .container {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Animations */
+       
+
+
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .animate-fade-in-delay {
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        .animate-fade-in-delay-2 {
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+        
+        /* Statistics Cards */
+        .stat-card {
+            background: white;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+        
+        /* Filter Buttons */
+        .btn-filter {
+            padding: 10px 24px;
+            border-radius: 25px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-filter:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .btn-filter.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+        }
+        
+        /* Province Cards */
+        .cuisine-province-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .cuisine-province-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+        }
+        
+        .province-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .province-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .cuisine-province-card:hover .province-image {
+            transform: scale(1.1);
+        }
+        
+        .province-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cuisine-province-card:hover .province-overlay {
+            opacity: 1;
+        }
+        
+        /* Section Title */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        /* Region Sections */
+        .region-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .region-section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .province-card-wrapper {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+        }
+        
+        .province-card-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+       
+    </style>
+}

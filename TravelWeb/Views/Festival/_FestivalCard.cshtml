@@ -1,8 +1,34 @@
-﻿@model TravelWeb.Models.Festival
+﻿    @model TravelWeb.Models.Festival
+@{
+    // Giới hạn tối đa 3 ảnh cho mỗi tỉnh
+    var images = Model.ImageUrls != null && Model.ImageUrls.Count > 0 
+        ? Model.ImageUrls.Take(3).ToList() 
+        : new List<string> { Model.ImageUrl };
+    var carouselId = Model.Name.Replace(" ", "-").Replace(".", "-");
+}
 
 <div class="card shadow-sm border-0 h-100 festival-card">
     <div class="position-relative">
+<<<<<<< Updated upstream
         <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" style="height:200px;object-fit:cover;">
+=======
+        <div class="image-carousel" data-carousel-id="@carouselId" data-province="@Model.Province">
+            @foreach (var imgUrl in images)
+            {
+                <img src="@imgUrl" alt="@Model.Name" class="carousel-image" loading="lazy">
+            }
+            
+            @if (images.Count > 1)
+            {
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < images.Count; i++)
+                    {
+                        <span class="carousel-indicator" data-index="@i"></span>
+                    }
+                </div>
+            }
+        </div>
+>>>>>>> Stashed changes
         <span class="badge bg-light text-dark position-absolute top-0 start-0 m-2 badge-soft">
             @Model.Region
         </span>
