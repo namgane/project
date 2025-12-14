@@ -9,10 +9,19 @@ namespace TravelWeb.Controllers
 {
     public class CuisineController : Controller
     {
+        private const string ReviewSessionKey = "REVIEWS_STORE";
+
         public IActionResult Index()
         {
-            var provinces = CuisineData.GetAllProvinces();
-            return View(provinces);
+            var model = new CuisineProvinceViewModel
+            {
+                Provinces = CuisineData.GetAllProvinces().ToList(),
+                ProvincesByRegion = CuisineData
+                .GetProvincesGroupedByRegion()
+                .ToDictionary(x => x.Key, x => x.Value)
+            };
+
+            return View(model);
         }
 
         [HttpGet]
@@ -23,9 +32,43 @@ namespace TravelWeb.Controllers
                 TempData["Error"] = "Nhập tên tỉnh/thành để tìm kiếm.";
                 return RedirectToAction(nameof(Index));
             }
+
             var canonical = CuisineData.CanonicalProvinceName(q);
             return RedirectToAction(nameof(Province), new { name = canonical });
         }
+        private Dictionary<string, List<ReviewItem>> LoadReviewStore()
+        {
+            var json = HttpContext.Session.GetString(ReviewSessionKey);
+
+            if (string.IsNullOrWhiteSpace(json))
+                return new Dictionary<string, List<ReviewItem>>();
+
+            try
+            {
+                return JsonSerializer.Deserialize<Dictionary<string, List<ReviewItem>>>(
+                           json,
+                           new JsonSerializerOptions
+                           {
+                               PropertyNameCaseInsensitive = true
+                           })
+                       ?? new Dictionary<string, List<ReviewItem>>();
+            }
+            catch
+            {
+                // Nếu JSON lỗi → reset store để tránh crash
+                return new Dictionary<string, List<ReviewItem>>();
+            }
+        }
+
+
+        private void SaveReviewStore(Dictionary<string, List<ReviewItem>> store)
+        {
+            HttpContext.Session.SetString(
+                ReviewSessionKey,
+                JsonSerializer.Serialize(store)
+            );
+        }
+
 
         public IActionResult Province(string name)
         {
@@ -35,53 +78,126 @@ namespace TravelWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var items = CuisineData.GetTopByProvince(name, 10);
+            var canonicalName = CuisineData.CanonicalProvinceName(name);
+            var items = CuisineData.GetTopByProvince(canonicalName, 20);
 
-            if (items.Count == 0)
+            if (!items.Any())
             {
-                var suggestions = CuisineData.FindSimilarProvinces(name, 5);
-                if (suggestions.Count > 0)
-                {
-                    TempData["Error"] = $"Chưa có dữ liệu chính xác cho '{name}'. Gợi ý: {string.Join(", ", suggestions)}";
-                }
-                else
-                {
-                    TempData["Error"] = $"Chưa có dữ liệu ẩm thực cho '{name}'.";
-                }
+                TempData["Error"] = $"Không có dữ liệu ẩm thực cho '{canonicalName}'.";
                 return RedirectToAction(nameof(Index));
             }
 
+            // TÍNH TRỰC TIẾP TỪ ITEMS
+            var overallAvg = items.Any()
+                 ? items.Average(i => i.AveragePrice)
+                 : 0m;
+
+            var priceMin = items.Any()
+                ? items.Min(i => i.AveragePrice)
+                : 0m;
+
+            var priceMax = items.Any()
+                ? items.Max(i => i.AveragePrice)
+                : 0m;
+
             var vm = new CuisineProvinceViewModel
             {
-                Province = CuisineData.CanonicalProvinceName(name),
+                Province = canonicalName,
                 Items = items,
-                OverallAveragePrice = items.Any() ? items.Average(i => i.AveragePrice) : 0
+                OverallAveragePrice = overallAvg,
+                PriceMin = priceMin,
+                PriceMax = priceMax
             };
 
-            // Load reviews from session and compute aggregates
-            var json = HttpContext.Session.GetString("Reviews");
-            var store = string.IsNullOrEmpty(json)
-                ? new Dictionary<string, List<ReviewItem>>()
-                : (JsonSerializer.Deserialize<Dictionary<string, List<ReviewItem>>>(json) ?? new Dictionary<string, List<ReviewItem>>());
+            // nếu bạn muốn giữ thêm các trường min/max/count trong VM, gán thêm ở đây
+            // vm.PriceMin = priceMin; vm.PriceMax = priceMax; vm.TotalItems = items.Count;
 
-            foreach (var it in items)
+            // Load review store (giữ nguyên)
+            var reviewStore = LoadReviewStore();
+            foreach (var food in items)
             {
-                var id = $"cuisine:{vm.Province}:{it.Name}";
-                if (store.ContainsKey(id) && store[id].Count > 0)
+                string id = BuildReviewId(canonicalName, food.Name);
+                if (reviewStore.TryGetValue(id, out var list))
                 {
-                    vm.AverageRatings[it.Name] = store[id].Average(r => r.Rating);
-                    vm.RatingsCount[it.Name] = store[id].Count;
+                    vm.Reviews[food.Name] = list;
+                    vm.AverageRatings[food.Name] = list.Any() ? list.Average(r => r.Rating) : 0;
+                    vm.RatingsCount[food.Name] = list.Count;
                 }
                 else
                 {
-                    vm.AverageRatings[it.Name] = 0;
-                    vm.RatingsCount[it.Name] = 0;
+                    vm.Reviews[food.Name] = new List<ReviewItem>();
+                    vm.AverageRatings[food.Name] = 0;
+                    vm.RatingsCount[food.Name] = 0;
                 }
             }
 
             return View(vm);
         }
+
+      
+        [HttpPost]
+        public IActionResult AddReview(
+                string province,
+                string foodName,
+                string displayName,
+                int rating,
+                string comment)
+        {
+            // 1️⃣ Load store từ Session
+            var store = LoadReviewStore();
+
+            // 2️⃣ Build key duy nhất cho từng món
+            string reviewId = BuildReviewId(province, foodName);
+
+            // 3️⃣ Nếu chưa có thì tạo mới
+            if (!store.ContainsKey(reviewId))
+                store[reviewId] = new List<ReviewItem>();
+
+            // 4️⃣ Thêm review
+            store[reviewId].Add(new ReviewItem
+            {
+                UserName = string.IsNullOrWhiteSpace(displayName)
+                    ? "Ẩn danh"
+                    : displayName.Trim(),
+
+                Rating = Math.Clamp(rating, 1, 5), // ⭐ chống lỗi
+
+                Comment = comment?.Trim() ?? ""
+            });
+
+            // 5️⃣ Lưu lại Session
+            SaveReviewStore(store);
+
+            // Debug (OK để giữ)
+            Console.WriteLine("SESSION ID: " + HttpContext.Session.Id);
+
+            // 6️⃣ Quay lại trang tỉnh
+            return RedirectToAction("Province", new { name = province });
+        }
+
+
+
+
+        // -------------------------
+        // Helpers
+        // -------------------------
+
+
+        public IActionResult Details(int id)
+        {
+            var item = CuisineData.GetAll()
+                                  .FirstOrDefault(x => x.Id == id);
+
+            if (item == null)
+                return NotFound();
+
+            return View(item);
+        }
+
+
+        private string BuildReviewId(string province, string foodName)
+        {
+            return $"cuisine:{province}:{foodName}";
+        }
     }
 }
-
-

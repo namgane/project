@@ -1,82 +1,292 @@
 ﻿@model TravelWeb.Models.Festival
 @{
     ViewData["Title"] = Model.Name;
+
+    // Hàm tiện ích để lấy Icon Loại lễ hội
+    string getModeIcon(string type) => type?.ToLower() switch
+    {
+        "tâm linh" => "bi-church",
+        "văn hóa" => "bi-brush",
+        "dân gian" => "bi-people",
+        "đặc sản" => "bi-egg-fried",
+        "đặc sắc" => "bi-star-fill",
+        _ => "bi-info-circle",
+    };
+
+    // Định dạng lại thời gian hiển thị
+    var formattedStartDate = Model.StartDate.ToString("dd/MM/yyyy");
+    var formattedEndDate = Model.EndDate.ToString("dd/MM/yyyy");
+    var duration = (Model.EndDate - Model.StartDate).TotalDays + 1;
+
+    // Logic gán lớp CSS cho Badge Mức độ Nổi bật
+    string popularityClass = Model.PopularityLevel?.ToLower() switch
+    {
+        "nổi bật" => "bg-danger",
+        "phổ biến" => "bg-warning text-dark",
+        _ => "bg-secondary",
+    };
 }
 
-<div class="container mt-4">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="@Url.Action("Index","Festival")">Lễ hội</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
-        </ol>
-    </nav>
+<hr />
+<h4>Đánh giá món ăn</h4>
 
-    <div class="row g-4 align-items-start">
-        <div class="col-md-6">
-            @if (Model.ImageUrls != null && Model.ImageUrls.Count > 0)
-            {
-                <div class="image-gallery">
-                    @foreach (var imageUrl in Model.ImageUrls)
+<form asp-action="AddReview" method="post" class="mb-4">
+    <input type="hidden" name="cuisineId" value="@Model.Id" />
+
+    <select name="stars" class="form-select mb-2" required>
+        <option value="">Chọn số sao</option>
+        @for (int i = 5; i >= 1; i--)
+        {
+            <option value="@i">@i ⭐</option>
+        }
+    </select>
+
+    <textarea name="comment"
+              class="form-control mb-2"
+              placeholder="Nhận xét..."></textarea>
+
+    <button class="btn btn-success">Gửi đánh giá</button>
+</form>
+
+
+@* ========================= HERO SECTION (PREMIUM) ========================= *@
+<div class="container-fluid festival-hero-detail mb-5" style="background-image: url('@Model.ImageUrl');">
+    <div class="hero-overlay-detail"></div>
+    <div class="container hero-content-detail">
+        <nav class="mb-3">
+            <a href="@Url.Action("Index", "Festival")" class="btn btn-outline-light btn-sm shadow">
+                <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách lễ hội
+            </a>
+        </nav>
+        <h1 class="display-4 fw-bold text-white mb-2">@Model.Name</h1>
+        <p class="lead text-white-75">@Model.Description</p>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row g-5">
+
+        @* ========================= CỘT TRÁI: GALLERY ẢNH & CHI TIẾT ========================= *@
+        <div class="col-lg-7">
+
+            <h2 class="fw-bold text-dark mb-3"><i class="bi bi-camera me-2 text-primary"></i>Thư viện Ảnh & Trải nghiệm</h2>
+
+            @* GALLERY CAROUSEL *@
+            <div id="festivalCarousel" class="carousel slide mb-4 shadow-lg" data-bs-ride="carousel">
+                <div class="carousel-inner rounded">
+                    @if (Model.ImageUrls != null && Model.ImageUrls.Any())
                     {
-                        <div class="gallery-item" onclick="openImageModal('@imageUrl', '@Model.Name')">
-                            <img src="@imageUrl" alt="@Model.Name" class="img-fluid rounded shadow">
+                        @foreach (var imageUrl in Model.ImageUrls)
+                        {
+                            <div class="carousel-item @(Model.ImageUrls.IndexOf(imageUrl) == 0 ? "active" : "")">
+                                <img src="@imageUrl" class="d-block w-100 festival-detail-image" alt="@Model.Name">
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="carousel-item active">
+                            <img src="@Model.ImageUrl" class="d-block w-100 festival-detail-image" alt="@Model.Name">
                         </div>
                     }
                 </div>
-            }
-            else
-            {
-                <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded shadow">
-            }
+                @if (Model.ImageUrls.Count > 1)
+                {
+                    <button class="carousel-control-prev" type="button" data-bs-target="#festivalCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#festivalCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                }
+            </div>
+
+            @* PHẦN THÔNG TIN CHI TIẾT THEO TAB *@
+            <div class="card shadow-sm border-0 mb-5">
+                <div class="card-header bg-light">
+                    <ul class="nav nav-tabs card-header-tabs" id="detailTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general-info" type="button" role="tab" aria-controls="general-info" aria-selected="true">
+                                <i class="bi bi-book-fill me-1"></i> Tổng quan
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="highlight-tab" data-bs-toggle="tab" data-bs-target="#highlight-content" type="button" role="tab" aria-controls="highlight-content" aria-selected="false">
+                                <i class="bi bi-fire me-1"></i> Điểm nổi bật
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <div class="tab-content" id="detailTabsContent">
+                        @* TAB 1: TỔNG QUAN / GIỚI THIỆU *@
+                        <div class="tab-pane fade show active" id="general-info" role="tabpanel" aria-labelledby="general-tab">
+                            <h4 class="fw-bold text-primary mb-3">Thông tin chi tiết</h4>
+                            <p class="text-muted">@Model.Description</p>
+                            <p class="small text-secondary fst-italic">
+                                <i class="bi bi-pin-map me-1"></i> Lễ hội diễn ra tại **@Model.Province** (Khu vực **@Model.Region**).
+                            </p>
+                        </div>
+
+                        @* TAB 2: ĐIỂM NỔI BẬT *@
+                        <div class="tab-pane fade" id="highlight-content" role="tabpanel" aria-labelledby="highlight-tab">
+                            <h4 class="fw-bold text-success mb-3">Các hoạt động và trải nghiệm chính</h4>
+                            <ul class="list-group list-group-flush border-0">
+                                @if (!string.IsNullOrEmpty(Model.Highlight))
+                                {
+                                    @foreach (var highlight in Model.Highlight.Split(','))
+                                    {
+                                        <li class="list-group-item px-0 border-top-0">
+                                            <i class="bi bi-check-circle-fill me-2 text-success"></i>@highlight.Trim()
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li class="list-group-item px-0 border-top-0">
+                                        <i class="bi bi-check-circle-fill me-2 text-success"></i>@Model.Description
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <h2 class="text-primary mb-2">@Model.Name</h2>
-            <div class="mb-3 d-flex gap-2">
-                <span class="badge bg-light text-dark badge-soft">@Model.Region</span>
-                <span class="badge bg-primary">@Model.StartDate.ToString("dd/MM") - @Model.EndDate.ToString("dd/MM/yyyy")</span>
+
+        @* ========================= CỘT PHẢI: THÔNG SỐ & HÀNH ĐỘNG ========================= *@
+        <div class="col-lg-5">
+
+            @* KHỐI THÔNG SỐ QUAN TRỌNG (Pin-up Information) *@
+            <div class="card bg-white shadow-lg mb-4 border-primary border-3 sticky-top-cta">
+                <div class="card-header bg-primary text-white fw-bold">
+                    <i class="bi bi-calendar-check me-2"></i> Lịch trình Lễ hội
+                </div>
+                <div class="card-body">
+
+                    <div class="mb-4 d-flex flex-wrap gap-2">
+                        <span class="badge @popularityClass fs-6">
+                            <i class="bi bi-star-fill me-1"></i> @Model.PopularityLevel
+                        </span>
+                        <span class="badge bg-secondary fs-6">
+                            <i class="bi @getModeIcon(Model.Type) me-1"></i> @Model.Type
+                        </span>
+                    </div>
+
+                    <ul class="list-unstyled fw-semibold small">
+                        <li>
+                            <i class="bi bi-geo-alt-fill me-2 text-info"></i>
+                            **Địa điểm:** @Model.Province (@Model.Region)
+                        </li>
+                        <li>
+                            <i class="bi bi-calendar me-2 text-info"></i>
+                            **Ngày bắt đầu:** @formattedStartDate
+                        </li>
+                        <li>
+                            <i class="bi bi-calendar-x me-2 text-info"></i>
+                            **Ngày kết thúc:** @formattedEndDate
+                        </li>
+                        <li>
+                            <i class="bi bi-clock-history me-2 text-info"></i>
+                            **Tổng thời gian:** **@duration ngày**
+                        </li>
+                    </ul>
+                </div>
+
+                @* NÚT HÀNH ĐỘNG CHÍNH (Được đưa vào Card) *@
+                <div class="card-footer bg-light border-top">
+                    <a href="@Url.Action("Suggest", "Transport", new { toProvince = Model.Province })"
+                       class="btn btn-success btn-lg w-100 shadow-sm">
+                        <i class="bi bi-compass-fill me-2"></i> Gợi ý Lộ trình & Đặt vé
+                    </a>
+                </div>
             </div>
-            <p class="mb-1"><strong>Địa điểm:</strong> @Model.Province</p>
-            <p class="mb-3"><strong>Giới thiệu:</strong> @Model.Description</p>
-            <div class="mb-3">
-                <strong>Điểm nổi bật:</strong>
-                <div>@Model.Highlight</div>
-            </div>
-            <div class="d-flex flex-wrap gap-2">
-                <a href="@Url.Action("Suggest", "Transport", new { from = "TP.HCM", to = @Model.Province })" class="btn btn-success">
-                    🚗 Gợi ý cách di chuyển
-                </a>
-                <a href="@Url.Action("Suggestions", "Trip")" class="btn btn-outline-success">
-                    🚍 Gợi ý chuyến đi đến các lễ hội sắp tới
-                </a>
+
+            @* GỢI Ý LIÊN QUAN *@
+            <div class="card shadow-sm border-0 mt-4">
+                <div class="card-header bg-warning text-dark fw-bold">
+                    <i class="bi bi-link-45deg me-2"></i> Khám phá thêm
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="@Url.Action("Cuisine", "Province", new { name = Model.Province })" class="list-group-item list-group-item-action">
+                        <i class="bi bi-egg-fried me-2 text-danger"></i> Ẩm thực @Model.Province nên thử
+                    </a>
+                    <a href="@Url.Action("Index", "Attraction", new { city = Model.Province })" class="list-group-item list-group-item-action">
+                        <i class="bi bi-building me-2 text-info"></i> Các điểm tham quan gần đó
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Image Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">@Model.Name</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" alt="" class="img-fluid rounded">
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts{
-<script>
-    function openImageModal(imageUrl, title) {
-        document.getElementById('modalImage').src = imageUrl;
-        document.getElementById('modalImage').alt = title;
-        document.getElementById('imageModalLabel').textContent = title;
-        
-        var modal = new bootstrap.Modal(document.getElementById('imageModal'));
-        modal.show();
+<style>
+    /* Hero Banner cho trang Details */
+    .festival-hero-detail {
+        position: relative;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Hiệu ứng parallax nhẹ */
+        display: flex;
+        align-items: center;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
     }
-</script>
+
+    .hero-overlay-detail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-content-detail {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* CSS cho hình ảnh chi tiết */
+    .festival-detail-image {
+        height: 400px;
+        object-fit: cover;
+    }
+
+    /* Thiết kế cho Tab */
+    .nav-tabs .nav-link {
+        color: #000;
+        border: none;
+    }
+
+        .nav-tabs .nav-link.active {
+            font-weight: bold;
+            color: var(--bs-primary);
+            background-color: #fff;
+            border-bottom: 3px solid var(--bs-primary);
+        }
+
+    /* Sticky CTA - Giữ CTA nổi bật khi cuộn */
+    .sticky-top-cta {
+        top: 20px; /* Khoảng cách từ trên cùng */
+        z-index: 100;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Kích hoạt Carousel của Bootstrap nếu chưa tự chạy
+        document.addEventListener('DOMContentLoaded', function () {
+            var carouselElement = document.getElementById('festivalCarousel');
+            if (carouselElement) {
+                new bootstrap.Carousel(carouselElement, {
+                    interval: 4000 // Chuyển ảnh sau 4 giây
+                });
+            }
+        });
+    </script>
 }

@@ -1,0 +1,42 @@
+﻿@model string
+@using TravelWeb.Models
+
+@{
+    var count = CuisineData.GetCountByProvince(Model);
+    var veg = CuisineData.GetVegetarianCountByProvince(Model);
+    var price = CuisineData.GetAveragePriceForProvince(Model).ToString("N0");
+    var img = $"https://source.unsplash.com/600x400/?vietnam,street-food,{Model}";
+}
+
+<a asp-action="Province" asp-route-name="@Model" class="text-decoration-none">
+    <div class="province-card">
+        <div class="province-bg" style="background-image:url('@img')"></div>
+
+        <div class="province-content">
+            <div class="province-name">@Model</div>
+
+            <span class="province-stat">
+                <i class="bi bi-map stat-icon"></i>
+                @CuisineData.GetRegionName(Model)
+            </span>
+
+            <span class="province-stat">
+                <i class="bi bi-star-fill stat-icon"></i>
+                @count món
+            </span>
+
+            <span class="province-stat">
+                <i class="bi bi-cash stat-icon"></i>
+                @price VNĐ
+            </span>
+
+            @if (veg > 0)
+            {
+                <span class="province-stat">
+                    <i class="bi bi-flower1 stat-icon"></i>
+                    @veg món chay
+                </span>
+            }
+        </div>
+    </div>
+</a>

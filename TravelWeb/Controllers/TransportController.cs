@@ -1,26 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using TravelWeb.Services;
 using TravelWeb.Models;
+using System.Linq;
 
 namespace TravelWeb.Controllers
 {
     public class TransportController : Controller
     {
-        [HttpGet]
-        public IActionResult Index()
+        public IActionResult Suggest()
         {
-            ViewBag.Places = TransportService.GetAllPlaces();
-            return View();
+            // Lấy dữ liệu giống Trip/Suggestions
+            var trips = TripGenerator.GenerateTrips()
+                .Select((t, index) => new TripWithId
+                {
+                    Id = index + 1,
+                    FromCity = t.FromCity,
+                    ToProvince = t.ToProvince,
+                    DepartureDate = t.DepartureDate,
+                    TransportType = t.TransportType,
+                    Price = t.Price,
+                    FestivalName = t.FestivalName
+                }).ToList();
+
+            return View(trips);
         }
 
-        [HttpGet]
-        public IActionResult Suggest(string from, string to)
+        public IActionResult Detail(int id)
         {
-            var options = TransportService.Suggest(from, to);
-            ViewBag.From = from;
-            ViewBag.To = to;
-            return View(options);
+            var trips = TripGenerator.GenerateTrips()
+                .Select((t, index) => new TripWithId
+                {
+                    Id = index + 1,
+                    FromCity = t.FromCity,
+                    ToProvince = t.ToProvince,
+                    DepartureDate = t.DepartureDate,
+                    TransportType = t.TransportType,
+                    Price = t.Price,
+                    FestivalName = t.FestivalName
+                }).ToList();
+
+            var trip = trips.FirstOrDefault(x => x.Id == id);
+            if (trip == null)
+                return NotFound();
+
+            return View(trip);
         }
     }
 }

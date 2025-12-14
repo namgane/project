@@ -1,45 +1,195 @@
+@using TravelWeb.Models
+@model IEnumerable<string>
+
 @{
-    ViewData["Title"] = "Tìm phương tiện di chuyển";
-    var places = (IEnumerable<string>)ViewBag.Places ?? Array.Empty<string>();
+    ViewData["Title"] = "Ẩm thực theo tỉnh";
 }
 
-<div class="passport-hero py-5 mb-4 text-white">
-    <div class="container text-center">
-        <h1 class="fw-bold mb-2"><i class="bi bi-bus-front me-2"></i>Tìm phương tiện</h1>
-        <p class="text-white-50 mb-0">Chọn tuyến From → To để xem gợi ý nhà cung cấp, giá và thời gian</p>
-    </div>
-  </div>
+<style>
 
-<div class="container">
-    <div class="row justify-content-center mb-4">
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <form method="get" asp-action="Suggest" asp-controller="Transport" class="row g-3 align-items-end">
-                        <div class="col-md-5">
-                            <label class="form-label">Từ</label>
-                            <input class="form-control" name="from" list="allPlaces" placeholder="Ví dụ: Hà Nội" />
-                        </div>
-                        <div class="col-md-5">
-                            <label class="form-label">Đến</label>
-                            <input class="form-control" name="to" list="allPlaces" placeholder="Ví dụ: Đà Nẵng" />
-                        </div>
-                        <div class="col-md-2 d-grid">
-                            <button class="btn btn-primary" type="submit">Tìm</button>
-                        </div>
-                        <datalist id="allPlaces">
-                            @foreach (var p in places)
-                            {
-                                <option value="@p"></option>
-                            }
-                        </datalist>
-                    </form>
-                </div>
-            </div>
+    /* ============================================= */
+    /*       COLOR THEME - VIETNAM TRAVEL STYLE      */
+    /* ============================================= */
+
+    :root {
+        --gold: #e7c27d;
+        --gold-dark: #c9a058;
+        --brown: #5d3d1a;
+        --green: #2f6f55;
+        --bg: #faf5ee;
+    }
+
+    body {
+        background: var(--bg);
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* ============================================= */
+    /*                  HERO SECTION                 */
+    /* ============================================= */
+
+    .hero {
+        height: 350px;
+        border-radius: 0 0 40px 40px;
+        position: relative;
+        overflow: hidden;
+        background: url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0') center/cover no-repeat;
+    }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+        }
+
+    .hero-content {
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        text-align: center;
+        color: white;
+    }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 900;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+
+    /* ============================================= */
+    /*                  SEARCH BOX                   */
+    /* ============================================= */
+
+    .search-box {
+        margin-top: -40px;
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    /* ============================================= */
+    /*                PROVINCE GRID CARDS            */
+    /* ============================================= */
+
+    .province-card {
+        position: relative;
+        height: 200px;
+        border-radius: 22px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.3s;
+        border: solid 2px #f3e3c7;
+    }
+
+        .province-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+        }
+
+    .province-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.65);
+    }
+
+    .province-content {
+        position: absolute;
+        bottom: 18px;
+        left: 18px;
+        color: white;
+    }
+
+    .province-name {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .province-count {
+        font-size: 15px;
+        opacity: 0.85;
+    }
+
+    /* ============================================= */
+    /*               SECTION TITLES                  */
+    /* ============================================= */
+
+    .section-title {
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--brown);
+        text-align: center;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: #7a7373;
+        margin-top: -5px;
+    }
+
+</style>
+
+
+<!-- ======================== HERO ======================== -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>KHÁM PHÁ ẨM THỰC VIỆT NAM</h1>
+        <p>Hành trình qua từng vùng đất – nếm trải hương vị văn hoá</p>
+    </div>
+</section>
+
+<!-- ======================== SEARCH ======================== -->
+<div class="search-box">
+    <form method="get" asp-action="Province" asp-controller="Cuisine" class="row g-3">
+        <div class="col-md-9">
+            <select class="form-select form-select-lg" name="name">
+                @foreach (var p in Model)
+                {
+                    <option value="@p">@p</option>
+                }
+            </select>
         </div>
-    </div>
-
-    <div class="text-center text-muted">Gợi ý: Kết nối với TripPlanner để tự động gợi ý tuyến.</div>
+        <div class="col-md-3 d-grid">
+            <button class="btn btn-success btn-lg fw-bold">Xem món</button>
+        </div>
+    </form>
 </div>
 
+<!-- ======================== PROVINCE GRID ======================== -->
+<div class="container mt-5">
 
+    <h2 class="section-title">Ẩm thực theo vùng miền</h2>
+    <p class="section-subtitle">Khám phá món ăn đặc trưng của mỗi tỉnh thành Việt Nam</p>
+
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mt-4">
+
+        @foreach (var p in Model)
+        {
+            var count = CuisineData.GetCountByProvince(p);
+            string img = "https://source.unsplash.com/600x400/?vietnam," + p.Replace(" ", "-");
+
+            <div class="col">
+                <a asp-action="Province" asp-route-name="@p" class="text-decoration-none">
+                    <div class="province-card">
+                        <div class="province-bg" style="background-image: url('@img');"></div>
+                        <div class="province-content">
+                            <div class="province-name">@p</div>
+                            <div class="province-count">@count món</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>

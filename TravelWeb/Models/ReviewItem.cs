@@ -4,12 +4,11 @@ namespace TravelWeb.Models
 {
     public class ReviewItem
     {
-        public string CuisineId { get; set; } = string.Empty; // cuisine:{Province}:{Name}
-        public string DisplayName { get; set; } = string.Empty; // public name of reviewer
-        public int Rating { get; set; } // 1..5
+        public int CuisineId { get; set; }
+        public string UserName { get; set; } = "?n danh";
+        public int Stars { get; set; }   // 1–5
+        public int Rating { get; set; }
         public string Comment { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }
-
-

@@ -1,4 +1,4 @@
-﻿/*using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using TravelWeb.Models;
@@ -128,6 +128,49 @@ namespace TravelWeb.Controllers
             ViewBag.Weights = QuizRuleEngine.GetAdaptiveWeights();
             return View(top3);
         }
+
+        public List<string> GenerateComparisonReasons(Destination top1, Destination top2, Dictionary<string, string> userAnswers)
+        {
+            var reasons = new List<string>();
+
+            // 1. So sánh Tiêu chí Trọng yếu: BUDGET (Ngân sách Cao cấp)
+            if (userAnswers.GetValueOrDefault("BudgetLevel") == "Cao cấp" && top1.IsModernCity)
+            {
+                if (!top2.IsModernCity || top1.Score > top2.Score + 10) // Giả định thành phố lớn có dịch vụ cao cấp hơn
+                {
+                    reasons.Add($"**BudgetLevel: Cao cấp (High weight):** {top1.Name} là đô thị lớn/trung tâm du lịch (như {top1.Province}) có hệ thống dịch vụ 5 sao, resort và khu giải trí quy mô, phù hợp hơn với mức chi tiêu **Cao cấp** của bạn so với {top2.Name}.");
+                }
+            }
+
+            // 2. So sánh Tiêu chí Trọng yếu: DIVERSITY (Đa dạng Thiên nhiên/Tốc độ Dày đặc)
+            bool top1HasDiverseNature = top1.HasMountain && top1.HasBeach;
+            bool top2HasDiverseNature = top2.HasMountain && top2.HasBeach;
+
+            if (userAnswers.GetValueOrDefault("TravelPace") == "Dày đặc" && top1HasDiverseNature && !top2HasDiverseNature)
+            {
+                reasons.Add($"**TravelPace: Dày đặc & Nature:** {top1.Name} có lợi thế vượt trội khi kết hợp cả **Núi và Biển ({top1.Province})** trong một khu vực. Điều này cho phép bạn thực hiện lịch trình **Dày đặc** và đa dạng trong chuyến đi **7+ ngày** mà {top2.Name} không thể sánh bằng.");
+            }
+            else if (userAnswers.GetValueOrDefault("TravelPace") == "Dày đặc" && top1.AttractionCount > top2.AttractionCount + 2)
+            {
+                reasons.Add($"**TravelPace: Dày đặc (Tốc độ):** {top1.Name} có số lượng điểm tham quan chính (Attractions) dày đặc hơn (tổng {top1.AttractionCount} điểm), tạo điều kiện cho lịch trình khám phá **Dày đặc** mà bạn yêu cầu.");
+            }
+
+            // 3. So sánh Tiêu chí Phụ trợ: FOOD (Tâm trạng Ẩm thực)
+            if (userAnswers.GetValueOrDefault("ExpectedMood") == "Ẩm thực" && top1.HasFood)
+            {
+                if (top1.Region == "Trung" && top2.Region == "Bắc")
+                {
+                    reasons.Add($"**ExpectedMood: Ẩm thực (Miền):** {top1.Name} (Miền Trung) có sự đa dạng ẩm thực độc đáo (mì Quảng, bún bò, cao lầu) phù hợp với tâm trạng **Ẩm thực** bạn chọn, bổ sung hương vị khác biệt so với {top2.Name} (Miền Bắc/Nam).");
+                }
+            }
+
+            // Thêm câu kết luận chung nếu lý do quá ít
+            if (reasons.Count == 0)
+            {
+                reasons.Add($"Sự khác biệt điểm số chủ yếu đến từ sự phù hợp tuyệt đối của {top1.Name} đối với sự kết hợp các yếu tố phụ như **{userAnswers.GetValueOrDefault("TravelSeason", "Mùa")}** và **{userAnswers.GetValueOrDefault("Region", "Khu vực")}** mà bạn đã chọn.");
+            }
+
+            return reasons;
+        }
     }
 }
-*/

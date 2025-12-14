@@ -1,158 +1,274 @@
-@model TravelWeb.Models.CuisineProvinceViewModel
+@using TravelWeb.Models
+@model CuisineProvinceViewModel
+
 @{
     ViewData["Title"] = $"Ẩm thực {Model.Province}";
 }
 
-<!-- HERO SECTION -->
-<div class="cuisine-hero py-5 mb-4 text-white" style="background:linear-gradient(90deg,#1e3c72,#2a5298);">
-    <div class="container text-center">
-        <h1 class="fw-bold mb-2">Ẩm thực @Model.Province</h1>
-        <p class="text-light">Khám phá Top 20 món đặc trưng và giá trung bình tại địa phương</p>
+<style>
+    :root {
+        --gold: #e7c27d;
+        --brown: #5d3d1a;
+        --green: #2f6f55;
+        --bg: #faf5ee;
+    }
+
+    body {
+        background: var(--bg);
+    }
+
+    /* HERO */
+    .hero {
+        height: 420px;
+        background: linear-gradient( rgba(0,0,0,.55), rgba(0,0,0,.7) ), url('https://source.unsplash.com/1600x900/?vietnam,food,@Model.Province') center / cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        border-radius: 0 0 40px 40px;
+        margin-bottom: 60px;
+    }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 900;
+            text-shadow: 0 4px 12px rgba(0,0,0,.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: .9;
+        }
+
+    /* STATS */
+    .stat-box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    }
+
+        .stat-box h3 {
+            color: var(--brown);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-box span {
+            color: #777;
+        }
+
+    /* CARD */
+    .food-card {
+        background: #fff;
+        border-radius: 22px;
+        overflow: hidden;
+        transition: .4s;
+        box-shadow: 0 6px 20px rgba(0,0,0,.12);
+        height: 100%;
+    }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,.25);
+        }
+
+    .food-img {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .food-body {
+        padding: 20px;
+    }
+
+    .food-title {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--brown);
+    }
+
+    .food-desc {
+        font-size: 14px;
+        color: #666;
+        margin: 10px 0;
+        min-height: 42px;
+    }
+
+    .badge-region {
+        background: var(--green);
+        color: #fff;
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+</style>
+
+<form method="get" class="row g-3 mb-5">
+
+    <input type="hidden" name="name" value="@Model.Province" />
+
+    <div class="col-md-3">
+        <input name="minPrice"
+               class="form-control"
+               placeholder="Giá từ" />
     </div>
-</div>
 
-<!-- BREADCRUMB -->
-<nav aria-label="breadcrumb" class="mb-4">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a asp-controller="Tours" asp-action="Index">Trang chủ</a></li>
-        <li class="breadcrumb-item"><a asp-controller="Cuisine" asp-action="Index">Ẩm thực</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@Model.Province</li>
-    </ol>
-</nav>
-
-<!-- HEADER + ACTIONS -->
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="h4 mb-0 text-primary">Top 20 ẩm thực tại @Model.Province</h2>
-    <div class="d-flex gap-2">
-        <a asp-controller="TripPlanner" asp-action="Index" asp-route-destination="@Model.Province" class="btn btn-primary">
-            <i class="bi bi-map"></i> Lập kế hoạch tại @Model.Province
-        </a>
-        <a asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-geo"></i> Chọn tỉnh khác</a>
+    <div class="col-md-3">
+        <input name="maxPrice"
+               class="form-control"
+               placeholder="Giá đến" />
     </div>
-</div>
 
-<!-- SUMMARY SECTION -->
-<div class="card border-0 shadow-sm mb-4">
-    <div class="card-body">
-        <h5 class="card-title mb-3"><i class="bi bi-cash-coin text-success me-2"></i>Thống kê chi phí trung bình</h5>
-        <div class="row text-center">
-            <div class="col-md-3 col-6 mb-2">
-                <div class="fw-semibold">Trung bình</div>
-                <div class="text-primary">@Model.OverallAveragePrice.ToString("N0") đ</div>
+    <div class="col-md-3">
+        <input name="minPopularity"
+               class="form-control"
+               placeholder="Độ phổ biến ≥" />
+    </div>
+
+    <div class="col-md-3 d-grid">
+        <button class="btn btn-dark">Lọc</button>
+    </div>
+
+</form>
+
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>@Model.Province</h1>
+        <p>Đặc sản & tinh hoa ẩm thực vùng miền</p>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- STATS -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="stat-box">
+                <h3>@Model.Items.Count</h3>
+                <span>Món đặc trưng</span>
             </div>
-            <div class="col-md-3 col-6 mb-2">
-                <div class="fw-semibold">Giá thấp nhất</div>
-                <div class="text-success">@Model.Items.Min(x => x.AveragePrice).ToString("N0") đ</div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-box">
+                <h3>@Model.OverallAveragePrice.ToString("N0") đ</h3>
+                <span>Giá trung bình</span>
             </div>
-            <div class="col-md-3 col-6 mb-2">
-                <div class="fw-semibold">Giá cao nhất</div>
-                <div class="text-danger">@Model.Items.Max(x => x.AveragePrice).ToString("N0") đ</div>
-            </div>
-            <div class="col-md-3 col-6 mb-2">
-                <div class="fw-semibold">Số món hiển thị</div>
-                <div class="text-dark">@Model.Items.Count / 20 món</div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-box">
+                <h3>@Model.Items.Sum(x => x.Popularity)</h3>
+                <span>Mức độ phổ biến</span>
             </div>
         </div>
     </div>
-</div>
 
-<!-- CUISINE GRID -->
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    @foreach (var item in Model.Items)
-    {
-        var avg = Model.AverageRatings.ContainsKey(item.Name) ? Model.AverageRatings[item.Name] : 0;
-        var cnt = Model.RatingsCount.ContainsKey(item.Name) ? Model.RatingsCount[item.Name] : 0;
+    <!-- FOOD LIST -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0 cuisine-card">
-                <div class="position-relative">
-                    <img src="@item.ImageUrl"
-                         class="card-img-top cuisine-thumb"
-                         alt="@item.Name"
-                         onerror="this.src='/images/default-food.jpg'">
-                    <span class="badge bg-success position-absolute top-0 end-0 m-2">
-                        @item.AveragePrice.ToString("N0") đ
-                    </span>
+        @foreach (var food in Model.Items)
+        {
+            <div class="food-card">
+
+                <!-- THÔNG TIN MÓN -->
+                <h3>@food.Name</h3>
+                <p>@food.Description</p>
+
+                <div class="price-pop">
+                    <span>💰 @food.AveragePrice.ToString("N0") đ</span>
+                    <span>🔥 @food.Popularity</span>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="me-2">
-                            @for (int s = 1; s <= 5; s++)
-                            {
-                                if (avg >= s)
+
+                <!-- ⭐ RATING -->
+                <div class="rating">
+                    @{
+                        var avg = Model.AverageRatings[food.Name];
+                        var count = Model.RatingsCount[food.Name];
+                    }
+
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <i class="bi @(i <= Math.Round(avg) ? "bi-star-fill text-warning" : "bi-star")"></i>
+                    }
+                    <span class="text-muted">(@count đánh giá)</span>
+                </div>
+
+                <!-- 📝 FORM NHẬN XÉT -->
+                <form asp-controller="Cuisine"
+                       asp-action="AddReview"
+                       method="post">
+
+                    <input type="hidden" name="province" value="@Model.Province" />
+                    <input type="hidden" name="foodName" value="@Model.Items" />
+
+                    <input name="displayName" class="form-control" placeholder="Tên của bạn" />
+
+                    <select name="rating" class="form-select">
+                        <option value="5">★★★★★</option>
+                        <option value="4">★★★★☆</option>
+                        <option value="3">★★★☆☆</option>
+                        <option value="2">★★☆☆☆</option>
+                        <option value="1">★☆☆☆☆</option>
+                    </select>
+
+                    <textarea name="comment" class="form-control"
+                          placeholder="Nhận xét..."></textarea>
+
+                    <button type="submit" class="btn btn-success">Gửi</button>
+                </form>
+
+
+                <!-- 💬 DANH SÁCH NHẬN XÉT -->
+                <div class="reviews">
+                    @foreach (var r in Model.Reviews[food.Name].Take(3))
+                    {
+                        <div class="review-item">
+                            <strong>@r.UserName</strong>
+                            <span>
+                                @for (int i = 1; i <= r.Rating; i++)
                                 {
                                     <i class="bi bi-star-fill text-warning"></i>
                                 }
-                                else if (avg >= s - 0.5)
-                                {
-                                    <i class="bi bi-star-half text-warning"></i>
-                                }
-                                else
-                                {
-                                    <i class="bi bi-star text-warning"></i>
-                                }
-                            }
+                            </span>
+                            <p>@r.Comment</p>
                         </div>
-                        <small class="text-muted">(@cnt)</small>
-                    </div>
-                    <p class="text-muted small">@item.Description</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-light text-dark border">@Model.Province</span>
-                        <span class="badge bg-light text-dark border">Món đặc trưng</span>
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent border-0">
-                    <div class="d-flex justify-content-between">
-                        <form method="post" asp-controller="Favorites" asp-action="Add">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="Id" value="@($"cuisine:{Model.Province}:{item.Name}")" />
-                            <input type="hidden" name="Type" value="cuisine" />
-                            <input type="hidden" name="Title" value="@item.Name" />
-                            <input type="hidden" name="Subtitle" value="@Model.Province - @item.AveragePrice.ToString("N0") đ" />
-                            <input type="hidden" name="Url" value="@Url.Action("Province", "Cuisine", new { name = Model.Province })" />
-                            <input type="hidden" name="ImageUrl" value="@item.ImageUrl" />
-                            <button class="btn btn-sm btn-outline-primary" type="submit">
-                                <i class="bi bi-bookmark-plus"></i> Lưu
-                            </button>
-                        </form>
-
-                        <button class="btn btn-sm btn-outline-secondary"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#rv_@item.Name.Replace(" ", "_")">
-                            <i class="bi bi-chat"></i> Đánh giá
-                        </button>
-                    </div>
-
-                    <div class="collapse mt-2" id="rv_@item.Name.Replace(" ", "_")">
-                        <form method="post" asp-controller="Reviews" asp-action="Add">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="cuisineId" value="@($"cuisine:{Model.Province}:{item.Name}")" />
-                            <input type="hidden" name="returnProvince" value="@Model.Province" />
-                            <div class="row g-2">
-                                <div class="col-4">
-                                    <input name="displayName" class="form-control form-control-sm" placeholder="Tên của bạn" required />
-                                </div>
-                                <div class="col-3">
-                                    <select name="rating" class="form-select form-select-sm" required>
-                                        <option value="">Số sao</option>
-                                        <option>5</option>
-                                        <option>4</option>
-                                        <option>3</option>
-                                        <option>2</option>
-                                        <option>1</option>
-                                    </select>
-                                </div>
-                                <div class="col-5">
-                                    <input name="comment" class="form-control form-control-sm" placeholder="Nhận xét (tuỳ chọn)" />
-                                </div>
-                            </div>
-                            <button class="btn btn-sm btn-primary mt-2" type="submit">Gửi đánh giá</button>
-                        </form>
-                    </div>
+                    }
                 </div>
             </div>
-        </div>
+        }
+
+    </div>
+    .rating {
+    margin-top: 6px;
+    font-size: 14px;
     }
+
+    .review-form textarea {
+    resize: none;
+    font-size: 13px;
+    }
+
+    .review-item {
+    background: #f8f9fa;
+    padding: 6px 8px;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 13px;
+    }
+
+    <!-- BACK -->
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-outline-dark btn-lg px-5">
+            ← Quay lại danh sách tỉnh
+        </a>
+    </div>
+
 </div>

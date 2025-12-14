@@ -25,9 +25,59 @@ namespace TravelWeb.Models
 
         // Điểm số (cho Quiz)
         public int Score { get; set; } = 0;
+        public double NormalizedScore { get; set; } = 0;
+
+        // Quiz properties
+        public List<RuleMatch> RuleMatches { get; set; } = new List<RuleMatch>();
+        public List<string> MatchedRules { get; set; } = new List<string>();
+        public bool IsPeaceful { get; set; } = false;
+        public bool IsModernCity { get; set; } = false;
+        public bool HasNature { get; set; } = false;
+        public string BudgetNote { get; set; } = string.Empty;
+        public string SeasonRecommendation { get; set; } = string.Empty;
+        public string DurationNote { get; set; } = string.Empty;
+
+        // Trong file Destination.cs, bên trong class Destination { ... }
+
+        // Thuộc tính tính toán để phục vụ hiển thị trên View
+        public int AttractionCount => Attractions.Count; // Số lượng điểm tham quan
+
+        public string TopAttractionType
+        {
+            get
+            {
+                if (!Attractions.Any()) return string.Empty;
+
+                // 1. Đếm số lần xuất hiện của từng loại hình
+                var mostCommon = Attractions
+                    .GroupBy(a => a.Type)
+                    .OrderByDescending(g => g.Count())
+                    .FirstOrDefault()?.Key;
+
+                // 2. Map loại hình sang tiếng Việt để hiển thị đẹp hơn
+                return mostCommon switch
+                {
+                    "Cultural" => "Di sản/Văn hóa",
+                    "Nature" => "Thiên nhiên/Sinh thái",
+                    "Entertainment" => "Giải trí",
+                    "Shopping" => "Mua sắm",
+                    "Food" => "Ẩm thực",
+                    _ => "Khác"
+                };
+            }
+
+        }
+
 
         // Danh sách các điểm tham quan
         public List<AttractionPoint> Attractions { get; set; } = new List<AttractionPoint>();
+    }
+
+    public class RuleMatch
+    {
+        public string RuleKey { get; set; } = string.Empty;
+        public double Score { get; set; }
+        public string Explanation { get; set; } = string.Empty;
     }
 
     public class AttractionPoint
@@ -52,7 +102,7 @@ namespace TravelWeb.Models
                 Description = "Thủ đô nghìn năm văn hiến với phố cổ, hồ Gươm và ẩm thực phong phú.",
                 Province = "Hà Nội",
                 Region = "Bắc",
-                ImageUrl = "/images/hanoi.jpg",
+                ImageUrl = "/images/locations/hanoi.jpg",
                 Latitude = 21.0285,
                 Longitude = 105.8542,
                 HasBeach = false,
@@ -120,7 +170,7 @@ namespace TravelWeb.Models
                 Description = "Thành phố cảng năng động, nổi tiếng với đồ biển và bánh đa cua.",
                 Province = "Hải Phòng",
                 Region = "Bắc",
-                ImageUrl = "/images/haiphong.jpg",
+                ImageUrl = "/images/locations/haiphong.jpg",
                 Latitude = 20.8449,
                 Longitude = 106.6881,
                 HasBeach = true,
@@ -178,7 +228,7 @@ namespace TravelWeb.Models
                 Description = "Nổi tiếng với Vịnh Hạ Long – di sản thiên nhiên thế giới.",
                 Province = "Quảng Ninh",
                 Region = "Bắc",
-                ImageUrl = "/images/quangninh.jpg",
+                ImageUrl = "/images/locations/quangninh.jpg",
                 Latitude = 20.9509,
                 Longitude = 107.0763,
                 HasBeach = true,
@@ -236,7 +286,7 @@ namespace TravelWeb.Models
                 Description = "Vùng núi Tây Bắc với Sapa, Fansipan và chợ tình.",
                 Province = "Lào Cai",
                 Region = "Bắc",
-                ImageUrl = "/images/laocai.jpg",
+                ImageUrl = "/images/locations/laocai.jpg",
                 Latitude = 22.4809,
                 Longitude = 103.9756,
                 HasBeach = false,
@@ -294,7 +344,7 @@ namespace TravelWeb.Models
                 Description = "Cao nguyên đá Đồng Văn hùng vĩ, vùng đất của người Mông.",
                 Province = "Hà Giang",
                 Region = "Bắc",
-                ImageUrl = "/images/hagiang.jpg",
+                ImageUrl = "/images/locations/hagiang.jpg",
                 Latitude = 22.8230,
                 Longitude = 104.9784,
                 HasBeach = false,
@@ -352,7 +402,7 @@ namespace TravelWeb.Models
                 Description = "Vùng đồng bằng Bắc Bộ, nổi tiếng nhãn lồng và bánh cáy.",
                 Province = "Hưng Yên",
                 Region = "Bắc",
-                ImageUrl = "/images/hungyen.jpg",
+                ImageUrl = "/images/locations/thaibinh.jpg",
                 Latitude = 20.6467,
                 Longitude = 106.0514,
                 HasBeach = false,
@@ -390,7 +440,7 @@ namespace TravelWeb.Models
                 Description = "Tràng An, Tam Cốc – di sản kép UNESCO, cảnh non nước hữu tình.",
                 Province = "Ninh Bình",
                 Region = "Bắc",
-                ImageUrl = "/images/ninhbinh.jpg",
+                ImageUrl = "/images/locations/ninhbinh.jpg",
                 Latitude = 20.2506,
                 Longitude = 105.9745,
                 HasBeach = false,
@@ -448,7 +498,7 @@ namespace TravelWeb.Models
                 Description = "Biển Sầm Sơn và đặc sản nem chua nổi tiếng.",
                 Province = "Thanh Hóa",
                 Region = "Bắc",
-                ImageUrl = "/images/thanhhoa.jpg",
+                ImageUrl = "/images/locations/thanhhoa.jpg",
                 Latitude = 19.8067,
                 Longitude = 105.7851,
                 HasBeach = true,
@@ -497,7 +547,7 @@ namespace TravelWeb.Models
                 Description = "Quê hương Bác Hồ, có biển Cửa Lò và núi rừng Pù Mát.",
                 Province = "Nghệ An",
                 Region = "Trung",
-                ImageUrl = "/images/nghean.jpg",
+                ImageUrl = "/images/locations/nghean.jpg",
                 Latitude = 18.6737,
                 Longitude = 105.6812,
                 HasBeach = true,
@@ -545,7 +595,7 @@ namespace TravelWeb.Models
                 Description = "Miền đất kiên trung, có chùa Hương Tích và biển Thiên Cầm.",
                 Province = "Hà Tĩnh",
                 Region = "Trung",
-                ImageUrl = "/images/hatinh.jpg",
+                ImageUrl = "/images/locations/hatinh.jpg",
                 Latitude = 18.3430,
                 Longitude = 105.9050,
                 HasBeach = true,
@@ -583,7 +633,7 @@ namespace TravelWeb.Models
                 Description = "Vườn quốc gia Phong Nha – Kẻ Bàng, kỳ quan hang động.",
                 Province = "Quảng Bình",
                 Region = "Trung",
-                ImageUrl = "/images/quangbinh.jpg",
+                ImageUrl = "/images/locations/quangbinh.jpg",
                 Latitude = 17.4677,
                 Longitude = 106.5975,
                 HasBeach = true,
@@ -631,7 +681,7 @@ namespace TravelWeb.Models
                 Description = "Cố đô Huế – di sản văn hóa thế giới, ẩm thực cung đình.",
                 Province = "Thừa Thiên Huế",
                 Region = "Trung",
-                ImageUrl = "/images/hue.jpg",
+                ImageUrl = "/images/locations/hue.jpg",
                 Latitude = 16.4637,
                 Longitude = 107.5909,
                 HasBeach = false,
@@ -699,7 +749,7 @@ namespace TravelWeb.Models
                 Description = "Thành phố đáng sống, có biển Mỹ Khê và Bà Nà Hills.",
                 Province = "Đà Nẵng",
                 Region = "Trung",
-                ImageUrl = "/images/danang.jpg",
+                ImageUrl = "/images/locations/danang.jpg",
                 Latitude = 16.0544,
                 Longitude = 108.2022,
                 HasBeach = true,
@@ -767,7 +817,7 @@ namespace TravelWeb.Models
                 Description = "Phố cổ Hội An, Mỹ Sơn – di sản văn hóa thế giới.",
                 Province = "Quảng Nam",
                 Region = "Trung",
-                ImageUrl = "/images/quangnam.jpg",
+                ImageUrl = "/images/locations/quangnam.jpg",
                 Latitude = 15.5770,
                 Longitude = 108.4800,
                 HasBeach = true,
@@ -825,7 +875,7 @@ namespace TravelWeb.Models
                 Description = "Đảo Lý Sơn – thiên đường biển đảo miền Trung.",
                 Province = "Quảng Ngãi",
                 Region = "Trung",
-                ImageUrl = "/images/quangngai.jpg",
+                ImageUrl = "/images/locations/quangngai.jpg",
                 Latitude = 15.1214,
                 Longitude = 108.8044,
                 HasBeach = true,
@@ -873,7 +923,7 @@ namespace TravelWeb.Models
                 Description = "Xứ Nẫu hiền hòa, quê hương Tây Sơn, nổi tiếng Eo Gió.",
                 Province = "Bình Định",
                 Region = "Trung",
-                ImageUrl = "/images/binhdinh.jpg",
+                ImageUrl = "/images/locations/binhdinh.jpg",
                 Latitude = 13.7830,
                 Longitude = 109.2192,
                 HasBeach = true,
@@ -921,7 +971,7 @@ namespace TravelWeb.Models
                 Description = "Xứ hoa vàng cỏ xanh, Ghềnh Đá Đĩa kỳ thú.",
                 Province = "Phú Yên",
                 Region = "Trung",
-                ImageUrl = "/images/phuyen.jpg",
+                ImageUrl = "/images/locations/phuyen.jpg",
                 Latitude = 13.0882,
                 Longitude = 109.0929,
                 HasBeach = true,
@@ -969,7 +1019,7 @@ namespace TravelWeb.Models
                 Description = "Nha Trang – trung tâm du lịch biển lớn nhất Việt Nam.",
                 Province = "Khánh Hòa",
                 Region = "Trung",
-                ImageUrl = "/images/nhatrang.jpg",
+                ImageUrl = "/images/locations/khanhhoa.jpg",
                 Latitude = 12.2388,
                 Longitude = 109.1967,
                 HasBeach = true,
@@ -1027,7 +1077,7 @@ namespace TravelWeb.Models
                 Description = "Nắng gió, tháp Chàm và vườn nho Ba Mọi.",
                 Province = "Ninh Thuận",
                 Region = "Trung",
-                ImageUrl = "/images/ninhthuan.jpg",
+                ImageUrl = "/images/locations/ninhthuan.jpg",
                 Latitude = 11.6739,
                 Longitude = 108.8629,
                 HasBeach = true,
@@ -1075,7 +1125,7 @@ namespace TravelWeb.Models
                 Description = "Phan Thiết, Mũi Né – thiên đường nghỉ dưỡng biển.",
                 Province = "Bình Thuận",
                 Region = "Trung",
-                ImageUrl = "/images/binhthuan.jpg",
+                ImageUrl = "/images/locations/binhthuan.jpg",
                 Latitude = 10.9289,
                 Longitude = 108.1008,
                 HasBeach = true,
@@ -1134,7 +1184,7 @@ namespace TravelWeb.Models
                 Description = "Thủ phủ cà phê, nhà rông, văn hóa Tây Nguyên đặc sắc.",
                 Province = "Kon Tum",
                 Region = "Tây Nguyên",
-                ImageUrl = "/images/kontum.jpg",
+                ImageUrl = "/images/locations/kontum.jpg",
                 Latitude = 14.3497,
                 Longitude = 108.0005,
                 HasBeach = false,
@@ -1182,7 +1232,7 @@ namespace TravelWeb.Models
                 Description = "Biển Hồ Pleiku, cảnh đẹp hùng vĩ của cao nguyên bazan.",
                 Province = "Gia Lai",
                 Region = "Tây Nguyên",
-                ImageUrl = "/images/gialai.jpg",
+                ImageUrl = "/images/locations/gialai.jpg",
                 Latitude = 13.9833,
                 Longitude = 108.0000,
                 HasBeach = false,
@@ -1230,7 +1280,7 @@ namespace TravelWeb.Models
                 Description = "Buôn Ma Thuột, quê hương cà phê Việt Nam.",
                 Province = "Đắk Lắk",
                 Region = "Tây Nguyên",
-                ImageUrl = "/images/daklak.jpg",
+                ImageUrl = "/images/locations/daklak.jpg",
                 Latitude = 12.6667,
                 Longitude = 108.0500,
                 HasBeach = false,
@@ -1278,7 +1328,7 @@ namespace TravelWeb.Models
                 Description = "Thác nước Dray Nur hùng vĩ và công viên địa chất UNESCO.",
                 Province = "Đắk Nông",
                 Region = "Tây Nguyên",
-                ImageUrl = "/images/daknong.jpg",
+                ImageUrl = "/images/locations/daknong.jpg",
                 Latitude = 12.2646,
                 Longitude = 107.6098,
                 HasBeach = false,
@@ -1316,7 +1366,7 @@ namespace TravelWeb.Models
                 Description = "Đà Lạt – thành phố sương mù, hoa và cà phê.",
                 Province = "Lâm Đồng",
                 Region = "Tây Nguyên",
-                ImageUrl = "/images/dalat.jpg",
+                ImageUrl = "/images/locations/dalat.jpg",
                 Latitude = 11.9404,
                 Longitude = 108.4583,
                 HasBeach = false,
@@ -1385,7 +1435,7 @@ namespace TravelWeb.Models
                 Description = "Vùng đô thị lớn nhất, có Vũng Tàu, ẩm thực đa dạng.",
                 Province = "TP.HCM",
                 Region = "Nam",
-                ImageUrl = "/images/hcm.jpg",
+                ImageUrl = "/images/locations/tphcm.jpg",
                 Latitude = 10.8231,
                 Longitude = 106.6297,
                 HasBeach = true,
@@ -1453,7 +1503,7 @@ namespace TravelWeb.Models
                 Description = "Vùng công nghiệp và du lịch sinh thái núi Chứa Chan.",
                 Province = "Đồng Nai",
                 Region = "Nam",
-                ImageUrl = "/images/dongnai.jpg",
+                ImageUrl = "/images/locations/dongnai.jpg",
                 Latitude = 10.9463,
                 Longitude = 107.1519,
                 HasBeach = false,
@@ -1491,7 +1541,7 @@ namespace TravelWeb.Models
                 Description = "Núi Bà Đen, trung tâm đạo Cao Đài đặc sắc.",
                 Province = "Tây Ninh",
                 Region = "Nam",
-                ImageUrl = "/images/tayninh.jpg",
+                ImageUrl = "/images/locations/tayninh.jpg",
                 Latitude = 11.3103,
                 Longitude = 106.0983,
                 HasBeach = false,
@@ -1529,7 +1579,7 @@ namespace TravelWeb.Models
                 Description = "Cửa ngõ miền Tây, sông nước yên bình và đặc sản mắm.",
                 Province = "Long An",
                 Region = "Nam",
-                ImageUrl = "/images/longan.jpg",
+                ImageUrl = "/images/locations/longan.jpg",
                 Latitude = 10.6957,
                 Longitude = 106.2431,
                 HasBeach = false,
@@ -1557,7 +1607,7 @@ namespace TravelWeb.Models
                 Description = "Du lịch miệt vườn Cái Bè, chợ nổi Cái Bè, trái cây tươi ngon.",
                 Province = "Tiền Giang",
                 Region = "Nam",
-                ImageUrl = "/images/tiengiang.jpg",
+                ImageUrl = "/images/locations/tiengiang.jpg",
                 Latitude = 10.3592,
                 Longitude = 106.3619,
                 HasBeach = false,
@@ -1595,7 +1645,7 @@ namespace TravelWeb.Models
                 Description = "Miệt vườn sông nước, quê hương nghệ sĩ Nam Bộ.",
                 Province = "Vĩnh Long",
                 Region = "Nam",
-                ImageUrl = "/images/vinhlong.jpg",
+                ImageUrl = "/images/locations/vinhlong.jpg",
                 Latitude = 10.2397,
                 Longitude = 105.9572,
                 HasBeach = false,
@@ -1633,7 +1683,7 @@ namespace TravelWeb.Models
                 Description = "Tây Đô, có chợ nổi Cái Răng và bến Ninh Kiều.",
                 Province = "Cần Thơ",
                 Region = "Nam",
-                ImageUrl = "/images/cantho.jpg",
+                ImageUrl = "/images/locations/cantho.jpg",
                 Latitude = 10.0452,
                 Longitude = 105.7469,
                 HasBeach = false,
@@ -1681,7 +1731,7 @@ namespace TravelWeb.Models
                 Description = "Núi Sam, Bà Chúa Xứ, vùng đất tâm linh miền Tây.",
                 Province = "An Giang",
                 Region = "Nam",
-                ImageUrl = "/images/angiang.jpg",
+                ImageUrl = "/images/locations/angiang.jpg",
                 Latitude = 10.5216,
                 Longitude = 105.1258,
                 HasBeach = false,
@@ -1729,7 +1779,7 @@ namespace TravelWeb.Models
                 Description = "Phú Quốc – đảo ngọc và Rạch Giá biển trời rộng lớn.",
                 Province = "Kiên Giang",
                 Region = "Nam",
-                ImageUrl = "/images/kiengiang.jpg",
+                ImageUrl = "/images/locations/kiengiang.jpg",
                 Latitude = 10.2899,
                 Longitude = 103.9840,
                 HasBeach = true,
@@ -1787,7 +1837,7 @@ namespace TravelWeb.Models
                 Description = "Đất mũi cực Nam Tổ quốc, rừng ngập mặn và hải sản tươi.",
                 Province = "Cà Mau",
                 Region = "Nam",
-                ImageUrl = "/images/camau.jpg",
+                ImageUrl = "/images/locations/camau.jpg",
                 Latitude = 9.1526,
                 Longitude = 105.1960,
                 HasBeach = true,
@@ -1828,11 +1878,43 @@ namespace TravelWeb.Models
                     }
                 }
             }
+
         };
+
 
         public static List<Destination> GetAll()
         {
             return Destinations;
+        }
+
+        public static List<Destination> GetAllNormalized()
+        {
+            return Destinations.Select(d => 
+            {
+                var isModernCity = d.Province == "TP.HCM" || d.Province == "Hà Nội" || d.Province == "Đà Nẵng";
+                var isPeaceful = !isModernCity && (d.Region == "Tây Nguyên" || (d.Region == "Nam" && !d.HasBeach));
+                
+                return new Destination
+                {
+                    Name = d.Name,
+                    Description = d.Description,
+                    Province = d.Province,
+                    Region = d.Region,
+                    ImageUrl = d.ImageUrl,
+                    Latitude = d.Latitude,
+                    Longitude = d.Longitude,
+                    HasBeach = d.HasBeach,
+                    HasMountain = d.HasMountain,
+                    HasCulture = d.HasCulture,
+                    HasFood = d.HasFood,
+                    HasNature = d.HasMountain || d.HasBeach,
+                    IsModernCity = isModernCity,
+                    IsPeaceful = isPeaceful,
+                    Attractions = d.Attractions,
+                    RuleMatches = new List<RuleMatch>(),
+                    MatchedRules = new List<string>()
+                };
+            }).ToList();
         }
 
         public static Destination GetByName(string name)
