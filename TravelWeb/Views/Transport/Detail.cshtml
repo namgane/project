@@ -1,0 +1,22 @@
+﻿@model TravelWeb.Models.TripWithId
+
+<div class="container mt-4">
+
+    <div class="card shadow-lg p-4">
+        <h2 class="fw-bold text-primary">Chi tiết chuyến đi</h2>
+        <hr />
+
+        <p><b>🚩 Đi từ:</b> @Model.FromCity</p>
+        <p><b>🏁 Đến:</b> @Model.ToProvince</p>
+        <p><b>🎉 Lễ hội:</b> @Model.FestivalName</p>
+        <p><b>🚗 Phương tiện:</b> @Model.TransportType</p>
+        <p><b>📅 Ngày đi:</b> @Model.DepartureDate.ToString("dd/MM/yyyy")</p>
+
+        <h3 class="text-danger fw-bold mt-3">@Model.Price.ToString("N0") VNĐ</h3>
+
+        <a href="@Model.GenerateBookingLink()" class="btn btn-success btn-lg mt-3">
+            Đặt vé ngay
+        </a>
+    </div>
+
+</div>

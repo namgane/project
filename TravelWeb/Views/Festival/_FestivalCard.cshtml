@@ -2,48 +2,87 @@
 
 <div class="card shadow-sm border-0 h-100 festival-card">
     <div class="position-relative">
-        <div class="image-carousel" data-carousel-id="@Model.Name.Replace(" ", "-")">
-            @if (Model.ImageUrls != null && Model.ImageUrls.Count > 0)
+
+        <!-- IMAGE CAROUSEL -->
+        <div class="image-carousel" data-carousel-id="festival-@Model.Id">
+
+            @if (Model.ImageUrls != null && Model.ImageUrls.Any())
             {
-                @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                for (int i = 0; i < Model.ImageUrls.Count; i++)
                 {
-                    <img src="@Model.ImageUrls[i]" alt="@Model.Name" class="@(i == 0 ? "active" : "")" data-index="@i">
+                    <img src="@Model.ImageUrls[i]"
+                         alt="@Model.Name"
+                         class="@(i == 0 ? "active" : "")"
+                         data-index="@i" />
                 }
             }
             else
             {
-                <img src="@Model.ImageUrl" alt="@Model.Name" class="active">
+                <img src="@Model.MainImage"
+                     alt="@Model.Name"
+                     class="active" />
             }
-            
+
             @if (Model.ImageUrls != null && Model.ImageUrls.Count > 1)
             {
-                <button class="carousel-nav prev" onclick="previousImage('@Model.Name.Replace(" ", "-")')">‹</button>
-                <button class="carousel-nav next" onclick="nextImage('@Model.Name.Replace(" ", "-")')">›</button>
+                <button class="carousel-nav prev"
+                        onclick="previousImage('festival-@Model.Id')">
+                    ‹
+                </button>
+
+                <button class="carousel-nav next"
+                        onclick="nextImage('festival-@Model.Id')">
+                    ›
+                </button>
+
                 <div class="carousel-indicators">
                     @for (int i = 0; i < Model.ImageUrls.Count; i++)
                     {
-                        <span class="carousel-indicator @(i == 0 ? "active" : "")" onclick="goToImage('@Model.Name.Replace(" ", "-")', @i)"></span>
+                        <span class="carousel-indicator @(i == 0 ? "active" : "")"
+                              onclick="goToImage('festival-@Model.Id', @i)">
+                        </span>
                     }
                 </div>
             }
         </div>
+
+        <!-- BADGES -->
         <span class="badge bg-light text-dark position-absolute top-0 start-0 m-2 badge-soft">
             @Model.Region
         </span>
+
         <span class="badge bg-primary position-absolute bottom-0 end-0 m-2">
-            @Model.StartDate.ToString("dd/MM") - @Model.EndDate.ToString("dd/MM")
+            @Model.DateRange
         </span>
     </div>
+
+    <!-- BODY -->
     <div class="card-body d-flex flex-column">
         <h5 class="card-title text-primary mb-1">@Model.Name</h5>
+
         <p class="card-text text-muted mb-2">
             <strong>@Model.Province</strong>
         </p>
-        <p class="card-text small text-truncate-2 mb-3">@Model.Description</p>
+
+        <p class="card-text small text-truncate-2 mb-3">
+            @Model.Description
+        </p>
+
         <div class="mt-auto d-flex gap-2">
-            <a href="@Url.Action("Details", "Festival", new { name = Model.Name })" class="btn btn-outline-primary btn-sm">Chi tiết</a>
-            <a href="@Url.Action("Suggest", "Transport", new { from = "TP.HCM", to = Model.Province })" class="btn btn-success btn-sm">Di chuyển</a>
+            <!-- DETAILS -->
+            <a href="@Url.Action("Details", "Festival", new { id = Model.Id })"
+               class="btn btn-outline-primary btn-sm">
+                Chi tiết
+            </a>
+
+            <!-- TRANSPORT -->
+            <a asp-controller="Transport"
+               asp-action="Suggest"
+               asp-route-from="TP.HCM"
+               asp-route-to="@Model.Province"
+               class="btn btn-success btn-sm">
+                Di chuyển
+            </a>
         </div>
     </div>
 </div>
-

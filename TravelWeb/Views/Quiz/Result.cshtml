@@ -1,1 +1,278 @@
-﻿
+﻿@model List<TravelWeb.Models.Destination>
+@{
+    // Khối C# duy nhất ở đầu trang, khai báo tất cả các biến
+    ViewData["Title"] = "Kết quả Quiz - Điểm đến phù hợp";
+
+    // Biến lưu câu trả lời người dùng
+    var answers = ViewBag.Answers as Dictionary<string, string> ?? new Dictionary<string, string>();
+
+    // Biến lưu nội dung giải thích so sánh động (phải được tạo trong Controller)
+    var comparisonReasons = ViewBag.ComparisonReasons as List<string> ?? new List<string>();
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary mb-3">
+            <i class="bi bi-trophy-fill me-2"></i>Kết quả Quiz của bạn
+        </h1>
+        <p class="lead text-muted">Dựa trên câu trả lời của bạn, đây là những điểm đến phù hợp nhất</p>
+    </div>
+
+    @* ------------------- PHẦN GIẢI THÍCH CHUYÊN SÂU: WHY THIS, NOT THAT (DYNAMIC) ------------------- *@
+    @if (Model.Count >= 2 && comparisonReasons.Any())
+    {
+        var top1 = Model.First();
+        var top2 = Model.ElementAt(1);
+
+        <div class="card shadow-lg mb-5 border-0 bg-light">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-question-circle-fill me-2"></i>Giải thích Chuyên sâu: Tại sao @top1.Name là Top 1?</h4>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-primary">So sánh @top1.Name (Điểm: @top1.Score) và @top2.Name (Điểm: @top2.Score)</h5>
+                <p class="text-muted">Điểm số chênh lệch này thể hiện mức độ phù hợp của @top1.Name đối với các tiêu chí trọng yếu mà bạn đã chọn:</p>
+
+                <div class="row mt-4">
+
+                    <div class="col-md-12">
+                        <div class="p-3 border rounded-3 h-100 bg-white shadow-sm">
+                            <strong class="d-block mb-2 text-danger"><i class="bi bi-fire me-1"></i>Tiêu chí Quyết định Vượt trội của @top1.Name:</strong>
+
+                            <ul class="list-unstyled small mb-0">
+                                @foreach (var reason in comparisonReasons)
+                                {
+                                    <li>
+                                        <i class="bi bi-arrow-right-circle-fill me-2 text-primary"></i>
+                                        @Html.Raw(reason)
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-3 fst-italic text-secondary small">
+                    => **Kết luận cuối cùng:** **@top1.Name** là sự lựa chọn tối ưu, cân bằng và đáp ứng đầy đủ nhất sự kết hợp các yêu cầu của bạn (Budget, Pace, Mood) so với @top2.Name.
+                </p>
+            </div>
+        </div>
+    }
+    @* ------------------- KẾT THÚC PHẦN GIẢI THÍCH CHUYÊN SÂU ------------------- *@
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            Chưa có kết quả. Vui lòng làm lại quiz.
+            <a asp-action="Start" class="btn btn-primary ms-2">Làm lại</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4 mb-5">
+            @foreach (var (dest, index) in Model.Select((d, i) => (d, i)))
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-lg border-0 card-hover-effect @(index == 0 ? "border-primary border-4" : "")">
+
+                        @* ------------------- PHẦN ẢNH VÀ TAG NỔI BẬT ------------------- *@
+                        <div class="image-container">
+                            <img src="@dest.ImageUrl" class="card-img-top destination-image" alt="@dest.Name" onerror="this.src='/images/default-destination.jpg'">
+                            <div class="image-overlay"></div>
+
+                            @if (index == 0)
+                            {
+                                <div class="position-absolute top-0 start-0 m-3">
+                                    <span class="badge bg-danger text-light fs-6 px-3 py-2 shadow-sm">
+                                        <i class="bi bi-star-fill me-1"></i>Phù hợp nhất
+                                    </span>
+                                </div>
+                            }
+
+                            <div class="position-absolute bottom-0 start-0 p-3 w-100">
+                                <h3 class="card-title text-white fw-bolder mb-0 display-6">@dest.Name</h3>
+                                <p class="text-white-50 small mb-0">@dest.Province - @dest.Region</p>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            @* ------------------- ĐỘ PHÙ HỢP (PROGRESS BAR) ------------------- *@
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <strong class="text-success me-2">Độ phù hợp:</strong>
+                                <span class="badge bg-success-subtle text-success fs-5 fw-bold p-2">@dest.NormalizedScore.ToString("F1")%</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                     style="width: @dest.NormalizedScore%" aria-valuenow="@dest.NormalizedScore"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="text-muted small mb-3">Điểm số chi tiết: @dest.Score / 100</p>
+
+                            @* ------------------- ĐẶC ĐIỂM ĐIỂM ĐẾN (ICONS) ------------------- *@
+                            <div class="mb-3 d-flex flex-wrap gap-2 pt-2 border-top border-light">
+                                @if (!string.IsNullOrEmpty(dest.TopAttractionType) && dest.TopAttractionType != "Tổng hợp")
+                                {
+                                    <span class="badge bg-primary-subtle text-primary fw-bold">
+                                        <i class="bi bi-geo-alt-fill me-1"></i>Loại hình chính: @dest.TopAttractionType
+                                    </span>
+                                }
+                                @if (dest.HasBeach)
+                                {
+                                    <span class="badge bg-info-subtle text-info"><i class="bi bi-beach"></i> Biển</span>
+                                }
+                                @if (dest.HasMountain)
+                                {
+                                    <span class="badge bg-secondary-subtle text-secondary"><i class="bi bi-tree-fill"></i> Núi</span>
+                                }
+                                @if (dest.HasCulture)
+                                {
+                                    <span class="badge bg-warning-subtle text-warning"><i class="bi bi-archive-fill"></i> Văn hóa</span>
+                                }
+                                @if (dest.HasFood)
+                                {
+                                    <span class="badge bg-danger-subtle text-danger"><i class="bi bi-egg-fried"></i> Ẩm thực</span>
+                                }
+                                @if (dest.IsModernCity)
+                                {
+                                    <span class="badge bg-dark-subtle text-dark"><i class="bi bi-building"></i> Đô thị hiện đại</span>
+                                }
+                                @if (dest.IsPeaceful)
+                                {
+                                    <span class="badge bg-success-subtle text-success"><i class="bi bi-peace"></i> Yên bình</span>
+                                }
+                            </div>
+
+                            <p class="card-text text-black-50 small mb-3">@dest.Description</p>
+
+                            @* ------------------- LÝ DO PHÙ HỢP (SUY LUẬN CHI TIẾT) ------------------- *@
+                            @if (dest.RuleMatches != null && dest.RuleMatches.Any())
+                            {
+                                <div class="mb-3 p-3 bg-light rounded-3 border-start border-primary border-4">
+                                    <strong class="text-primary-emphasis d-block mb-2"><i class="bi bi-lightbulb-fill me-1"></i> Lý do nổi bật (Suy luận sâu):</strong>
+                                    <ul class="list-unstyled mb-0 small">
+                                        @foreach (var match in dest.RuleMatches.Take(3)) // Chỉ lấy 3 lý do hàng đầu
+                                        {
+                                            <li class="mb-1">
+                                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                                @match.Explanation
+                                            </li>
+                                        }
+                                        @if (dest.RuleMatches.Count > 3)
+                                        {
+                                            <li class="mt-2 text-primary fst-italic">
+                                                <small>... và @(dest.RuleMatches.Count - 3) lý do phù hợp khác.</small>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+
+                            @* ------------------- GHI CHÚ BỔ SUNG ------------------- *@
+                            @if (!string.IsNullOrEmpty(dest.BudgetNote))
+                            {
+                                <p class="mb-2 small text-muted"><i class="bi bi-cash-coin me-1"></i>@dest.BudgetNote</p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(dest.DurationNote))
+                            {
+                                <p class="mb-2 small text-muted"><i class="bi bi-clock me-1"></i>@dest.DurationNote</p>
+                            }
+
+                            @* ------------------- NÚT HÀNH ĐỘNG ------------------- *@
+                            <div class="d-grid gap-2 mt-4">
+                                @* Nút xem hành trình chi tiết (Lấy từ AttractionCount) *@
+                                <a asp-controller="TripPlanner" asp-action="Index" 
+                                   class="btn btn-primary btn-sm">
+                                    <i class="bi bi-map-fill me-1"></i>Len lịch trình 
+                                </a>
+                                <div class="d-flex gap-2">
+                                    <a asp-controller="Cuisine" asp-action="Province" asp-route-name="@dest.Province"
+                                       class="btn btn-sm btn-outline-primary flex-fill">
+                                        <i class="bi bi-egg-fried me-1"></i>Ẩm thực
+                                    </a>
+                                    <a asp-controller="Map" asp-action="Index"
+                                       asp-route-city="@dest.Province"
+                                       asp-route-lat="@dest.Latitude"
+                                       asp-route-lng="@dest.Longitude"
+                                       class="btn btn-sm btn-outline-success flex-fill">
+                                        <i class="bi bi-map me-1"></i>Xem Bản đồ
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mb-4">
+            <a asp-action="Start" class="btn btn-primary btn-lg">
+                <i class="bi bi-arrow-clockwise me-2"></i>Làm lại Quiz
+            </a>
+        </div>
+
+        @if (answers.Any())
+        {
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Thông tin câu trả lời của bạn</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var answer in answers)
+                        {
+                            <div class="col-md-4 col-sm-6 mb-2">
+                                <strong>@answer.Key:</strong> <span class="text-muted">@answer.Value</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@* ------------------- PHẦN CSS CUSTOM ------------------- *@
+<style>
+    /* Hiệu ứng di chuột */
+    .card-hover-effect {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        }
+
+    /* Container ảnh để tạo lớp phủ */
+    .image-container {
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0.375rem;
+    }
+
+    /* Ảnh đích */
+    .destination-image {
+        height: 180px;
+        object-fit: cover;
+        width: 100%;
+        display: block;
+    }
+
+    /* Lớp phủ (Overlay) làm nổi bật chữ */
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        z-index: 1;
+    }
+
+    /* Đảm bảo chữ và badge nằm trên overlay */
+    .image-container .position-absolute {
+        z-index: 2;
+    }
+</style>

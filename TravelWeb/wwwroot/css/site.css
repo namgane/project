@@ -334,6 +334,7 @@ body {
 .cuisine-search .input-group-text {
   border-radius: 12px;
 }
+}
 
 .cuisine-province-card:hover {
   transform: translateY(-2px);

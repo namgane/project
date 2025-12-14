@@ -4,6 +4,8 @@ using TravelWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDistributedMemoryCache();
+
 // Thêm MVC (controllers + views)
 builder.Services.AddControllersWithViews();
 
