@@ -65,7 +65,16 @@ namespace TravelWeb.Models
                 }
 
                 // Tính thời gian di chuyển
-                double travelTimeHours = distance / segmentMode.AverageSpeed;
+                double travelTimeHours = 0;
+                if (segmentMode.AverageSpeed > 0)
+                {
+                    travelTimeHours = distance / segmentMode.AverageSpeed;
+                }
+                else
+                {
+                    // Fallback: giả sử tốc độ trung bình 30 km/h nếu không có dữ liệu
+                    travelTimeHours = distance / 30.0;
+                }
                 double travelTimeMinutes = travelTimeHours * 60 + segmentMode.WaitingTime;
 
                 var startTimeStr = currentTime.ToString(@"hh\:mm");

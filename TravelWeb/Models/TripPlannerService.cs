@@ -107,14 +107,17 @@ namespace TravelWeb.Models
             double totalDailyCost = plan.DailyPlans.Sum(d => d.TotalCost);
             double estimatedTotal = totalDailyCost + hotelBudget + otherBudget + transportCalc.TotalTransportCost;
 
-            if (estimatedTotal > budget)
+            if (estimatedTotal > budget && estimatedTotal > 0)
             {
                 double scaleFactor = (budget * 0.95) / estimatedTotal;
-                foreach (var dailyPlan in plan.DailyPlans)
-                    foreach (var activity in dailyPlan.Activities)
-                        if (activity.Type == "Ăn uống" || activity.Type == "Giải trí") activity.Cost *= scaleFactor;
+                if (scaleFactor > 0 && !double.IsNaN(scaleFactor) && !double.IsInfinity(scaleFactor))
+                {
+                    foreach (var dailyPlan in plan.DailyPlans)
+                        foreach (var activity in dailyPlan.Activities)
+                            if (activity.Type == "Ăn uống" || activity.Type == "Giải trí") activity.Cost *= scaleFactor;
 
-                estimatedTotal = plan.DailyPlans.Sum(d => d.TotalCost) + plan.TransportCalculation.TotalTransportCost + hotelBudget + otherBudget;
+                    estimatedTotal = plan.DailyPlans.Sum(d => d.TotalCost) + plan.TransportCalculation.TotalTransportCost + hotelBudget + otherBudget;
+                }
             }
 
             plan.EstimatedTotalCost = Math.Min(estimatedTotal, budget * 0.98);
@@ -134,9 +137,17 @@ namespace TravelWeb.Models
             List<AttractionPoint> attractions;
             if (dbLocations != null && dbLocations.Count > 0)
             {
-                var matched = dbLocations.Where(l => l.Ten.Contains(dest) || dest.Contains(l.Ten)).ToList();
-                attractions = (matched.Any() ? matched : dbLocations)
-                    .Select(l => new AttractionPoint { Name = l.Ten, Description = l.MoTa, Latitude = l.Lat, Longitude = l.Lng, Type = "Local", VisitDuration = 60 })
+                var matched = dbLocations.Where(l => l != null && !string.IsNullOrEmpty(l.Ten) && (l.Ten.Contains(dest) || dest.Contains(l.Ten))).ToList();
+                attractions = (matched.Any() ? matched : dbLocations.Where(l => l != null && !string.IsNullOrEmpty(l.Ten)))
+                    .Select(l => new AttractionPoint 
+                    { 
+                        Name = l.Ten ?? "Địa điểm", 
+                        Description = l.MoTa ?? string.Empty, 
+                        Latitude = l.Lat, 
+                        Longitude = l.Lng, 
+                        Type = "Local", 
+                        VisitDuration = 60 
+                    })
                     .OrderBy(x => _random.Next()).ToList();
             }
             else
@@ -156,6 +167,16 @@ namespace TravelWeb.Models
             {
                 var activities = new List<Activity>();
                 double[] segmentDistances = baseDistances.Select(d => d * (0.85 + _random.NextDouble() * 0.3)).ToArray();
+                
+                // Đảm bảo segmentDistances có đủ phần tử
+                if (segmentDistances.Length < 5)
+                {
+                    Array.Resize(ref segmentDistances, 5);
+                    for (int i = segmentDistances.Length; i < 5; i++)
+                    {
+                        segmentDistances[i] = baseDistances[i % baseDistances.Length] * (0.85 + _random.NextDouble() * 0.3);
+                    }
+                }
 
                 var breakfast = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
                 var lunch = GetRandomUnusedCuisineItem(cuisineTop, usedCuisineIndices);
@@ -170,7 +191,7 @@ namespace TravelWeb.Models
                         Time = "07:00 - 08:30",
                         Type = "Ăn uống",
                         Name = $"Ăn sáng:",
-                        Description = breakfast.Description,
+                        Description = breakfast.Description ?? string.Empty,
                         Address = AddressData.GetBreakfastAddress(dest, breakfast.Name),
                         Cost = (double)breakfast.AveragePrice * people * RandomVariation(),
                         Suggestions = GetUniqueSuggestions(cuisineTop, breakfast.Name, x => x.Name, x => AddressData.GetBreakfastAddress(dest, x.Name))
@@ -206,10 +227,10 @@ namespace TravelWeb.Models
                         Time = "13:00 - 14:30",
                         Type = "Ăn uống",
                         Name = $"Ăn trưa:",
-                        Description = lunch.Description,
-                        Address = AddressData.GetRestaurantAddress(dest, lunch.Name),
+                        Description = lunch.Description ?? string.Empty,
+                        Address = AddressData.GetRestaurantAddress(dest, lunch.Name ?? string.Empty),
                         Cost = (double)lunch.AveragePrice * people * RandomVariation(),
-                        Suggestions = GetUniqueSuggestions(cuisineTop, lunch.Name, x => x.Name, x => AddressData.GetRestaurantAddress(dest, x.Name))
+                        Suggestions = GetUniqueSuggestions(cuisineTop, lunch.Name ?? string.Empty, x => x.Name, x => AddressData.GetRestaurantAddress(dest, x.Name))
                     });
                 }
 
@@ -225,10 +246,10 @@ namespace TravelWeb.Models
                         Time = "18:30 - 20:00",
                         Type = "Ăn uống",
                         Name = $"Ăn tối:",
-                        Description = dinner.Description,
-                        Address = AddressData.GetRestaurantAddress(dest, dinner.Name),
+                        Description = dinner.Description ?? string.Empty,
+                        Address = AddressData.GetRestaurantAddress(dest, dinner.Name ?? string.Empty),
                         Cost = (double)dinner.AveragePrice * people * RandomVariation(),
-                        Suggestions = GetUniqueSuggestions(cuisineTop, dinner.Name, x => x.Name, x => AddressData.GetRestaurantAddress(dest, x.Name))
+                        Suggestions = GetUniqueSuggestions(cuisineTop, dinner.Name ?? string.Empty, x => x.Name, x => AddressData.GetRestaurantAddress(dest, x.Name))
                     });
                 }
 

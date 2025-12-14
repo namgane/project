@@ -18,7 +18,15 @@ namespace TravelWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Hotels.ToListAsync());
+            try
+            {
+                return View(await _context.Hotels.ToListAsync());
+            }
+            catch (Exception)
+            {
+                // Trả về view với danh sách rỗng nếu có lỗi database
+                return View(new List<Hotel>());
+            }
         }
 
         // Create - chỉ admin
@@ -47,6 +55,12 @@ namespace TravelWeb.Controllers
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
+                if (string.IsNullOrEmpty(ImageFile.FileName))
+                {
+                    ModelState.AddModelError("ImageFile", "Tên file không hợp lệ.");
+                    return View(hotel);
+                }
+
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -60,10 +74,17 @@ namespace TravelWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Hotels.Add(hotel);
-                await _context.SaveChangesAsync();
-                TempData["Success"] = "Thêm khách sạn thành công!";
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Hotels.Add(hotel);
+                    await _context.SaveChangesAsync();
+                    TempData["Success"] = "Thêm khách sạn thành công!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Lỗi khi lưu khách sạn: " + ex.Message);
+                }
             }
             return View(hotel);
         }

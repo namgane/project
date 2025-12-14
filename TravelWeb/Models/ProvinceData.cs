@@ -1,4 +1,4 @@
-﻿namespace TravelWeb.Models
+namespace TravelWeb.Models
 {
     public class ProvinceInfo
     {
@@ -11,7 +11,7 @@
     {
         public static readonly List<ProvinceInfo> List = new List<ProvinceInfo>
         {
-            new ProvinceInfo { Name = "Hà Nội", Region = "Miền Bắc", Coord = (21.0278, 105.8342) },
+            new ProvinceInfo { Name = "Hà Nội", Region = "Miền Bắc", Coord = (21.0285, 105.8542) },
             new ProvinceInfo { Name = "Hải Phòng", Region = "Miền Bắc", Coord = (20.8449, 106.6881) },
             new ProvinceInfo { Name = "Quảng Ninh", Region = "Miền Bắc", Coord = (21.0064, 107.2925) },
 

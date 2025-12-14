@@ -22,7 +22,15 @@ namespace TravelWeb.Controllers
         // GET: Tours
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tours.ToListAsync());
+            try
+            {
+                return View(await _context.Tours.ToListAsync());
+            }
+            catch (Exception)
+            {
+                // Trả về view với danh sách rỗng nếu có lỗi database
+                return View(new List<Tour>());
+            }
         }
 
         // GET: Tours/Details/5
@@ -63,6 +71,12 @@ namespace TravelWeb.Controllers
                     var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
                     Directory.CreateDirectory(uploads);
 
+                    if (string.IsNullOrEmpty(tour.HinhAnhFile.FileName))
+                    {
+                        ModelState.AddModelError("HinhAnhFile", "Tên file không hợp lệ.");
+                        return View(tour);
+                    }
+
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(tour.HinhAnhFile.FileName);
                     var filePath = Path.Combine(uploads, fileName);
 
@@ -79,9 +93,17 @@ namespace TravelWeb.Controllers
                     return View(tour);
                 }
 
-                _context.Add(tour);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(tour);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Lỗi khi lưu tour: " + ex.Message);
+                    return View(tour);
+                }
             }
             return View(tour);
         }

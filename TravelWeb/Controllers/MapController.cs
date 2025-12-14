@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using TravelWeb.Data;
 using TravelWeb.Models;
 using Microsoft.EntityFrameworkCore;
@@ -17,35 +17,84 @@ namespace TravelWeb.Controllers
         // 1. Hiển thị Map
         public IActionResult Index(string city, double? lat, double? lng)
         {
-            ViewBag.City = string.IsNullOrEmpty(city) ? "TP. Hồ Chí Minh" : city;
-            ViewBag.Lat = lat ?? 10.7769;
-            ViewBag.Lng = lng ?? 106.7009;
+            try
+            {
+                ViewBag.City = string.IsNullOrEmpty(city) ? "TP. Hồ Chí Minh" : city;
+                
+                // Nếu không có tọa độ, dùng tọa độ mặc định theo thành phố
+                if (!lat.HasValue || !lng.HasValue)
+                {
+                    if (city == "Hà Nội")
+                    {
+                        // Tọa độ Hồ Hoàn Kiếm
+                        ViewBag.Lat = 21.0285;
+                        ViewBag.Lng = 105.8542;
+                    }
+                    else
+                    {
+                        // Mặc định là TP.HCM
+                        ViewBag.Lat = 10.7769;
+                        ViewBag.Lng = 106.7009;
+                    }
+                }
+                else
+                {
+                    ViewBag.Lat = lat.Value;
+                    ViewBag.Lng = lng.Value;
+                }
 
-            // Lấy danh sách địa điểm thường
-            ViewBag.Locations = _context.Locations.ToList();
+                // Lấy danh sách địa điểm thường
+                ViewBag.Locations = _context.Locations?.ToList() ?? new List<Location>();
 
-            // ✅ QUAN TRỌNG: Lấy danh sách Virtual Tour để hiển thị con mắt
-            ViewBag.VirtualTours = _context.VirtualTours.ToList();
+                // ✅ QUAN TRỌNG: Lấy danh sách Virtual Tour để hiển thị con mắt
+                ViewBag.VirtualTours = _context.VirtualTours?.ToList() ?? new List<VirtualTour>();
 
-            return View();
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Log lỗi và trả về view với dữ liệu rỗng
+                ViewBag.Locations = new List<Location>();
+                ViewBag.VirtualTours = new List<VirtualTour>();
+                ViewBag.ErrorMessage = "Có lỗi xảy ra khi tải dữ liệu bản đồ. Vui lòng thử lại sau.";
+                return View();
+            }
         }
 
         // 2. Upload ảnh (Dùng cho form thêm địa điểm)
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile imageFile)
         {
-            if (imageFile == null || imageFile.Length == 0)
-                return BadRequest(new { message = "Chưa chọn ảnh" });
-
-            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
-
-            using (var stream = new FileStream(path, FileMode.Create))
+            try
             {
-                await imageFile.CopyToAsync(stream);
-            }
+                if (imageFile == null || imageFile.Length == 0)
+                    return BadRequest(new { message = "Chưa chọn ảnh" });
 
-            return Json(new { imagePath = "/images/" + fileName });
+                if (string.IsNullOrEmpty(imageFile.FileName))
+                    return BadRequest(new { message = "Tên file không hợp lệ" });
+
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                
+                // Đảm bảo thư mục tồn tại
+                if (!Directory.Exists(imagesPath))
+                {
+                    Directory.CreateDirectory(imagesPath);
+                }
+                
+                var path = Path.Combine(imagesPath, fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+                return Json(new { imagePath = "/images/" + fileName });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Lỗi khi upload ảnh: " + ex.Message });
+            }
         }
 
         // 3. API Thêm địa điểm thường (JSON)

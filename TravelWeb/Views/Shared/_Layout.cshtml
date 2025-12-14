@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http
 @{
     var username = Context.Session.GetString("Username");
     var role = Context.Session.GetString("Role");
@@ -25,24 +25,39 @@
 
     <!-- ===== FIX GOOGLE TRANSLATE + LAYOUT ===== -->
     <style>
-        /* Ẩn thanh Google Translate trên cùng */
+        /* 1. Ẩn thanh Google Frame cũ */
         .goog-te-banner-frame,
         iframe.goog-te-banner-frame {
             display: none !important;
         }
 
-        body {
-            top: 0 !important;
+        /* 2. Ẩn thanh Google Frame mới (Class bạn vừa tìm thấy) */
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            display: none !important;
+            visibility: hidden !important;
         }
 
-        /* Ẩn text "Được hỗ trợ bởi Google Dịch" */
+        /* 3. Ẩn theo ID (phòng trường hợp class thay đổi) */
+        /* Lưu ý: Cần dùng dấu gạch chéo ngược \ trước dấu : và . vì đó là ký tự đặc biệt trong CSS */
+        iframe#\:2\.container {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* 4. QUAN TRỌNG: Đẩy trang web lên trên cùng */
+        /* Google thường thêm style="top: 40px" vào thẻ body, đoạn này sẽ ghi đè nó */
+        body {
+            position: static !important;
+            top: 0px !important;
+        }
+
+        /* 5. Ẩn chữ "Được hỗ trợ bởi Google Dịch" */
         .goog-te-gadget span {
             display: none !important;
         }
 
-        /* Chỉ cho phép gadget trong khung mình tạo */
-        .goog-te-gadget:not(#google_translate_element .goog-te-gadget) {
-            display: none !important;
+        .goog-te-gadget {
+            color: transparent !important;
         }
     </style>
 </head>
@@ -137,6 +152,27 @@
                             <i class="bi bi-puzzle"></i> AkiCity
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="TikTok" asp-action="Index">
+                            <i class="bi bi-tiktok"></i> Search Tiktok
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Festival" asp-action="Index">
+                            <i class="bi bi-balloon"></i> Festival
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Cuisine" ? "active" : "")" asp-controller="Cuisine" asp-action="Index">
+                            <i class="bi bi-egg-fried"></i> Ẩm thực
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Feedback" asp-action="Index">
+                            <i class="bi bi-chat-text"></i> Góp ý
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -149,11 +185,44 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container text-center small py-3">
-            &copy; 2025 - TravelWeb - Privacy
+    <footer class="bg-dark text-white py-4" style="margin-top: auto;">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <h5 class="fw-bold text-warning mb-1">
+                        <i class="bi bi-airplane-fill me-2"></i>TravelWeb
+                    </h5>
+                    <small class="text-white-50">Khám phá thế giới trong tầm tay bạn.</small>
+                </div>
+
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <a asp-controller="Tours" asp-action="Index" class="text-white text-decoration-none px-2 small hover-underline">Trang chủ</a>
+                    <span class="text-white-50">|</span>
+                    <a asp-controller="TripPlanner" asp-action="Index" class="text-white text-decoration-none px-2 small hover-underline">Lập kế hoạch</a>
+                    <span class="text-white-50">|</span>
+                    <a asp-controller="Feedback" asp-action="Index" class="text-white text-decoration-none px-2 small hover-underline">Góp ý</a>
+                </div>
+
+                <div class="col-md-4 text-center text-md-end">
+                    <div class="mb-2">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                    <small class="text-white-50">&copy; 2025 TravelWeb. All rights reserved.</small>
+                </div>
+
+            </div>
         </div>
     </footer>
+
+    <style>
+        .hover-underline:hover {
+            text-decoration: underline !important;
+            color: #ffc107 !important; /* Màu vàng khi hover */
+        }
+    </style>
 
     <!-- ================= GOOGLE TRANSLATE BUTTON ================= -->
     <div id="google_translate_element"

@@ -235,7 +235,10 @@ namespace TravelWeb.Controllers
             {
                 // Nếu đã xác nhận, khi hủy thì trả lại phòng
                 booking.TrangThai = "Đã Hủy";
-                booking.Hotel.SoPhong += booking.SoLuongPhong;
+                if (booking.Hotel != null)
+                {
+                    booking.Hotel.SoPhong += booking.SoLuongPhong;
+                }
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "Đã hủy đặt phòng và hoàn lại phòng thành công!";
             }
@@ -341,6 +344,12 @@ namespace TravelWeb.Controllers
                 if (status == "Đã Xác Nhận")
                 {
                     // Kiểm tra lại số phòng trước khi xác nhận
+                    if (booking.Hotel == null)
+                    {
+                        TempData["Error"] = "Không tìm thấy thông tin khách sạn!";
+                        return RedirectToAction("HotelBookings");
+                    }
+                    
                     if (booking.Hotel.SoPhong < booking.SoLuongPhong)
                     {
                         TempData["Error"] = "Không đủ phòng trống để xác nhận đặt phòng này!";
@@ -389,7 +398,10 @@ namespace TravelWeb.Controllers
             {
                 // Cập nhật trạng thái và trả lại phòng
                 booking.TrangThai = "Đã Hoàn Thành";
-                booking.Hotel.SoPhong += booking.SoLuongPhong;
+                if (booking.Hotel != null)
+                {
+                    booking.Hotel.SoPhong += booking.SoLuongPhong;
+                }
             }
 
             if (expiredBookings.Any())

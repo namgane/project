@@ -830,8 +830,8 @@ namespace TravelWeb.Models
             if (RestaurantAddresses.TryGetValue(destination, out var addresses) && addresses.Count > 0)
             {
                 // Loại bỏ các quán chay trong fallback mặc định nếu không có tên món cụ thể
-                var nonVegAddresses = addresses.Where(a => a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) < 0).ToList();
-                if (nonVegAddresses.Count > 0)
+                var nonVegAddresses = addresses.Where(a => a != null && a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) < 0).ToList();
+                if (nonVegAddresses != null && nonVegAddresses.Count > 0)
                 {
                     return nonVegAddresses[_random.Next(nonVegAddresses.Count)];
                 }
@@ -852,7 +852,7 @@ namespace TravelWeb.Models
                 {
                     var filteredAddresses = localAddresses.Where(a => a.IndexOf(isVegetarian ? "Chay" : "📍 Quán", StringComparison.OrdinalIgnoreCase) >= 0).ToList();
 
-                    if (filteredAddresses.Count > 0)
+                    if (filteredAddresses != null && filteredAddresses.Count > 0)
                     {
                         // Chọn một quán ngẫu nhiên từ danh sách đã lọc
                         return filteredAddresses[_random.Next(filteredAddresses.Count)];
@@ -880,8 +880,8 @@ namespace TravelWeb.Models
                 if (isVegetarian)
                 {
                     // Lọc lấy các quán có chữ "Chay"
-                    var vegAddresses = addresses.Where(a => a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-                    if (vegAddresses.Count > 0)
+                    var vegAddresses = addresses.Where(a => a != null && a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                    if (vegAddresses != null && vegAddresses.Count > 0)
                     {
                         return vegAddresses[_random.Next(vegAddresses.Count)];
                     }
@@ -889,8 +889,8 @@ namespace TravelWeb.Models
                 else
                 {
                     // Lọc lấy các quán KHÔNG có chữ "Chay" (Ăn Mặn)
-                    var nonVegAddresses = addresses.Where(a => a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) < 0).ToList();
-                    if (nonVegAddresses.Count > 0)
+                    var nonVegAddresses = addresses.Where(a => a != null && a.IndexOf("Chay", StringComparison.OrdinalIgnoreCase) < 0).ToList();
+                    if (nonVegAddresses != null && nonVegAddresses.Count > 0)
                     {
                         return nonVegAddresses[_random.Next(nonVegAddresses.Count)];
                     }
@@ -904,7 +904,7 @@ namespace TravelWeb.Models
 
         public static string GetCafeAddress(string destination)
         {
-            if (CafeAddresses.TryGetValue(destination, out var addresses))
+            if (CafeAddresses.TryGetValue(destination, out var addresses) && addresses != null && addresses.Count > 0)
             {
                 return addresses[_random.Next(addresses.Count)];
             }
@@ -914,7 +914,7 @@ namespace TravelWeb.Models
 
         public static string GetNightMarketAddress(string destination)
         {
-            if (NightMarketAddresses.TryGetValue(destination, out var addresses))
+            if (NightMarketAddresses.TryGetValue(destination, out var addresses) && addresses != null && addresses.Count > 0)
             {
                 return addresses[_random.Next(addresses.Count)];
             }

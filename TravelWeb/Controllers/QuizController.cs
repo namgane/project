@@ -98,22 +98,42 @@ namespace TravelWeb.Controllers
         [HttpGet]
         public IActionResult Result()
         {
-            var stored = HttpContext.Session.Get("answers");
-            var answers = stored != null
-                ? System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(stored)
-                : Questions.ToDictionary(q => q.Key, q => HttpContext.Session.GetString(q.Key) ?? string.Empty);
+            Dictionary<string, string> answers;
+            try
+            {
+                var stored = HttpContext.Session.Get("answers");
+                answers = stored != null
+                    ? System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(stored) ?? new Dictionary<string, string>()
+                    : Questions.ToDictionary(q => q.Key, q => HttpContext.Session.GetString(q.Key) ?? string.Empty);
+            }
+            catch
+            {
+                answers = Questions.ToDictionary(q => q.Key, q => HttpContext.Session.GetString(q.Key) ?? string.Empty);
+            }
 
             var destinations = DestinationData.GetAllNormalized();
+            if (destinations == null || !destinations.Any())
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy dữ liệu điểm đến. Vui lòng thử lại.";
+                return RedirectToAction("Start");
+            }
 
             destinations = QuizRuleEngine.Score(destinations, answers);
 
             var top1 = destinations.OrderByDescending(d => d.Score).FirstOrDefault();
-            QuizRuleEngine.ReinforceTopRules(top1);
+            if (top1 != null)
+            {
+                QuizRuleEngine.ReinforceTopRules(top1);
+            }
 
             History.Add(new QuizHistoryItem
             {
                 Answers = answers,
-                TopResults = destinations.OrderByDescending(d => d.Score).Take(3).Select(d => d.Name).ToList(),
+                TopResults = destinations.Where(d => d != null && !string.IsNullOrEmpty(d.Name))
+                    .OrderByDescending(d => d.Score)
+                    .Take(3)
+                    .Select(d => d.Name)
+                    .ToList(),
                 TakenAt = DateTime.UtcNow
             });
 

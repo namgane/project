@@ -97,14 +97,14 @@ namespace TravelWeb.Controllers
 
                 var renderedHtml = await RenderPartialViewToStringAsync("_DailyItineraryPartial", plan.DailyPlans);
 
-                // ✅ Trả về JSON với HTML đã render và chi phí vận chuyển
+                // ✅ Trả về JSON với null checks
                 var response = new
                 {
                     success = true,
-                    totalDailyCost = Math.Round(plan.DailyPlans.Sum(d => d.TotalCost)).ToString("N0"),
+                    totalDailyCost = Math.Round((plan.DailyPlans?.Sum(d => d?.TotalCost ?? 0) ?? 0)).ToString("N0"),
                     estimatedTotalCost = Math.Round(plan.EstimatedTotalCost).ToString("N0"),
-                    transportTotalCost = Math.Round(plan.TransportCalculation.TotalTransportCost).ToString("N0"),
-                    fuelCost = Math.Round(plan.TransportCalculation.FuelCost).ToString("N0"),
+                    transportTotalCost = Math.Round(plan.TransportCalculation?.TotalTransportCost ?? 0).ToString("N0"),
+                    fuelCost = Math.Round(plan.TransportCalculation?.FuelCost ?? 0).ToString("N0"),
                     htmlItinerary = renderedHtml
                 };
 

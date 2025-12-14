@@ -35,15 +35,23 @@ namespace TravelWeb.Services
 
         public static List<Destination> Score(List<Destination> destinations, Dictionary<string, string> answers)
         {
-            foreach (var dest in destinations)
+            if (destinations == null || !destinations.Any())
             {
-                ResetDestination(dest);
-                ApplyRules(dest, answers);
+                return new List<Destination>();
             }
 
-            var maxScore = destinations.Max(d => d.Score);
-            if (maxScore < 1) maxScore = 1;
             foreach (var dest in destinations)
+            {
+                if (dest != null)
+                {
+                    ResetDestination(dest);
+                    ApplyRules(dest, answers);
+                }
+            }
+
+            var maxScore = destinations.Where(d => d != null).Select(d => d.Score).DefaultIfEmpty(0).Max();
+            if (maxScore < 1) maxScore = 1;
+            foreach (var dest in destinations.Where(d => d != null))
             {
                 dest.NormalizedScore = Math.Round(dest.Score * 100.0 / maxScore, 1);
                 // Tránh hiển thị toàn 0% trên UI
@@ -184,23 +192,48 @@ namespace TravelWeb.Services
 
         private static void AddMatch(Destination dest, string ruleKey, double score, string explanation)
         {
+            if (dest == null) return;
+            
             dest.Score += (int)Math.Round(score);
+            
+            if (dest.RuleMatches == null)
+            {
+                dest.RuleMatches = new List<RuleMatch>();
+            }
+            
             dest.RuleMatches.Add(new RuleMatch
             {
                 RuleKey = ruleKey,
                 Score = Math.Round(score, 1),
                 Explanation = explanation
             });
+            
+            if (dest.MatchedRules == null)
+            {
+                dest.MatchedRules = new List<string>();
+            }
+            
             if (!dest.MatchedRules.Contains(ruleKey))
                 dest.MatchedRules.Add(ruleKey);
         }
 
         private static void ResetDestination(Destination dest)
         {
+            if (dest == null) return;
+            
             dest.Score = 0;
             dest.NormalizedScore = 0;
-            dest.MatchedRules.Clear();
-            dest.RuleMatches.Clear();
+            
+            if (dest.MatchedRules == null)
+                dest.MatchedRules = new List<string>();
+            else
+                dest.MatchedRules.Clear();
+                
+            if (dest.RuleMatches == null)
+                dest.RuleMatches = new List<RuleMatch>();
+            else
+                dest.RuleMatches.Clear();
+                
             dest.SeasonRecommendation = string.Empty;
             dest.BudgetNote = string.Empty;
             dest.DurationNote = string.Empty;
