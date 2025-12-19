@@ -3,18 +3,6 @@
   "WorkspaceRootPath": "D:\\lam Game\\BASICPROJECT\\public\\project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tripplanner\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tripplanner\\_dailyitinerarypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\_dailyitinerarypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -23,12 +11,24 @@
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tours\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\quiz\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\quiz\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tripplanner\\_dailyitinerarypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\_dailyitinerarypartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\models\\tripplannerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\models\\tripplannerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\tripplanner\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\map\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\controllers\\quizcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,10 +59,6 @@
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\services\\activityhistoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\views\\quiz\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\views\\quiz\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|d:\\lam game\\basicproject\\public\\project\\travelweb\\services\\quizruleengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E2E4A28-CFF0-475A-AD7C-527315514A8D}|TravelWeb\\TravelWeb.csproj|solutionrelative:travelweb\\services\\quizruleengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -82,24 +78,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\Index.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Index.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\Index.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\TripPlanner\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-14T04:59:07.729Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Result.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\Result.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\Result.cshtml",
@@ -112,7 +95,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAqwNoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T09:40:35.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TripPlannerService.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlannerService.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlannerService.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlannerService.cs",
+              "RelativeToolTip": "TravelWeb\\Models\\TripPlannerService.cs",
+              "ViewState": "AgIAANIAAAAAAAAAAAAqwEoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T03:32:35.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "_DailyItineraryPartial.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\TripPlanner\\_DailyItineraryPartial.cshtml",
@@ -125,28 +134,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "QuizController.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\QuizController.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\QuizController.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\QuizController.cs",
-              "RelativeToolTip": "TravelWeb\\Controllers\\QuizController.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAAAAwJUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-14T02:39:23.501Z",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Tours\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAGgAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T09:25:57.757Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABQAAAAAAAAAAAAqwD0AAAAMAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Result.cshtml",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Quiz\\Result.cshtml",
+              "RelativeDocumentMoniker": "TravelWeb\\Views\\Quiz\\Result.cshtml",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Quiz\\Result.cshtml",
+              "RelativeToolTip": "TravelWeb\\Views\\Quiz\\Result.cshtml",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAawMcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-06T09:40:35.948Z",
+              "WhenOpened": "2025-12-06T09:18:46.443Z",
               "EditorCaption": ""
             },
             {
@@ -159,25 +168,23 @@
               "RelativeToolTip": "TravelWeb\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-06T09:09:57.115Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T09:09:57.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "QuizController.cs",
+              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\QuizController.cs",
+              "RelativeDocumentMoniker": "TravelWeb\\Controllers\\QuizController.cs",
+              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\QuizController.cs",
+              "RelativeToolTip": "TravelWeb\\Controllers\\QuizController.cs",
+              "ViewState": "AgIAAKwAAAAAAAAAAAAAwJUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T02:39:23.501Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "TripPlannerService.cs",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlannerService.cs",
-              "RelativeDocumentMoniker": "TravelWeb\\Models\\TripPlannerService.cs",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Models\\TripPlannerService.cs",
-              "RelativeToolTip": "TravelWeb\\Models\\TripPlannerService.cs",
-              "ViewState": "AgIAAMQAAAAAAAAAAAAuwMIAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T03:32:35.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Map\\Index.cshtml",
               "RelativeDocumentMoniker": "TravelWeb\\Views\\Map\\Index.cshtml",
@@ -185,21 +192,7 @@
               "RelativeToolTip": "TravelWeb\\Views\\Map\\Index.cshtml",
               "ViewState": "AgIAACQBAAAAAAAAAAAawDIBAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-06T09:26:07.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Tours\\Index.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Tours\\Index.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Tours\\Index.cshtml",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAqwHcAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-06T09:25:57.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T09:26:07.523Z"
             },
             {
               "$type": "Document",
@@ -251,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "20251206092108_InitialCreate.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Migrations\\20251206092108_InitialCreate.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Migrations\\20251206092108_InitialCreate.cs",
@@ -276,18 +269,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "Result.cshtml",
-              "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Quiz\\Result.cshtml",
-              "RelativeDocumentMoniker": "TravelWeb\\Views\\Quiz\\Result.cshtml",
-              "ToolTip": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Views\\Quiz\\Result.cshtml",
-              "RelativeToolTip": "TravelWeb\\Views\\Quiz\\Result.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-06T09:18:46.443Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
               "Title": "QuizRuleEngine.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Services\\QuizRuleEngine.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Services\\QuizRuleEngine.cs",
@@ -299,7 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "ToursController.cs",
               "DocumentMoniker": "D:\\lam Game\\BASICPROJECT\\public\\project\\TravelWeb\\Controllers\\ToursController.cs",
               "RelativeDocumentMoniker": "TravelWeb\\Controllers\\ToursController.cs",
